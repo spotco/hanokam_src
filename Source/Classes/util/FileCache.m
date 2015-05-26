@@ -22,7 +22,7 @@ static NSMutableDictionary* files;
 	NSMutableDictionary *sto_dict = [NSMutableDictionary dictionary];
 	
     for (NSString *key in frames_dict.keyEnumerator) {
-		NSDictionary *obj_info = [frames_dict objectForKey:key];
+		//NSDictionary *obj_info = [frames_dict objectForKey:key];
 		CGRect r = rect_from_dict(file_dict, key);
 		[sto_dict setObject:[NSValue valueWithCGRect:r] forKey:key];
 	}

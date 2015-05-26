@@ -7,6 +7,7 @@
 #import "Resource.h"
 #import "ShaderManager.h"
 #import "SpriterUtil.h"
+#import "SPDeviceAccelerometer.h"
 
 /*
 TODO --
@@ -23,6 +24,7 @@ make TGSpriter classes structs instead
 	[Resource load_all];
 	[ShaderManager load_all];
 	[DataStore cons];
+	[SPDeviceAccelerometer start];
 	
 	NSLog(@"%@",cocos2dVersion());
 	//return [MainMenuScene cons];

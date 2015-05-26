@@ -114,8 +114,8 @@ static CGFloat FindLinearScale(CGFloat size, CGFloat fixedSize)
         screenMode = CCScreenScaledAspectFitEmulationMode;
     }
 
-    
-    if([_cocos2dSetupConfig[CCSetupScreenOrientation] isEqual:CCScreenOrientationPortrait])
+    if (YES)
+    //if([_cocos2dSetupConfig[CCSetupScreenOrientation] isEqual:CCScreenOrientationPortrait])
     {
         self.requestedOrientation = AndroidActivityInfoScreenOrientationSensorPortrait;
     }

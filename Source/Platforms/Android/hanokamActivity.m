@@ -30,8 +30,13 @@
 
 @implementation hanokamActivity
 
+static hanokamActivity *_inst;
+
++(hanokamActivity*)getActivity { return _inst; }
+
 - (CCScene *)startScene
 {
+	_inst = self;
 	return [GameMain main];
 	//return [CCBReader loadAsScene:@"MainScene"];
 }

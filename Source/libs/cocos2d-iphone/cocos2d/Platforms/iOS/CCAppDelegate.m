@@ -220,7 +220,8 @@ FindPOTScale(CGFloat size, CGFloat fixedSize)
 	navController_ = [[CCNavigationController alloc] initWithRootViewController:director];
 	navController_.navigationBarHidden = YES;
 	navController_.appDelegate = self;
-	navController_.screenOrientation = (config[CCSetupScreenOrientation] ?: CCScreenOrientationLandscape);
+	navController_.screenOrientation = CCScreenOrientationPortrait;
+    //(config[CCSetupScreenOrientation] ?: CCScreenOrientationLandscape);
     
 	// for rotation and other messages
 	[director setDelegate:navController_];

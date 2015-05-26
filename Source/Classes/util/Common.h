@@ -183,4 +183,5 @@ Vec3D vec_from_ccrotation(float rotation);
 
 CCSprite* flipper_cons_for(CCSprite* obj, float scx, float scy);
 
+float running_avg(float avg, float val, float ct);
 #endif

@@ -197,7 +197,7 @@
 				_land_params._prep_dive_hold_ct += dt_scale_get();
 				if (_land_params._prep_dive_hold_ct > _land_params.PREP_DIVE_HOLD_TIME) {
 					_land_params._current_mode = PlayerLandMode_LandToWater;
-					_land_params._vel = ccp(0,10);
+					_land_params._vel = ccp(0,10 * dt_scale_get());
 				}
 				
 			} else {
@@ -229,7 +229,7 @@
 			[g set_camera_height:drp(g.get_current_camera_center_y,150,20)];
 			CGPoint last_s_pos = _s_pos;
 			[self update_accel_x_position:g];
-			_land_params._vel = ccp(0,_land_params._vel.y-0.4 * dt_scale_get());
+			_land_params._vel = ccp(0,_land_params._vel.y - 0.4 * dt_scale_get() * dt_scale_get());
 			_s_pos = CGPointAdd(_s_pos, _land_params._vel);
 			
 			float tar_rotation = vec_ang_deg_lim180(vec_cons(_s_pos.x - last_s_pos.x,_s_pos.y - last_s_pos.y, 0),90);

@@ -16,13 +16,7 @@
 #import "PlayerProjectile.h"
 #import "GameMain.h"
 #import "SpriterNodeCache.h"
-
-#if __CC_PLATFORM_ANDROID
-
-#else
-	#import <CoreMotion/CoreMotion.h>
-#endif
-
+#import "SPDeviceAccelerometer.h" 
 
 
 @implementation RippleInfo {
@@ -109,12 +103,6 @@
 	TouchTrackingLayer *_touch_tracking;
 	CCDrawNode *_debug_draw;
 	
-#if __CC_PLATFORM_ANDROID
-
-#else
-	CMMotionManager *_motion_manager;
-#endif
-	
 }
 
 -(Player*)player { return _player; }
@@ -177,14 +165,6 @@
 	
 	_air_enemy_manager = [AirEnemyManager cons:self];
 	
-#if __CC_PLATFORM_ANDROID
-	
-#else
-	_motion_manager = [[CMMotionManager alloc] init];
-	_motion_manager.accelerometerUpdateInterval = 1.0/60.0;
-	[_motion_manager startAccelerometerUpdates];
-#endif
-	
 	_ui = [GameUI cons:self];
 	[super addChild:_ui z:2];
 	
@@ -237,12 +217,8 @@
 		[_ui start_boss:@"Big Bad Boss" sub:@"This guy mad."];
 	}
 	*/
-#if __CC_PLATFORM_ANDROID
-
-#else
-	if (!_motion_manager.accelerometerActive) [_motion_manager startAccelerometerUpdates];
-	[_controls accel_report_x:_motion_manager.accelerometerData.acceleration.x y:0 z:0];
-#endif
+	
+	[_controls accel_report_x:[SPDeviceAccelerometer accel_x] y:0 z:0];
 	
 	_tick += dt_scale_get(); 
 	

@@ -530,3 +530,9 @@ CCSprite* flipper_cons_for(CCSprite* obj, float scx, float scy) {
 	[flipper addChild:obj];
 	return flipper;
 }
+
+float running_avg(float avg, float val, float ct) {
+	avg -= avg / ct;
+	avg += val / ct;
+	return avg;
+}

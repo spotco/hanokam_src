@@ -27,5 +27,5 @@
 
 BRIDGE_CLASS("com.apportable.GLActivity")
 @interface hanokamActivity : CCActivity
-
++(hanokamActivity*)getActivity;
 @end

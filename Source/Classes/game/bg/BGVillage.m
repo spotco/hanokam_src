@@ -85,7 +85,8 @@
 	_docks = [CCSprite spriteWithTexture:[Resource get_tex:TEX_BG_SPRITESHEET_1] rect:[FileCache get_cgrect_from_plist:TEX_BG_SPRITESHEET_1 idname:@"pier_top.png"]];
 	[[g get_anchor] addChild:_docks z:GameAnchorZ_BGSky_Docks];
 	[_above_water_elements addObject:_docks];
-	[_docks setScale:0.5];
+	scale_to_fit_screen_x(_docks);
+	_docks.scaleY = _docks.scaleX;
 	[_docks set_pos:ccp(0,0)];
 	[_docks set_anchor_pt:ccp(0,0)];
 	
@@ -98,7 +99,8 @@
 	CCSprite *docks_front = [CCSprite spriteWithTexture:[Resource get_tex:TEX_BG_SPRITESHEET_1] rect:[FileCache get_cgrect_from_plist:TEX_BG_SPRITESHEET_1 idname:@"pier_top_front_pillars.png"]];
 	[[g get_anchor] addChild:docks_front z:GameAnchorZ_BGSky_Docks_Pillars_Front];
 	[_above_water_elements addObject:docks_front];
-	[docks_front setScale:0.5];
+	scale_to_fit_screen_x(docks_front);
+	docks_front.scaleY = docks_front.scaleX;
 	[docks_front set_pos:ccp(0,0)];
 	[docks_front set_anchor_pt:ccp(0,0)];
 	
