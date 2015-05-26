@@ -59,7 +59,7 @@
 	return _frame_x;
 #else
 	if (!_motion_manager.accelerometerActive) [_motion_manager startAccelerometerUpdates];
-	return _motion_manager.accelerometerData.acceleration.x
+	return _motion_manager.accelerometerData.acceleration.x;
 #endif
 }
 
