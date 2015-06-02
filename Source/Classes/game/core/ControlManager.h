@@ -28,6 +28,13 @@
 -(void)clear_proc_tap;
 -(CGPoint)get_proc_tap;
 
+-(BOOL)is_proc_hold;
+-(void)clear_proc_hold;
+-(float)get_proc_hold_ct;
+-(float)get_proc_hold_max;
+
 -(BOOL)is_touch_down;
+
+-(CGPoint)get_player_to_touch_dir;
 
 @end

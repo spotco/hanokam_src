@@ -11,7 +11,16 @@
 
 /*
 TODO --
-ground mode, hold to completing circle ui jump
+
+GAMEPLAY IDEAS:
+hold tap to sword (sword filling bar, arrow decreasing bar)
+shoot arrow tap target ui effect
+vulnerable enemy ui effect
+
+enemy bullets with patterns
+enemy invulnerable (arrow), vulnerable (sword) mode
+swipe left right to dodge
+
 after sword enemy invuln time
 
 PERF --
@@ -26,7 +35,7 @@ make TGSpriter classes structs instead
 	[DataStore cons];
 	[SPDeviceAccelerometer start];
 	
-	NSLog(@"%@",cocos2dVersion());
+	NSLog(@"CC2DV:%@",cocos2dVersion());
 	//return [MainMenuScene cons];
 	return [GameEngineScene cons];
 	//return [ShopScene cons];

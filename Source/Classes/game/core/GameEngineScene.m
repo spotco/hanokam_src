@@ -16,7 +16,7 @@
 #import "PlayerProjectile.h"
 #import "GameMain.h"
 #import "SpriterNodeCache.h"
-#import "SPDeviceAccelerometer.h" 
+#import "SPDeviceAccelerometer.h"
 
 
 @implementation RippleInfo {

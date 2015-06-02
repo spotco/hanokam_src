@@ -24,6 +24,10 @@
 	
 	CGPoint _proc_tap_pt;
 	BOOL _is_proc_tap;
+	
+	float _proc_hold_ct;
+	
+	CGPoint _last_player_world_pos;
 }
 
 +(ControlManager*)cons {
@@ -109,6 +113,32 @@
 	return _is_touch_down;
 }
 
--(void)i_update:(GameEngineScene*)game {}
+static float PROC_HOLD_MAX = 30;
+-(BOOL)is_proc_hold {
+	return _proc_hold_ct >= PROC_HOLD_MAX;
+}
+-(void)clear_proc_hold {
+	_proc_hold_ct = 0;
+}
+
+-(float)get_proc_hold_ct {
+	return _proc_hold_ct;
+}
+-(float)get_proc_hold_max {
+	return PROC_HOLD_MAX;
+}
+
+-(CGPoint)get_player_to_touch_dir {
+	return CGPointSub(_prev_touch, _last_player_world_pos);
+}
+
+-(void)i_update:(GameEngineScene*)game {
+	if (_is_touch_down) {
+		_proc_hold_ct += dt_scale_get();
+	} else {
+		_proc_hold_ct = 0;
+	}
+	_last_player_world_pos = [game.player convertToWorldSpace:CGPointZero];
+}
 
 @end

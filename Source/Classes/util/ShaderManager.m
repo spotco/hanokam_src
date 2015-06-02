@@ -9,7 +9,8 @@ static NSDictionary *_shader_cache;
 	_shader_cache = @{
 		SHADER_REFLECTION_AM_DOWN: [CCShader shaderNamed:SHADER_REFLECTION_AM_DOWN],
 		SHADER_RIPPLE_FX : [CCShader shaderNamed:SHADER_RIPPLE_FX],
-		SHADER_ABOVEWATER_AM_UP : [CCShader shaderNamed:SHADER_ABOVEWATER_AM_UP]
+		SHADER_ABOVEWATER_AM_UP : [CCShader shaderNamed:SHADER_ABOVEWATER_AM_UP],
+		SHADER_CHARGE_CIRCLE : [CCShader shaderNamed:SHADER_CHARGE_CIRCLE]	
 	};
 }
 

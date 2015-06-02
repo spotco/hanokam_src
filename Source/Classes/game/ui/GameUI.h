@@ -4,6 +4,9 @@
 +(GameUI*)cons:(GameEngineScene*)game;
 -(void)i_update:(GameEngineScene*)game;
 
+-(void)set_charge_pct:(float)pct g:(GameEngineScene*)g;
+-(void)charge_fail;
+
 -(void)flash_red;
 -(void)fadeout:(BOOL)tar;
 -(BOOL)is_faded_out;

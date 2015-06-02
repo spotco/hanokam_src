@@ -106,6 +106,7 @@
 	}
 	[g.get_control_manager clear_proc_swipe];
 	[g.get_control_manager clear_proc_tap];
+	[g.get_control_manager clear_proc_hold];
 }
 
 -(void)play_anim:(NSString*)anim repeat:(BOOL)repeat {
@@ -195,13 +196,17 @@
 			if (g.get_control_manager.is_touch_down) {
 				[self play_anim:@"prep dive" repeat:NO];
 				_land_params._prep_dive_hold_ct += dt_scale_get();
+				[g.get_ui set_charge_pct:_land_params._prep_dive_hold_ct/_land_params.PREP_DIVE_HOLD_TIME g:g];
 				if (_land_params._prep_dive_hold_ct > _land_params.PREP_DIVE_HOLD_TIME) {
 					_land_params._current_mode = PlayerLandMode_LandToWater;
 					_land_params._vel = ccp(0,10 * dt_scale_get());
 				}
 				
 			} else {
-				_land_params._prep_dive_hold_ct = 0;
+				if (_land_params._prep_dive_hold_ct > 0) {
+					[g.get_ui charge_fail];
+					_land_params._prep_dive_hold_ct = 0;
+				}
 				float vx = [self get_next_update_accel_x_position_delta:g];
 				if (ABS(vx) > _land_params.MOVE_CUTOFF_VAL) {
 					_land_params._move_hold_ct += dt_scale_get();

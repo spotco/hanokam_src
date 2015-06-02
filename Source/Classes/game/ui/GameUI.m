@@ -8,6 +8,7 @@
 #import "UIBossIntroParticle.h"
 #import "Player.h"
 #import "PlayerUIHealthIndicator.h"
+#import "PlayerChargeIndicator.h"
 
 typedef enum _GameUIBossIntroMode {
 	GameUIBossIntroMode_None,
@@ -30,6 +31,7 @@ typedef enum _GameUIBossIntroMode {
 	CCSprite *_depth_bar_icon_player, *_depth_bar_icon_boss;
 	
 	PlayerUIHealthIndicator *_player_health_ui;
+	PlayerChargeIndicator *_player_charge_ui;
 	
 	CCNode *_red_flash_overlay;
 	CCNode *_black_fadeout_overlay;
@@ -96,6 +98,8 @@ typedef enum _GameUIBossIntroMode {
 	[_player_health_ui setPosition:game_screen_anchor_offset(ScreenAnchor_TL, ccp((heart_size.size.width*0.5 + 3),-(heart_size.size.height*0.5 + 3)))];
 	[self addChild:_player_health_ui];
 	
+	_player_charge_ui = [PlayerChargeIndicator cons];
+	[self addChild:_player_charge_ui];
 	
 	return self;
 }
@@ -143,7 +147,16 @@ typedef enum _GameUIBossIntroMode {
 	[_player_health_ui pulse_heart_lastfill];
 }
 
+-(void)set_charge_pct:(float)pct g:(GameEngineScene*)g {
+	[_player_charge_ui set_pct:pct g:g];
+}
+
+-(void)charge_fail {
+	[_player_charge_ui fadeout_fail];
+}
+
 -(void)i_update:(GameEngineScene*)game {
+	[_player_charge_ui i_update:game];
 	[self update_enemy_health_bars:game];
 	[self update_boss_ui:game];
 	[_player_health_ui i_update:game];
