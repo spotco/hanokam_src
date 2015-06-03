@@ -15,7 +15,7 @@
 @synthesize _current_mode;
 @synthesize _sword_out;
 @synthesize _dashing;
-@synthesize _dash_ct;
+@synthesize _dash_ct, _arrow_last_fired_ct;
 @synthesize  __rescue_last_waypoint_ct;
 @synthesize _hold_ct;
 -(float)DEFAULT_HEIGHT {

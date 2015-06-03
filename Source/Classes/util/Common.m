@@ -142,6 +142,10 @@ float drp(float a, float b, float div) {
 	return a + (b - a) / div;
 }
 
+float drp_ts(float a, float b, float mult) {
+	return a + (b - a) * powf(mult, dt_scale_get());
+}
+
 float lerp(float a, float b, float t) {
 	return a + (b - a) * t;
 }

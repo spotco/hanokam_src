@@ -13,12 +13,15 @@
 TODO --
 
 GAMEPLAY IDEAS:
-hold tap to sword (sword filling bar, arrow decreasing bar)
+arrow decreasing bar
+energy bar
 shoot arrow tap target ui effect
-swipe left right to dodge
-
+shoot arrow hold target line reticule
+arrow initial inactive time
 after sword enemy invuln time (chain sword hits)
 enemy about to spawn from bottom/sides indicator
+invulnerability time
+touchtrackinglayer fadein/out
 
 vulnerable enemy ui effect
 enemy bullets with patterns

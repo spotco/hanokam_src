@@ -35,11 +35,6 @@
 }
 
 -(void)accel_report_x:(float)x {
-	/*
-	if (ABS(x) < 0.035) x = 0;
-	x = signum(x)*(ABS(x)-0.035);
-	_frame_accel_x_vel = x * 18;
-	*/
 	_frame_accel_x_vel = x;
 }
 

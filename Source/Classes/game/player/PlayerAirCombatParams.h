@@ -22,7 +22,7 @@ typedef enum _PlayerAirCombatMode {
 
 @property(readwrite,assign) BOOL _sword_out;
 @property(readwrite,assign) BOOL _dashing;
-@property(readwrite,assign) float _dash_ct;
+@property(readwrite,assign) float _dash_ct, _arrow_last_fired_ct;
 
 @property(readwrite,assign) int __rescue_last_waypoint_ct;
 @property(readwrite,assign) float _hold_ct;

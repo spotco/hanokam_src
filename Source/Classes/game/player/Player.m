@@ -363,7 +363,7 @@ float accel_x_move_val(GameEngineScene *g, float from_val) {
 			_air_params._w_upwards_vel *= powf(0.95, dt_scale_get());
 			
 			if (_air_params._dashing) {
-				[self play_anim:@"spin" repeat:YES];
+				[self play_anim:@"dash" repeat:YES];
 				_air_params._dash_ct -= dt_scale_get();
 				if (_air_params._dash_ct <= 0) {
 					_air_params._dashing = NO;
@@ -378,23 +378,26 @@ float accel_x_move_val(GameEngineScene *g, float from_val) {
 				_air_params._s_vel = ccp(
 					_air_params._s_vel.x*powf(0.9, dt_scale_get()),
 					_air_params._s_vel.y - 0.05 * dt_scale_get());
+				_air_params._hold_ct = 0;
 				
 			} else if (_air_params._sword_out) {
 				_air_params._hold_ct = 0;
 				_air_params._s_vel = ccp(0,-15);
+				_air_params._hold_ct = 0;
 				[self play_anim:@"sword hold" repeat:YES];
 
 			} else {
 				_air_params._hold_ct = (g.get_control_manager.is_touch_down)?(_air_params._hold_ct+dt_scale_get()):(0);
-			
+				
+				_air_params._arrow_last_fired_ct -= dt_scale_get();
+				
 				float BEGIN_SWORD_HOLD_CT = 15;
 				float END_SWORD_HOLD_CT = 27;
 				if (_air_params._hold_ct > BEGIN_SWORD_HOLD_CT) {
-					
+					[self play_anim:@"sword start" repeat:YES];
 					float disp_charge_val = clampf((_air_params._hold_ct - BEGIN_SWORD_HOLD_CT)/(END_SWORD_HOLD_CT-BEGIN_SWORD_HOLD_CT),0,1);
 					[g.get_ui set_charge_pct:disp_charge_val g:g];
 					
-					[self play_anim:@"sword start" repeat:NO];
 					if (_air_params._hold_ct > END_SWORD_HOLD_CT) {
 						_air_params._sword_out = YES;
 						[g.get_control_manager this_touch_procced_hold];
@@ -408,25 +411,39 @@ float accel_x_move_val(GameEngineScene *g, float from_val) {
 					_air_params._s_vel = ccp(_air_params._s_vel.x*powf(0.9, dt_scale_get()),_air_params._s_vel.y*powf(0.95, dt_scale_get()));
 					
 				} else {
-					[self play_anim:@"in air" repeat:YES];
 					_air_params._s_vel = ccp(_air_params._s_vel.x*powf(0.9, dt_scale_get()),_air_params._s_vel.y - 0.05 * dt_scale_get());
+					if (_air_params._arrow_last_fired_ct <= 0) {
+						if (g.get_control_manager.is_touch_down) {
+							[self play_anim:@"bow aim" repeat:NO];
+						} else {
+							[self play_anim:@"in air" repeat:YES];
+						}
+					}
 				}
 				
 			}
 			
 			if (g.get_control_manager.is_proc_tap) {
-				[self play_anim:@"bow attack" on_finish_anim:@"in air"];
+				[self play_anim:@"bow fire" on_finish_anim:@"bow hold"];
+				_air_params._arrow_last_fired_ct = 20;
 				CGPoint tap = g.get_control_manager.get_proc_tap;
 				CGPoint delta = CGPointSub(tap, _s_pos);
 				[g add_player_projectile:[Arrow cons_pos:self.position dir:vec_cons_norm(delta.x, delta.y, 0)]];
 				
 				_air_params._sword_out = NO;
 				_air_params._dashing = NO;
+				
 				_air_params._s_vel = ccp(
 					_air_params._s_vel.x,
-					MAX(1.5, _air_params._s_vel.y)
+					MAX(lerp(2.5, 0.15, clampf((_s_pos.y-100)/300,0,1)), _air_params._s_vel.y)
 				);
 				_air_params._w_upwards_vel = MAX(1,_air_params._w_upwards_vel);
+				
+				if (delta.x > 0) {
+					_img.scaleX = ABS(_img.scaleX);
+				} else {
+					_img.scaleX = -ABS(_img.scaleX);
+				}
 			}
 			
 			if (g.get_control_manager.is_proc_swipe) {
@@ -436,29 +453,35 @@ float accel_x_move_val(GameEngineScene *g, float from_val) {
 				_air_params._dash_ct = 10;
 			}
 			
-			for (BaseAirEnemy *itr in g.get_air_enemy_manager.get_enemies) {
-				if (itr.is_alive && SAT_polyowners_intersect(self, itr)) {
-					if (!_air_params._sword_out) {
-						[g.player add_health:-0.5 g:g];
-						[g.get_ui flash_red];
-						[self play_anim:@"hurt air" on_finish_anim:@"in air"];
-					} else {
-						[self play_anim:@"spin" on_finish_anim:@"in air"];
-					}
-					[g shake_for:10 distance:5];
-				
-					_air_params._s_vel = ccp(_air_params._s_vel.x,7);
-					_air_params._w_upwards_vel = 4;
-					_air_params._sword_out = NO;
+			if (!_air_params._dashing) {
+				for (BaseAirEnemy *itr in g.get_air_enemy_manager.get_enemies) {
+					if (itr.is_alive && SAT_polyowners_intersect(self, itr)) {
+						if (!_air_params._sword_out) {
+							[g.player add_health:-0.5 g:g];
+							[g.get_ui flash_red];
+							[self play_anim:@"hurt air" on_finish_anim:@"in air"];
+						} else {
+							[self play_anim:@"spin" on_finish_anim:@"in air"];
+						}
+						[g shake_for:10 distance:5];
 					
-					[itr hit_player_melee:g];
-					break;
+						_air_params._s_vel = ccp(_air_params._s_vel.x,5);
+						_air_params._w_upwards_vel = 4;
+						_air_params._sword_out = NO;
+						
+						[itr hit_player_melee:g];
+						break;
+					}
 				}
 			}
 			
+			float s_pos_y = _s_pos.y+_air_params._s_vel.y*dt_scale_get();
+			if (s_pos_y > _air_params.DEFAULT_HEIGHT) {
+				s_pos_y = drp_ts(s_pos_y, _air_params.DEFAULT_HEIGHT, 0.15);
+			}
 			_s_pos = ccp(
 				_s_pos.x+_air_params._s_vel.x,
-				clampf(_s_pos.y+_air_params._s_vel.y*dt_scale_get(),-INFINITY,_air_params.DEFAULT_HEIGHT)
+				s_pos_y
 			);
 			
 			if (_s_pos.y < -50) {
