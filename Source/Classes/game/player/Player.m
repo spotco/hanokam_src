@@ -449,8 +449,8 @@ float accel_x_move_val(GameEngineScene *g, float from_val) {
 			if (g.get_control_manager.is_proc_swipe) {
 				_air_params._sword_out = NO;
 				_air_params._dashing = YES;
-				_air_params._s_vel = vec_to_cgpoint(vec_scale(g.get_control_manager.get_proc_swipe_dir, 10));
-				_air_params._dash_ct = 10;
+				_air_params._s_vel = vec_to_cgpoint(vec_scale(g.get_control_manager.get_proc_swipe_dir, 10*dt_scale_get()));
+				_air_params._dash_ct = 10 * dt_scale_get();
 			}
 			
 			if (!_air_params._dashing) {
@@ -477,7 +477,7 @@ float accel_x_move_val(GameEngineScene *g, float from_val) {
 			
 			float s_pos_y = _s_pos.y+_air_params._s_vel.y*dt_scale_get();
 			if (s_pos_y > _air_params.DEFAULT_HEIGHT) {
-				s_pos_y = drp_ts(s_pos_y, _air_params.DEFAULT_HEIGHT, 0.15);
+				s_pos_y = drp(s_pos_y, _air_params.DEFAULT_HEIGHT, 6.6);
 			}
 			_s_pos = ccp(
 				_s_pos.x+_air_params._s_vel.x,

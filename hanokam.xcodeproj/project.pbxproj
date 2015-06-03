@@ -358,6 +358,11 @@
 		7ED823FD1B13DD59001BB249 /* md5.c in Sources */ = {isa = PBXBuildFile; fileRef = 7ED823FC1B13DD59001BB249 /* md5.c */; };
 		7ED823FE1B13DD59001BB249 /* md5.c in Sources */ = {isa = PBXBuildFile; fileRef = 7ED823FC1B13DD59001BB249 /* md5.c */; };
 		7ED823FF1B13DD59001BB249 /* md5.c in Sources */ = {isa = PBXBuildFile; fileRef = 7ED823FC1B13DD59001BB249 /* md5.c */; };
+		7EFEE79B1B1F06860055C989 /* PlayerChargeIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E9A44C31B1DADBA00111C35 /* PlayerChargeIndicator.m */; };
+		7EFEE79E1B1F06880055C989 /* PlayerChargeIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E9A44C31B1DADBA00111C35 /* PlayerChargeIndicator.m */; };
+		7EFEE79F1B1F06970055C989 /* SPRadialFillSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E9A44BA1B1D85E100111C35 /* SPRadialFillSprite.m */; };
+		7EFEE7A01B1F070F0055C989 /* charge_circle.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 7E9A44BE1B1DA29C00111C35 /* charge_circle.fsh */; };
+		7EFEE7A11B1F07120055C989 /* charge_circle.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 7E9A44C01B1DA2AC00111C35 /* charge_circle.vsh */; };
 		8392007A18EE8E3300B6C429 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8392007918EE8E3300B6C429 /* GLKit.framework */; };
 		927F619E196C771E000F43EF /* MainScene.m in Sources */ = {isa = PBXBuildFile; fileRef = B7378993180767190076A88C /* MainScene.m */; };
 		927F61A5196C771E000F43EF /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B77F1B3517B978D7009739AE /* OpenAL.framework */; };
@@ -1663,6 +1668,7 @@
 				927F61B6196C771E000F43EF /* iPhone-old.png in Resources */,
 				7ED823AF1B13D2A6001BB249 /* blank.png in Resources */,
 				927F61B7196C771E000F43EF /* iPhone.png in Resources */,
+				7EFEE7A11B1F07120055C989 /* charge_circle.vsh in Resources */,
 				7ED823C71B13D2A6001BB249 /* puffer_enemy_ss.plist in Resources */,
 				7ED823731B13D2A6001BB249 /* bg_underwater_surface_gradient.png in Resources */,
 				7ED823A61B13D2A6001BB249 /* villager_fishwoman.json in Resources */,
@@ -1678,6 +1684,7 @@
 				7ED8239D1B13D2A6001BB249 /* oldman.scml in Resources */,
 				7ED823EE1B13D2A6001BB249 /* spriter_test.json in Resources */,
 				7ED823B51B13D2A6001BB249 /* particles_spritesheet.png in Resources */,
+				7EFEE7A01B1F070F0055C989 /* charge_circle.fsh in Resources */,
 				927F61BB196C771E000F43EF /* iPad-old.png in Resources */,
 				7ED823D91B13D2A6001BB249 /* reflection_am_down.fsh in Resources */,
 				7ED823F11B13D2A6001BB249 /* spriter_test.png in Resources */,
@@ -1812,6 +1819,7 @@
 				7ED822EA1B13D258001BB249 /* SHItemRow.m in Sources */,
 				7ED823171B13D258001BB249 /* SpriterXMLParser.m in Sources */,
 				7ED822841B13D258001BB249 /* PufferBasicAirEnemy.m in Sources */,
+				7EFEE79E1B1F06880055C989 /* PlayerChargeIndicator.m in Sources */,
 				7ED822931B13D258001BB249 /* BGWater.m in Sources */,
 				7ED8230B1B13D258001BB249 /* SpriterNode.m in Sources */,
 				7ED822811B13D258001BB249 /* BasicAirEnemy.m in Sources */,
@@ -1877,11 +1885,13 @@
 				7ED822EF1B13D258001BB249 /* Common.m in Sources */,
 				7ED822D71B13D258001BB249 /* GameMain.m in Sources */,
 				7ED8227D1B13D258001BB249 /* AirEnemyManager.m in Sources */,
+				7EFEE79B1B1F06860055C989 /* PlayerChargeIndicator.m in Sources */,
 				7ED8229E1B13D258001BB249 /* ControlManager.m in Sources */,
 				7ED822831B13D258001BB249 /* PufferBasicAirEnemy.m in Sources */,
 				7ED822AA1B13D258001BB249 /* ChainedMovementParticle.m in Sources */,
 				7ED822951B13D258001BB249 /* BGCharacterOldMan.m in Sources */,
 				7ED822CE1B13D258001BB249 /* GameUI.m in Sources */,
+				7EFEE79F1B1F06970055C989 /* SPRadialFillSprite.m in Sources */,
 				7ED823161B13D258001BB249 /* SpriterXMLParser.m in Sources */,
 				7ED822D11B13D258001BB249 /* HealthBar.m in Sources */,
 				7ED822E01B13D258001BB249 /* SHBackground.m in Sources */,

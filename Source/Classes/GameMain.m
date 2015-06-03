@@ -29,6 +29,8 @@ enemy invulnerable (arrow), vulnerable (sword) mode
 
 TECH --
 player control class make into state machine stack
+scale player accel movement based on screen size
+curved swipe direction a la speedypups
 make TGSpriter classes structs instead
 */
 
