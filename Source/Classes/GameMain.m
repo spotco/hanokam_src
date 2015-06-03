@@ -15,15 +15,17 @@ TODO --
 GAMEPLAY IDEAS:
 hold tap to sword (sword filling bar, arrow decreasing bar)
 shoot arrow tap target ui effect
-vulnerable enemy ui effect
-
-enemy bullets with patterns
-enemy invulnerable (arrow), vulnerable (sword) mode
 swipe left right to dodge
 
-after sword enemy invuln time
+after sword enemy invuln time (chain sword hits)
+enemy about to spawn from bottom/sides indicator
 
-PERF --
+vulnerable enemy ui effect
+enemy bullets with patterns
+enemy invulnerable (arrow), vulnerable (sword) mode
+
+TECH --
+player control class make into state machine stack
 make TGSpriter classes structs instead
 */
 

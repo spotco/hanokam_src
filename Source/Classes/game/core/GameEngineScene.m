@@ -218,7 +218,7 @@
 	}
 	*/
 	
-	[_controls accel_report_x:[SPDeviceAccelerometer accel_x] y:0 z:0];
+	[_controls accel_report_x:[SPDeviceAccelerometer accel_x]];
 	
 	_tick += dt_scale_get(); 
 	

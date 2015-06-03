@@ -1,3 +1,4 @@
+
 #import "Player.h"
 #import "Common.h"
 #import "Resource.h"
@@ -34,6 +35,8 @@
 	PlayerLandParams *_land_params;
 	
 	CGPoint _s_pos;
+	float _calc_accel_x_pos;
+	BOOL _reset_to_center;
 	
 	float _current_health;
 	int _max_health;
@@ -56,6 +59,9 @@
 	[self prep_initial_land_mode:g];
 	
 	[_img set_scale:0.25];
+	
+	_calc_accel_x_pos = game_screen().width/2;
+	_reset_to_center = YES;
 	
 	_max_health = 3;
 	_current_health = _max_health;
@@ -106,7 +112,6 @@
 	}
 	[g.get_control_manager clear_proc_swipe];
 	[g.get_control_manager clear_proc_tap];
-	[g.get_control_manager clear_proc_hold];
 }
 
 -(void)play_anim:(NSString*)anim repeat:(BOOL)repeat {
@@ -123,8 +128,24 @@
 	_on_finish_play_anim = anim2;
 }
 
--(float)get_next_update_accel_x_position:(GameEngineScene*)g { return clampf(_s_pos.x + clampf(((160 + g.get_control_manager.get_accel_x * 320) - _s_pos.x) * .07,-7, 7) * dt_scale_get(),0,game_screen().width); }
--(float)get_next_update_accel_x_position_delta:(GameEngineScene*)g { return [self get_next_update_accel_x_position:g]-_s_pos.x; }
+float accel_x_move_val(GameEngineScene *g, float from_val) {
+	return clampf(((160 + g.get_control_manager.get_frame_accel_x_vel * 320) - from_val) * .07,-7, 7) * dt_scale_get();
+}
+-(float)get_next_update_accel_x_position:(GameEngineScene*)g {
+	float target_delta = accel_x_move_val(g, _calc_accel_x_pos);
+	_calc_accel_x_pos += target_delta;
+	if (_reset_to_center) {
+		_s_pos.x = drp(_s_pos.x, _calc_accel_x_pos, 10);
+	}
+	return clampf(
+		_reset_to_center?_s_pos.x:_s_pos.x + target_delta,
+		0,
+		game_screen().width
+	);
+}
+-(float)get_next_update_accel_x_position_delta:(GameEngineScene*)g {
+	return accel_x_move_val(g,_calc_accel_x_pos);
+}
 -(void)update_accel_x_position:(GameEngineScene*)g {
 	float x_pos = [self get_next_update_accel_x_position:g];
 	_s_pos.x = x_pos;
@@ -155,7 +176,7 @@
 	_air_params._current_mode = PlayerAirCombatMode_InitialJumpOut;
 	_air_params._anim_ct = 0;
 	_air_params._sword_out = NO;
-	_air_params._arrow_throwback_ct = 2;
+	_air_params._hold_ct = 0;
 }
 
 -(void)prep_land_to_water_mode:(GameEngineScene*)g {
@@ -182,6 +203,7 @@
 }
 
 -(void)update_on_ground:(GameEngineScene*)g {
+	_reset_to_center = YES;
 	switch(_land_params._current_mode) {
 		case PlayerLandMode_OnDock:;
 			[g set_zoom:drp(g.get_zoom,1,20)];
@@ -253,6 +275,7 @@
 }
 
 -(void)update_dive:(GameEngineScene*)g {
+	_reset_to_center = YES;
 	[self play_anim:@"swim" repeat:YES];
 	CGPoint last_pos = self.position;
 	switch (_underwater_params._current_mode) {
@@ -297,6 +320,7 @@
 }
 
 -(void)update_dive_return:(GameEngineScene*)g {
+	_reset_to_center = YES;
 	CGPoint last_pos = self.position;
 
 	[self update_accel_x_position:g];
@@ -318,6 +342,7 @@
 }
 
 -(void)update_in_air:(GameEngineScene*)g {
+	_reset_to_center = NO;
 	[g set_zoom:drp(g.get_zoom,1,20)];
 	update_again:
 	switch (_air_params._current_mode) {
@@ -336,32 +361,83 @@
 		break;
 		case PlayerAirCombatMode_Combat:;
 			_air_params._w_upwards_vel *= powf(0.95, dt_scale_get());
-			_air_params._s_vel = ccp(_air_params._s_vel.x,_air_params._s_vel.y - 0.1 * dt_scale_get());
 			
-			if (g.get_control_manager.is_proc_swipe) {
-				[self play_anim:@"sword start" on_finish_anim:@"sword hold"];
-				_air_params._sword_out = YES;
+			if (_air_params._dashing) {
+				[self play_anim:@"spin" repeat:YES];
+				_air_params._dash_ct -= dt_scale_get();
+				if (_air_params._dash_ct <= 0) {
+					_air_params._dashing = NO;
+				}
+				
+				if (_air_params._s_vel.y > 0) {
+					_air_params._s_vel = ccp(
+						_air_params._s_vel.x,
+						_air_params._s_vel.y*powf(0.9, dt_scale_get()));
+				}
+				
+				_air_params._s_vel = ccp(
+					_air_params._s_vel.x*powf(0.9, dt_scale_get()),
+					_air_params._s_vel.y - 0.05 * dt_scale_get());
+				
+			} else if (_air_params._sword_out) {
+				_air_params._hold_ct = 0;
 				_air_params._s_vel = ccp(0,-15);
+				[self play_anim:@"sword hold" repeat:YES];
+
+			} else {
+				_air_params._hold_ct = (g.get_control_manager.is_touch_down)?(_air_params._hold_ct+dt_scale_get()):(0);
+			
+				float BEGIN_SWORD_HOLD_CT = 15;
+				float END_SWORD_HOLD_CT = 27;
+				if (_air_params._hold_ct > BEGIN_SWORD_HOLD_CT) {
+					
+					float disp_charge_val = clampf((_air_params._hold_ct - BEGIN_SWORD_HOLD_CT)/(END_SWORD_HOLD_CT-BEGIN_SWORD_HOLD_CT),0,1);
+					[g.get_ui set_charge_pct:disp_charge_val g:g];
+					
+					[self play_anim:@"sword start" repeat:NO];
+					if (_air_params._hold_ct > END_SWORD_HOLD_CT) {
+						_air_params._sword_out = YES;
+						[g.get_control_manager this_touch_procced_hold];
+					}
+					
+					if (_air_params._s_vel.y > 0) {
+						_air_params._s_vel = ccp(
+							_air_params._s_vel.x,
+							_air_params._s_vel.y*powf(0.9, dt_scale_get()));
+					}
+					_air_params._s_vel = ccp(_air_params._s_vel.x*powf(0.9, dt_scale_get()),_air_params._s_vel.y*powf(0.95, dt_scale_get()));
+					
+				} else {
+					[self play_anim:@"in air" repeat:YES];
+					_air_params._s_vel = ccp(_air_params._s_vel.x*powf(0.9, dt_scale_get()),_air_params._s_vel.y - 0.05 * dt_scale_get());
+				}
+				
 			}
 			
-			if (!_air_params._sword_out && g.get_control_manager.is_proc_tap) {
+			if (g.get_control_manager.is_proc_tap) {
 				[self play_anim:@"bow attack" on_finish_anim:@"in air"];
 				CGPoint tap = g.get_control_manager.get_proc_tap;
 				CGPoint delta = CGPointSub(tap, _s_pos);
 				[g add_player_projectile:[Arrow cons_pos:self.position dir:vec_cons_norm(delta.x, delta.y, 0)]];
-				if (_air_params._arrow_throwback_ct > 0) {
-					_air_params._s_vel = ccp(
-						_air_params._s_vel.x,
-						MAX(_air_params._arrow_throwback_ct, _air_params._s_vel.y)
-					);
-					_air_params._arrow_throwback_ct -= 0.1;
-					_air_params._w_upwards_vel = MAX(1,_air_params._w_upwards_vel);
-				}
+				
+				_air_params._sword_out = NO;
+				_air_params._dashing = NO;
+				_air_params._s_vel = ccp(
+					_air_params._s_vel.x,
+					MAX(1.5, _air_params._s_vel.y)
+				);
+				_air_params._w_upwards_vel = MAX(1,_air_params._w_upwards_vel);
+			}
+			
+			if (g.get_control_manager.is_proc_swipe) {
+				_air_params._sword_out = NO;
+				_air_params._dashing = YES;
+				_air_params._s_vel = vec_to_cgpoint(vec_scale(g.get_control_manager.get_proc_swipe_dir, 10));
+				_air_params._dash_ct = 10;
 			}
 			
 			for (BaseAirEnemy *itr in g.get_air_enemy_manager.get_enemies) {
 				if (itr.is_alive && SAT_polyowners_intersect(self, itr)) {
-					
 					if (!_air_params._sword_out) {
 						[g.player add_health:-0.5 g:g];
 						[g.get_ui flash_red];
@@ -373,7 +449,6 @@
 				
 					_air_params._s_vel = ccp(_air_params._s_vel.x,7);
 					_air_params._w_upwards_vel = 4;
-					_air_params._arrow_throwback_ct = 2.0;
 					_air_params._sword_out = NO;
 					
 					[itr hit_player_melee:g];
@@ -393,7 +468,6 @@
 				_air_params._w_upwards_vel = 0;
 				_air_params._s_vel = CGPointZero;
 				_air_params._sword_out = NO;
-				_air_params._arrow_throwback_ct = 2.0;
 				_air_params._current_mode = PlayerAirCombatMode_RescueBackToTop;
 				[self play_anim:@"in air" repeat:YES];
 				
@@ -464,6 +538,7 @@
 }
 
 -(void)update_air_to_ground_transition:(GameEngineScene*)g {
+	_reset_to_center = NO;
 	CGPoint last_pos = self.position;
 	[self update_accel_x_position:g];
 	[g set_zoom:drp(g.get_zoom,1.2,20)];

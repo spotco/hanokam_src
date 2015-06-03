@@ -12,26 +12,23 @@
 @class GameEngineScene;
 @interface ControlManager : NSObject
 +(ControlManager*)cons;
--(void)accel_report_x:(float)x y:(float)y z:(float)z;
+
+-(void)accel_report_x:(float)x;
+-(float)get_frame_accel_x_vel;
+
 -(void)touch_begin:(CGPoint)pt;
 -(void)touch_move:(CGPoint)pt;
 -(void)touch_end:(CGPoint)pt;
 -(void)i_update:(GameEngineScene*)game;
-
--(float)get_accel_x;
 
 -(BOOL)is_proc_swipe;
 -(void)clear_proc_swipe;
 -(Vec3D)get_proc_swipe_dir;
 
 -(BOOL)is_proc_tap;
+-(void)this_touch_procced_hold;
 -(void)clear_proc_tap;
 -(CGPoint)get_proc_tap;
-
--(BOOL)is_proc_hold;
--(void)clear_proc_hold;
--(float)get_proc_hold_ct;
--(float)get_proc_hold_max;
 
 -(BOOL)is_touch_down;
 

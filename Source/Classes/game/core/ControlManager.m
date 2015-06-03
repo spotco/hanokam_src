@@ -12,12 +12,10 @@
 #import "Vec3D.h"
 
 @implementation ControlManager {
-	float _accel_x;
-	
 	float _touch_dist_sum, _avg_x, _avg_y;
 	int _touch_move_counter;
 	CGPoint _prev_touch;
-	BOOL _is_touch_down, _this_touch_has_procced_action;
+	BOOL _is_touch_down, _this_touch_has_procced_swipe, _this_touch_has_procced_hold;
 	
 	Vec3D _proc_swipe_dir;
 	BOOL _is_proc_swipe;
@@ -28,14 +26,25 @@
 	float _proc_hold_ct;
 	
 	CGPoint _last_player_world_pos;
+	
+	float _frame_accel_x_vel;
 }
 
 +(ControlManager*)cons {
 	return [[ControlManager alloc] init];
 }
 
--(void)accel_report_x:(float)x y:(float)y z:(float)z {
-	_accel_x = x;
+-(void)accel_report_x:(float)x {
+	/*
+	if (ABS(x) < 0.035) x = 0;
+	x = signum(x)*(ABS(x)-0.035);
+	_frame_accel_x_vel = x * 18;
+	*/
+	_frame_accel_x_vel = x;
+}
+
+-(float)get_frame_accel_x_vel {
+	return _frame_accel_x_vel;
 }
 
 -(void)touch_begin:(CGPoint)pt {
@@ -43,7 +52,8 @@
     _touch_move_counter = 0;
     _touch_dist_sum = 0;
     _prev_touch = pt;
-	_this_touch_has_procced_action = NO;
+	_this_touch_has_procced_hold = NO;
+	_this_touch_has_procced_swipe = NO;
 	[self clear_proc_swipe];
 }
 
@@ -59,14 +69,10 @@
     
     if(_touch_move_counter == 3) {
         float avg = _touch_dist_sum/_touch_move_counter;
-        if (avg > 7 && !_this_touch_has_procced_action) {
-			_this_touch_has_procced_action = YES;
-			Vec3D dir = vec_cons_norm(_avg_x, _avg_y, 0);
-			float angle = rad_to_deg(vec_ang_rad(dir));
-			if (angle < -25 && angle > -160) {
-				_proc_swipe_dir = dir;
-				_is_proc_swipe = YES;
-			}
+        if (avg > 7 && !_this_touch_has_procced_swipe) {
+			_this_touch_has_procced_swipe = YES;
+			_proc_swipe_dir = vec_cons_norm(_avg_x, _avg_y, 0);
+			_is_proc_swipe = YES;
         }
 		
         _touch_move_counter = 0;
@@ -79,14 +85,10 @@
 
 -(void)touch_end:(CGPoint)pt {
     _is_touch_down = NO;
-	if (!_this_touch_has_procced_action) {
+	if (!_this_touch_has_procced_hold && !_this_touch_has_procced_swipe) {
 		_is_proc_tap = YES;
 		_proc_tap_pt = pt;
 	}
-}
-
--(float)get_accel_x {
-	return _accel_x;
 }
 
 -(BOOL)is_proc_swipe {
@@ -108,25 +110,15 @@
 -(CGPoint)get_proc_tap {
 	return _proc_tap_pt;
 }
+-(void)this_touch_procced_hold {
+	_this_touch_has_procced_hold = YES;
+}
 
 -(BOOL)is_touch_down {
 	return _is_touch_down;
 }
 
-static float PROC_HOLD_MAX = 30;
--(BOOL)is_proc_hold {
-	return _proc_hold_ct >= PROC_HOLD_MAX;
-}
--(void)clear_proc_hold {
-	_proc_hold_ct = 0;
-}
 
--(float)get_proc_hold_ct {
-	return _proc_hold_ct;
-}
--(float)get_proc_hold_max {
-	return PROC_HOLD_MAX;
-}
 
 -(CGPoint)get_player_to_touch_dir {
 	return CGPointSub(_prev_touch, _last_player_world_pos);
