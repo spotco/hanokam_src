@@ -16,6 +16,7 @@
 #import "ControlManager.h"
 
 #import "AirEnemyManager.h"
+#import "BasicAirEnemy.h"
 
 #import "PlayerAirCombatParams.h"
 #import "PlayerUnderwaterCombatParams.h"
@@ -361,7 +362,6 @@ float accel_x_move_val(GameEngineScene *g, float from_val) {
 -(void)update_in_air:(GameEngineScene*)g {
 	_reset_to_center = NO;
 	[g set_zoom:drp(g.get_zoom,1,20)];
-	update_again:
 	switch (_air_params._current_mode) {
 		case PlayerAirCombatMode_InitialJumpOut:;
 			_air_params._anim_ct = clampf(_air_params._anim_ct + 0.025 * dt_scale_get(), 0, 1);
@@ -370,14 +370,11 @@ float accel_x_move_val(GameEngineScene *g, float from_val) {
 				_air_params._current_mode = PlayerAirCombatMode_Combat;
 			}
 			[g set_zoom:drp(g.get_zoom,1,20)];
-			
-			if (g.get_control_manager.is_proc_swipe || g.get_control_manager.is_proc_tap) {
-				_air_params._current_mode = PlayerAirCombatMode_Combat;
-				goto update_again;
-			}
 		break;
 		case PlayerAirCombatMode_Combat:;
 			_air_params._w_upwards_vel *= powf(0.95, dt_scale_get());
+			
+			float arrow_variance_angle = lerp(10,3,clampf(_air_params._hold_ct/_air_params.BEGIN_SWORD_HOLD_CT,0,1));
 			
 			if (_air_params._dashing) {
 				[self play_anim:@"dash" repeat:YES];
@@ -404,18 +401,25 @@ float accel_x_move_val(GameEngineScene *g, float from_val) {
 				[self play_anim:@"sword hold" repeat:YES];
 
 			} else {
-				_air_params._hold_ct = (g.get_control_manager.is_touch_down)?(_air_params._hold_ct+dt_scale_get()):(0);
-				
+				if (g.get_control_manager.is_touch_down) {
+					if (_air_params._hold_ct < _air_params.BEGIN_SWORD_HOLD_CT) {
+						[g.get_ui hold_reticule_visible:arrow_variance_angle];
+					}
+					_air_params._hold_ct += dt_scale_get();
+					
+				} else {
+					_air_params._hold_ct = 0;
+					
+				}
 				_air_params._arrow_last_fired_ct -= dt_scale_get();
 				
-				float BEGIN_SWORD_HOLD_CT = 15;
-				float END_SWORD_HOLD_CT = 27;
-				if (_air_params._hold_ct > BEGIN_SWORD_HOLD_CT) {
+
+				if (_air_params._hold_ct > _air_params.BEGIN_SWORD_HOLD_CT) {
 					[self play_anim:@"sword start" repeat:YES];
-					float disp_charge_val = clampf((_air_params._hold_ct - BEGIN_SWORD_HOLD_CT)/(END_SWORD_HOLD_CT-BEGIN_SWORD_HOLD_CT),0,1);
+					float disp_charge_val = clampf((_air_params._hold_ct - _air_params.BEGIN_SWORD_HOLD_CT)/(_air_params.END_SWORD_HOLD_CT-_air_params.BEGIN_SWORD_HOLD_CT),0,1);
 					[g.get_ui set_charge_pct:disp_charge_val g:g];
 					
-					if (_air_params._hold_ct > END_SWORD_HOLD_CT) {
+					if (_air_params._hold_ct > _air_params.END_SWORD_HOLD_CT) {
 						_air_params._sword_out = YES;
 						[g.get_control_manager this_touch_procced_hold];
 					}
@@ -445,7 +449,10 @@ float accel_x_move_val(GameEngineScene *g, float from_val) {
 				_air_params._arrow_last_fired_ct = 20;
 				CGPoint tap = g.get_control_manager.get_proc_tap;
 				CGPoint delta = CGPointSub(tap, _s_pos);
-				[g add_player_projectile:[Arrow cons_pos:self.position dir:vec_cons_norm(delta.x, delta.y, 0)]];
+				
+				float rad_arrow_variance = ABS(deg_to_rad(arrow_variance_angle));
+				
+				[g add_player_projectile:[Arrow cons_pos:self.position dir:vec_rotate_rad(vec_cons_norm(delta.x, delta.y, 0), float_random(-rad_arrow_variance, rad_arrow_variance) )]];
 				
 				_air_params._sword_out = NO;
 				_air_params._dashing = NO;
@@ -473,7 +480,7 @@ float accel_x_move_val(GameEngineScene *g, float from_val) {
 			if (!_air_params._dashing) {
 				for (BaseAirEnemy *itr in g.get_air_enemy_manager.get_enemies) {
 					if (itr.is_alive && SAT_polyowners_intersect(self, itr)) {
-						if (!_air_params._sword_out) {
+						if (!_air_params._sword_out && !itr.is_stunned) {
 							[g.player add_health:-0.5 g:g];
 							[g.get_ui flash_red];
 							[self play_anim:@"hurt air" on_finish_anim:@"in air"];

@@ -28,4 +28,6 @@ typedef enum _PlayerAirCombatMode {
 @property(readwrite,assign) float _hold_ct;
 
 -(float)DEFAULT_HEIGHT;
+-(float)BEGIN_SWORD_HOLD_CT;
+-(float)END_SWORD_HOLD_CT;
 @end

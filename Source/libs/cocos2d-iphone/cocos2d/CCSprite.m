@@ -403,6 +403,11 @@
 	[self updateColor];
 }
 
+-(void)setColor4f:(ccColor4F)color {
+    [super setColor4f:color];
+    [self updateColor];
+}
+
 - (void) setColorRGBA:(CCColor*)color
 {
 	[super setColorRGBA:color];

@@ -4,6 +4,12 @@
 
 @implementation AlphaGradientSprite {
 	CCVertex *_vtx;
+	
+	CGRect _texrect;
+	CGSize _size;
+	CGPoint _anchorpt;
+	CGRange _alphaX;
+	CGRange _alphaY;
 }
 
 +(AlphaGradientSprite*)cons_tex:(CCTexture*)tex texrect:(CGRect)texrect size:(CGSize)size anchorPoint:(CGPoint)anchorpt alphaX:(CGRange)alphaX alphaY:(CGRange)alphaY {
@@ -13,6 +19,27 @@
 -(AlphaGradientSprite*)cons_tex:(CCTexture*)tex texrect:(CGRect)texrect size:(CGSize)size anchorPoint:(CGPoint)anchorpt alphaX:(CGRange)alphaX alphaY:(CGRange)alphaY {
 	_vtx = calloc(sizeof(CCVertex), 4);
 	[self setTexture:tex];
+	
+	_texrect = texrect;
+	_size = size;
+	_anchorpt = anchorpt;
+	_alphaX = alphaX;
+	_alphaY = alphaY;
+	
+	[self make_triangles];
+	
+	[self setBlendMode:[CCBlendMode alphaMode]];
+	
+	return self;
+}
+
+-(void)make_triangles {
+	CGRect texrect = _texrect;
+	CGSize size = _size;
+	CGPoint anchorpt = _anchorpt;
+	CGRange alphaX = _alphaX;
+	CGRange alphaY = _alphaY;
+	CCTexture *tex = self.texture;
 	
 	//0,0
 	_vtx[0].position = GLKVector4Make(-size.width*anchorpt.x, -size.height*anchorpt.y, 0, 1);
@@ -33,11 +60,13 @@
 	_vtx[3].position = GLKVector4Make(size.width*(1-anchorpt.x), -size.height*anchorpt.y, 0, 1);
 	_vtx[3].texCoord1 = GLKVector2Make((texrect.origin.x + texrect.size.width)/tex.pixelWidth, texrect.origin.y/tex.pixelHeight);
 	_vtx[3].color = GLKVector4Make(1, 1, 1, alphaX.max * alphaY.min);
-	
-	[self setBlendMode:[CCBlendMode alphaMode]];
-	
-	return self;
 }
+
+-(void)set_height:(float)val {
+	_size.height = val;
+	[self make_triangles];
+}
+
 
 -(void)dealloc {
 	free(_vtx);

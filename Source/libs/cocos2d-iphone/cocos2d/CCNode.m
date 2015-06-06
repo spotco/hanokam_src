@@ -1685,6 +1685,12 @@ CGAffineTransformMakeRigid(CGPoint translate, CGFloat radians)
 	[self cascadeColorIfNeeded];
 }
 
+-(void)setColor4f:(ccColor4F)color {
+    _displayColor = color;
+    _color = color;
+    [self cascadeColorIfNeeded];
+}
+
 -(CCColor*) colorRGBA
 {
 	return [CCColor colorWithCcColor4f:_color];

@@ -14,5 +14,6 @@
 
 +(PlayerUIAimReticule*)cons;
 -(void)i_update:(GameEngineScene*)g;
+-(void)hold_visible:(float)variance;
 
 @end

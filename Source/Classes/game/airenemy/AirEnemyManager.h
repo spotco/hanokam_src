@@ -20,6 +20,7 @@
 -(void)hit_projectile:(GameEngineScene*)g;
 -(void)hit_player_melee:(GameEngineScene*)g;
 -(BOOL)is_alive;
+-(BOOL)is_stunned;
 @end
 
 @interface AirEnemyManager : NSObject

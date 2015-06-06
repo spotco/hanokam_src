@@ -9,11 +9,18 @@
 #import "PufferBasicAirEnemy.h"
 #import "Resource.h" 
 #import "FileCache.h"
+#import "GameEngineScene.h" 
+#import "Player.h"
+#import "FlashCount.h"
 
 @implementation PufferBasicAirEnemy {
 	CCSprite_Animated *_img;
 	
 	CCAction *_anim_idle, *_anim_attack, *_anim_die, *_anim_follow, *_anim_hurt;
+	int _angry_ct;
+	
+	ccColor4F _tar_color;
+	FlashCount *_flashcount;
 }
 
 +(PufferBasicAirEnemy*)cons_g:(GameEngineScene*)g relstart:(CGPoint)relstart relend:(CGPoint)relend {
@@ -29,11 +36,46 @@
 	[_img update_playAnim:_anim_idle];
 	[_img setScale:0.35];
 	
+	_tar_color = ccc4f(1.0, 1.0, 1.0, 1.0);
+	
+	_flashcount = [FlashCount cons];
+	[_flashcount add_flash_at_times:@[@140,@100,@65,@40,@25,@15,@10]];
+	
 	return self;
 }
 
 -(void)update_death:(GameEngineScene *)g {
 	[_img update_playAnim:_anim_die];
+}
+
+-(void)update_stunned:(GameEngineScene *)g {
+	[_img update_playAnim:_anim_hurt];
+	_angry_ct = 50;
+	if ([_flashcount do_flash_given_time:[self get_stunned_anim_ct]]) {
+		_tar_color.b = 0.0;
+		_tar_color.g = 0.0;
+	}
+}
+
+-(void)i_update:(GameEngineScene *)game {
+	[super i_update:game];
+	[_img setColor4f:_tar_color];
+	_tar_color.b = drp(_tar_color.b, 1.0, 20.0);
+	_tar_color.g = drp(_tar_color.g, 1.0, 25.0);
+}
+
+-(void)update_alive:(GameEngineScene *)g {
+	if (_angry_ct > 0) {
+		[_img update_playAnim:_anim_follow];
+		_angry_ct -= dt_scale_get();
+		
+	} else if (CGPointDist(self.position, g.player.position) < 150) {
+		[_img update_playAnim:_anim_attack];
+		
+	} else {
+		[_img update_playAnim:_anim_idle];
+	
+	}
 }
 
 -(void)cons_anims {
@@ -57,7 +99,7 @@
 	[anim_strs removeAllObjects];
 	
 	DO_FOR(5, [anim_strs addObject:strf("puffer_hurt__%03d.png",i)]; );
-	_anim_hurt = animaction_cons(anim_strs, anim_interval, TEX_ENEMY_PUFFER);
+	_anim_hurt = animaction_cons(anim_strs, anim_interval * 1.25, TEX_ENEMY_PUFFER);
 	[anim_strs removeAllObjects];
 }
 

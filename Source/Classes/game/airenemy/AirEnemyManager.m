@@ -24,6 +24,7 @@
 -(void)hit_projectile:(GameEngineScene*)g{}
 -(void)hit_player_melee:(GameEngineScene*)g{}
 -(BOOL)is_alive{ return YES; }
+-(BOOL)is_stunned { return NO; }
 @end
 
 @implementation AirEnemyManager {

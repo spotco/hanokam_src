@@ -53,6 +53,11 @@
 		7E9A58521B22EFA3008EC348 /* AlphaGradientSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E9A58511B22EFA3008EC348 /* AlphaGradientSprite.m */; };
 		7E9A58531B22EFA3008EC348 /* AlphaGradientSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E9A58511B22EFA3008EC348 /* AlphaGradientSprite.m */; };
 		7E9A58541B22EFA3008EC348 /* AlphaGradientSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E9A58511B22EFA3008EC348 /* AlphaGradientSprite.m */; };
+		7E9A585B1B22F6A5008EC348 /* PlayerUIAimReticule.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E9A58431B22CBE7008EC348 /* PlayerUIAimReticule.m */; };
+		7E9A585E1B22F6A6008EC348 /* PlayerUIAimReticule.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E9A58431B22CBE7008EC348 /* PlayerUIAimReticule.m */; };
+		7E9A58611B23098C008EC348 /* FlashCount.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E9A58601B23098C008EC348 /* FlashCount.m */; };
+		7E9A58621B23098C008EC348 /* FlashCount.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E9A58601B23098C008EC348 /* FlashCount.m */; };
+		7E9A58631B23098C008EC348 /* FlashCount.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E9A58601B23098C008EC348 /* FlashCount.m */; };
 		7EBC2AE91B1C4EDF00AC47F1 /* gameplay_elements_ss.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7EBC2AE71B1C4EDF00AC47F1 /* gameplay_elements_ss.plist */; };
 		7EBC2AEA1B1C4EDF00AC47F1 /* gameplay_elements_ss.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7EBC2AE71B1C4EDF00AC47F1 /* gameplay_elements_ss.plist */; };
 		7EBC2AEB1B1C4EDF00AC47F1 /* gameplay_elements_ss.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7EBC2AE71B1C4EDF00AC47F1 /* gameplay_elements_ss.plist */; };
@@ -508,6 +513,8 @@
 		7E9A58431B22CBE7008EC348 /* PlayerUIAimReticule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerUIAimReticule.m; sourceTree = "<group>"; };
 		7E9A58501B22EFA3008EC348 /* AlphaGradientSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlphaGradientSprite.h; sourceTree = "<group>"; };
 		7E9A58511B22EFA3008EC348 /* AlphaGradientSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlphaGradientSprite.m; sourceTree = "<group>"; };
+		7E9A585F1B23098C008EC348 /* FlashCount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlashCount.h; sourceTree = "<group>"; };
+		7E9A58601B23098C008EC348 /* FlashCount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlashCount.m; sourceTree = "<group>"; };
 		7EBC2AE71B1C4EDF00AC47F1 /* gameplay_elements_ss.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = gameplay_elements_ss.plist; sourceTree = "<group>"; };
 		7EBC2AE81B1C4EDF00AC47F1 /* gameplay_elements_ss.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gameplay_elements_ss.png; sourceTree = "<group>"; };
 		7ED822041B13D258001BB249 /* AirEnemyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AirEnemyManager.h; sourceTree = "<group>"; };
@@ -1153,6 +1160,8 @@
 				7E9A44BA1B1D85E100111C35 /* SPRadialFillSprite.m */,
 				7E9A58501B22EFA3008EC348 /* AlphaGradientSprite.h */,
 				7E9A58511B22EFA3008EC348 /* AlphaGradientSprite.m */,
+				7E9A585F1B23098C008EC348 /* FlashCount.h */,
+				7E9A58601B23098C008EC348 /* FlashCount.m */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -1847,6 +1856,7 @@
 				7ED8227E1B13D258001BB249 /* AirEnemyManager.m in Sources */,
 				7ED822F91B13D258001BB249 /* GEventDispatcher.m in Sources */,
 				7ED8229F1B13D258001BB249 /* ControlManager.m in Sources */,
+				7E9A585E1B22F6A6008EC348 /* PlayerUIAimReticule.m in Sources */,
 				7A40360419DDEE84007B6E8F /* main.m in Sources */,
 				7ED823111B13D258001BB249 /* SpriterTypes.m in Sources */,
 				7ED8231D1B13D258001BB249 /* Vec3D.m in Sources */,
@@ -1866,6 +1876,7 @@
 				7ED822AE1B13D258001BB249 /* Particle.m in Sources */,
 				7ED822E71B13D258001BB249 /* SHItem.m in Sources */,
 				7ED822A81B13D258001BB249 /* ShopScene.m in Sources */,
+				7E9A58631B23098C008EC348 /* FlashCount.m in Sources */,
 				7ED8229C1B13D258001BB249 /* BGCharacterVillagerFishWoman.m in Sources */,
 				7ED822C61B13D258001BB249 /* PlayerLandParams.m in Sources */,
 				7ED823021B13D258001BB249 /* ShaderManager.m in Sources */,
@@ -1913,6 +1924,7 @@
 				7ED823161B13D258001BB249 /* SpriterXMLParser.m in Sources */,
 				7ED822D11B13D258001BB249 /* HealthBar.m in Sources */,
 				7ED822E01B13D258001BB249 /* SHBackground.m in Sources */,
+				7E9A585B1B22F6A5008EC348 /* PlayerUIAimReticule.m in Sources */,
 				7ED8229B1B13D258001BB249 /* BGCharacterVillagerFishWoman.m in Sources */,
 				7ED822F51B13D258001BB249 /* FileCache.m in Sources */,
 				7ED822AD1B13D258001BB249 /* Particle.m in Sources */,
@@ -1922,6 +1934,7 @@
 				7ED8228C1B13D258001BB249 /* BGSky.m in Sources */,
 				7ED822B31B13D258001BB249 /* ParticleLiquid.m in Sources */,
 				7ED822F81B13D258001BB249 /* GEventDispatcher.m in Sources */,
+				7E9A58621B23098C008EC348 /* FlashCount.m in Sources */,
 				7E8377681B14636300EFC0D9 /* SPDeviceAccelerometer.m in Sources */,
 				7ED823131B13D258001BB249 /* SpriterUtil.m in Sources */,
 				7ED823191B13D258001BB249 /* TouchTrackingLayer.m in Sources */,
@@ -1986,6 +1999,7 @@
 				7A046D8C19E8A20E004C4763 /* MainScene.m in Sources */,
 				7ED8230F1B13D258001BB249 /* SpriterTypes.m in Sources */,
 				7ED8231B1B13D258001BB249 /* Vec3D.m in Sources */,
+				7E9A58611B23098C008EC348 /* FlashCount.m in Sources */,
 				7ED822A31B13D258001BB249 /* GameObject.m in Sources */,
 				7ED8228E1B13D258001BB249 /* BGVillage.m in Sources */,
 				7E9A58521B22EFA3008EC348 /* AlphaGradientSprite.m in Sources */,
