@@ -16,6 +16,7 @@
 #import "DialogueBubble.h"
 
 @implementation VillageUI {
+    // Dictionary to keep track of dialogue bubbles for background characters
     NSMutableDictionary *_bgCharacterDialogueBubbles;
 }
 
@@ -26,6 +27,7 @@
 -(VillageUI*)cons:(GameEngineScene*)game {
     [self setAnchorPoint:ccp(0,0)];
     
+    // Initialize DialogueBubbles for each villager currently in the village
     _bgCharacterDialogueBubbles = [NSMutableDictionary dictionary];
     for (BGCharacterBase *itrChar in game.get_bg_village.getVillagers) {
         NSNumber *itr_hash = @([itrChar hash]);
@@ -37,6 +39,7 @@
 }
 
 -(void)i_update:(GameEngineScene *)game {
+    // Update dialogue bubbles
     [self updateBgCharacterDialogueBubbles:game];
 }
 
@@ -44,8 +47,11 @@
     for (BGCharacterBase *itrChar in game.get_bg_village.getVillagers) {
         NSNumber *itr_hash = @([itrChar hash]);
         DialogueBubble *itrBubble = _bgCharacterDialogueBubbles[itr_hash];
+        
+        // Update dialogue bubble positions to keep them with their corresponding villagers
         [itrBubble setPosition:CGPointAdd([itrChar convertToWorldSpace:CGPointZero],itrChar.dialogueOffset)];
         
+        // Fade dialogue bubbles in and out where appropriate
         if (itrChar.state == BGCharacter_CanSpeak) {
             [itrBubble i_update:YES];
         } else {

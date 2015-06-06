@@ -8,9 +8,23 @@
 
 #import "CCNode.h"
 
+/**
+ *  @class  DialogueBubble
+ *
+ *  Dialogue bubble to indicate that a character can be spoken to
+ */
 @interface DialogueBubble : CCNode
 
+/**
+ *  Constructs and returns an instance of DialogueBubble
+ */
 +(DialogueBubble*)cons;
+
+/**
+ *  Update the state of the dialogue bubble
+ *
+ *  @param  shouldShow      whether or not the bubble should be showing
+ */
 -(void)i_update:(BOOL)shouldShow;
 
 @end

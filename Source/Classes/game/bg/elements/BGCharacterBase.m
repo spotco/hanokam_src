@@ -24,6 +24,7 @@ static CGFloat const TAP_RANGE = 50;
 @synthesize dialogueOffset = _dialogueOffset;
 
 -(void)i_update:(GameEngineScene*)g {
+    // Only handle state transitions if player is currently on the dock
     if (g.get_player_state == PlayerState_OnGround && g.player.getLandParams._current_mode == PlayerLandMode_OnDock) {
         switch (self.state) {
             case BGCharacter_Idle:;
@@ -62,6 +63,7 @@ static CGFloat const TAP_RANGE = 50;
                 break;
         }
     } else {
+        // Otherwise stay in IDLE state
         _state = BGCharacter_Idle;
     }
 }
