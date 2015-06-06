@@ -9,6 +9,7 @@
 #import "OnGroundPlayerStateStack.h"
 #import "PlayerLandParams.h"
 #import "DivePlayerStateStack.h"
+#import "GameMain.h"
 
 @implementation OnGroundPlayerStateStack {
 	PlayerLandParams *_land_params;
@@ -27,7 +28,7 @@
 }
 
 -(void)i_update:(GameEngineScene *)g {
-	g.player.shared_params._reset_to_center = YES;
+    g.player.shared_params._reset_to_center = (!HMCFG_ON_SIMULATOR) ? YES : NO;
 	switch(_land_params._current_mode) {
 		case PlayerLandMode_OnDock:;
 			[g set_zoom:drp(g.get_zoom,1,20)];
@@ -50,13 +51,14 @@
 #if HMCFG_ON_SIMULATOR
             } else if (g.get_control_manager.is_proc_tap) {
                 CGPoint tapPos = g.get_control_manager.get_proc_tap;
-                
-                if (tapPos.x > self.position.x) {
-                    _s_pos.x = _s_pos.x + 10;
+                CGFloat newXPos;
+                if (tapPos.x > g.player.position.x) {
+                    newXPos = g.player.position.x + 10;
                 } else {
-                    _s_pos.x = _s_pos.x - 10;
+                    newXPos = g.player.position.x - 10;
                 }
-                self.position = ccp(_s_pos.x, self.position.y);
+                g.player.position = ccp(newXPos, g.player.position.y);
+                [g.player read_s_pos:g];
 #endif
             } else {
 				if (_land_params._prep_dive_hold_ct > 0) {

@@ -17,7 +17,7 @@
 #import "BasePlayerStateStack.h"
 
 // Range to enable dialogue
-static NSUInteger const DIALOGUE_RANGE = 20;
+static NSUInteger const DIALOGUE_RANGE = 25;
 static CGFloat const TAP_RANGE = 50;
 
 @implementation BGCharacterBase
