@@ -18,9 +18,8 @@
 #import "AirEnemyManager.h"
 #import "BasicAirEnemy.h"
 
-#import "PlayerAirCombatParams.h"
-#import "PlayerUnderwaterCombatParams.h"
-#import "PlayerLandParams.h"
+#import "PlayerSharedParams.h"
+#import "OnGroundPlayerStateStack.h"
 
 #import "GameUI.h"
 
@@ -32,43 +31,50 @@
 	NSString *_current_playing;
 	NSString *_on_finish_play_anim;
 	
-	PlayerAirCombatParams *_air_params;
-	PlayerUnderwaterCombatParams *_underwater_params;
-	PlayerLandParams *_land_params;
-	
-	CGPoint _s_pos;
-	float _calc_accel_x_pos; //actual 1-to-1 x position (not offset by dashing)
-	BOOL _reset_to_center;
-	
+	PlayerSharedParams *_player_shared_params;
+	NSMutableArray *_player_state_stack;
+		
 	float _current_health;
 	int _max_health;
-	
-	ChainedMovementParticle *_rescue_anim;
 }
 
 +(Player*)cons_g:(GameEngineScene*)g {
 	return [[Player node] cons_g:g];
 }
 -(Player*)cons_g:(GameEngineScene*)g {
-	_air_params = [[PlayerAirCombatParams alloc] init];
-	_underwater_params = [[PlayerUnderwaterCombatParams alloc] init];
-	_land_params = [[PlayerLandParams alloc] init];
+	_player_shared_params = [[PlayerSharedParams alloc] init];
+	_player_state_stack = [NSMutableArray array];
 	
 	_img = [SpriterNode nodeFromData:[FileCache spriter_scml_data_from_file:@"hanokav2.scml" json:@"hanokav2.json" texture:[Resource get_tex:TEX_SPRITER_CHAR_HANOKA_V2]]];
 	[self play_anim:@"idle" repeat:YES];
 	[self addChild:_img z:1];
 	
-	[self prep_initial_land_mode:g];
+	//SPTODO
+	//[self prep_initial_land_mode:g];
+	[self push_state_stack:[IdlePlayerStateStack cons]];
+	[self push_state_stack:[OnGroundPlayerStateStack cons:g]];
 	
 	[_img set_scale:0.25];
 	
-	_calc_accel_x_pos = game_screen().width/2;
-	_reset_to_center = YES;
+	_player_shared_params._calc_accel_x_pos = game_screen().width/2;
+	_player_shared_params._reset_to_center = YES;
 	
 	_max_health = 3;
 	_current_health = _max_health;
 	
 	return self;
+}
+
+-(void)pop_state_stack:(GameEngineScene*)g {
+	if (_player_state_stack.count > 0) {
+		BasePlayerStateStack *state_stack_top = [_player_state_stack objectAtIndex:0];
+		[state_stack_top on_state_end:g];
+		[_player_state_stack removeObjectAtIndex:0];
+		
+	}
+}
+-(void)push_state_stack:(BasePlayerStateStack*)item {
+	[_player_state_stack insertObject:item atIndex:0];
 }
 
 -(void)set_health:(float)val { _current_health = val; }
@@ -80,41 +86,22 @@
 -(float)get_current_health { return _current_health; }
 
 -(void)i_update:(GameEngineScene*)g {
+	//SPTODO
+	/*
 	if (g.get_player_state == PlayerState_OnGround && _land_params._current_mode == PlayerLandMode_OnDock) {
 		[self setZOrder:GameAnchorZ_Player];
 	} else {
 		[self setZOrder:GameAnchorZ_Player_Out];
 	}
+	*/
 	
 	if (!_img.current_anim_repeating && _img.current_anim_finished && _on_finish_play_anim != NULL) {
 		[_img playAnim:_on_finish_play_anim repeat:YES];
 		_on_finish_play_anim = NULL;
 	}
 	
-	switch ([g get_player_state]) {
-		case PlayerState_Dive:
-			[self update_dive:g];
-	
-		break;
-		case PlayerState_DiveReturn:
-			[self update_dive_return:g];
-			
-		break;
-		case PlayerState_InAir:
-			[self update_in_air:g];
-			
-		break;
-		case PlayerState_OnGround:
-			[self update_on_ground:g];
-			
-		break;
-        case PlayerState_InDialogue:
-            // Don't update player while in dialogue
-        break;
-		case PlayerState_AirToGroundTransition:
-			[self update_air_to_ground_transition:g];
-		break;
-	}
+	BasePlayerStateStack *state_stack_top = [_player_state_stack objectAtIndex:0];
+	[state_stack_top i_update:g];
 }
 
 -(void)play_anim:(NSString*)anim repeat:(BOOL)repeat {
@@ -131,515 +118,64 @@
 	_on_finish_play_anim = anim2;
 }
 
+//mapped move direction+value
 float accel_x_move_val(GameEngineScene *g, float from_val) {
 	return clampf(
 		((160 + g.get_control_manager.get_frame_accel_x_vel * 320) - from_val) * .07 ,
 		-7 , 7)
 		* dt_scale_get();
 }
+//move get next mapped accel position (TOFIX: MODIFIES FIELDS WHEN drps to center)
 -(float)get_next_update_accel_x_position:(GameEngineScene*)g {
-	float target_delta = accel_x_move_val(g, _calc_accel_x_pos);
-	_calc_accel_x_pos += target_delta;
-	if (_reset_to_center) {
-		_s_pos.x = drp(_s_pos.x, _calc_accel_x_pos, 10);
+	float target_delta = accel_x_move_val(g, _player_shared_params._calc_accel_x_pos);
+	_player_shared_params._calc_accel_x_pos += target_delta;
+	if (_player_shared_params._reset_to_center) {
+		_player_shared_params._s_pos = ccp(
+			drp(_player_shared_params._s_pos.x, _player_shared_params._calc_accel_x_pos, 10),
+			_player_shared_params._s_pos.y
+		);
 	}
 	return clampf(
-		_reset_to_center?_s_pos.x:_s_pos.x + target_delta,
+		_player_shared_params._reset_to_center?_player_shared_params._s_pos.x:_player_shared_params._s_pos.x + target_delta,
 		0,
 		game_screen().width
 	);
 }
+//get how much next mapped accel will move
 -(float)get_next_update_accel_x_position_delta:(GameEngineScene*)g {
-	return accel_x_move_val(g,_calc_accel_x_pos);
+	return accel_x_move_val(g,_player_shared_params._calc_accel_x_pos);
 }
+//move to next mapped accel position
 -(void)update_accel_x_position:(GameEngineScene*)g {
 	float x_pos = [self get_next_update_accel_x_position:g];
-	_s_pos.x = x_pos;
-	self.position = ccp(_s_pos.x,self.position.y);
+	_player_shared_params._s_pos = ccp(x_pos,_player_shared_params._s_pos.y);
+	self.position = ccp(_player_shared_params._s_pos.x,self.position.y);
 }
 
+//set real position to value in _s_pos (screen position)
 -(void)apply_s_pos:(GameEngineScene*)g {
-	self.position = CGPointAdd(_s_pos, ccp(g.get_viewbox.x1,g.get_viewbox.y1));
+	self.position = CGPointAdd(
+		_player_shared_params._s_pos,
+		ccp(g.get_viewbox.x1,g.get_viewbox.y1)
+	);
 }
-
+//set _s_pos to current position
 -(void)read_s_pos:(GameEngineScene*)g {
-	_s_pos = CGPointSub(self.position, ccp(g.get_viewbox.x1,g.get_viewbox.y1));
+	_player_shared_params._s_pos = CGPointSub(
+		self.position,
+		ccp(g.get_viewbox.x1,g.get_viewbox.y1)
+	);
 }
 
--(void)prep_initial_land_mode:(GameEngineScene*)g {
-	[g imm_set_camera_hei:150];
-	g._player_state = PlayerState_OnGround;
-	_s_pos = game_screen_pct(0.5, 0);
-	[self apply_s_pos:g];
-	_land_params._current_mode = PlayerLandMode_OnDock;
-}
-
--(void)prep_water_to_air_mode:(GameEngineScene*)g {
-	g._player_state = PlayerState_InAir;
-	_air_params._w_camera_center = [g get_current_camera_center_y];
-	_air_params._w_upwards_vel = 6;
-	_air_params._s_vel = ccp(0,0);
-	_air_params._current_mode = PlayerAirCombatMode_InitialJumpOut;
-	_air_params._anim_ct = 0;
-	_air_params._sword_out = NO;
-	_air_params._hold_ct = 0;
-}
-
--(void)prep_land_to_water_mode:(GameEngineScene*)g {
-	g._player_state = PlayerState_Dive;
-	_underwater_params._vy = -7;
-	_underwater_params._tar_camera_offset = g.get_current_camera_center_y - self.position.y;
-	_underwater_params._current_mode = PlayerUnderwaterCombatMode_TransitionIn;
-	_underwater_params._anim_ct = 0;
-	_underwater_params._remainder_camera_offset = 0;
-	_underwater_params._initial_camera_offset = _underwater_params._tar_camera_offset;
-	[self read_s_pos:g];
-}
-
--(void)prep_transition_air_to_land_finish_mode:(GameEngineScene*)g {
-	g.player.position = ccp(g.player.position.x,g.DOCK_HEIGHT);
-	self.rotation = 0;
-	g._player_state = PlayerState_OnGround;
-	_land_params._current_mode = PlayerLandMode_OnDock;
-	[self read_s_pos:g];
-}
-
--(void)prep_dive_to_dive_return_mode:(GameEngineScene*)g {
-	g._player_state = PlayerState_DiveReturn;
-}
-
--(void)update_on_ground:(GameEngineScene*)g {
-	_reset_to_center = YES;
-	switch(_land_params._current_mode) {
-		case PlayerLandMode_OnDock:;
-			[g set_zoom:drp(g.get_zoom,1,20)];
-			[g set_camera_height:drp(g.get_current_camera_center_y,150,20)];
-			if (g.player.get_current_health < g.player.get_max_health) {
-				_land_params._health_restore_ct += dt_scale_get();
-				if (_land_params._health_restore_ct > 15) {
-					_land_params._health_restore_ct = 0;
-					[g.player add_health:0.25 g:g];
-				}
-			}
-			if (g.get_control_manager.is_touch_down) {
-				[self play_anim:@"prep dive" repeat:NO];
-				_land_params._prep_dive_hold_ct += dt_scale_get();
-				[g.get_ui set_charge_pct:_land_params._prep_dive_hold_ct/_land_params.PREP_DIVE_HOLD_TIME g:g];
-				if (_land_params._prep_dive_hold_ct > _land_params.PREP_DIVE_HOLD_TIME) {
-					_land_params._current_mode = PlayerLandMode_LandToWater;
-					_land_params._vel = ccp(0,10 * dt_scale_get());
-				}
-#if HMCFG_ON_SIMULATOR
-            } else if (g.get_control_manager.is_proc_tap) {
-                CGPoint tapPos = g.get_control_manager.get_proc_tap;
-                
-                if (tapPos.x > self.position.x) {
-                    _s_pos.x = _s_pos.x + 10;
-                } else {
-                    _s_pos.x = _s_pos.x - 10;
-                }
-                self.position = ccp(_s_pos.x, self.position.y);
-#endif
-            } else {
-				if (_land_params._prep_dive_hold_ct > 0) {
-					[g.get_ui charge_fail];
-					_land_params._prep_dive_hold_ct = 0;
-				}
-				float vx = [self get_next_update_accel_x_position_delta:g];
-				if (ABS(vx) > _land_params.MOVE_CUTOFF_VAL
-					|| ABS(_s_pos.x-_calc_accel_x_pos) > 1 //not recentered yet to _calc_accel_x_pos
-					) {
-					_land_params._move_hold_ct += dt_scale_get();
-					if (_land_params._move_hold_ct > _land_params.MOVE_HOLD_TIME) {
-						[self update_accel_x_position:g];
-						[self play_anim:@"run" repeat:YES];
-						if (vx > 0) {
-							_img.scaleX = ABS(_img.scaleX);
-						} else {
-							_img.scaleX = -ABS(_img.scaleX);
-						}
-					} else {
-						[self play_anim:@"idle" repeat:YES];
-					}
-				} else {
-					_land_params._move_hold_ct = 0;
-					[self play_anim:@"idle" repeat:YES];
-				}
-				self.position = ccp(self.position.x,g.DOCK_HEIGHT);
-				[self read_s_pos:g];
-			}
-		break;
-		case PlayerLandMode_LandToWater:;
-			[g set_zoom:drp(g.get_zoom,1.25,20)];
-			[g set_camera_height:drp(g.get_current_camera_center_y,150,20)];
-			CGPoint last_s_pos = _s_pos;
-			[self update_accel_x_position:g];
-			_land_params._vel = ccp(0,_land_params._vel.y - 0.4 * dt_scale_get() * dt_scale_get());
-			_s_pos = CGPointAdd(_s_pos, _land_params._vel);
-			
-			float tar_rotation = vec_ang_deg_lim180(vec_cons(_s_pos.x - last_s_pos.x,_s_pos.y - last_s_pos.y, 0),90);
-			self.rotation += shortest_angle(self.rotation, tar_rotation) * 0.25;
-			
-			[self apply_s_pos:g];
-			[self play_anim:@"dive" repeat:YES];
-			if (self.position.y < 0) {
-				[self prep_land_to_water_mode:g];
-				[g shake_slow_for:100 distance:10];
-				[g add_ripple:ccp(g.player.position.x,0)];
-			}
-		break;
-		default:;
-	}
-}
-
--(void)update_dive:(GameEngineScene*)g {
-	_reset_to_center = YES;
-	[self play_anim:@"swim" repeat:YES];
-	CGPoint last_pos = self.position;
-	switch (_underwater_params._current_mode) {
-		case PlayerUnderwaterCombatMode_TransitionIn:;
-			[g set_zoom:drp(g.get_zoom,1.1,20)];
-			[self update_accel_x_position:g];
-			self.position = ccp(self.position.x,clampf(self.position.y + _underwater_params._vy * dt_scale_get(),g.get_ground_depth,0));
-			_underwater_params._tar_camera_offset = cubic_interp(_underwater_params._initial_camera_offset, _underwater_params.DEFAULT_OFFSET, 0, 1, _underwater_params._anim_ct);
-			[g set_camera_height:self.position.y + _underwater_params._tar_camera_offset];
-			_underwater_params._anim_ct += 0.025 * dt_scale_get();
-			[self read_s_pos:g];
-			if (_underwater_params._anim_ct >= 1) _underwater_params._current_mode = PlayerUnderwaterCombatMode_MainGame;
-			
-		break;
-		case PlayerUnderwaterCombatMode_MainGame:;
-			[g set_zoom:drp(g.get_zoom,1,20)];
-			[self update_accel_x_position:g];
-			self.position = ccp(self.position.x,clampf(self.position.y + _underwater_params._vy * dt_scale_get(),g.get_ground_depth,0));
-			if (g.get_control_manager.is_touch_down) {
-				if (self.position.y == g.get_ground_depth) {
-					_underwater_params._vy = 0;
-				} else {
-					_underwater_params._vy = MAX(_underwater_params._vy-0.2*dt_scale_get(), -7);
-				}
-				_underwater_params._tar_camera_offset = _underwater_params.DEFAULT_OFFSET;
-				[g set_camera_height:MIN(self.position.y + _underwater_params._tar_camera_offset + _underwater_params._remainder_camera_offset, g.get_current_camera_center_y)];
-				_underwater_params._remainder_camera_offset = drp(_underwater_params._remainder_camera_offset, 0, 20);
-				
-			} else {
-				_underwater_params._vy = MIN(_underwater_params._vy+0.2*dt_scale_get(), 7);
-				_underwater_params._remainder_camera_offset = - ((self.position.y + _underwater_params._tar_camera_offset)-g.get_current_camera_center_y);
-			}
-			if (g.player.position.y > g.get_viewbox.y2) {
-				[self prep_dive_to_dive_return_mode:g];
-			}
-			[self read_s_pos:g];
-		break;
-	}
-	
-	float tar_rotation = vec_ang_deg_lim180(vec_cons(low_filter(self.position.x - last_pos.x,0.25),low_filter(self.position.y - last_pos.y,0.25), 0),90);
-	self.rotation += shortest_angle(self.rotation, tar_rotation) * 0.25;
-}
-
--(void)update_dive_return:(GameEngineScene*)g {
-	_reset_to_center = YES;
-	CGPoint last_pos = self.position;
-
-	[self update_accel_x_position:g];
-	_underwater_params._tar_camera_offset = drp(_underwater_params._tar_camera_offset, 0, 10);
-	_underwater_params._remainder_camera_offset = drp(_underwater_params._remainder_camera_offset, 0, 10);
-	_underwater_params._vy = MIN(_underwater_params._vy+0.6*dt_scale_get(), 14);
-	self.position = ccp(self.position.x,self.position.y + _underwater_params._vy * dt_scale_get());
-	
-	float tar_rotation = vec_ang_deg_lim180(vec_cons(self.position.x - last_pos.x,self.position.y - last_pos.y, 0),90) + 15;
-	self.rotation += shortest_angle(self.rotation, tar_rotation) * 0.25;
-	if (self.position.y > 0) {
-		[self prep_water_to_air_mode:g];
-		[self play_anim:@"in air" repeat:YES];
-		[g add_ripple:ccp(g.player.position.x,0)];
-	}
-	[self read_s_pos:g];
-	[g set_camera_height:self.position.y + _underwater_params._tar_camera_offset + _underwater_params._remainder_camera_offset];
-	[g set_zoom:drp(g.get_zoom,1.5,20)];
-}
-
--(void)update_in_air:(GameEngineScene*)g {
-	_reset_to_center = NO;
-	[g set_zoom:drp(g.get_zoom,1,20)];
-	switch (_air_params._current_mode) {
-		case PlayerAirCombatMode_InitialJumpOut:;
-			_air_params._anim_ct = clampf(_air_params._anim_ct + 0.025 * dt_scale_get(), 0, 1);
-			_s_pos = ccp(_s_pos.x,lerp(_s_pos.y, _air_params.DEFAULT_HEIGHT, _air_params._anim_ct));
-			if (_air_params._anim_ct >= 1) {
-				_air_params._current_mode = PlayerAirCombatMode_Combat;
-			}
-			[g set_zoom:drp(g.get_zoom,1,20)];
-		break;
-		case PlayerAirCombatMode_Combat:;
-			_air_params._w_upwards_vel *= powf(0.95, dt_scale_get());
-			
-			float arrow_variance_angle = lerp(10,3,clampf(_air_params._hold_ct/_air_params.BEGIN_SWORD_HOLD_CT,0,1));
-			
-			if (_air_params._dashing) {
-				[self play_anim:@"dash" repeat:YES];
-				_air_params._dash_ct -= dt_scale_get();
-				if (_air_params._dash_ct <= 0) {
-					_air_params._dashing = NO;
-				}
-				
-				if (_air_params._s_vel.y > 0) {
-					_air_params._s_vel = ccp(
-						_air_params._s_vel.x,
-						_air_params._s_vel.y*powf(0.9, dt_scale_get()));
-				}
-				
-				_air_params._s_vel = ccp(
-					_air_params._s_vel.x*powf(0.9, dt_scale_get()),
-					_air_params._s_vel.y - 0.05 * dt_scale_get());
-				_air_params._hold_ct = 0;
-				
-			} else if (_air_params._sword_out) {
-				_air_params._hold_ct = 0;
-				_air_params._s_vel = ccp(0,-15);
-				_air_params._hold_ct = 0;
-				[self play_anim:@"sword hold" repeat:YES];
-
-			} else {
-				if (g.get_control_manager.is_touch_down) {
-					if (_air_params._hold_ct < _air_params.BEGIN_SWORD_HOLD_CT) {
-						[g.get_ui hold_reticule_visible:arrow_variance_angle];
-					}
-					_air_params._hold_ct += dt_scale_get();
-					
-				} else {
-					_air_params._hold_ct = 0;
-					
-				}
-				_air_params._arrow_last_fired_ct -= dt_scale_get();
-				
-
-				if (_air_params._hold_ct > _air_params.BEGIN_SWORD_HOLD_CT) {
-					[self play_anim:@"sword start" repeat:YES];
-					float disp_charge_val = clampf((_air_params._hold_ct - _air_params.BEGIN_SWORD_HOLD_CT)/(_air_params.END_SWORD_HOLD_CT-_air_params.BEGIN_SWORD_HOLD_CT),0,1);
-					[g.get_ui set_charge_pct:disp_charge_val g:g];
-					
-					if (_air_params._hold_ct > _air_params.END_SWORD_HOLD_CT) {
-						_air_params._sword_out = YES;
-						[g.get_control_manager this_touch_procced_hold];
-					}
-					
-					if (_air_params._s_vel.y > 0) {
-						_air_params._s_vel = ccp(
-							_air_params._s_vel.x,
-							_air_params._s_vel.y*powf(0.9, dt_scale_get()));
-					}
-					_air_params._s_vel = ccp(_air_params._s_vel.x*powf(0.9, dt_scale_get()),_air_params._s_vel.y*powf(0.95, dt_scale_get()));
-					
-				} else {
-					_air_params._s_vel = ccp(_air_params._s_vel.x*powf(0.9, dt_scale_get()),_air_params._s_vel.y - 0.05 * dt_scale_get());
-					if (_air_params._arrow_last_fired_ct <= 0) {
-						if (g.get_control_manager.is_touch_down) {
-							[self play_anim:@"bow aim" repeat:NO];
-						} else {
-							[self play_anim:@"in air" repeat:YES];
-						}
-					}
-				}
-				
-			}
-			
-			if (g.get_control_manager.is_proc_tap) {
-				[self play_anim:@"bow fire" on_finish_anim:@"bow hold"];
-				_air_params._arrow_last_fired_ct = 20;
-				CGPoint tap = g.get_control_manager.get_proc_tap;
-				CGPoint delta = CGPointSub(tap, _s_pos);
-				
-				float rad_arrow_variance = ABS(deg_to_rad(arrow_variance_angle));
-				
-				[g add_player_projectile:[Arrow cons_pos:self.position dir:vec_rotate_rad(vec_cons_norm(delta.x, delta.y, 0), float_random(-rad_arrow_variance, rad_arrow_variance) )]];
-				
-				_air_params._sword_out = NO;
-				_air_params._dashing = NO;
-				
-				_air_params._s_vel = ccp(
-					_air_params._s_vel.x,
-					MAX(lerp(2.5, 0.15, clampf((_s_pos.y-100)/300,0,1)), _air_params._s_vel.y)
-				);
-				_air_params._w_upwards_vel = MAX(1,_air_params._w_upwards_vel);
-				
-				if (delta.x > 0) {
-					_img.scaleX = ABS(_img.scaleX);
-				} else {
-					_img.scaleX = -ABS(_img.scaleX);
-				}
-			}
-			
-			if (g.get_control_manager.is_proc_swipe) {
-				_air_params._sword_out = NO;
-				_air_params._dashing = YES;
-				_air_params._s_vel = vec_to_cgpoint(vec_scale(g.get_control_manager.get_proc_swipe_dir, 10*dt_scale_get()));
-				_air_params._dash_ct = 10 * dt_scale_get();
-			}
-			
-			if (!_air_params._dashing) {
-				for (BaseAirEnemy *itr in g.get_air_enemy_manager.get_enemies) {
-					if (itr.is_alive && SAT_polyowners_intersect(self, itr)) {
-						if (!_air_params._sword_out && !itr.is_stunned) {
-							[g.player add_health:-0.5 g:g];
-							[g.get_ui flash_red];
-							[self play_anim:@"hurt air" on_finish_anim:@"in air"];
-						} else {
-							[self play_anim:@"spin" on_finish_anim:@"in air"];
-						}
-						[g shake_for:10 distance:5];
-					
-						_air_params._s_vel = ccp(_air_params._s_vel.x,5);
-						_air_params._w_upwards_vel = 4;
-						_air_params._sword_out = NO;
-						
-						[itr hit_player_melee:g];
-						break;
-					}
-				}
-			}
-			
-			float s_pos_y = _s_pos.y+_air_params._s_vel.y*dt_scale_get();
-			if (s_pos_y > _air_params.DEFAULT_HEIGHT) {
-				s_pos_y = drp(s_pos_y, _air_params.DEFAULT_HEIGHT, 6.6);
-			}
-			_s_pos = ccp(
-				_s_pos.x+_air_params._s_vel.x,
-				s_pos_y
-			);
-			
-			if (_s_pos.y < -50) {
-				[g.player add_health:-0.25 g:g];
-				[g.get_ui flash_red];
-				[g shake_for:10 distance:5];
-				_air_params._w_upwards_vel = 0;
-				_air_params._s_vel = CGPointZero;
-				_air_params._sword_out = NO;
-				_air_params._current_mode = PlayerAirCombatMode_RescueBackToTop;
-				[self play_anim:@"in air" repeat:YES];
-				
-				if (g.player.get_current_health > 0) {
-					_rescue_anim = [ChainedMovementParticle cons];
-					[_rescue_anim setTexture:[Resource get_tex:TEX_PARTICLES_SPRITESHEET]];
-					[_rescue_anim setTextureRect:[FileCache get_cgrect_from_plist:TEX_PARTICLES_SPRITESHEET idname:@"grey_particle"]];
-					(int_random(0, 2) < 1)?[_rescue_anim add_waypoint:game_screen_pct(0, float_random(0.5, 0.8)) speed:1]:[_rescue_anim add_waypoint:game_screen_pct(1, float_random(0.5, 0.8)) speed:1];
-					[_rescue_anim add_playerx_waypoint:-40 speed:0.025];
-					[_rescue_anim add_playerx_waypoint:_air_params.DEFAULT_HEIGHT speed:0.01];
-					(int_random(0, 2) < 1)?[_rescue_anim add_waypoint:game_screen_pct(1, 1.5) speed:0.025]:[_rescue_anim add_waypoint:game_screen_pct(0, 1.5) speed:0.025];
-					[_rescue_anim set_relative];
-					[g add_particle:_rescue_anim];
-				}
-			}
-			
-			
-		break;
-		case PlayerAirCombatMode_RescueBackToTop:;
-			if (_rescue_anim != NULL) {
-				if (_rescue_anim.waypoints_left == 2) {
-					if (_air_params.__rescue_last_waypoint_ct == 3) [g shake_for:5 distance:1];
-					_s_pos = ccp(_s_pos.x,_rescue_anim.position.y-g.get_viewbox.y1-10);
-				} else if (_rescue_anim.waypoints_left < 2) {
-					_rescue_anim = NULL;
-					[g shake_for:5 distance:1];
-					_air_params._current_mode = PlayerAirCombatMode_Combat;
-				}
-				_air_params.__rescue_last_waypoint_ct = _rescue_anim.waypoints_left;
-			}
-		break;
-		case PlayerAirCombatMode_FallToGround:;
-			[g.get_ui fadeout:YES];
-			[self play_anim:@"fall" repeat:YES];
-			_air_params._s_vel = ccp(_air_params._s_vel.x,_air_params._s_vel.y - 0.4 * dt_scale_get());
-			_air_params._w_upwards_vel = 0;
-			_s_pos = ccp(
-				_s_pos.x,
-				_s_pos.y+_air_params._s_vel.y*dt_scale_get()
-			);
-			
-			if (g.get_ui.is_faded_out) {
-				[g.get_air_enemy_manager remove_all_enemies:g];
-				[self prep_transition_air_to_land_mode:g];
-				return;
-			}
-		break;
-	}
-	
-	if (g.player.get_current_health <= 0 && _air_params._current_mode != PlayerAirCombatMode_FallToGround) {
-		_air_params._current_mode = PlayerAirCombatMode_FallToGround;
-	}
-	
-	[self update_accel_x_position:g];
-	_air_params._w_camera_center += _air_params._w_upwards_vel * dt_scale_get();
-	[g set_camera_height:_air_params._w_camera_center];
-	[self apply_s_pos:g];
-}
-
--(void)prep_transition_air_to_land_mode:(GameEngineScene*)g {
-	g._player_state = PlayerState_AirToGroundTransition;
-	[g.player set_health:0];
-	[g.player add_health:0.25 g:g];
-	[g imm_set_camera_hei:0];
-	g.player.position = ccp(g.player.position.x,300);
-	_land_params._vel = ccp(0,0);
-	_land_params._current_mode = PlayerLandMode_AirToGround_FadeIn;
-}
-
--(void)update_air_to_ground_transition:(GameEngineScene*)g {
-	_reset_to_center = NO;
-	CGPoint last_pos = self.position;
-	[self update_accel_x_position:g];
-	[g set_zoom:drp(g.get_zoom,1.2,20)];
-	switch (_land_params._current_mode) {
-		case PlayerLandMode_AirToGround_FadeIn:;
-			[g.get_ui fadeout:NO];
-			if (g.get_ui.is_faded_in) _land_params._current_mode = PlayerLandMode_AirToGround_FallToWater;
-			
-		case PlayerLandMode_AirToGround_FallToWater:;
-			[self play_anim:@"fall" repeat:YES];
-			_land_params._vel = ccp(_land_params._vel.x,_land_params._vel.y - 0.3 * dt_scale_get());
-			g.player.position = CGPointAdd(g.player.position, ccp(0,_land_params._vel.y*dt_scale_get()));
-			[g set_camera_height:drp(g.get_current_camera_center_y,0,20)];
-			if (g.player.position.y < 0) {
-				_land_params._current_mode = PlayerLandMode_AirToGround_WaterDiveUp;
-				[g add_ripple:ccp(g.player.position.x,0)];
-				[g shake_slow_for:100 distance:10];
-			}
-			
-		break;
-		case PlayerLandMode_AirToGround_WaterDiveUp:;
-			[self play_anim:@"swim" repeat:YES];
-			_land_params._vel = ccp(_land_params._vel.x,_land_params._vel.y + 0.4 * dt_scale_get());
-			g.player.position = CGPointAdd(g.player.position, ccp(0,_land_params._vel.y*dt_scale_get()));
-			if (g.player.position.y > 0) {
-				[g add_ripple:ccp(g.player.position.x,0)];
-				_land_params._current_mode = PlayerLandMode_AirToGround_FlipToDock;
-			}
-			[g set_camera_height:drp(g.get_current_camera_center_y,-50,20)];
-			float tar_rotation = vec_ang_deg_lim180(vec_cons(self.position.x - last_pos.x,self.position.y - last_pos.y, 0),90);
-			self.rotation += shortest_angle(self.rotation, tar_rotation) * 0.25;
-		
-		break;
-		case PlayerLandMode_AirToGround_FlipToDock:;
-			[self play_anim:@"spin" repeat:YES];
-			_land_params._vel = ccp(_land_params._vel.x,_land_params._vel.y - 0.4 * dt_scale_get());
-			g.player.position = CGPointAdd(g.player.position, ccp(0,_land_params._vel.y*dt_scale_get()));
-			if (_land_params._vel.y < 0 && g.player.position.y < g.DOCK_HEIGHT) {
-				[self prep_transition_air_to_land_finish_mode:g];
-				return;
-			}
-			[g set_camera_height:drp(g.get_current_camera_center_y,30,20)];
-			
-		break;
-		default:;
-	}
-}
+-(PlayerSharedParams*)shared_params { return _player_shared_params; }
+-(SpriterNode*)img { return _img; }
 
 -(BOOL)is_underwater:(GameEngineScene *)g {
 	return self.position.y < 0 && g._player_state != PlayerState_InAir;
 }
 
 -(PlayerLandParams*)getLandParams {
-    return _land_params;
+    return NULL;
 }
 
 

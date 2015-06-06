@@ -12,6 +12,10 @@
 /*
 TODO --
 GAMEPLAY IDEAS:
+ dash hit sword
+ hold super arrow
+ arrow sticks
+ 
 when enemy stunned dash through or touch kill
 when hold spinning, sword
 sword slash effects

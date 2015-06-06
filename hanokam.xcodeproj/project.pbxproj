@@ -43,6 +43,36 @@
 		7A97910819E62F84001FFC4D /* libcocos2dAndroid.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A97910019E62E40001FFC4D /* libcocos2dAndroid.a */; };
 		7A97911719E631C6001FFC4D /* libcocos2d-mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A97910419E62E40001FFC4D /* libcocos2d-mac.a */; };
 		7A97911819E631CD001FFC4D /* libcocos2d.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A9790FE19E62E40001FFC4D /* libcocos2d.a */; };
+		7E386D1D1B239EDE00DDEFF6 /* BasePlayerStateStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E386D1C1B239EDE00DDEFF6 /* BasePlayerStateStack.m */; };
+		7E386D1E1B239EDE00DDEFF6 /* BasePlayerStateStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E386D1C1B239EDE00DDEFF6 /* BasePlayerStateStack.m */; };
+		7E386D1F1B239EDE00DDEFF6 /* BasePlayerStateStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E386D1C1B239EDE00DDEFF6 /* BasePlayerStateStack.m */; };
+		7E386D221B239FE600DDEFF6 /* OnGroundPlayerStateStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E386D211B239FE600DDEFF6 /* OnGroundPlayerStateStack.m */; };
+		7E386D231B239FE600DDEFF6 /* OnGroundPlayerStateStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E386D211B239FE600DDEFF6 /* OnGroundPlayerStateStack.m */; };
+		7E386D241B239FE600DDEFF6 /* OnGroundPlayerStateStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E386D211B239FE600DDEFF6 /* OnGroundPlayerStateStack.m */; };
+		7E386D2C1B23A0AC00DDEFF6 /* PlayerAirCombatParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E386D271B23A0AC00DDEFF6 /* PlayerAirCombatParams.m */; };
+		7E386D2D1B23A0AC00DDEFF6 /* PlayerAirCombatParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E386D271B23A0AC00DDEFF6 /* PlayerAirCombatParams.m */; };
+		7E386D2E1B23A0AC00DDEFF6 /* PlayerAirCombatParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E386D271B23A0AC00DDEFF6 /* PlayerAirCombatParams.m */; };
+		7E386D2F1B23A0AC00DDEFF6 /* PlayerLandParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E386D291B23A0AC00DDEFF6 /* PlayerLandParams.m */; };
+		7E386D301B23A0AC00DDEFF6 /* PlayerLandParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E386D291B23A0AC00DDEFF6 /* PlayerLandParams.m */; };
+		7E386D311B23A0AC00DDEFF6 /* PlayerLandParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E386D291B23A0AC00DDEFF6 /* PlayerLandParams.m */; };
+		7E386D321B23A0AC00DDEFF6 /* PlayerUnderwaterCombatParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E386D2B1B23A0AC00DDEFF6 /* PlayerUnderwaterCombatParams.m */; };
+		7E386D331B23A0AC00DDEFF6 /* PlayerUnderwaterCombatParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E386D2B1B23A0AC00DDEFF6 /* PlayerUnderwaterCombatParams.m */; };
+		7E386D341B23A0AC00DDEFF6 /* PlayerUnderwaterCombatParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E386D2B1B23A0AC00DDEFF6 /* PlayerUnderwaterCombatParams.m */; };
+		7E386D371B23A0BE00DDEFF6 /* PlayerSharedParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E386D361B23A0BE00DDEFF6 /* PlayerSharedParams.m */; };
+		7E386D381B23A0BE00DDEFF6 /* PlayerSharedParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E386D361B23A0BE00DDEFF6 /* PlayerSharedParams.m */; };
+		7E386D391B23A0BE00DDEFF6 /* PlayerSharedParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E386D361B23A0BE00DDEFF6 /* PlayerSharedParams.m */; };
+		7E386D3C1B23A59A00DDEFF6 /* DivePlayerStateStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E386D3B1B23A59A00DDEFF6 /* DivePlayerStateStack.m */; };
+		7E386D3D1B23A59A00DDEFF6 /* DivePlayerStateStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E386D3B1B23A59A00DDEFF6 /* DivePlayerStateStack.m */; };
+		7E386D3E1B23A59A00DDEFF6 /* DivePlayerStateStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E386D3B1B23A59A00DDEFF6 /* DivePlayerStateStack.m */; };
+		7E386D411B23A75F00DDEFF6 /* DiveReturnPlayerStateStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E386D401B23A75F00DDEFF6 /* DiveReturnPlayerStateStack.m */; };
+		7E386D421B23A75F00DDEFF6 /* DiveReturnPlayerStateStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E386D401B23A75F00DDEFF6 /* DiveReturnPlayerStateStack.m */; };
+		7E386D431B23A75F00DDEFF6 /* DiveReturnPlayerStateStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E386D401B23A75F00DDEFF6 /* DiveReturnPlayerStateStack.m */; };
+		7E386D461B23A95B00DDEFF6 /* InAirPlayerStateStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E386D451B23A95B00DDEFF6 /* InAirPlayerStateStack.m */; };
+		7E386D471B23A95B00DDEFF6 /* InAirPlayerStateStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E386D451B23A95B00DDEFF6 /* InAirPlayerStateStack.m */; };
+		7E386D481B23A95B00DDEFF6 /* InAirPlayerStateStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E386D451B23A95B00DDEFF6 /* InAirPlayerStateStack.m */; };
+		7E386D4B1B23AB9900DDEFF6 /* AirToGroundTransitionPlayerStateStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E386D4A1B23AB9900DDEFF6 /* AirToGroundTransitionPlayerStateStack.m */; };
+		7E386D4C1B23AB9900DDEFF6 /* AirToGroundTransitionPlayerStateStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E386D4A1B23AB9900DDEFF6 /* AirToGroundTransitionPlayerStateStack.m */; };
+		7E386D4D1B23AB9900DDEFF6 /* AirToGroundTransitionPlayerStateStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E386D4A1B23AB9900DDEFF6 /* AirToGroundTransitionPlayerStateStack.m */; };
 		7E8377671B14619900EFC0D9 /* SPDeviceAccelerometer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E8377661B14619900EFC0D9 /* SPDeviceAccelerometer.m */; };
 		7E8377681B14636300EFC0D9 /* SPDeviceAccelerometer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E8377661B14619900EFC0D9 /* SPDeviceAccelerometer.m */; };
 		7E9A44BB1B1D85E100111C35 /* SPRadialFillSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E9A44BA1B1D85E100111C35 /* SPRadialFillSprite.m */; };
@@ -130,15 +160,6 @@
 		7ED822BE1B13D258001BB249 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED822361B13D258001BB249 /* Player.m */; };
 		7ED822BF1B13D258001BB249 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED822361B13D258001BB249 /* Player.m */; };
 		7ED822C01B13D258001BB249 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED822361B13D258001BB249 /* Player.m */; };
-		7ED822C11B13D258001BB249 /* PlayerAirCombatParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED822381B13D258001BB249 /* PlayerAirCombatParams.m */; };
-		7ED822C21B13D258001BB249 /* PlayerAirCombatParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED822381B13D258001BB249 /* PlayerAirCombatParams.m */; };
-		7ED822C31B13D258001BB249 /* PlayerAirCombatParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED822381B13D258001BB249 /* PlayerAirCombatParams.m */; };
-		7ED822C41B13D258001BB249 /* PlayerLandParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED8223A1B13D258001BB249 /* PlayerLandParams.m */; };
-		7ED822C51B13D258001BB249 /* PlayerLandParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED8223A1B13D258001BB249 /* PlayerLandParams.m */; };
-		7ED822C61B13D258001BB249 /* PlayerLandParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED8223A1B13D258001BB249 /* PlayerLandParams.m */; };
-		7ED822C71B13D258001BB249 /* PlayerUnderwaterCombatParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED8223C1B13D258001BB249 /* PlayerUnderwaterCombatParams.m */; };
-		7ED822C81B13D258001BB249 /* PlayerUnderwaterCombatParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED8223C1B13D258001BB249 /* PlayerUnderwaterCombatParams.m */; };
-		7ED822C91B13D258001BB249 /* PlayerUnderwaterCombatParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED8223C1B13D258001BB249 /* PlayerUnderwaterCombatParams.m */; };
 		7ED822CA1B13D258001BB249 /* PlayerProjectile.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED8223F1B13D258001BB249 /* PlayerProjectile.m */; };
 		7ED822CB1B13D258001BB249 /* PlayerProjectile.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED8223F1B13D258001BB249 /* PlayerProjectile.m */; };
 		7ED822CC1B13D258001BB249 /* PlayerProjectile.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED8223F1B13D258001BB249 /* PlayerProjectile.m */; };
@@ -503,6 +524,26 @@
 		7AFCD5DB19E9BD9F00BCCCDA /* cocos2d.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = cocos2d.h; path = "Source/libs/cocos2d-iphone/cocos2d/cocos2d.h"; sourceTree = "<group>"; };
 		7AFCD5DD19E9BDC200BCCCDA /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Bridging-Header.h"; path = "Source/Bridging-Header.h"; sourceTree = "<group>"; };
 		7BF6AF9F1A425F9800FFF9BA /* JavaFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaFoundation.framework; path = "../../../../../../../Library/SBAndroid/Application Support/Developer/Shared/Xcode/Platforms/Android.platform/Developer/SDKs/SBAndroid.sdk/System/Library/Frameworks/JavaFoundation.framework"; sourceTree = "<group>"; };
+		7E386D1B1B239EDE00DDEFF6 /* BasePlayerStateStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasePlayerStateStack.h; sourceTree = "<group>"; };
+		7E386D1C1B239EDE00DDEFF6 /* BasePlayerStateStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasePlayerStateStack.m; sourceTree = "<group>"; };
+		7E386D201B239FE600DDEFF6 /* OnGroundPlayerStateStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnGroundPlayerStateStack.h; sourceTree = "<group>"; };
+		7E386D211B239FE600DDEFF6 /* OnGroundPlayerStateStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnGroundPlayerStateStack.m; sourceTree = "<group>"; };
+		7E386D261B23A0AC00DDEFF6 /* PlayerAirCombatParams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerAirCombatParams.h; sourceTree = "<group>"; };
+		7E386D271B23A0AC00DDEFF6 /* PlayerAirCombatParams.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerAirCombatParams.m; sourceTree = "<group>"; };
+		7E386D281B23A0AC00DDEFF6 /* PlayerLandParams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerLandParams.h; sourceTree = "<group>"; };
+		7E386D291B23A0AC00DDEFF6 /* PlayerLandParams.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerLandParams.m; sourceTree = "<group>"; };
+		7E386D2A1B23A0AC00DDEFF6 /* PlayerUnderwaterCombatParams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerUnderwaterCombatParams.h; sourceTree = "<group>"; };
+		7E386D2B1B23A0AC00DDEFF6 /* PlayerUnderwaterCombatParams.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerUnderwaterCombatParams.m; sourceTree = "<group>"; };
+		7E386D351B23A0BE00DDEFF6 /* PlayerSharedParams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerSharedParams.h; sourceTree = "<group>"; };
+		7E386D361B23A0BE00DDEFF6 /* PlayerSharedParams.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerSharedParams.m; sourceTree = "<group>"; };
+		7E386D3A1B23A59A00DDEFF6 /* DivePlayerStateStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DivePlayerStateStack.h; sourceTree = "<group>"; };
+		7E386D3B1B23A59A00DDEFF6 /* DivePlayerStateStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DivePlayerStateStack.m; sourceTree = "<group>"; };
+		7E386D3F1B23A75F00DDEFF6 /* DiveReturnPlayerStateStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiveReturnPlayerStateStack.h; sourceTree = "<group>"; };
+		7E386D401B23A75F00DDEFF6 /* DiveReturnPlayerStateStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiveReturnPlayerStateStack.m; sourceTree = "<group>"; };
+		7E386D441B23A95B00DDEFF6 /* InAirPlayerStateStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InAirPlayerStateStack.h; sourceTree = "<group>"; };
+		7E386D451B23A95B00DDEFF6 /* InAirPlayerStateStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InAirPlayerStateStack.m; sourceTree = "<group>"; };
+		7E386D491B23AB9900DDEFF6 /* AirToGroundTransitionPlayerStateStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AirToGroundTransitionPlayerStateStack.h; sourceTree = "<group>"; };
+		7E386D4A1B23AB9900DDEFF6 /* AirToGroundTransitionPlayerStateStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AirToGroundTransitionPlayerStateStack.m; sourceTree = "<group>"; };
 		7E8377651B14619900EFC0D9 /* SPDeviceAccelerometer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPDeviceAccelerometer.h; sourceTree = "<group>"; };
 		7E8377661B14619900EFC0D9 /* SPDeviceAccelerometer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPDeviceAccelerometer.m; sourceTree = "<group>"; };
 		7E9A44B91B1D85E100111C35 /* SPRadialFillSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRadialFillSprite.h; sourceTree = "<group>"; };
@@ -563,12 +604,6 @@
 		7ED822331B13D258001BB249 /* UIBossIntroParticle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIBossIntroParticle.m; sourceTree = "<group>"; };
 		7ED822351B13D258001BB249 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
 		7ED822361B13D258001BB249 /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
-		7ED822371B13D258001BB249 /* PlayerAirCombatParams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerAirCombatParams.h; sourceTree = "<group>"; };
-		7ED822381B13D258001BB249 /* PlayerAirCombatParams.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerAirCombatParams.m; sourceTree = "<group>"; };
-		7ED822391B13D258001BB249 /* PlayerLandParams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerLandParams.h; sourceTree = "<group>"; };
-		7ED8223A1B13D258001BB249 /* PlayerLandParams.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerLandParams.m; sourceTree = "<group>"; };
-		7ED8223B1B13D258001BB249 /* PlayerUnderwaterCombatParams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerUnderwaterCombatParams.h; sourceTree = "<group>"; };
-		7ED8223C1B13D258001BB249 /* PlayerUnderwaterCombatParams.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerUnderwaterCombatParams.m; sourceTree = "<group>"; };
 		7ED8223E1B13D258001BB249 /* PlayerProjectile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerProjectile.h; sourceTree = "<group>"; };
 		7ED8223F1B13D258001BB249 /* PlayerProjectile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerProjectile.m; sourceTree = "<group>"; };
 		7ED822411B13D258001BB249 /* GameUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameUI.h; sourceTree = "<group>"; };
@@ -935,6 +970,40 @@
 			name = Mac;
 			sourceTree = "<group>";
 		};
+		7E386D181B239EC900DDEFF6 /* playerstate */ = {
+			isa = PBXGroup;
+			children = (
+				7E386D1B1B239EDE00DDEFF6 /* BasePlayerStateStack.h */,
+				7E386D1C1B239EDE00DDEFF6 /* BasePlayerStateStack.m */,
+				7E386D201B239FE600DDEFF6 /* OnGroundPlayerStateStack.h */,
+				7E386D211B239FE600DDEFF6 /* OnGroundPlayerStateStack.m */,
+				7E386D3A1B23A59A00DDEFF6 /* DivePlayerStateStack.h */,
+				7E386D3B1B23A59A00DDEFF6 /* DivePlayerStateStack.m */,
+				7E386D3F1B23A75F00DDEFF6 /* DiveReturnPlayerStateStack.h */,
+				7E386D401B23A75F00DDEFF6 /* DiveReturnPlayerStateStack.m */,
+				7E386D441B23A95B00DDEFF6 /* InAirPlayerStateStack.h */,
+				7E386D451B23A95B00DDEFF6 /* InAirPlayerStateStack.m */,
+				7E386D491B23AB9900DDEFF6 /* AirToGroundTransitionPlayerStateStack.h */,
+				7E386D4A1B23AB9900DDEFF6 /* AirToGroundTransitionPlayerStateStack.m */,
+			);
+			path = playerstate;
+			sourceTree = "<group>";
+		};
+		7E386D251B23A08B00DDEFF6 /* playerparams */ = {
+			isa = PBXGroup;
+			children = (
+				7E386D261B23A0AC00DDEFF6 /* PlayerAirCombatParams.h */,
+				7E386D271B23A0AC00DDEFF6 /* PlayerAirCombatParams.m */,
+				7E386D281B23A0AC00DDEFF6 /* PlayerLandParams.h */,
+				7E386D291B23A0AC00DDEFF6 /* PlayerLandParams.m */,
+				7E386D2A1B23A0AC00DDEFF6 /* PlayerUnderwaterCombatParams.h */,
+				7E386D2B1B23A0AC00DDEFF6 /* PlayerUnderwaterCombatParams.m */,
+				7E386D351B23A0BE00DDEFF6 /* PlayerSharedParams.h */,
+				7E386D361B23A0BE00DDEFF6 /* PlayerSharedParams.m */,
+			);
+			path = playerparams;
+			sourceTree = "<group>";
+		};
 		7EBC2AE61B1C4EDF00AC47F1 /* misc */ = {
 			isa = PBXGroup;
 			children = (
@@ -1055,14 +1124,10 @@
 		7ED822341B13D258001BB249 /* player */ = {
 			isa = PBXGroup;
 			children = (
+				7E386D251B23A08B00DDEFF6 /* playerparams */,
+				7E386D181B239EC900DDEFF6 /* playerstate */,
 				7ED822351B13D258001BB249 /* Player.h */,
 				7ED822361B13D258001BB249 /* Player.m */,
-				7ED822371B13D258001BB249 /* PlayerAirCombatParams.h */,
-				7ED822381B13D258001BB249 /* PlayerAirCombatParams.m */,
-				7ED822391B13D258001BB249 /* PlayerLandParams.h */,
-				7ED8223A1B13D258001BB249 /* PlayerLandParams.m */,
-				7ED8223B1B13D258001BB249 /* PlayerUnderwaterCombatParams.h */,
-				7ED8223C1B13D258001BB249 /* PlayerUnderwaterCombatParams.m */,
 			);
 			path = player;
 			sourceTree = "<group>";
@@ -1853,14 +1918,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				7ED822EA1B13D258001BB249 /* SHItemRow.m in Sources */,
+				7E386D341B23A0AC00DDEFF6 /* PlayerUnderwaterCombatParams.m in Sources */,
 				7ED823171B13D258001BB249 /* SpriterXMLParser.m in Sources */,
 				7ED822841B13D258001BB249 /* PufferBasicAirEnemy.m in Sources */,
 				7EFEE79E1B1F06880055C989 /* PlayerChargeIndicator.m in Sources */,
 				7ED822931B13D258001BB249 /* BGWater.m in Sources */,
+				7E386D241B239FE600DDEFF6 /* OnGroundPlayerStateStack.m in Sources */,
 				7ED8230B1B13D258001BB249 /* SpriterNode.m in Sources */,
 				7ED822811B13D258001BB249 /* BasicAirEnemy.m in Sources */,
 				7A4036E819DE3F33007B6E8F /* MainScene.m in Sources */,
-				7ED822C31B13D258001BB249 /* PlayerAirCombatParams.m in Sources */,
 				7ED822F01B13D258001BB249 /* Common.m in Sources */,
 				7ED822AB1B13D258001BB249 /* ChainedMovementParticle.m in Sources */,
 				7ED8227E1B13D258001BB249 /* AirEnemyManager.m in Sources */,
@@ -1869,18 +1935,21 @@
 				7E9A585E1B22F6A6008EC348 /* PlayerUIAimReticule.m in Sources */,
 				7A40360419DDEE84007B6E8F /* main.m in Sources */,
 				7ED823111B13D258001BB249 /* SpriterTypes.m in Sources */,
+				7E386D311B23A0AC00DDEFF6 /* PlayerLandParams.m in Sources */,
 				7ED8231D1B13D258001BB249 /* Vec3D.m in Sources */,
 				7ED822A51B13D258001BB249 /* GameObject.m in Sources */,
 				7ED822901B13D258001BB249 /* BGVillage.m in Sources */,
 				7ED822DB1B13D258001BB249 /* MainMenuScene.m in Sources */,
 				7ED822991B13D258001BB249 /* BGCharacterTest.m in Sources */,
 				7ED8228A1B13D258001BB249 /* BGReflection.m in Sources */,
+				7E386D2E1B23A0AC00DDEFF6 /* PlayerAirCombatParams.m in Sources */,
 				7ED822CF1B13D258001BB249 /* GameUI.m in Sources */,
 				7ED822DE1B13D258001BB249 /* TouchButton.m in Sources */,
 				7ED8230E1B13D258001BB249 /* SpriterNodeCache.m in Sources */,
-				7ED822C91B13D258001BB249 /* PlayerUnderwaterCombatParams.m in Sources */,
+				7E386D3E1B23A59A00DDEFF6 /* DivePlayerStateStack.m in Sources */,
 				7ED822A21B13D258001BB249 /* GameEngineScene.m in Sources */,
 				7ED822CC1B13D258001BB249 /* PlayerProjectile.m in Sources */,
+				7E386D1F1B239EDE00DDEFF6 /* BasePlayerStateStack.m in Sources */,
 				7ED8231A1B13D258001BB249 /* TouchTrackingLayer.m in Sources */,
 				7ED822D21B13D258001BB249 /* HealthBar.m in Sources */,
 				7ED822AE1B13D258001BB249 /* Particle.m in Sources */,
@@ -1888,7 +1957,6 @@
 				7ED822A81B13D258001BB249 /* ShopScene.m in Sources */,
 				7E9A58631B23098C008EC348 /* FlashCount.m in Sources */,
 				7ED8229C1B13D258001BB249 /* BGCharacterVillagerFishWoman.m in Sources */,
-				7ED822C61B13D258001BB249 /* PlayerLandParams.m in Sources */,
 				7ED823021B13D258001BB249 /* ShaderManager.m in Sources */,
 				7ED822C01B13D258001BB249 /* Player.m in Sources */,
 				7ED823FF1B13DD59001BB249 /* md5.c in Sources */,
@@ -1898,6 +1966,7 @@
 				7ED822F31B13D258001BB249 /* DataStore.m in Sources */,
 				7ED822B11B13D258001BB249 /* ParticleBubble.m in Sources */,
 				7ED822F61B13D258001BB249 /* FileCache.m in Sources */,
+				7E386D481B23A95B00DDEFF6 /* InAirPlayerStateStack.m in Sources */,
 				7ED822BD1B13D258001BB249 /* UIBossIntroParticle.m in Sources */,
 				7ED822B71B13D258001BB249 /* ParticlePhysical.m in Sources */,
 				7ED822E41B13D258001BB249 /* SHButton.m in Sources */,
@@ -1906,6 +1975,7 @@
 				7ED823081B13D258001BB249 /* SpriterJSONParser.m in Sources */,
 				7ED8228D1B13D258001BB249 /* BGSky.m in Sources */,
 				7ED822FF1B13D258001BB249 /* Resource.m in Sources */,
+				7E386D391B23A0BE00DDEFF6 /* PlayerSharedParams.m in Sources */,
 				7A59498E19E3941300F65F90 /* AppDelegate.m in Sources */,
 				7ED822D81B13D258001BB249 /* GameMain.m in Sources */,
 				7ED822E11B13D258001BB249 /* SHBackground.m in Sources */,
@@ -1913,7 +1983,9 @@
 				7ED822ED1B13D258001BB249 /* BatchDraw.m in Sources */,
 				7ED823051B13D258001BB249 /* SpriterData.m in Sources */,
 				7ED822961B13D258001BB249 /* BGCharacterOldMan.m in Sources */,
+				7E386D4D1B23AB9900DDEFF6 /* AirToGroundTransitionPlayerStateStack.m in Sources */,
 				7ED822B41B13D258001BB249 /* ParticleLiquid.m in Sources */,
+				7E386D431B23A75F00DDEFF6 /* DiveReturnPlayerStateStack.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1922,8 +1994,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				7ED822EF1B13D258001BB249 /* Common.m in Sources */,
+				7E386D4C1B23AB9900DDEFF6 /* AirToGroundTransitionPlayerStateStack.m in Sources */,
 				7ED822D71B13D258001BB249 /* GameMain.m in Sources */,
 				7ED8227D1B13D258001BB249 /* AirEnemyManager.m in Sources */,
+				7E386D331B23A0AC00DDEFF6 /* PlayerUnderwaterCombatParams.m in Sources */,
 				7EFEE79B1B1F06860055C989 /* PlayerChargeIndicator.m in Sources */,
 				7ED8229E1B13D258001BB249 /* ControlManager.m in Sources */,
 				7ED822831B13D258001BB249 /* PufferBasicAirEnemy.m in Sources */,
@@ -1937,9 +2011,11 @@
 				7E9A585B1B22F6A5008EC348 /* PlayerUIAimReticule.m in Sources */,
 				7ED8229B1B13D258001BB249 /* BGCharacterVillagerFishWoman.m in Sources */,
 				7ED822F51B13D258001BB249 /* FileCache.m in Sources */,
+				7E386D1E1B239EDE00DDEFF6 /* BasePlayerStateStack.m in Sources */,
 				7ED822AD1B13D258001BB249 /* Particle.m in Sources */,
 				7ED8231F1B13D258001BB249 /* WebRequest.m in Sources */,
 				7ED822E91B13D258001BB249 /* SHItemRow.m in Sources */,
+				7E386D231B239FE600DDEFF6 /* OnGroundPlayerStateStack.m in Sources */,
 				7ED822B01B13D258001BB249 /* ParticleBubble.m in Sources */,
 				7ED8228C1B13D258001BB249 /* BGSky.m in Sources */,
 				7ED822B31B13D258001BB249 /* ParticleLiquid.m in Sources */,
@@ -1953,8 +2029,8 @@
 				7ED823FE1B13DD59001BB249 /* md5.c in Sources */,
 				7ED822A41B13D258001BB249 /* GameObject.m in Sources */,
 				7ED822FB1B13D258001BB249 /* PolyLib.m in Sources */,
-				7ED822C21B13D258001BB249 /* PlayerAirCombatParams.m in Sources */,
 				7ED823011B13D258001BB249 /* ShaderManager.m in Sources */,
+				7E386D421B23A75F00DDEFF6 /* DiveReturnPlayerStateStack.m in Sources */,
 				7ED8230D1B13D258001BB249 /* SpriterNodeCache.m in Sources */,
 				7ED822B91B13D258001BB249 /* RotateFadeOutParticle.m in Sources */,
 				7ED822891B13D258001BB249 /* BGReflection.m in Sources */,
@@ -1963,13 +2039,15 @@
 				7ED822EC1B13D258001BB249 /* BatchDraw.m in Sources */,
 				7ED8230A1B13D258001BB249 /* SpriterNode.m in Sources */,
 				7ED823101B13D258001BB249 /* SpriterTypes.m in Sources */,
+				7E386D3D1B23A59A00DDEFF6 /* DivePlayerStateStack.m in Sources */,
 				7ED822B61B13D258001BB249 /* ParticlePhysical.m in Sources */,
-				7ED822C81B13D258001BB249 /* PlayerUnderwaterCombatParams.m in Sources */,
 				7ED822FE1B13D258001BB249 /* Resource.m in Sources */,
 				7ED822DD1B13D258001BB249 /* TouchButton.m in Sources */,
 				7ED8231C1B13D258001BB249 /* Vec3D.m in Sources */,
 				7ED8228F1B13D258001BB249 /* BGVillage.m in Sources */,
 				7ED823071B13D258001BB249 /* SpriterJSONParser.m in Sources */,
+				7E386D471B23A95B00DDEFF6 /* InAirPlayerStateStack.m in Sources */,
+				7E386D2D1B23A0AC00DDEFF6 /* PlayerAirCombatParams.m in Sources */,
 				7ED822E61B13D258001BB249 /* SHItem.m in Sources */,
 				7ED822CB1B13D258001BB249 /* PlayerProjectile.m in Sources */,
 				7ED822801B13D258001BB249 /* BasicAirEnemy.m in Sources */,
@@ -1980,10 +2058,11 @@
 				7ED822F21B13D258001BB249 /* DataStore.m in Sources */,
 				7ED822981B13D258001BB249 /* BGCharacterTest.m in Sources */,
 				7ED822BC1B13D258001BB249 /* UIBossIntroParticle.m in Sources */,
+				7E386D381B23A0BE00DDEFF6 /* PlayerSharedParams.m in Sources */,
 				5B121030197484FA004C1E1D /* hanokamActivity.m in Sources */,
+				7E386D301B23A0AC00DDEFF6 /* PlayerLandParams.m in Sources */,
 				7ED822A71B13D258001BB249 /* ShopScene.m in Sources */,
 				7ED822BF1B13D258001BB249 /* Player.m in Sources */,
-				7ED822C51B13D258001BB249 /* PlayerLandParams.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1991,16 +2070,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E386D411B23A75F00DDEFF6 /* DiveReturnPlayerStateStack.m in Sources */,
 				7ED822E81B13D258001BB249 /* SHItemRow.m in Sources */,
+				7E386D3C1B23A59A00DDEFF6 /* DivePlayerStateStack.m in Sources */,
 				7ED823151B13D258001BB249 /* SpriterXMLParser.m in Sources */,
 				7ED822821B13D258001BB249 /* PufferBasicAirEnemy.m in Sources */,
 				7ED822911B13D258001BB249 /* BGWater.m in Sources */,
 				7ED823091B13D258001BB249 /* SpriterNode.m in Sources */,
+				7E386D221B239FE600DDEFF6 /* OnGroundPlayerStateStack.m in Sources */,
 				7ED8227F1B13D258001BB249 /* BasicAirEnemy.m in Sources */,
 				B73789871807631A0076A88C /* main.m in Sources */,
-				7ED822C11B13D258001BB249 /* PlayerAirCombatParams.m in Sources */,
+				7E386D1D1B239EDE00DDEFF6 /* BasePlayerStateStack.m in Sources */,
 				BB771AFC1B22EB03002BA595 /* VillageUI.m in Sources */,
 				7ED822EE1B13D258001BB249 /* Common.m in Sources */,
+				7E386D371B23A0BE00DDEFF6 /* PlayerSharedParams.m in Sources */,
+				7E386D2C1B23A0AC00DDEFF6 /* PlayerAirCombatParams.m in Sources */,
 				7E9A44BB1B1D85E100111C35 /* SPRadialFillSprite.m in Sources */,
 				7ED822A91B13D258001BB249 /* ChainedMovementParticle.m in Sources */,
 				7ED8227C1B13D258001BB249 /* AirEnemyManager.m in Sources */,
@@ -2010,17 +2094,19 @@
 				7A046D8C19E8A20E004C4763 /* MainScene.m in Sources */,
 				7ED8230F1B13D258001BB249 /* SpriterTypes.m in Sources */,
 				7ED8231B1B13D258001BB249 /* Vec3D.m in Sources */,
+				7E386D2F1B23A0AC00DDEFF6 /* PlayerLandParams.m in Sources */,
 				7E9A58611B23098C008EC348 /* FlashCount.m in Sources */,
 				7ED822A31B13D258001BB249 /* GameObject.m in Sources */,
 				7ED8228E1B13D258001BB249 /* BGVillage.m in Sources */,
 				7E9A58521B22EFA3008EC348 /* AlphaGradientSprite.m in Sources */,
+				7E386D461B23A95B00DDEFF6 /* InAirPlayerStateStack.m in Sources */,
 				7ED822D91B13D258001BB249 /* MainMenuScene.m in Sources */,
 				7ED822971B13D258001BB249 /* BGCharacterTest.m in Sources */,
 				7ED822881B13D258001BB249 /* BGReflection.m in Sources */,
+				7E386D321B23A0AC00DDEFF6 /* PlayerUnderwaterCombatParams.m in Sources */,
 				7ED822CD1B13D258001BB249 /* GameUI.m in Sources */,
 				7ED822DC1B13D258001BB249 /* TouchButton.m in Sources */,
 				7ED8230C1B13D258001BB249 /* SpriterNodeCache.m in Sources */,
-				7ED822C71B13D258001BB249 /* PlayerUnderwaterCombatParams.m in Sources */,
 				7ED822A01B13D258001BB249 /* GameEngineScene.m in Sources */,
 				7ED822CA1B13D258001BB249 /* PlayerProjectile.m in Sources */,
 				7ED823181B13D258001BB249 /* TouchTrackingLayer.m in Sources */,
@@ -2030,12 +2116,12 @@
 				7ED822E51B13D258001BB249 /* SHItem.m in Sources */,
 				7ED822A61B13D258001BB249 /* ShopScene.m in Sources */,
 				7ED8229A1B13D258001BB249 /* BGCharacterVillagerFishWoman.m in Sources */,
-				7ED822C41B13D258001BB249 /* PlayerLandParams.m in Sources */,
 				7E9A44C41B1DADBA00111C35 /* PlayerChargeIndicator.m in Sources */,
 				7ED823001B13D258001BB249 /* ShaderManager.m in Sources */,
 				7ED822BE1B13D258001BB249 /* Player.m in Sources */,
 				7ED823FD1B13DD59001BB249 /* md5.c in Sources */,
 				7ED823121B13D258001BB249 /* SpriterUtil.m in Sources */,
+				7E386D4B1B23AB9900DDEFF6 /* AirToGroundTransitionPlayerStateStack.m in Sources */,
 				7ED822FA1B13D258001BB249 /* PolyLib.m in Sources */,
 				7ED8231E1B13D258001BB249 /* WebRequest.m in Sources */,
 				7ED822F11B13D258001BB249 /* DataStore.m in Sources */,
