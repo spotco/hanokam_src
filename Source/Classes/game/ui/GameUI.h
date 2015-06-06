@@ -8,6 +8,7 @@
 -(void)charge_fail;
 
 -(void)flash_red;
+-(void)hold_reticule_visible:(float)variance;
 -(void)fadeout:(BOOL)tar;
 -(BOOL)is_faded_out;
 -(BOOL)is_faded_in;

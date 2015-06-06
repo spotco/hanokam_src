@@ -11,44 +11,64 @@
 #import "Player.h"
 #import "Resource.h" 
 #import "FileCache.h"
-#import "ShaderManager.h"
+#import "AlphaGradientSprite.h"
+#import "ControlManager.h"
 
 @implementation PlayerUIAimReticule {
-	CCSprite *_left_line, *_right_line;
+	AlphaGradientSprite *_left_line, *_right_line;
+	float _tar_alpha;
+	float _variance;
 }
-
 +(PlayerUIAimReticule*)cons {
 	return [[PlayerUIAimReticule node] cons];
 }
 
-void set_alpha_gradient_properties(CCSprite *obj) {
-	obj.shaderUniforms[@"start_x"] = @([obj convertToWorldSpace:CGPointZero].x);
-	obj.shaderUniforms[@"start_y"] = @(obj.position.y);
-	obj.shaderUniforms[@"start_alpha_x"] = @(0);
-	obj.shaderUniforms[@"end_alpha_x"] = @(1);
-	obj.shaderUniforms[@"start_alpha_y"] = @(1);
-	obj.shaderUniforms[@"end_alpha_y"] = @(1);
-	obj.shaderUniforms[@"width"] = @(obj.textureRect.size.width);
-	obj.shaderUniforms[@"height"] = @(obj.textureRect.size.height);
-}
 
 -(PlayerUIAimReticule*)cons {
-	
-	_left_line = [CCSprite spriteWithTexture:[Resource get_tex:TEX_BLANK]];
-	[_left_line setTextureRect:CGRectMake(0, 0, 2, 200)];
+	_tar_alpha = 0;
+	_left_line = [AlphaGradientSprite cons_tex:[Resource get_tex:TEX_BLANK]
+									   texrect:cctexture_default_rect([Resource get_tex:TEX_BLANK])
+										  size:CGSizeMake(2, 600)
+								   anchorPoint:ccp(0.5,0)
+										alphaX:CGRangeMake(1, 1)
+										alphaY:CGRangeMake(0, 1)];
 	[_left_line setAnchorPoint:ccp(0.5,0)];
-	[_left_line setBlendMode:[CCBlendMode alphaMode]];
-	[_left_line setShader:[ShaderManager get_shader:SHADER_ALPHA_GRADIENT]];
-	
-	set_alpha_gradient_properties(_left_line);
-	
+	[_left_line setRotation:10];
 	[self addChild:_left_line];
+	
+	_right_line = [AlphaGradientSprite cons_tex:[Resource get_tex:TEX_BLANK]
+									   texrect:cctexture_default_rect([Resource get_tex:TEX_BLANK])
+										  size:CGSizeMake(2, 600)
+								   anchorPoint:ccp(0.5,0)
+										alphaX:CGRangeMake(1, 1)
+										alphaY:CGRangeMake(0, 1)];
+	[_right_line setAnchorPoint:ccp(0.5,0)];
+	[_right_line setRotation:-10];
+	[self addChild:_right_line];
 
 	return self;
 }
 
--(void)i_update:(GameEngineScene*)g {
-	[self setPosition:[g.player convertToWorldSpace:CGPointZero]];
+-(void)hold_visible:(float)variance {
+	_tar_alpha = 1;
+	_variance = variance;
 }
 
+-(void)i_update:(GameEngineScene*)g {
+	if (g.get_player_state == PlayerState_InAir) {
+		[self setVisible:YES];
+		[self setPosition:[g.player convertToWorldSpace:CGPointZero]];
+		float tar_ang = vec_ang_deg_lim180(vec_cons(g.get_control_manager.get_player_to_touch_dir.x, g.get_control_manager.get_player_to_touch_dir.y, 0), 0) - 90;
+		_left_line.rotation = tar_ang + _variance;
+		_right_line.rotation = tar_ang - _variance;
+		
+		_tar_alpha -= dt_scale_get()*0.1;
+		_left_line.opacity = _tar_alpha;
+		_right_line.opacity = _tar_alpha;
+		
+	} else {
+		[self setVisible:NO];
+		
+	}
+}
 @end

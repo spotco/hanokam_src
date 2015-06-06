@@ -92,6 +92,9 @@ typedef struct CameraZoom {
 typedef struct CGRange {
     float min,max;
 } CGRange;
+CGRange CGRangeMake(float min, float max);
+
+CGRect cctexture_default_rect(CCTexture *tex);
 
 #define _NSSET(...)  [NSMutableSet setWithArray:@[__VA_ARGS__]]
 #define _NSMARRAY(...)  [NSMutableArray arrayWithArray:@[__VA_ARGS__]]
@@ -184,4 +187,5 @@ Vec3D vec_from_ccrotation(float rotation);
 CCSprite* flipper_cons_for(CCSprite* obj, float scx, float scy);
 
 float running_avg(float avg, float val, float ct);
+CGPoint point_box_intersection(CGSize box_size, Vec3D dir_vec);
 #endif

@@ -174,6 +174,14 @@ fCGPoint fCGPointMake(float x, float y){
 }
 @end
 
+CGRange CGRangeMake(float min, float max) {
+	return (CGRange){min,max};
+}
+
+CGRect cctexture_default_rect(CCTexture *tex) {
+	return CGRectMake(0, 0, tex.pixelWidth, tex.pixelHeight);
+}
+
 NSString* strf (char* format, ... ) {
     char outp[255];
     va_list a_list;
@@ -535,4 +543,22 @@ float running_avg(float avg, float val, float ct) {
 	avg -= avg / ct;
 	avg += val / ct;
 	return avg;
+}
+
+CGPoint point_box_intersection(CGSize box_size, Vec3D dir_vec) {
+	vec_scale_m(&dir_vec, box_size.height * box_size.width);
+	CGPoint center = ccp(box_size.width/2,box_size.height/2);
+	if (ABS(dir_vec.y) > ABS(dir_vec.x)) {
+		if (dir_vec.y > 0) {
+			return line_seg_intersection_pts(center, CGPointAdd(center, ccp(dir_vec.x,dir_vec.y)), ccp(0,box_size.height), ccp(box_size.width,box_size.height));
+		} else {
+			return line_seg_intersection_pts(center, CGPointAdd(center, ccp(dir_vec.x,dir_vec.y)), ccp(0,0), ccp(box_size.width,0));
+		}
+	} else {
+		if (dir_vec.x > 0) {
+			return line_seg_intersection_pts(center, CGPointAdd(center, ccp(dir_vec.x,dir_vec.y)), ccp(box_size.width,0), ccp(box_size.width,box_size.height));
+		} else {
+			return line_seg_intersection_pts(center, CGPointAdd(center, ccp(dir_vec.x,dir_vec.y)), ccp(0,0), ccp(0,box_size.height));
+		}
+	}
 }

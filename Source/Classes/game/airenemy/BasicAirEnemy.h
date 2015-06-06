@@ -12,5 +12,7 @@
 -(BasicAirEnemy*)cons_g:(GameEngineScene*)g relstart:(CGPoint)relstart relend:(CGPoint)relend;
 -(void)update_alive:(GameEngineScene*)g;
 -(void)update_death:(GameEngineScene*)g;
+-(void)update_stunned:(GameEngineScene*)g;
+-(int)get_stunned_anim_ct;
 @property(readwrite,assign) CGPoint _rel_pos;
 @end

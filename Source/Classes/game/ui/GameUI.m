@@ -145,6 +145,10 @@ typedef enum _GameUIBossIntroMode {
 	[_red_flash_overlay setOpacity:0.5];
 }
 
+-(void)hold_reticule_visible:(float)variance {
+	[_player_aim_reticule hold_visible:variance];
+}
+
 -(void)fadeout:(BOOL)tar {
 	_tar_black_fadeout_overlay_alpha = tar?1:0;
 }

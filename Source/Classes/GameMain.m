@@ -11,26 +11,21 @@
 
 /*
 TODO --
-
 GAMEPLAY IDEAS:
-reverse pullback arrow fire
+when enemy stunned dash through or touch kill
+when hold spinning, sword
+sword slash effects
+ 
 arrow decreasing bar
 energy bar
 shoot arrow tap target ui effect
-shoot arrow hold target line reticule
 arrow initial inactive time
-arrow stun
 after sword enemy invuln time (chain sword hits)
 enemy about to spawn from bottom/sides indicator
 invulnerability time
 touchtrackinglayer fadein/out
 homing arrow
-
-vulnerable enemy ui effect
 enemy bullets with patterns
-enemy invulnerable (arrow), vulnerable (sword) mode
-
-one energy/health bar
 
 TECH --
 player control class make into state machine stack

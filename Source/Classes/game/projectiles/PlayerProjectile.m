@@ -76,6 +76,7 @@
 				if (itr.is_alive && SAT_polyowners_intersect(self, itr)) {
 					_ct = 0;
 					[itr hit_projectile:g];
+					[g shake_for:5 distance:2];
 				}
 			}
 		}

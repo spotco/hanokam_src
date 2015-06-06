@@ -963,6 +963,7 @@
  @see cascadeColorEnabled
  */
 @property (nonatomic,strong) CCColor* color;
+-(void)setColor4f:(ccColor4F)color;
 
 /** Sets and returns the node's color including alpha. Changing color has no effect on non-visible nodes (ie CCNode, CCScene).
 
