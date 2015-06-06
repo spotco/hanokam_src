@@ -22,6 +22,8 @@
 	[self play_anim:@"Idle" repeat:YES];
 	[self addChild:_img];
 	
+    _dialogueOffset = ccp(-50,50);
+    
 	return self;
 }
 

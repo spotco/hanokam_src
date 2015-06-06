@@ -28,10 +28,14 @@ NSString *_on_finish_play_anim;
  *
  *  Base CCSprite for background characters. Should never be instantiated
  */
-@interface BGCharacterBase : CCSprite
+@interface BGCharacterBase : CCSprite {
+    @protected
+    CGPoint _dialogueOffset;
+}
 
 // States for background characters
 @property (nonatomic, readonly) BGCharacterState state;
+@property (nonatomic, readonly) CGPoint dialogueOffset;
 
 /**
  *  Handles interactions with other elements in the game

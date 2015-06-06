@@ -10,6 +10,7 @@
 #import "PlayerUIHealthIndicator.h"
 #import "PlayerChargeIndicator.h"
 #import "PlayerUIAimReticule.h"
+#import "VillageUI.h"
 
 typedef enum _GameUIBossIntroMode {
 	GameUIBossIntroMode_None,
@@ -34,7 +35,8 @@ typedef enum _GameUIBossIntroMode {
 	PlayerUIHealthIndicator *_player_health_ui;
 	PlayerChargeIndicator *_player_charge_ui;
 	PlayerUIAimReticule *_player_aim_reticule;
-	
+    
+    VillageUI *_villageUI;
 	
 	CCNode *_red_flash_overlay;
 	CCNode *_black_fadeout_overlay;
@@ -107,6 +109,9 @@ typedef enum _GameUIBossIntroMode {
 	_player_aim_reticule = [PlayerUIAimReticule cons];
 	[self addChild:_player_aim_reticule];
 	
+    _villageUI = [VillageUI cons:game];
+    [self addChild:_villageUI];
+    
 	return self;
 }
 
@@ -181,6 +186,7 @@ typedef enum _GameUIBossIntroMode {
 		[self depth_bar_from_bottom_fill_pct:0.5];
 		
 	} else {
+        [_villageUI i_update:game];
 		[_depth_bar_back setVisible:NO];
 	}
 }

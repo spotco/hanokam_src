@@ -14,4 +14,6 @@
 
 -(void)render_reflection:(GameEngineScene*)game offset:(CGPoint)offset;
 
+-(NSArray*)getVillagers;
+
 @end

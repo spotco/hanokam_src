@@ -20,6 +20,8 @@ static CGFloat const TAP_RANGE = 50;
 
 @implementation BGCharacterBase
 
+@synthesize dialogueOffset = _dialogueOffset;
+
 -(void)i_update:(GameEngineScene*)g {
     switch (self.state) {
         case BGCharacter_Idle:;

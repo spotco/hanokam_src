@@ -22,7 +22,9 @@
 	_img = [SpriterNode nodeFromData:[FileCache spriter_scml_data_from_file:@"oldman.scml" json:@"oldman_ss.json" texture:[Resource get_tex:TEX_SPRITER_CHAR_OLDMAN]]];
 	[self play_anim:@"idle" repeat:YES];
 	[self addChild:_img];
-	
+    
+    _dialogueOffset = ccp(-30,50);
+    
 	return self;
 }
 

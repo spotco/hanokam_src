@@ -24,6 +24,7 @@
 	CCSprite *_sky_bg;
 	CCSprite *_docks,*_bldg_1, *_bldg_2, *_bldg_3, *_bldg_4;
 	
+    NSMutableArray *_villagers;
 	BGCharacterOldMan *_old_man;
 	BGCharacterVillagerFishWoman *_fish_woman;
 	BGCharacterTest *_test_character;
@@ -41,6 +42,7 @@
 -(BGVillage*)cons:(GameEngineScene *)g {
 	_above_water_elements = [NSMutableArray array];
 	_below_water_elements = [NSMutableArray array];
+    _villagers = [NSMutableArray array];
 	
 	_sky_bg = [CCSprite node];
 	[[g get_anchor] addChild:_sky_bg z:GameAnchorZ_BGSky_RepeatBG];
@@ -80,7 +82,8 @@
 	[_bldg_1 set_anchor_pt:ccp(0,0)];
 	
 	_old_man = [BGCharacterOldMan cons_pos:pct_of_obj(_bldg_1, 0.8, 0.41)];
-	[_bldg_1 addChild:_old_man];
+    [_villagers addObject:_old_man];
+    [_bldg_1 addChild:_old_man];
 	
 	_docks = [CCSprite spriteWithTexture:[Resource get_tex:TEX_BG_SPRITESHEET_1] rect:[FileCache get_cgrect_from_plist:TEX_BG_SPRITESHEET_1 idname:@"pier_top.png"]];
 	[[g get_anchor] addChild:_docks z:GameAnchorZ_BGSky_Docks];
@@ -91,10 +94,12 @@
 	[_docks set_anchor_pt:ccp(0,0)];
 	
 	_fish_woman = [BGCharacterVillagerFishWoman cons_pos:pct_of_obj(_docks, 0.75, 0.55)];
+    [_villagers addObject:_fish_woman];
 	[_docks addChild:_fish_woman];
 	
-	_test_character = [BGCharacterTest cons_pos:pct_of_obj(_docks, 0.25, 3.75)];
-	[_docks addChild:_test_character];
+//	_test_character = [BGCharacterTest cons_pos:pct_of_obj(_docks, 0.25, 3.75)];
+//    [_villagers addObject:_test_character];
+//	[_docks addChild:_test_character];
 	
 	CCSprite *docks_front = [CCSprite spriteWithTexture:[Resource get_tex:TEX_BG_SPRITESHEET_1] rect:[FileCache get_cgrect_from_plist:TEX_BG_SPRITESHEET_1 idname:@"pier_top_front_pillars.png"]];
 	[[g get_anchor] addChild:docks_front z:GameAnchorZ_BGSky_Docks_Pillars_Front];
@@ -219,6 +224,10 @@
 		MAX(0, [g get_viewbox].y2 + game_screen().height)
 	)];
 	[self set_bgobj_positions:g];
+}
+
+-(NSArray*)getVillagers {
+    return [NSArray arrayWithArray:_villagers];
 }
 
 @end
