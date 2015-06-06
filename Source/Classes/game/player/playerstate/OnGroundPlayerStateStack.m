@@ -22,11 +22,7 @@
 	_land_params = [[PlayerLandParams alloc] init];
 
 	[g imm_set_camera_hei:150];
-	g._player_state = PlayerState_OnGround;
-	g.player.shared_params._s_pos = game_screen_pct(0.5, 0);
-	[g.player apply_s_pos:g];
-	
-	g.player.position = ccp(g.player.position.x,g.DOCK_HEIGHT);
+	g.player.position = ccp(game_screen_pct(0.5, 0).x,g.DOCK_HEIGHT);
 	g.player.rotation = 0;
 	[g.player read_s_pos:g];
 	
@@ -109,8 +105,6 @@
 			[g.player apply_s_pos:g];
 			[g.player play_anim:@"dive" repeat:YES];
 			if (g.player.position.y < 0) {
-				//SPTODO
-				//[self prep_land_to_water_mode:g];
 				[g.player pop_state_stack:g];
 				[g.player push_state_stack:[DivePlayerStateStack cons:g]];
 				

@@ -55,7 +55,6 @@ typedef enum _GameAnchorZ {
 @end
 
 @interface GameEngineScene : CCScene
-@property(readwrite,assign) PlayerState _player_state;
 
 +(GameEngineScene*)cons;
 

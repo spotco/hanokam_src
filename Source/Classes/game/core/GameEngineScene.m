@@ -113,9 +113,8 @@
 -(GameUI*)get_ui{ return _ui; }
 -(SpriterNodeCache*)get_spriter_node_cache { return _spriter_node_cache; }
 
-@synthesize _player_state;
 -(PlayerState)get_player_state {
-	return _player_state;
+	return _player.get_player_state;
 }
 
 +(GameEngineScene*)cons {
@@ -151,7 +150,6 @@
 	
 	[self reset_camera];
 	_player = (Player*)[[Player cons_g:self] add_to:_game_anchor z:GameAnchorZ_Player];
-	_player_state = PlayerState_OnGround;
 	
 	
 	_ripples = [NSMutableArray array];

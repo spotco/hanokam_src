@@ -8,6 +8,7 @@
 
 #import "DivePlayerStateStack.h"
 #import "PlayerUnderwaterCombatParams.h"
+#import "DiveReturnPlayerStateStack.h"
 
 @implementation DivePlayerStateStack {
 	PlayerUnderwaterCombatParams *_underwater_params;
@@ -18,7 +19,6 @@
 }
 
 -(DivePlayerStateStack*)cons:(GameEngineScene*)g {
-	//g._player_state = PlayerState_Dive;
 	_underwater_params = [[PlayerUnderwaterCombatParams alloc] init];
 	
 	_underwater_params._vy = -7;
@@ -66,6 +66,8 @@
 				_underwater_params._remainder_camera_offset = - ((g.player.position.y + _underwater_params._tar_camera_offset)-g.get_current_camera_center_y);
 			}
 			if (g.player.position.y > g.get_viewbox.y2) {
+				[g.player pop_state_stack:g];
+				[g.player push_state_stack:[DiveReturnPlayerStateStack cons:g waterparams:_underwater_params]];
 				//SPTODO
 				//[self prep_dive_to_dive_return_mode:g];
 			}

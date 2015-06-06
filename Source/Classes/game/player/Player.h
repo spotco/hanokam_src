@@ -1,6 +1,7 @@
 #import "CCSprite.h"
 #import "Common.h"
-#import "PolyLib.h" 
+#import "PolyLib.h"
+#import "GameEngineScene.h" 
 
 @class GameEngineScene;
 @class PlayerLandParams;
@@ -20,6 +21,8 @@
 -(void)set_health:(float)val;
 -(int)get_max_health;
 -(float)get_current_health;
+
+-(PlayerState)get_player_state;
 
 -(PlayerLandParams*)getLandParams;
 

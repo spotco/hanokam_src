@@ -167,11 +167,15 @@ float accel_x_move_val(GameEngineScene *g, float from_val) {
 	);
 }
 
+-(PlayerState)get_player_state {
+	return ((BasePlayerStateStack*)[_player_state_stack objectAtIndex:0]).get_state;
+}
+
 -(PlayerSharedParams*)shared_params { return _player_shared_params; }
 -(SpriterNode*)img { return _img; }
 
 -(BOOL)is_underwater:(GameEngineScene *)g {
-	return self.position.y < 0 && g._player_state != PlayerState_InAir;
+	return self.position.y < 0 && self.get_player_state != PlayerState_InAir;
 }
 
 -(PlayerLandParams*)getLandParams {
