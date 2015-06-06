@@ -68,8 +68,6 @@
 			if (g.player.position.y > g.get_viewbox.y2) {
 				[g.player pop_state_stack:g];
 				[g.player push_state_stack:[DiveReturnPlayerStateStack cons:g waterparams:_underwater_params]];
-				//SPTODO
-				//[self prep_dive_to_dive_return_mode:g];
 			}
 			[g.player read_s_pos:g];
 		break;

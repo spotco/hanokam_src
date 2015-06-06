@@ -8,6 +8,7 @@
 
 #import "AirToGroundTransitionPlayerStateStack.h"
 #import "PlayerLandParams.h"
+#import "OnGroundPlayerStateStack.h"
 
 @implementation AirToGroundTransitionPlayerStateStack {
 	PlayerLandParams *_land_params;
@@ -70,8 +71,8 @@
 			_land_params._vel = ccp(_land_params._vel.x,_land_params._vel.y - 0.4 * dt_scale_get());
 			g.player.position = CGPointAdd(g.player.position, ccp(0,_land_params._vel.y*dt_scale_get()));
 			if (_land_params._vel.y < 0 && g.player.position.y < g.DOCK_HEIGHT) {
-				//SPTODO
-				//[g.player prep_transition_air_to_land_finish_mode:g];
+				[g.player pop_state_stack:g];
+				[g.player push_state_stack:[OnGroundPlayerStateStack cons:g]];
 				return;
 			}
 			[g set_camera_height:drp(g.get_current_camera_center_y,30,20)];

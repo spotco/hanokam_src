@@ -8,6 +8,7 @@
 
 #import "DiveReturnPlayerStateStack.h"
 #import "PlayerUnderwaterCombatParams.h"
+#import "InAirPlayerStateStack.h"
 
 @implementation DiveReturnPlayerStateStack {
 	PlayerUnderwaterCombatParams *_underwater_params;
@@ -35,8 +36,9 @@
 	float tar_rotation = vec_ang_deg_lim180(vec_cons(g.player.position.x - last_pos.x,g.player.position.y - last_pos.y, 0),90) + 15;
 	g.player.rotation += shortest_angle(g.player.rotation, tar_rotation) * 0.25;
 	if (g.player.position.y > 0) {
-		//SPTODO
-		//[g.player prep_water_to_air_mode:g];
+		[g.player pop_state_stack:g];
+		[g.player push_state_stack:[InAirPlayerStateStack cons:g]];
+		
 		[g.player play_anim:@"in air" repeat:YES];
 		[g add_ripple:ccp(g.player.position.x,0)];
 	}

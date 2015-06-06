@@ -11,6 +11,7 @@
 #import "PlayerProjectile.h"
 #import "AirEnemyManager.h"
 #import "ChainedMovementParticle.h"
+#import "AirToGroundTransitionPlayerStateStack.h"
 
 @implementation InAirPlayerStateStack {
 	PlayerAirCombatParams *_air_params;
@@ -244,8 +245,8 @@
 			
 			if (g.get_ui.is_faded_out) {
 				[g.get_air_enemy_manager remove_all_enemies:g];
-				//SPTODO
-				//[g.player prep_transition_air_to_land_mode:g];
+				[g.player pop_state_stack:g];
+				[g.player push_state_stack:[AirToGroundTransitionPlayerStateStack cons:g]];
 				return;
 			}
 		break;
