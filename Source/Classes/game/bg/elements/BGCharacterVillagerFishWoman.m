@@ -32,7 +32,11 @@
 }
 
 -(void)i_update:(GameEngineScene*)g {
-
+	/*
+	if ([self in_range:g.player]) {
+		if ([g.get_control_manager is_just_tapped])
+	}
+	*/
 }
 
 -(void)play_anim:(NSString*)anim repeat:(BOOL)repeat {

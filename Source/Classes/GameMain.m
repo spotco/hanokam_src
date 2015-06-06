@@ -13,19 +13,24 @@
 TODO --
 
 GAMEPLAY IDEAS:
+reverse pullback arrow fire
 arrow decreasing bar
 energy bar
 shoot arrow tap target ui effect
 shoot arrow hold target line reticule
 arrow initial inactive time
+arrow stun
 after sword enemy invuln time (chain sword hits)
 enemy about to spawn from bottom/sides indicator
 invulnerability time
 touchtrackinglayer fadein/out
+homing arrow
 
 vulnerable enemy ui effect
 enemy bullets with patterns
 enemy invulnerable (arrow), vulnerable (sword) mode
+
+one energy/health bar
 
 TECH --
 player control class make into state machine stack
@@ -35,7 +40,7 @@ make TGSpriter classes structs instead
 */
 
 @implementation GameMain
-+(CCScene*)main; {
++(CCScene*)main {
 	calc_table_scubic_point_for_t();
 	[Resource load_all];
 	[ShaderManager load_all];

@@ -9,6 +9,7 @@
 #import "Player.h"
 #import "PlayerUIHealthIndicator.h"
 #import "PlayerChargeIndicator.h"
+#import "PlayerUIAimReticule.h"
 
 typedef enum _GameUIBossIntroMode {
 	GameUIBossIntroMode_None,
@@ -32,6 +33,8 @@ typedef enum _GameUIBossIntroMode {
 	
 	PlayerUIHealthIndicator *_player_health_ui;
 	PlayerChargeIndicator *_player_charge_ui;
+	PlayerUIAimReticule *_player_aim_reticule;
+	
 	
 	CCNode *_red_flash_overlay;
 	CCNode *_black_fadeout_overlay;
@@ -101,6 +104,9 @@ typedef enum _GameUIBossIntroMode {
 	_player_charge_ui = [PlayerChargeIndicator cons];
 	[self addChild:_player_charge_ui];
 	
+	_player_aim_reticule = [PlayerUIAimReticule cons];
+	[self addChild:_player_aim_reticule];
+	
 	return self;
 }
 
@@ -163,6 +169,7 @@ typedef enum _GameUIBossIntroMode {
 	[_particles update_particles:self];
 	[_red_flash_overlay setOpacity:MAX(0,_red_flash_overlay.opacity-0.025*dt_scale_get())];
 	[_black_fadeout_overlay setOpacity:(_tar_black_fadeout_overlay_alpha>0.5)?MIN(1,_black_fadeout_overlay.opacity+0.01*dt_scale_get()):MAX(0,_black_fadeout_overlay.opacity-0.01*dt_scale_get())];
+	[_player_aim_reticule i_update:game];
 	
 	if ([game get_player_state] == PlayerState_Dive) {
 		[_depth_bar_back setVisible:YES];

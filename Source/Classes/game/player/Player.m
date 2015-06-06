@@ -35,7 +35,7 @@
 	PlayerLandParams *_land_params;
 	
 	CGPoint _s_pos;
-	float _calc_accel_x_pos;
+	float _calc_accel_x_pos; //actual 1-to-1 x position (not offset by dashing)
 	BOOL _reset_to_center;
 	
 	float _current_health;
@@ -110,8 +110,6 @@
 			[self update_air_to_ground_transition:g];
 		break;
 	}
-	[g.get_control_manager clear_proc_swipe];
-	[g.get_control_manager clear_proc_tap];
 }
 
 -(void)play_anim:(NSString*)anim repeat:(BOOL)repeat {
@@ -129,7 +127,10 @@
 }
 
 float accel_x_move_val(GameEngineScene *g, float from_val) {
-	return clampf(((160 + g.get_control_manager.get_frame_accel_x_vel * 320) - from_val) * .07,-7, 7) * dt_scale_get();
+	return clampf(
+		((160 + g.get_control_manager.get_frame_accel_x_vel * 320) - from_val) * .07 ,
+		-7 , 7)
+		* dt_scale_get();
 }
 -(float)get_next_update_accel_x_position:(GameEngineScene*)g {
 	float target_delta = accel_x_move_val(g, _calc_accel_x_pos);
@@ -230,7 +231,9 @@ float accel_x_move_val(GameEngineScene *g, float from_val) {
 					_land_params._prep_dive_hold_ct = 0;
 				}
 				float vx = [self get_next_update_accel_x_position_delta:g];
-				if (ABS(vx) > _land_params.MOVE_CUTOFF_VAL) {
+				if (ABS(vx) > _land_params.MOVE_CUTOFF_VAL
+					|| ABS(_s_pos.x-_calc_accel_x_pos) > 1 //not recentered yet to _calc_accel_x_pos
+					) {
 					_land_params._move_hold_ct += dt_scale_get();
 					if (_land_params._move_hold_ct > _land_params.MOVE_HOLD_TIME) {
 						[self update_accel_x_position:g];

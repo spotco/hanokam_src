@@ -49,6 +49,13 @@
 		7E9A44BF1B1DA29C00111C35 /* charge_circle.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 7E9A44BE1B1DA29C00111C35 /* charge_circle.fsh */; };
 		7E9A44C11B1DA2AC00111C35 /* charge_circle.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 7E9A44C01B1DA2AC00111C35 /* charge_circle.vsh */; };
 		7E9A44C41B1DADBA00111C35 /* PlayerChargeIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E9A44C31B1DADBA00111C35 /* PlayerChargeIndicator.m */; };
+		7E9A58441B22CBE7008EC348 /* PlayerUIAimReticule.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E9A58431B22CBE7008EC348 /* PlayerUIAimReticule.m */; };
+		7E9A58481B22CFD9008EC348 /* alpha_gradient.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 7E9A58471B22CFD9008EC348 /* alpha_gradient.vsh */; };
+		7E9A58491B22CFD9008EC348 /* alpha_gradient.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 7E9A58471B22CFD9008EC348 /* alpha_gradient.vsh */; };
+		7E9A584A1B22CFD9008EC348 /* alpha_gradient.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 7E9A58471B22CFD9008EC348 /* alpha_gradient.vsh */; };
+		7E9A584C1B22D032008EC348 /* alpha_gradient.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 7E9A584B1B22D032008EC348 /* alpha_gradient.fsh */; };
+		7E9A584D1B22D032008EC348 /* alpha_gradient.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 7E9A584B1B22D032008EC348 /* alpha_gradient.fsh */; };
+		7E9A584E1B22D032008EC348 /* alpha_gradient.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 7E9A584B1B22D032008EC348 /* alpha_gradient.fsh */; };
 		7EBC2AE91B1C4EDF00AC47F1 /* gameplay_elements_ss.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7EBC2AE71B1C4EDF00AC47F1 /* gameplay_elements_ss.plist */; };
 		7EBC2AEA1B1C4EDF00AC47F1 /* gameplay_elements_ss.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7EBC2AE71B1C4EDF00AC47F1 /* gameplay_elements_ss.plist */; };
 		7EBC2AEB1B1C4EDF00AC47F1 /* gameplay_elements_ss.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7EBC2AE71B1C4EDF00AC47F1 /* gameplay_elements_ss.plist */; };
@@ -499,6 +506,10 @@
 		7E9A44C01B1DA2AC00111C35 /* charge_circle.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = charge_circle.vsh; sourceTree = "<group>"; };
 		7E9A44C21B1DADBA00111C35 /* PlayerChargeIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerChargeIndicator.h; sourceTree = "<group>"; };
 		7E9A44C31B1DADBA00111C35 /* PlayerChargeIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerChargeIndicator.m; sourceTree = "<group>"; };
+		7E9A58421B22CBE7008EC348 /* PlayerUIAimReticule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerUIAimReticule.h; sourceTree = "<group>"; };
+		7E9A58431B22CBE7008EC348 /* PlayerUIAimReticule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerUIAimReticule.m; sourceTree = "<group>"; };
+		7E9A58471B22CFD9008EC348 /* alpha_gradient.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = alpha_gradient.vsh; sourceTree = "<group>"; };
+		7E9A584B1B22D032008EC348 /* alpha_gradient.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = alpha_gradient.fsh; sourceTree = "<group>"; };
 		7EBC2AE71B1C4EDF00AC47F1 /* gameplay_elements_ss.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = gameplay_elements_ss.plist; sourceTree = "<group>"; };
 		7EBC2AE81B1C4EDF00AC47F1 /* gameplay_elements_ss.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gameplay_elements_ss.png; sourceTree = "<group>"; };
 		7ED822041B13D258001BB249 /* AirEnemyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AirEnemyManager.h; sourceTree = "<group>"; };
@@ -1061,6 +1072,8 @@
 				7ED822461B13D258001BB249 /* PlayerUIHealthIndicator.m */,
 				7E9A44C21B1DADBA00111C35 /* PlayerChargeIndicator.h */,
 				7E9A44C31B1DADBA00111C35 /* PlayerChargeIndicator.m */,
+				7E9A58421B22CBE7008EC348 /* PlayerUIAimReticule.h */,
+				7E9A58431B22CBE7008EC348 /* PlayerUIAimReticule.m */,
 			);
 			path = ui;
 			sourceTree = "<group>";
@@ -1269,6 +1282,8 @@
 				7ED8235A1B13D2A6001BB249 /* ripple_effect.vsh */,
 				7E9A44BE1B1DA29C00111C35 /* charge_circle.fsh */,
 				7E9A44C01B1DA2AC00111C35 /* charge_circle.vsh */,
+				7E9A58471B22CFD9008EC348 /* alpha_gradient.vsh */,
+				7E9A584B1B22D032008EC348 /* alpha_gradient.fsh */,
 			);
 			path = shaders;
 			sourceTree = "<group>";
@@ -1554,12 +1569,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A4036F719DE401F007B6E8F /* iPad-old.png in Resources */,
+				7E9A584A1B22CFD9008EC348 /* alpha_gradient.vsh in Resources */,
 				7ED823A11B13D2A6001BB249 /* oldman_ss.json in Resources */,
 				7ED823AA1B13D2A6001BB249 /* villager_fishwoman.png in Resources */,
 				7ED823651B13D2A6001BB249 /* 5ceta_mono.ttf in Resources */,
 				7ED823BC1B13D2A6001BB249 /* aiming_bar.png in Resources */,
 				7ED8238F1B13D2A6001BB249 /* hanokav2.png in Resources */,
 				7ED8236E1B13D2A6001BB249 /* bg_test_tile_sky.png in Resources */,
+				7E9A584E1B22D032008EC348 /* alpha_gradient.fsh in Resources */,
 				7ED823921B13D2A6001BB249 /* hanokav2.scml in Resources */,
 				7ED823831B13D2A6001BB249 /* underwater_spritesheet.plist in Resources */,
 				7EBC2AEB1B1C4EDF00AC47F1 /* gameplay_elements_ss.plist in Resources */,
@@ -1628,6 +1645,7 @@
 				7ED8237F1B13D2A6001BB249 /* sky_spritesheet.png in Resources */,
 				7ED823A01B13D2A6001BB249 /* oldman_ss.json in Resources */,
 				7ED823DC1B13D2A6001BB249 /* reflection_am_down.vsh in Resources */,
+				7E9A584D1B22D032008EC348 /* alpha_gradient.fsh in Resources */,
 				7EBC2AEA1B1C4EDF00AC47F1 /* gameplay_elements_ss.plist in Resources */,
 				7ED823CD1B13D2A6001BB249 /* abovewater_am_up.fsh in Resources */,
 				927F61AD196C771E000F43EF /* Settings.png in Resources */,
@@ -1688,6 +1706,7 @@
 				927F61BB196C771E000F43EF /* iPad-old.png in Resources */,
 				7ED823D91B13D2A6001BB249 /* reflection_am_down.fsh in Resources */,
 				7ED823F11B13D2A6001BB249 /* spriter_test.png in Resources */,
+				7E9A58491B22CFD9008EC348 /* alpha_gradient.vsh in Resources */,
 				7ED823E81B13D2A6001BB249 /* sh_button_side.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1700,6 +1719,7 @@
 				7ED8237E1B13D2A6001BB249 /* sky_spritesheet.png in Resources */,
 				7ED8239F1B13D2A6001BB249 /* oldman_ss.json in Resources */,
 				7ED823DB1B13D2A6001BB249 /* reflection_am_down.vsh in Resources */,
+				7E9A584C1B22D032008EC348 /* alpha_gradient.fsh in Resources */,
 				7EBC2AE91B1C4EDF00AC47F1 /* gameplay_elements_ss.plist in Resources */,
 				7ED823CC1B13D2A6001BB249 /* abovewater_am_up.fsh in Resources */,
 				B71F5919188484E7003F4D28 /* Settings.png in Resources */,
@@ -1760,6 +1780,7 @@
 				B71F5911188484E7003F4D28 /* iPad-old.png in Resources */,
 				7ED823D81B13D2A6001BB249 /* reflection_am_down.fsh in Resources */,
 				7ED823F01B13D2A6001BB249 /* spriter_test.png in Resources */,
+				7E9A58481B22CFD9008EC348 /* alpha_gradient.vsh in Resources */,
 				7ED823E71B13D2A6001BB249 /* sh_button_side.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1962,6 +1983,7 @@
 				7ED822A91B13D258001BB249 /* ChainedMovementParticle.m in Sources */,
 				7ED8227C1B13D258001BB249 /* AirEnemyManager.m in Sources */,
 				7ED822F71B13D258001BB249 /* GEventDispatcher.m in Sources */,
+				7E9A58441B22CBE7008EC348 /* PlayerUIAimReticule.m in Sources */,
 				7ED8229D1B13D258001BB249 /* ControlManager.m in Sources */,
 				7A046D8C19E8A20E004C4763 /* MainScene.m in Sources */,
 				7ED8230F1B13D258001BB249 /* SpriterTypes.m in Sources */,
