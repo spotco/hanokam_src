@@ -92,6 +92,9 @@ typedef struct CameraZoom {
 typedef struct CGRange {
     float min,max;
 } CGRange;
+CGRange CGRangeMake(float min, float max);
+
+CGRect cctexture_default_rect(CCTexture *tex);
 
 #define _NSSET(...)  [NSMutableSet setWithArray:@[__VA_ARGS__]]
 #define _NSMARRAY(...)  [NSMutableArray arrayWithArray:@[__VA_ARGS__]]

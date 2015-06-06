@@ -7,7 +7,9 @@
 //
 
 #import "CCNode.h"
+#import "Common.h" 
 @class GameEngineScene;
+
 @interface PlayerUIAimReticule : CCNode
 
 +(PlayerUIAimReticule*)cons;

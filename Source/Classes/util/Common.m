@@ -174,6 +174,14 @@ fCGPoint fCGPointMake(float x, float y){
 }
 @end
 
+CGRange CGRangeMake(float min, float max) {
+	return (CGRange){min,max};
+}
+
+CGRect cctexture_default_rect(CCTexture *tex) {
+	return CGRectMake(0, 0, tex.pixelWidth, tex.pixelHeight);
+}
+
 NSString* strf (char* format, ... ) {
     char outp[255];
     va_list a_list;
