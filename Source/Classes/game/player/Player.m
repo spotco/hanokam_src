@@ -10,20 +10,13 @@
 #import "SpriterJSONParser.h"
 #import "SpriterData.h"
 
-#import "PlayerProjectile.h"
-
 #import "CCTexture_Private.h"
 #import "ControlManager.h"
-
-#import "AirEnemyManager.h"
-#import "BasicAirEnemy.h"
 
 #import "PlayerSharedParams.h"
 #import "OnGroundPlayerStateStack.h"
 
 #import "GameUI.h"
-
-#import "ChainedMovementParticle.h"
 
 @implementation Player {
 	SpriterNode *_img;
@@ -97,8 +90,7 @@
 		_on_finish_play_anim = NULL;
 	}
 	
-	BasePlayerStateStack *state_stack_top = [_player_state_stack objectAtIndex:0];
-	[state_stack_top i_update:g];
+	[[self get_top_state] i_update:g];
 }
 
 -(void)play_anim:(NSString*)anim repeat:(BOOL)repeat {
@@ -177,11 +169,6 @@ float accel_x_move_val(GameEngineScene *g, float from_val) {
 -(BOOL)is_underwater:(GameEngineScene *)g {
 	return self.position.y < 0 && self.get_player_state != PlayerState_InAir;
 }
-
--(PlayerLandParams*)getLandParams {
-    return NULL;
-}
-
 
 -(CGPoint)get_size { return ccp(40,130); }
 -(HitRect)get_hit_rect {
