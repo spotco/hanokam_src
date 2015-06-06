@@ -17,7 +17,8 @@ typedef enum _PlayerState {
 	PlayerState_DiveReturn = 1,
 	PlayerState_InAir = 2,
 	PlayerState_OnGround = 3,
-	PlayerState_AirToGroundTransition = 4
+	PlayerState_AirToGroundTransition = 4,
+    PlayerState_InDialogue = 5
 } PlayerState;
 
 typedef enum _GameAnchorZ {
