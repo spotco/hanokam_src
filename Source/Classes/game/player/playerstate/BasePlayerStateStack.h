@@ -18,6 +18,7 @@
 -(void)i_update:(GameEngineScene*)game;
 -(PlayerState)get_state;
 -(void)on_state_end:(GameEngineScene*)game;
+-(BOOL)on_land:(GameEngineScene*)game;
 @end
 
 @interface IdlePlayerStateStack : BasePlayerStateStack

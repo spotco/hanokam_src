@@ -49,8 +49,8 @@
 	[self play_anim:@"idle" repeat:YES];
 	[self addChild:_img z:1];
 	
-	//SPTODO
-	//[self prep_initial_land_mode:g];
+	self.position = ccp(game_screen_pct(0.5, 0).x,g.DOCK_HEIGHT);
+	[g set_camera_height:150];
 	[self push_state_stack:[IdlePlayerStateStack cons]];
 	[self push_state_stack:[OnGroundPlayerStateStack cons:g]];
 	
@@ -86,14 +86,11 @@
 -(float)get_current_health { return _current_health; }
 
 -(void)i_update:(GameEngineScene*)g {
-	//SPTODO
-	/*
-	if (g.get_player_state == PlayerState_OnGround && _land_params._current_mode == PlayerLandMode_OnDock) {
+	if (self.get_player_state == PlayerState_OnGround && [g.player.get_top_state on_land:g]) {
 		[self setZOrder:GameAnchorZ_Player];
 	} else {
 		[self setZOrder:GameAnchorZ_Player_Out];
 	}
-	*/
 	
 	if (!_img.current_anim_repeating && _img.current_anim_finished && _on_finish_play_anim != NULL) {
 		[_img playAnim:_on_finish_play_anim repeat:YES];
@@ -168,7 +165,10 @@ float accel_x_move_val(GameEngineScene *g, float from_val) {
 }
 
 -(PlayerState)get_player_state {
-	return ((BasePlayerStateStack*)[_player_state_stack objectAtIndex:0]).get_state;
+	return [self get_top_state].get_state;
+}
+-(BasePlayerStateStack*)get_top_state {
+	return [_player_state_stack objectAtIndex:0];
 }
 
 -(PlayerSharedParams*)shared_params { return _player_shared_params; }

@@ -24,4 +24,8 @@
 	NSLog(@"PLAYER IDLE STATE");
 }
 
+-(BOOL)on_land:(GameEngineScene*)game {
+	return NO;
+}
+
 @end

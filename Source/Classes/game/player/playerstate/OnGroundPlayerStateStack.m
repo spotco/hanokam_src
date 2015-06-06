@@ -20,12 +20,8 @@
 
 -(OnGroundPlayerStateStack*)cons:(GameEngineScene*)g {
 	_land_params = [[PlayerLandParams alloc] init];
-
-	[g imm_set_camera_hei:150];
-	g.player.position = ccp(game_screen_pct(0.5, 0).x,g.DOCK_HEIGHT);
 	g.player.rotation = 0;
 	[g.player read_s_pos:g];
-	
 	_land_params._current_mode = PlayerLandMode_OnDock;
 	return self;
 }
@@ -119,6 +115,10 @@
 
 -(PlayerState)get_state {
 	return PlayerState_OnGround;
+}
+
+-(BOOL)on_land:(GameEngineScene *)game {
+	return _land_params._current_mode == PlayerLandMode_OnDock;
 }
 
 @end

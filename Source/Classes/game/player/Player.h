@@ -23,9 +23,7 @@
 -(float)get_current_health;
 
 -(PlayerState)get_player_state;
-
--(PlayerLandParams*)getLandParams;
-
+-(BasePlayerStateStack*)get_top_state;
 
 //internal State stack methods
 -(PlayerSharedParams*)shared_params;
