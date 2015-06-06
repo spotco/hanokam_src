@@ -51,29 +51,7 @@
         } else {
             [itrBubble i_update:NO];
         }
-    }
-//
-//    
-//    NSMutableSet *active_dialogue_objhash = _bgCharacterDialogueBubbles.keySet;
-//    for (BGCharacterBase *itrChar in game.get_bg_village.getVillagers) {
-//        if (itrChar.state == BGCharacter_CanSpeak) {
-//            NSNumber *itr_hash = @([itrChar hash]);
-//            if ([active_dialogue_objhash containsObject:itr_hash]) {
-//                [active_dialogue_objhash removeObject:itr_hash];
-//            } else {
-//                _bgCharacterDialogueBubbles[itr_hash] = [DialogueBubble cons_pos:CGPointAdd([itrChar convertToWorldSpace:CGPointZero],itrChar.dialogueOffset)];
-//                [self addChild:_bgCharacterDialogueBubbles[itr_hash]];
-//            }
-//            DialogueBubble *itrBubble = _bgCharacterDialogueBubbles[itr_hash];
-//            [itrBubble setPosition:CGPointAdd([itrChar convertToWorldSpace:CGPointZero],itrChar.dialogueOffset)];
-//        }
-//    }
-//    
-//    for (NSNumber *itr_hash in active_dialogue_objhash) {
-//        DialogueBubble *itrBubble = _bgCharacterDialogueBubbles[itr_hash];
-//        [self removeChild:itrBubble];
-//        [_bgCharacterDialogueBubbles removeObjectForKey:itr_hash];
-//    }    
+    }  
 }
 
 @end

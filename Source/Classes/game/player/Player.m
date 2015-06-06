@@ -638,6 +638,11 @@ float accel_x_move_val(GameEngineScene *g, float from_val) {
 	return self.position.y < 0 && g._player_state != PlayerState_InAir;
 }
 
+-(PlayerLandParams*)getLandParams {
+    return _land_params;
+}
+
+
 -(CGPoint)get_size { return ccp(40,130); }
 -(HitRect)get_hit_rect {
 	return satpolyowner_cons_hit_rect(self.position, self.get_size.x, self.get_size.y);

@@ -13,6 +13,7 @@
 #import "Player.h"
 #import "ControlManager.h"
 #import "Common.h"
+#import "PlayerLandParams.h"
 
 // Range to enable dialogue
 static NSUInteger const DIALOGUE_RANGE = 20;
@@ -23,7 +24,7 @@ static CGFloat const TAP_RANGE = 50;
 @synthesize dialogueOffset = _dialogueOffset;
 
 -(void)i_update:(GameEngineScene*)g {
-    if (g.get_player_state == PlayerState_OnGround) {
+    if (g.get_player_state == PlayerState_OnGround && g.player.getLandParams._current_mode == PlayerLandMode_OnDock) {
         switch (self.state) {
             case BGCharacter_Idle:;
                 // Proceed to CAN_SPEAK state if player is within range

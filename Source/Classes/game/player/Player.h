@@ -1,7 +1,9 @@
 #import "CCSprite.h"
 #import "Common.h"
 #import "PolyLib.h" 
+
 @class GameEngineScene;
+@class PlayerLandParams;
 
 @interface Player : CCSprite <SATPolyHitOwner>
 
@@ -15,4 +17,7 @@
 -(void)set_health:(float)val;
 -(int)get_max_health;
 -(float)get_current_health;
+
+-(PlayerLandParams*)getLandParams;
+
 @end
