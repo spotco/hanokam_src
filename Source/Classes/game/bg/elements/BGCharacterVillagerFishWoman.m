@@ -8,13 +8,7 @@
 #import "SpriterJSONParser.h"
 #import "SpriterData.h"
 
-@implementation BGCharacterVillagerFishWoman {
-	SpriterNode *_img;
-	
-	NSString *_current_playing;
-	NSString *_on_finish_play_anim;
-}
-
+@implementation BGCharacterVillagerFishWoman
 
 +(BGCharacterVillagerFishWoman*)cons_pos:(CGPoint)pos {
 	return [[BGCharacterVillagerFishWoman node] cons_pos:pos];
@@ -29,10 +23,6 @@
 	[self addChild:_img];
 	
 	return self;
-}
-
--(void)i_update:(GameEngineScene*)g {
-
 }
 
 -(void)play_anim:(NSString*)anim repeat:(BOOL)repeat {

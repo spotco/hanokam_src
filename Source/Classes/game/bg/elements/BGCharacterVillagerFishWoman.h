@@ -7,8 +7,12 @@
 //
 
 #import "CCSprite.h"
+#import "BGCharacterBase.h"
+
 @class GameEngineScene;
-@interface BGCharacterVillagerFishWoman : CCSprite
+
+@interface BGCharacterVillagerFishWoman : BGCharacterBase
+
 +(BGCharacterVillagerFishWoman*)cons_pos:(CGPoint)pos;
--(void)i_update:(GameEngineScene*)g;
+
 @end

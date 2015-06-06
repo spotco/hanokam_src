@@ -4,6 +4,7 @@
 #import "Resource.h"
 #import "FileCache.h"
 #import "GameEngineScene.h"
+#import "GameMain.h"
 
 #import "SpriterNode.h"
 #import "SpriterJSONParser.h"
@@ -106,12 +107,13 @@
 			[self update_on_ground:g];
 			
 		break;
+        case PlayerState_InDialogue:
+            // Don't update player while in dialogue
+        break;
 		case PlayerState_AirToGroundTransition:
 			[self update_air_to_ground_transition:g];
 		break;
 	}
-	[g.get_control_manager clear_proc_swipe];
-	[g.get_control_manager clear_proc_tap];
 }
 
 -(void)play_anim:(NSString*)anim repeat:(BOOL)repeat {
@@ -223,8 +225,18 @@ float accel_x_move_val(GameEngineScene *g, float from_val) {
 					_land_params._current_mode = PlayerLandMode_LandToWater;
 					_land_params._vel = ccp(0,10 * dt_scale_get());
 				}
-				
-			} else {
+#if HMCFG_ON_SIMULATOR
+            } else if (g.get_control_manager.is_proc_tap) {
+                CGPoint tapPos = g.get_control_manager.get_proc_tap;
+                
+                if (tapPos.x > self.position.x) {
+                    _s_pos.x = _s_pos.x + 10;
+                } else {
+                    _s_pos.x = _s_pos.x - 10;
+                }
+                self.position = ccp(_s_pos.x, self.position.y);
+#endif
+            } else {
 				if (_land_params._prep_dive_hold_ct > 0) {
 					[g.get_ui charge_fail];
 					_land_params._prep_dive_hold_ct = 0;

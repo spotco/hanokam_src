@@ -8,12 +8,7 @@
 #import "SpriterJSONParser.h"
 #import "SpriterData.h"
 
-@implementation BGCharacterOldMan {
-	SpriterNode *_img;
-	CCSprite *_thoughtbubble;
-	NSString *_current_playing;
-	NSString *_on_finish_play_anim;
-}
+@implementation BGCharacterOldMan 
 
 +(BGCharacterOldMan*)cons_pos:(CGPoint)pos {
 	return [[BGCharacterOldMan node] cons_pos:pos];
@@ -28,22 +23,7 @@
 	[self play_anim:@"idle" repeat:YES];
 	[self addChild:_img];
 	
-	_thoughtbubble = [CCSprite node];
-	[_thoughtbubble runAction:animaction_cons(@[@"thought_cloud_0.png",@"thought_cloud_1.png"], 0.5, TEX_HUD_SPRITESHEET)];
-	[_thoughtbubble setPosition:ccp(-280,200)];
-	[self addChild:_thoughtbubble];
-	
-	[_thoughtbubble addChild:flipper_cons_for(
-		label_cons(ccp(-150,100), ccc3(0, 0, 0), 20, @"who is\nthis scrub"),
-		-1,1
-	)];
-	[_thoughtbubble setOpacity:0.85];
-	
 	return self;
-}
-
--(void)i_update:(GameEngineScene *)g {
-
 }
 
 -(void)play_anim:(NSString*)anim repeat:(BOOL)repeat {

@@ -7,10 +7,12 @@
 //
 
 #import "CCSprite.h"
+#import "BGCharacterBase.h"
+
 @class GameEngineScene;
-@interface BGCharacterOldMan : CCSprite
+
+@interface BGCharacterOldMan : BGCharacterBase
 
 +(BGCharacterOldMan*)cons_pos:(CGPoint)pos;
--(void)i_update:(GameEngineScene*)g;
 
 @end
