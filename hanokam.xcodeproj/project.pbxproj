@@ -444,6 +444,16 @@
 		BB771B011B22F602002BA595 /* DialogueBubble.m in Sources */ = {isa = PBXBuildFile; fileRef = BB771B001B22F602002BA595 /* DialogueBubble.m */; };
 		BB771B101B23D0A8002BA595 /* InDialoguePlayerStateStack.m in Sources */ = {isa = PBXBuildFile; fileRef = BB771B0F1B23D0A8002BA595 /* InDialoguePlayerStateStack.m */; };
 		BB771B151B23DCBF002BA595 /* DialogUI.m in Sources */ = {isa = PBXBuildFile; fileRef = BB771B141B23DCBF002BA595 /* DialogUI.m */; };
+		BB771B1C1B23F763002BA595 /* InDialoguePlayerStateStack.m in Sources */ = {isa = PBXBuildFile; fileRef = BB771B0F1B23D0A8002BA595 /* InDialoguePlayerStateStack.m */; };
+		BB771B1F1B23F764002BA595 /* InDialoguePlayerStateStack.m in Sources */ = {isa = PBXBuildFile; fileRef = BB771B0F1B23D0A8002BA595 /* InDialoguePlayerStateStack.m */; };
+		BB771B201B23F768002BA595 /* BGCharacterBase.m in Sources */ = {isa = PBXBuildFile; fileRef = BB771AF21B22C910002BA595 /* BGCharacterBase.m */; };
+		BB771B211B23F769002BA595 /* BGCharacterBase.m in Sources */ = {isa = PBXBuildFile; fileRef = BB771AF21B22C910002BA595 /* BGCharacterBase.m */; };
+		BB771B221B23F777002BA595 /* DialogueBubble.m in Sources */ = {isa = PBXBuildFile; fileRef = BB771B001B22F602002BA595 /* DialogueBubble.m */; };
+		BB771B231B23F777002BA595 /* DialogueBubble.m in Sources */ = {isa = PBXBuildFile; fileRef = BB771B001B22F602002BA595 /* DialogueBubble.m */; };
+		BB771B241B23F780002BA595 /* VillageUI.m in Sources */ = {isa = PBXBuildFile; fileRef = BB771AFB1B22EB03002BA595 /* VillageUI.m */; };
+		BB771B251B23F780002BA595 /* VillageUI.m in Sources */ = {isa = PBXBuildFile; fileRef = BB771AFB1B22EB03002BA595 /* VillageUI.m */; };
+		BB771B261B23F786002BA595 /* DialogUI.m in Sources */ = {isa = PBXBuildFile; fileRef = BB771B141B23DCBF002BA595 /* DialogUI.m */; };
+		BB771B271B23F787002BA595 /* DialogUI.m in Sources */ = {isa = PBXBuildFile; fileRef = BB771B141B23DCBF002BA595 /* DialogUI.m */; };
 		BC5399D81A44DCC90063F482 /* AndroidKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC5399D31A44DCC90063F482 /* AndroidKit.framework */; };
 		BC5399D91A44DCC90063F482 /* CoreJava.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC5399D41A44DCC90063F482 /* CoreJava.framework */; };
 		BC5399DA1A44DCC90063F482 /* GLActivityKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC5399D51A44DCC90063F482 /* GLActivityKit.framework */; };
@@ -1959,6 +1969,8 @@
 				7E386D3E1B23A59A00DDEFF6 /* DivePlayerStateStack.m in Sources */,
 				7ED822A21B13D258001BB249 /* GameEngineScene.m in Sources */,
 				7ED822CC1B13D258001BB249 /* PlayerProjectile.m in Sources */,
+				BB771B1F1B23F764002BA595 /* InDialoguePlayerStateStack.m in Sources */,
+				BB771B251B23F780002BA595 /* VillageUI.m in Sources */,
 				7E386D1F1B239EDE00DDEFF6 /* BasePlayerStateStack.m in Sources */,
 				7ED8231A1B13D258001BB249 /* TouchTrackingLayer.m in Sources */,
 				7ED822D21B13D258001BB249 /* HealthBar.m in Sources */,
@@ -1967,12 +1979,14 @@
 				7ED822A81B13D258001BB249 /* ShopScene.m in Sources */,
 				7E9A58631B23098C008EC348 /* FlashCount.m in Sources */,
 				7ED8229C1B13D258001BB249 /* BGCharacterVillagerFishWoman.m in Sources */,
+				BB771B231B23F777002BA595 /* DialogueBubble.m in Sources */,
 				7ED823021B13D258001BB249 /* ShaderManager.m in Sources */,
 				7ED822C01B13D258001BB249 /* Player.m in Sources */,
 				7ED823FF1B13DD59001BB249 /* md5.c in Sources */,
 				7ED823141B13D258001BB249 /* SpriterUtil.m in Sources */,
 				7ED822FC1B13D258001BB249 /* PolyLib.m in Sources */,
 				7ED823201B13D258001BB249 /* WebRequest.m in Sources */,
+				BB771B271B23F787002BA595 /* DialogUI.m in Sources */,
 				7ED822F31B13D258001BB249 /* DataStore.m in Sources */,
 				7ED822B11B13D258001BB249 /* ParticleBubble.m in Sources */,
 				7ED822F61B13D258001BB249 /* FileCache.m in Sources */,
@@ -1983,6 +1997,7 @@
 				7E9A58541B22EFA3008EC348 /* AlphaGradientSprite.m in Sources */,
 				7ED822D51B13D258001BB249 /* PlayerUIHealthIndicator.m in Sources */,
 				7ED823081B13D258001BB249 /* SpriterJSONParser.m in Sources */,
+				BB771B211B23F769002BA595 /* BGCharacterBase.m in Sources */,
 				7ED8228D1B13D258001BB249 /* BGSky.m in Sources */,
 				7ED822FF1B13D258001BB249 /* Resource.m in Sources */,
 				7E386D391B23A0BE00DDEFF6 /* PlayerSharedParams.m in Sources */,
@@ -2023,6 +2038,8 @@
 				7ED822F51B13D258001BB249 /* FileCache.m in Sources */,
 				7E386D1E1B239EDE00DDEFF6 /* BasePlayerStateStack.m in Sources */,
 				7ED822AD1B13D258001BB249 /* Particle.m in Sources */,
+				BB771B241B23F780002BA595 /* VillageUI.m in Sources */,
+				BB771B1C1B23F763002BA595 /* InDialoguePlayerStateStack.m in Sources */,
 				7ED8231F1B13D258001BB249 /* WebRequest.m in Sources */,
 				7ED822E91B13D258001BB249 /* SHItemRow.m in Sources */,
 				7E386D231B239FE600DDEFF6 /* OnGroundPlayerStateStack.m in Sources */,
@@ -2043,6 +2060,7 @@
 				7E386D421B23A75F00DDEFF6 /* DiveReturnPlayerStateStack.m in Sources */,
 				7ED8230D1B13D258001BB249 /* SpriterNodeCache.m in Sources */,
 				7ED822B91B13D258001BB249 /* RotateFadeOutParticle.m in Sources */,
+				BB771B261B23F786002BA595 /* DialogUI.m in Sources */,
 				7ED822891B13D258001BB249 /* BGReflection.m in Sources */,
 				7ED822D41B13D258001BB249 /* PlayerUIHealthIndicator.m in Sources */,
 				7ED823041B13D258001BB249 /* SpriterData.m in Sources */,
@@ -2063,11 +2081,13 @@
 				7ED822801B13D258001BB249 /* BasicAirEnemy.m in Sources */,
 				7E9A58531B22EFA3008EC348 /* AlphaGradientSprite.m in Sources */,
 				7ED822DA1B13D258001BB249 /* MainMenuScene.m in Sources */,
+				BB771B201B23F768002BA595 /* BGCharacterBase.m in Sources */,
 				7ED822921B13D258001BB249 /* BGWater.m in Sources */,
 				7ED822E31B13D258001BB249 /* SHButton.m in Sources */,
 				7ED822F21B13D258001BB249 /* DataStore.m in Sources */,
 				7ED822981B13D258001BB249 /* BGCharacterTest.m in Sources */,
 				7ED822BC1B13D258001BB249 /* UIBossIntroParticle.m in Sources */,
+				BB771B221B23F777002BA595 /* DialogueBubble.m in Sources */,
 				7E386D381B23A0BE00DDEFF6 /* PlayerSharedParams.m in Sources */,
 				5B121030197484FA004C1E1D /* hanokamActivity.m in Sources */,
 				7E386D301B23A0AC00DDEFF6 /* PlayerLandParams.m in Sources */,
