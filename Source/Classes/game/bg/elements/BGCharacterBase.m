@@ -59,8 +59,8 @@ static CGFloat const TAP_RANGE = 50;
                 if (g.get_control_manager.is_proc_tap) {
                     _state = BGCharacter_CanSpeak;
                 }
-                [g set_zoom:drp(g.get_zoom,2.5,20)];
-                [g set_camera_height:drp(g.get_current_camera_center_y,g.player.position.y,20)];
+                //[g set_zoom:drp(g.get_zoom,2.5,20)];
+                //[g set_camera_height:drp(g.get_current_camera_center_y,g.player.position.y,20)];
                 break;
             default:
                 break;

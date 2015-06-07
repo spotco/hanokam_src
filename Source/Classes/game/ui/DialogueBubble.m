@@ -48,7 +48,9 @@ typedef enum {
     return self;
 }
 
--(void)i_update:(BOOL)shouldShow {
+-(void)i_update:(GameEngineScene *)g shouldShow:(BOOL)shouldShow {
+	[self setScale:g.get_zoom];
+
     switch (_state) {
         case DialogueBubbleState_Hidden:
             // If should show bubble, proceed to FADE_IN state

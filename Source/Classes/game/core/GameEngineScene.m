@@ -141,7 +141,6 @@
 	
 	_zoom_node = [CCNode node];
 	[super addChild:_zoom_node];
-	[_zoom_node setPosition:game_screen_pct(.5, .5)];
 	
 	_game_anchor = [[CCNode node] add_to:_zoom_node];
 	
@@ -206,6 +205,8 @@
 	[_ripples removeObjectsInArray:to_remove];
 }
 
+//static float _testz = 1;
+
 //static bool TEST_HAS_ACTIVATED_BOSS = false;
 -(void)update:(CCTime)delta {
 	dt_set(delta);
@@ -242,7 +243,9 @@
 	[_ui i_update:self];
 	
 	if (HMCFG_DRAW_HITBOXES) [self debug_draw_hitboxes];
-    
+	
+	[self set_zoom:1];
+	
 	[self.get_control_manager clear_proc_swipe];
 	[self.get_control_manager clear_proc_tap];
 }
@@ -311,18 +314,40 @@
 	screen.width *= _current_zoom;
 	screen.height *= _current_zoom;
 	CGPoint delta_max = ccp(
-		(screen.width - game_screen().width)/2,
-		(screen.height - game_screen().height)/2
+		(screen.width - game_screen().width)/2/_current_zoom,
+		(screen.height - game_screen().height)/2/_current_zoom
 	);
-	
 	HitRect view = [self get_viewbox];
 	CGPoint screen_center = CGPointMid(ccp(view.x1,view.y1), ccp(view.x2,view.y2));
 	CGPoint player_offset = CGPointSub(screen_center,_player.position);
 	
-	return CGPointAdd(center, ccp(
-		clampf(player_offset.x, -delta_max.x, delta_max.x),
+	//y position is set
+	CGPoint x_rel_y_final_pt = CGPointAdd(center, ccp(
+		player_offset.x,
 		clampf(player_offset.y, -delta_max.y, delta_max.y)
 	));
+	
+	//player anchorpoint on the world
+	CGPoint ppt = ccp((_player.position.x - view.x1)/(view.x2-view.x1),(_player.position.y - view.y1)/(view.y2-view.y1));
+	
+	//rtv.y - game_screen().height*-(-ANCHORPOINT.x)*(_current_zoom-1)
+	CGPoint rtv = ccp(
+		x_rel_y_final_pt.x - game_screen().width*-(-ppt.x+0.5)*(_current_zoom-1),
+		x_rel_y_final_pt.y
+	);
+	
+	/*
+	linear regression {{1,159},{1.3,207},{1.6,256},{2.1,335.03}}
+	L: 160.179x - 1.01
+
+	linear regression {{1,159},{1.3,111.2},{1.6,63.32},{2.1,-17}}
+	R: 319.148-160.012x
+	*/
+	float xmin = 160.179*_current_zoom-1.01;
+	float xmax = 319.148-160.012*_current_zoom;
+	rtv.x = clampf(rtv.x, xmin, xmax);
+	return rtv;
+	
 }
 
 -(void)update_camera {

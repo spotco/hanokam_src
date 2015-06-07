@@ -49,13 +49,16 @@
         DialogueBubble *itrBubble = _bgCharacterDialogueBubbles[itr_hash];
         
         // Update dialogue bubble positions to keep them with their corresponding villagers
-        [itrBubble setPosition:CGPointAdd([itrChar convertToWorldSpace:CGPointZero],itrChar.dialogueOffset)];
+		CGPoint offset = itrChar.dialogueOffset;
+		offset.x *= game.get_zoom;
+		offset.y *= game.get_zoom;
+        [itrBubble setPosition:CGPointAdd([itrChar convertToWorldSpace:CGPointZero],offset)];
         
         // Fade dialogue bubbles in and out where appropriate
         if (itrChar.state == BGCharacter_CanSpeak) {
-            [itrBubble i_update:YES];
+            [itrBubble i_update:game shouldShow:YES];
         } else {
-            [itrBubble i_update:NO];
+            [itrBubble i_update:game shouldShow:NO];
         }
     }  
 }
