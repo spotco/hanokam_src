@@ -443,6 +443,7 @@
 		BB771AFC1B22EB03002BA595 /* VillageUI.m in Sources */ = {isa = PBXBuildFile; fileRef = BB771AFB1B22EB03002BA595 /* VillageUI.m */; };
 		BB771B011B22F602002BA595 /* DialogueBubble.m in Sources */ = {isa = PBXBuildFile; fileRef = BB771B001B22F602002BA595 /* DialogueBubble.m */; };
 		BB771B101B23D0A8002BA595 /* InDialoguePlayerStateStack.m in Sources */ = {isa = PBXBuildFile; fileRef = BB771B0F1B23D0A8002BA595 /* InDialoguePlayerStateStack.m */; };
+		BB771B151B23DCBF002BA595 /* DialogUI.m in Sources */ = {isa = PBXBuildFile; fileRef = BB771B141B23DCBF002BA595 /* DialogUI.m */; };
 		BC5399D81A44DCC90063F482 /* AndroidKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC5399D31A44DCC90063F482 /* AndroidKit.framework */; };
 		BC5399D91A44DCC90063F482 /* CoreJava.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC5399D41A44DCC90063F482 /* CoreJava.framework */; };
 		BC5399DA1A44DCC90063F482 /* GLActivityKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC5399D51A44DCC90063F482 /* GLActivityKit.framework */; };
@@ -755,6 +756,8 @@
 		BB771B001B22F602002BA595 /* DialogueBubble.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DialogueBubble.m; sourceTree = "<group>"; };
 		BB771B0E1B23D0A8002BA595 /* InDialoguePlayerStateStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InDialoguePlayerStateStack.h; sourceTree = "<group>"; };
 		BB771B0F1B23D0A8002BA595 /* InDialoguePlayerStateStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InDialoguePlayerStateStack.m; sourceTree = "<group>"; };
+		BB771B131B23DCBF002BA595 /* DialogUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DialogUI.h; sourceTree = "<group>"; };
+		BB771B141B23DCBF002BA595 /* DialogUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DialogUI.m; sourceTree = "<group>"; };
 		BC5399D31A44DCC90063F482 /* AndroidKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AndroidKit.framework; path = "../../../../Library/Application Support/Developer/Shared/Xcode/Platforms/Android.platform/Developer/SDKs/SBAndroid.sdk/System/Library/Frameworks/AndroidKit.framework"; sourceTree = "<group>"; };
 		BC5399D41A44DCC90063F482 /* CoreJava.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreJava.framework; path = "../../../../Library/Application Support/Developer/Shared/Xcode/Platforms/Android.platform/Developer/SDKs/SBAndroid.sdk/System/Library/Frameworks/CoreJava.framework"; sourceTree = "<group>"; };
 		BC5399D51A44DCC90063F482 /* GLActivityKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLActivityKit.framework; path = "../../../../Library/Application Support/Developer/Shared/Xcode/Platforms/Android.platform/Developer/SDKs/SBAndroid.sdk/System/Library/Frameworks/GLActivityKit.framework"; sourceTree = "<group>"; };
@@ -1163,6 +1166,8 @@
 				BB771AFB1B22EB03002BA595 /* VillageUI.m */,
 				BB771AFF1B22F602002BA595 /* DialogueBubble.h */,
 				BB771B001B22F602002BA595 /* DialogueBubble.m */,
+				BB771B131B23DCBF002BA595 /* DialogUI.h */,
+				BB771B141B23DCBF002BA595 /* DialogUI.m */,
 			);
 			path = ui;
 			sourceTree = "<group>";
@@ -2126,6 +2131,7 @@
 				7ED823001B13D258001BB249 /* ShaderManager.m in Sources */,
 				7ED822BE1B13D258001BB249 /* Player.m in Sources */,
 				7ED823FD1B13DD59001BB249 /* md5.c in Sources */,
+				BB771B151B23DCBF002BA595 /* DialogUI.m in Sources */,
 				7ED823121B13D258001BB249 /* SpriterUtil.m in Sources */,
 				7E386D4B1B23AB9900DDEFF6 /* AirToGroundTransitionPlayerStateStack.m in Sources */,
 				7ED822FA1B13D258001BB249 /* PolyLib.m in Sources */,

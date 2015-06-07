@@ -30,6 +30,7 @@
 									   texrect:cctexture_default_rect([Resource get_tex:TEX_BLANK])
 										  size:CGSizeMake(2, 600)
 								   anchorPoint:ccp(0.5,0)
+                                         color:[CCColor whiteColor]
 										alphaX:CGRangeMake(1, 1)
 										alphaY:CGRangeMake(0, 1)];
 	[_left_line setAnchorPoint:ccp(0.5,0)];
@@ -37,11 +38,12 @@
 	[self addChild:_left_line];
 	
 	_right_line = [AlphaGradientSprite cons_tex:[Resource get_tex:TEX_BLANK]
-									   texrect:cctexture_default_rect([Resource get_tex:TEX_BLANK])
-										  size:CGSizeMake(2, 600)
-								   anchorPoint:ccp(0.5,0)
-										alphaX:CGRangeMake(1, 1)
-										alphaY:CGRangeMake(0, 1)];
+                                        texrect:cctexture_default_rect([Resource get_tex:TEX_BLANK])
+                                           size:CGSizeMake(2, 600)
+                                    anchorPoint:ccp(0.5,0)
+                                          color:[CCColor whiteColor]
+                                         alphaX:CGRangeMake(1, 1)
+                                         alphaY:CGRangeMake(0, 1)];
 	[_right_line setAnchorPoint:ccp(0.5,0)];
 	[_right_line setRotation:-10];
 	[self addChild:_right_line];
