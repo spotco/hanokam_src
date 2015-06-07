@@ -37,13 +37,12 @@ static CGFloat const TAP_RANGE = 50;
                 }
                 break;
             case BGCharacter_CanSpeak:
-                // If tapped, proceed to SPEAKING state, move player to IN_DIALOGUE state
+                // If tapped, proceed to SPEAKING state
                 if (g.get_control_manager.is_proc_tap) {
                     CGPoint p1 = g.get_control_manager.get_proc_tap;
                     CGPoint p2 = [self convertToWorldSpace:CGPointZero];
                     if (CGPointDist(p1, p2) < TAP_RANGE) {
                         _state = BGCharacter_Speaking;
-    //                    g._player_state = PlayerState_InDialogue;
                         break;
                     }
                 }
@@ -56,9 +55,12 @@ static CGFloat const TAP_RANGE = 50;
                 break;
             case BGCharacter_Speaking:
                 NSLog(@"SUP BRO");
-                // Once dialogue dismissed, move to CAN_SPEAK state, move player back to ON_GROUND state
-                _state = BGCharacter_CanSpeak;
-    //            g._player_state = PlayerState_OnGround;
+                // Once dialogue dismissed, move to CAN_SPEAK state,
+                if (g.get_control_manager.is_proc_tap) {
+                    _state = BGCharacter_CanSpeak;
+                }
+                [g set_zoom:drp(g.get_zoom,2.5,20)];
+                [g set_camera_height:drp(g.get_current_camera_center_y,g.player.position.y,20)];
                 break;
             default:
                 break;
