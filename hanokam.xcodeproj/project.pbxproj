@@ -73,6 +73,12 @@
 		7E386D4B1B23AB9900DDEFF6 /* AirToGroundTransitionPlayerStateStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E386D4A1B23AB9900DDEFF6 /* AirToGroundTransitionPlayerStateStack.m */; };
 		7E386D4C1B23AB9900DDEFF6 /* AirToGroundTransitionPlayerStateStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E386D4A1B23AB9900DDEFF6 /* AirToGroundTransitionPlayerStateStack.m */; };
 		7E386D4D1B23AB9900DDEFF6 /* AirToGroundTransitionPlayerStateStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E386D4A1B23AB9900DDEFF6 /* AirToGroundTransitionPlayerStateStack.m */; };
+		7E386D4E1B23F6DB00DDEFF6 /* BGCharacterBase.m in Sources */ = {isa = PBXBuildFile; fileRef = BB771AF21B22C910002BA595 /* BGCharacterBase.m */; };
+		7E386D4F1B23F6DC00DDEFF6 /* BGCharacterBase.m in Sources */ = {isa = PBXBuildFile; fileRef = BB771AF21B22C910002BA595 /* BGCharacterBase.m */; };
+		7E386D501B23F6E900DDEFF6 /* VillageUI.m in Sources */ = {isa = PBXBuildFile; fileRef = BB771AFB1B22EB03002BA595 /* VillageUI.m */; };
+		7E386D511B23F6E900DDEFF6 /* VillageUI.m in Sources */ = {isa = PBXBuildFile; fileRef = BB771AFB1B22EB03002BA595 /* VillageUI.m */; };
+		7E386D521B23F6FB00DDEFF6 /* DialogueBubble.m in Sources */ = {isa = PBXBuildFile; fileRef = BB771B001B22F602002BA595 /* DialogueBubble.m */; };
+		7E386D531B23F6FB00DDEFF6 /* DialogueBubble.m in Sources */ = {isa = PBXBuildFile; fileRef = BB771B001B22F602002BA595 /* DialogueBubble.m */; };
 		7E8377671B14619900EFC0D9 /* SPDeviceAccelerometer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E8377661B14619900EFC0D9 /* SPDeviceAccelerometer.m */; };
 		7E8377681B14636300EFC0D9 /* SPDeviceAccelerometer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E8377661B14619900EFC0D9 /* SPDeviceAccelerometer.m */; };
 		7E9A44BB1B1D85E100111C35 /* SPRadialFillSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E9A44BA1B1D85E100111C35 /* SPRadialFillSprite.m */; };
@@ -1926,11 +1932,13 @@
 				7E386D241B239FE600DDEFF6 /* OnGroundPlayerStateStack.m in Sources */,
 				7ED8230B1B13D258001BB249 /* SpriterNode.m in Sources */,
 				7ED822811B13D258001BB249 /* BasicAirEnemy.m in Sources */,
+				7E386D4F1B23F6DC00DDEFF6 /* BGCharacterBase.m in Sources */,
 				7A4036E819DE3F33007B6E8F /* MainScene.m in Sources */,
 				7ED822F01B13D258001BB249 /* Common.m in Sources */,
 				7ED822AB1B13D258001BB249 /* ChainedMovementParticle.m in Sources */,
 				7ED8227E1B13D258001BB249 /* AirEnemyManager.m in Sources */,
 				7ED822F91B13D258001BB249 /* GEventDispatcher.m in Sources */,
+				7E386D511B23F6E900DDEFF6 /* VillageUI.m in Sources */,
 				7ED8229F1B13D258001BB249 /* ControlManager.m in Sources */,
 				7E9A585E1B22F6A6008EC348 /* PlayerUIAimReticule.m in Sources */,
 				7A40360419DDEE84007B6E8F /* main.m in Sources */,
@@ -1956,6 +1964,7 @@
 				7ED822E71B13D258001BB249 /* SHItem.m in Sources */,
 				7ED822A81B13D258001BB249 /* ShopScene.m in Sources */,
 				7E9A58631B23098C008EC348 /* FlashCount.m in Sources */,
+				7E386D531B23F6FB00DDEFF6 /* DialogueBubble.m in Sources */,
 				7ED8229C1B13D258001BB249 /* BGCharacterVillagerFishWoman.m in Sources */,
 				7ED823021B13D258001BB249 /* ShaderManager.m in Sources */,
 				7ED822C01B13D258001BB249 /* Player.m in Sources */,
@@ -1993,6 +2002,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E386D501B23F6E900DDEFF6 /* VillageUI.m in Sources */,
 				7ED822EF1B13D258001BB249 /* Common.m in Sources */,
 				7E386D4C1B23AB9900DDEFF6 /* AirToGroundTransitionPlayerStateStack.m in Sources */,
 				7ED822D71B13D258001BB249 /* GameMain.m in Sources */,
@@ -2050,6 +2060,7 @@
 				7E386D2D1B23A0AC00DDEFF6 /* PlayerAirCombatParams.m in Sources */,
 				7ED822E61B13D258001BB249 /* SHItem.m in Sources */,
 				7ED822CB1B13D258001BB249 /* PlayerProjectile.m in Sources */,
+				7E386D4E1B23F6DB00DDEFF6 /* BGCharacterBase.m in Sources */,
 				7ED822801B13D258001BB249 /* BasicAirEnemy.m in Sources */,
 				7E9A58531B22EFA3008EC348 /* AlphaGradientSprite.m in Sources */,
 				7ED822DA1B13D258001BB249 /* MainMenuScene.m in Sources */,
@@ -2058,6 +2069,7 @@
 				7ED822F21B13D258001BB249 /* DataStore.m in Sources */,
 				7ED822981B13D258001BB249 /* BGCharacterTest.m in Sources */,
 				7ED822BC1B13D258001BB249 /* UIBossIntroParticle.m in Sources */,
+				7E386D521B23F6FB00DDEFF6 /* DialogueBubble.m in Sources */,
 				7E386D381B23A0BE00DDEFF6 /* PlayerSharedParams.m in Sources */,
 				5B121030197484FA004C1E1D /* hanokamActivity.m in Sources */,
 				7E386D301B23A0AC00DDEFF6 /* PlayerLandParams.m in Sources */,
