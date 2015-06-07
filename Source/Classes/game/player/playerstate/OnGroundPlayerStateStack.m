@@ -31,8 +31,8 @@
     g.player.shared_params._reset_to_center = (!HMCFG_ON_SIMULATOR) ? YES : NO;
 	switch(_land_params._current_mode) {
 		case PlayerLandMode_OnDock:;
-//			[g set_zoom:drp(g.get_zoom,1,20)];
-//			[g set_camera_height:drp(g.get_current_camera_center_y,150,20)];
+			[g set_zoom:drp(g.get_zoom,1,20)];
+			[g set_camera_height:drp(g.get_current_camera_center_y,150,20)];
 			if (g.player.get_current_health < g.player.get_max_health) {
 				_land_params._health_restore_ct += dt_scale_get();
 				if (_land_params._health_restore_ct > 15) {

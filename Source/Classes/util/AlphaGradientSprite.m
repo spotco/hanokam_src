@@ -10,13 +10,14 @@
 	CGPoint _anchorpt;
 	CGRange _alphaX;
 	CGRange _alphaY;
+    CCColor *_color;
 }
 
-+(AlphaGradientSprite*)cons_tex:(CCTexture*)tex texrect:(CGRect)texrect size:(CGSize)size anchorPoint:(CGPoint)anchorpt alphaX:(CGRange)alphaX alphaY:(CGRange)alphaY {
-	return [[AlphaGradientSprite node] cons_tex:tex texrect:texrect size:size anchorPoint:anchorpt alphaX:alphaX alphaY:alphaY];
++(AlphaGradientSprite*)cons_tex:(CCTexture*)tex texrect:(CGRect)texrect size:(CGSize)size anchorPoint:(CGPoint)anchorpt color:(CCColor*)color alphaX:(CGRange)alphaX alphaY:(CGRange)alphaY {
+	return [[AlphaGradientSprite node] cons_tex:tex texrect:texrect size:size anchorPoint:anchorpt color:color alphaX:alphaX alphaY:alphaY];
 }
 
--(AlphaGradientSprite*)cons_tex:(CCTexture*)tex texrect:(CGRect)texrect size:(CGSize)size anchorPoint:(CGPoint)anchorpt alphaX:(CGRange)alphaX alphaY:(CGRange)alphaY {
+-(AlphaGradientSprite*)cons_tex:(CCTexture*)tex texrect:(CGRect)texrect size:(CGSize)size anchorPoint:(CGPoint)anchorpt color:(CCColor*)color alphaX:(CGRange)alphaX alphaY:(CGRange)alphaY {
 	_vtx = calloc(sizeof(CCVertex), 4);
 	[self setTexture:tex];
 	
@@ -25,11 +26,12 @@
 	_anchorpt = anchorpt;
 	_alphaX = alphaX;
 	_alphaY = alphaY;
+    _color = color;
 	
 	[self make_triangles];
 	
 	[self setBlendMode:[CCBlendMode alphaMode]];
-	
+    
 	return self;
 }
 
@@ -39,27 +41,28 @@
 	CGPoint anchorpt = _anchorpt;
 	CGRange alphaX = _alphaX;
 	CGRange alphaY = _alphaY;
+    CCColor *color = _color;
 	CCTexture *tex = self.texture;
 	
 	//0,0
 	_vtx[0].position = GLKVector4Make(-size.width*anchorpt.x, -size.height*anchorpt.y, 0, 1);
 	_vtx[0].texCoord1 = GLKVector2Make(texrect.origin.x/tex.pixelWidth, texrect.origin.y/tex.pixelHeight);
-	_vtx[0].color = GLKVector4Make(1, 1, 1, alphaX.min * alphaY.min);
+	_vtx[0].color = GLKVector4Make(color.red, color.green, color.blue, alphaX.min * alphaY.min);
 	
 	//0,1
 	_vtx[1].position = GLKVector4Make(-size.width*anchorpt.x, size.height*(1-anchorpt.y), 0, 1);
 	_vtx[1].texCoord1 = GLKVector2Make(texrect.origin.x/tex.pixelWidth, (texrect.origin.y + texrect.size.height)/tex.pixelHeight);
-	_vtx[1].color = GLKVector4Make(1, 1, 1, alphaX.min * alphaY.max);
+	_vtx[1].color = GLKVector4Make(color.red, color.green, color.blue, alphaX.min * alphaY.max);
 	
 	//1,1
 	_vtx[2].position = GLKVector4Make(size.width*(1-anchorpt.x), size.height*(1-anchorpt.y), 0, 1);
 	_vtx[2].texCoord1 = GLKVector2Make((texrect.origin.x + texrect.size.width)/tex.pixelWidth, (texrect.origin.y + texrect.size.height)/tex.pixelHeight);
-	_vtx[2].color = GLKVector4Make(1, 1, 1, alphaX.max * alphaY.max);
+	_vtx[2].color = GLKVector4Make(color.red, color.green, color.blue, alphaX.max * alphaY.max);
 	
 	//1,0
 	_vtx[3].position = GLKVector4Make(size.width*(1-anchorpt.x), -size.height*anchorpt.y, 0, 1);
 	_vtx[3].texCoord1 = GLKVector2Make((texrect.origin.x + texrect.size.width)/tex.pixelWidth, texrect.origin.y/tex.pixelHeight);
-	_vtx[3].color = GLKVector4Make(1, 1, 1, alphaX.max * alphaY.min);
+	_vtx[3].color = GLKVector4Make(color.red, color.green, color.blue, alphaX.max * alphaY.min);
 }
 
 -(void)set_height:(float)val {

@@ -15,6 +15,7 @@
 #import "Common.h"
 #import "PlayerLandParams.h"
 #import "BasePlayerStateStack.h"
+#import "InDialoguePlayerStateStack.h"
 
 // Range to enable dialogue
 static NSUInteger const DIALOGUE_RANGE = 25;
@@ -43,6 +44,7 @@ static CGFloat const TAP_RANGE = 50;
                     CGPoint p2 = [self convertToWorldSpace:CGPointZero];
                     if (CGPointDist(p1, p2) < TAP_RANGE) {
                         _state = BGCharacter_Speaking;
+                        [g.player push_state_stack:[InDialoguePlayerStateStack cons:g withCharacter:self]];
                         break;
                     }
                 }
@@ -54,13 +56,7 @@ static CGFloat const TAP_RANGE = 50;
                 }
                 break;
             case BGCharacter_Speaking:
-                NSLog(@"SUP BRO");
-                // Once dialogue dismissed, move to CAN_SPEAK state,
-                if (g.get_control_manager.is_proc_tap) {
-                    _state = BGCharacter_CanSpeak;
-                }
-                //[g set_zoom:drp(g.get_zoom,2.5,20)];
-                //[g set_camera_height:drp(g.get_current_camera_center_y,g.player.position.y,20)];
+                // Wait here until doneSpeaking is called to signal that we are done speaking
                 break;
             default:
                 break;
@@ -68,6 +64,12 @@ static CGFloat const TAP_RANGE = 50;
     } else {
         // Otherwise stay in IDLE state
         _state = BGCharacter_Idle;
+    }
+}
+
+-(void)doneSpeaking {
+    if (self.state == BGCharacter_Speaking) {
+        _state = BGCharacter_CanSpeak;
     }
 }
 

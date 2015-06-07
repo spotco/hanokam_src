@@ -11,6 +11,7 @@
 #import "PlayerChargeIndicator.h"
 #import "PlayerUIAimReticule.h"
 #import "VillageUI.h"
+#import "DialogUI.h"
 
 typedef enum _GameUIBossIntroMode {
 	GameUIBossIntroMode_None,
@@ -37,6 +38,8 @@ typedef enum _GameUIBossIntroMode {
 	PlayerUIAimReticule *_player_aim_reticule;
     
     VillageUI *_villageUI;
+    
+    DialogUI *_dialogUI;
 	
 	CCNode *_red_flash_overlay;
 	CCNode *_black_fadeout_overlay;
