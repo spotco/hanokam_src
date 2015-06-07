@@ -46,4 +46,9 @@ NSString *_on_finish_play_anim;
  */
 -(void)i_update:(GameEngineScene*)g;
 
+/**
+ *  Signal to character to exit from SPEAKING state
+ */
+-(void)doneSpeaking;
+
 @end

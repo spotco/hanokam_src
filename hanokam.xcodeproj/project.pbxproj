@@ -442,6 +442,7 @@
 		BB771AF31B22C910002BA595 /* BGCharacterBase.m in Sources */ = {isa = PBXBuildFile; fileRef = BB771AF21B22C910002BA595 /* BGCharacterBase.m */; };
 		BB771AFC1B22EB03002BA595 /* VillageUI.m in Sources */ = {isa = PBXBuildFile; fileRef = BB771AFB1B22EB03002BA595 /* VillageUI.m */; };
 		BB771B011B22F602002BA595 /* DialogueBubble.m in Sources */ = {isa = PBXBuildFile; fileRef = BB771B001B22F602002BA595 /* DialogueBubble.m */; };
+		BB771B101B23D0A8002BA595 /* InDialoguePlayerStateStack.m in Sources */ = {isa = PBXBuildFile; fileRef = BB771B0F1B23D0A8002BA595 /* InDialoguePlayerStateStack.m */; };
 		BC5399D81A44DCC90063F482 /* AndroidKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC5399D31A44DCC90063F482 /* AndroidKit.framework */; };
 		BC5399D91A44DCC90063F482 /* CoreJava.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC5399D41A44DCC90063F482 /* CoreJava.framework */; };
 		BC5399DA1A44DCC90063F482 /* GLActivityKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC5399D51A44DCC90063F482 /* GLActivityKit.framework */; };
@@ -752,6 +753,8 @@
 		BB771AFB1B22EB03002BA595 /* VillageUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VillageUI.m; sourceTree = "<group>"; };
 		BB771AFF1B22F602002BA595 /* DialogueBubble.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DialogueBubble.h; sourceTree = "<group>"; };
 		BB771B001B22F602002BA595 /* DialogueBubble.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DialogueBubble.m; sourceTree = "<group>"; };
+		BB771B0E1B23D0A8002BA595 /* InDialoguePlayerStateStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InDialoguePlayerStateStack.h; sourceTree = "<group>"; };
+		BB771B0F1B23D0A8002BA595 /* InDialoguePlayerStateStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InDialoguePlayerStateStack.m; sourceTree = "<group>"; };
 		BC5399D31A44DCC90063F482 /* AndroidKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AndroidKit.framework; path = "../../../../Library/Application Support/Developer/Shared/Xcode/Platforms/Android.platform/Developer/SDKs/SBAndroid.sdk/System/Library/Frameworks/AndroidKit.framework"; sourceTree = "<group>"; };
 		BC5399D41A44DCC90063F482 /* CoreJava.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreJava.framework; path = "../../../../Library/Application Support/Developer/Shared/Xcode/Platforms/Android.platform/Developer/SDKs/SBAndroid.sdk/System/Library/Frameworks/CoreJava.framework"; sourceTree = "<group>"; };
 		BC5399D51A44DCC90063F482 /* GLActivityKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLActivityKit.framework; path = "../../../../Library/Application Support/Developer/Shared/Xcode/Platforms/Android.platform/Developer/SDKs/SBAndroid.sdk/System/Library/Frameworks/GLActivityKit.framework"; sourceTree = "<group>"; };
@@ -985,6 +988,8 @@
 				7E386D451B23A95B00DDEFF6 /* InAirPlayerStateStack.m */,
 				7E386D491B23AB9900DDEFF6 /* AirToGroundTransitionPlayerStateStack.h */,
 				7E386D4A1B23AB9900DDEFF6 /* AirToGroundTransitionPlayerStateStack.m */,
+				BB771B0E1B23D0A8002BA595 /* InDialoguePlayerStateStack.h */,
+				BB771B0F1B23D0A8002BA595 /* InDialoguePlayerStateStack.m */,
 			);
 			path = playerstate;
 			sourceTree = "<group>";
@@ -2102,6 +2107,7 @@
 				7E386D461B23A95B00DDEFF6 /* InAirPlayerStateStack.m in Sources */,
 				7ED822D91B13D258001BB249 /* MainMenuScene.m in Sources */,
 				7ED822971B13D258001BB249 /* BGCharacterTest.m in Sources */,
+				BB771B101B23D0A8002BA595 /* InDialoguePlayerStateStack.m in Sources */,
 				7ED822881B13D258001BB249 /* BGReflection.m in Sources */,
 				7E386D321B23A0AC00DDEFF6 /* PlayerUnderwaterCombatParams.m in Sources */,
 				7ED822CD1B13D258001BB249 /* GameUI.m in Sources */,
