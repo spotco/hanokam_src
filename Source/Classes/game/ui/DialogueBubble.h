@@ -7,7 +7,7 @@
 //
 
 #import "CCNode.h"
-
+@class GameEngineScene;
 /**
  *  @class  DialogueBubble
  *
@@ -25,6 +25,6 @@
  *
  *  @param  shouldShow      whether or not the bubble should be showing
  */
--(void)i_update:(BOOL)shouldShow;
+-(void)i_update:(GameEngineScene*)g shouldShow:(BOOL)shouldShow;
 
 @end

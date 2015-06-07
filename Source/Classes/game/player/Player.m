@@ -63,7 +63,6 @@
 		BasePlayerStateStack *state_stack_top = [_player_state_stack objectAtIndex:0];
 		[state_stack_top on_state_end:g];
 		[_player_state_stack removeObjectAtIndex:0];
-		
 	}
 }
 -(void)push_state_stack:(BasePlayerStateStack*)item {

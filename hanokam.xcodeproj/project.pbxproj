@@ -2460,9 +2460,10 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = hanokam;
-				PROVISIONING_PROFILE = "b2893f29-95aa-409f-b97a-c2ea6b956fbd";
+				PROVISIONING_PROFILE = "5a10f093-6ecb-4ea1-996a-7a4e0b09ccc3";
 				SWIFT_OBJC_BRIDGING_HEADER = "Source/Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2493,8 +2494,9 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = hanokam;
-				PROVISIONING_PROFILE = "b2893f29-95aa-409f-b97a-c2ea6b956fbd";
+				PROVISIONING_PROFILE = "5a10f093-6ecb-4ea1-996a-7a4e0b09ccc3";
 				SWIFT_OBJC_BRIDGING_HEADER = "Source/Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};
