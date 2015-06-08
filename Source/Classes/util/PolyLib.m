@@ -77,17 +77,15 @@ BOOL SAT_polyowners_intersect(id<SATPolyHitOwner> a, id<SATPolyHitOwner> b) {
     return true;
 }
 
-HitRect satpolyowner_cons_hit_rect(CGPoint position, float sizex, float sizey) {
-	float scf = 0.25;
+HitRect satpolyowner_cons_hit_rect(CGPoint position, float sizex, float sizey, float scf) {
 	float max_dim = MAX(sizex,sizey);
 	float max_dim_2 = max_dim/2;
 	return hitrect_cons_xy_widhei(position.x - max_dim_2*scf, position.y - max_dim_2*scf, max_dim*scf, max_dim*scf);
 }
 
-void satpolyowner_cons_sat_poly(SATPoly *in_poly, CGPoint position, float rotation, float sizex, float sizey, CGPoint mul_scf) {
+void satpolyowner_cons_sat_poly(SATPoly *in_poly, CGPoint position, float rotation, float sizex, float sizey, CGPoint mul_scf, float scf) {
 	Vec3D right = vec_from_ccrotation(rotation);
 	Vec3D up = vec_cross(vec_z(), right);
-	float scf = 0.25;
 	float wid = sizex/2 * scf * mul_scf.x;
 	float hei = sizey/2 * scf * mul_scf.y;
 

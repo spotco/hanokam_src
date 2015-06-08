@@ -17,5 +17,5 @@ void SAT_cons_quad_buf(SATPoly* buf, CGPoint a, CGPoint b, CGPoint c, CGPoint d)
 BOOL SAT_polyowners_intersect(id<SATPolyHitOwner> a, id<SATPolyHitOwner> b);
 
 
-HitRect satpolyowner_cons_hit_rect(CGPoint position, float sizex, float sizey);
-void satpolyowner_cons_sat_poly(SATPoly *in_poly, CGPoint position, float rotation, float sizex, float sizey, CGPoint mul_scf);
+HitRect satpolyowner_cons_hit_rect(CGPoint position, float sizex, float sizey, float scf);
+void satpolyowner_cons_sat_poly(SATPoly *in_poly, CGPoint position, float rotation, float sizex, float sizey, CGPoint mul_scf, float scf);

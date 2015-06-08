@@ -30,8 +30,8 @@
 	return (PufferBasicAirEnemy*)[[PufferBasicAirEnemy node] cons_g:g relstart:relstart relend:relend];
 }
 
--(void)hit_projectile:(GameEngineScene*)g params:(PlayerHitParams *)params {
-	[super hit_projectile:g params:params];
+-(void)hit:(GameEngineScene*)g params:(PlayerHitParams *)params {
+	[super hit:g params:params];
 	[_flashcount reset];
 }
 
@@ -125,11 +125,11 @@
 
 -(HitRect)get_hit_rect {
 	CGRect rect = [FileCache get_cgrect_from_plist:TEX_ENEMY_PUFFER idname:@"puffer_idle__000.png"];
-	return satpolyowner_cons_hit_rect(self.position, rect.size.width, rect.size.height);
+	return satpolyowner_cons_hit_rect(self.position, rect.size.width, rect.size.height,0.25);
 }
 -(void)get_sat_poly:(SATPoly*)in_poly {
 	CGRect rect = [FileCache get_cgrect_from_plist:TEX_ENEMY_PUFFER idname:@"puffer_idle__000.png"];
-	return satpolyowner_cons_sat_poly(in_poly, self.position, self.rotation, rect.size.width, rect.size.height, ccp(0.5,0.9));
+	return satpolyowner_cons_sat_poly(in_poly, self.position, self.rotation, rect.size.width, rect.size.height, ccp(0.5,0.9),0.25);
 }
 
 @end

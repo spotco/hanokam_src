@@ -82,7 +82,7 @@ Note 1:
 			if (itr.startsAt < min_keyframe.startsAt) min_keyframe = itr;
 		}
 		if (val < min_keyframe.startsAt) {
-			return keys_.count-1;
+			return ((int)keys_.count-1);
 		}
 	}
 	int rtv = 0;

@@ -23,6 +23,8 @@
 	float _stunned_anim_ct;
 	float _death_anim_ct;
 	float _stun_slow_scf;
+	
+	float _charged_arrow_hit_ct;
 }
 @synthesize _rel_pos;
 
@@ -85,20 +87,32 @@
 	self.position = CGPointAdd(CGPointAdd(_rel_pos, lcorner),_rel_offset);
 }
 
--(void)hit_projectile:(GameEngineScene*)g params:(PlayerHitParams*)params {
-	_is_stunned = YES;
-	_stunned_anim_ct = 150;
-	
+-(void)hit:(GameEngineScene*)g params:(PlayerHitParams*)params {
 	float force = params->_pushback_force * 2.5;
-	_rel_offset_vel = CGPointAdd(_rel_offset_vel,ccp(params->_dir.x*force,params->_dir.y*force));
-}
-
--(void)hit_melee:(GameEngineScene*)g params:(PlayerHitParams*)params {
-	_is_dead = YES;
-	_death_anim_ct = 50;
-	
-	float force = params->_pushback_force * 2.5;
-	_rel_offset_vel = CGPointAdd(_rel_offset_vel,ccp(params->_dir.x*force,params->_dir.y*force));
+	switch (params->_type) {
+	case PlayerHitType_Melee:;
+		_is_dead = YES;
+		_death_anim_ct = 50;
+		_rel_offset_vel = CGPointAdd(_rel_offset_vel,ccp(params->_dir.x*force,params->_dir.y*force));
+		
+	break;
+	case PlayerHitType_Projectile:;
+		_is_stunned = YES;
+		_stunned_anim_ct = 150;
+		_rel_offset_vel = CGPointAdd(_rel_offset_vel,ccp(params->_dir.x*force,params->_dir.y*force));
+		
+	break;
+	case PlayerHitType_ChargedProjectile:;
+		_is_stunned = YES;
+		_stunned_anim_ct = 150;
+		_rel_offset_vel = CGPointAdd(_rel_offset_vel,ccp(params->_dir.x*force,params->_dir.y*force));
+		_charged_arrow_hit_ct+=dt_scale_get();
+		if (_charged_arrow_hit_ct > 15) {
+			_is_dead = YES;
+			_death_anim_ct = 50;
+		}
+	break;
+	}
 }
 
 -(BOOL)should_remove{

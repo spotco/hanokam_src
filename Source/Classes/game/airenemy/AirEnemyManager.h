@@ -11,11 +11,19 @@
 #import "PolyLib.h"
 @class GameEngineScene;
 
+
+typedef enum PlayerHitType {
+	PlayerHitType_Projectile,
+	PlayerHitType_Melee,
+	PlayerHitType_ChargedProjectile
+} PlayerHitType;
+
 typedef struct PlayerHitParams {
 	Vec3D _dir;
 	float _pushback_force;
+	PlayerHitType _type;
 } PlayerHitParams;
-void PlayerHitParams_init(PlayerHitParams *params,Vec3D dir);
+void PlayerHitParams_init(PlayerHitParams *params, PlayerHitType type,Vec3D dir);
 
 @interface BaseAirEnemy : CCSprite <SATPolyHitOwner>
 -(void)i_update:(GameEngineScene*)game;
@@ -23,8 +31,7 @@ void PlayerHitParams_init(PlayerHitParams *params,Vec3D dir);
 -(void)do_remove:(GameEngineScene*)g;
 -(HitRect)get_hit_rect;
 -(void)get_sat_poly:(SATPoly *)in_poly;
--(void)hit_projectile:(GameEngineScene*)g params:(PlayerHitParams*)params;
--(void)hit_melee:(GameEngineScene*)g params:(PlayerHitParams*)params;
+-(void)hit:(GameEngineScene*)g params:(PlayerHitParams*)params;
 -(BOOL)is_alive;
 -(BOOL)is_stunned;
 

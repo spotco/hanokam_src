@@ -93,6 +93,12 @@
 		7E4F09AB1B252E60000945B8 /* alpha_gradient_sprite.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 7E4F09AA1B252E60000945B8 /* alpha_gradient_sprite.vsh */; };
 		7E4F09AC1B252E60000945B8 /* alpha_gradient_sprite.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 7E4F09AA1B252E60000945B8 /* alpha_gradient_sprite.vsh */; };
 		7E4F09AD1B252E60000945B8 /* alpha_gradient_sprite.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 7E4F09AA1B252E60000945B8 /* alpha_gradient_sprite.vsh */; };
+		7E4F09B01B258C9A000945B8 /* ChargedArrow.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E4F09AF1B258C9A000945B8 /* ChargedArrow.m */; };
+		7E4F09B11B258C9A000945B8 /* ChargedArrow.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E4F09AF1B258C9A000945B8 /* ChargedArrow.m */; };
+		7E4F09B21B258C9A000945B8 /* ChargedArrow.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E4F09AF1B258C9A000945B8 /* ChargedArrow.m */; };
+		7E4F09B51B258CA2000945B8 /* Arrow.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E4F09B41B258CA2000945B8 /* Arrow.m */; };
+		7E4F09B61B258CA2000945B8 /* Arrow.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E4F09B41B258CA2000945B8 /* Arrow.m */; };
+		7E4F09B71B258CA2000945B8 /* Arrow.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E4F09B41B258CA2000945B8 /* Arrow.m */; };
 		7E8377671B14619900EFC0D9 /* SPDeviceAccelerometer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E8377661B14619900EFC0D9 /* SPDeviceAccelerometer.m */; };
 		7E8377681B14636300EFC0D9 /* SPDeviceAccelerometer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E8377661B14619900EFC0D9 /* SPDeviceAccelerometer.m */; };
 		7E9A44BB1B1D85E100111C35 /* SPRadialFillSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E9A44BA1B1D85E100111C35 /* SPRadialFillSprite.m */; };
@@ -571,6 +577,10 @@
 		7E4F09A21B2523AE000945B8 /* SPCCSpriteAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPCCSpriteAnimator.m; sourceTree = "<group>"; };
 		7E4F09A61B252DE4000945B8 /* alpha_gradient_sprite.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = alpha_gradient_sprite.fsh; sourceTree = "<group>"; };
 		7E4F09AA1B252E60000945B8 /* alpha_gradient_sprite.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = alpha_gradient_sprite.vsh; sourceTree = "<group>"; };
+		7E4F09AE1B258C9A000945B8 /* ChargedArrow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChargedArrow.h; sourceTree = "<group>"; };
+		7E4F09AF1B258C9A000945B8 /* ChargedArrow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChargedArrow.m; sourceTree = "<group>"; };
+		7E4F09B31B258CA2000945B8 /* Arrow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Arrow.h; sourceTree = "<group>"; };
+		7E4F09B41B258CA2000945B8 /* Arrow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Arrow.m; sourceTree = "<group>"; };
 		7E8377651B14619900EFC0D9 /* SPDeviceAccelerometer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPDeviceAccelerometer.h; sourceTree = "<group>"; };
 		7E8377661B14619900EFC0D9 /* SPDeviceAccelerometer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPDeviceAccelerometer.m; sourceTree = "<group>"; };
 		7E9A44B91B1D85E100111C35 /* SPRadialFillSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRadialFillSprite.h; sourceTree = "<group>"; };
@@ -1160,6 +1170,10 @@
 			children = (
 				7ED8223E1B13D258001BB249 /* PlayerProjectile.h */,
 				7ED8223F1B13D258001BB249 /* PlayerProjectile.m */,
+				7E4F09AE1B258C9A000945B8 /* ChargedArrow.h */,
+				7E4F09AF1B258C9A000945B8 /* ChargedArrow.m */,
+				7E4F09B31B258CA2000945B8 /* Arrow.h */,
+				7E4F09B41B258CA2000945B8 /* Arrow.m */,
 			);
 			path = projectiles;
 			sourceTree = "<group>";
@@ -2020,8 +2034,10 @@
 				7ED8228D1B13D258001BB249 /* BGSky.m in Sources */,
 				7ED822FF1B13D258001BB249 /* Resource.m in Sources */,
 				7E386D391B23A0BE00DDEFF6 /* PlayerSharedParams.m in Sources */,
+				7E4F09B21B258C9A000945B8 /* ChargedArrow.m in Sources */,
 				7A59498E19E3941300F65F90 /* AppDelegate.m in Sources */,
 				7ED822D81B13D258001BB249 /* GameMain.m in Sources */,
+				7E4F09B71B258CA2000945B8 /* Arrow.m in Sources */,
 				7ED822E11B13D258001BB249 /* SHBackground.m in Sources */,
 				7ED822BA1B13D258001BB249 /* RotateFadeOutParticle.m in Sources */,
 				7ED822ED1B13D258001BB249 /* BatchDraw.m in Sources */,
@@ -2102,8 +2118,10 @@
 				7ED822DA1B13D258001BB249 /* MainMenuScene.m in Sources */,
 				7ED822921B13D258001BB249 /* BGWater.m in Sources */,
 				7ED822E31B13D258001BB249 /* SHButton.m in Sources */,
+				7E4F09B11B258C9A000945B8 /* ChargedArrow.m in Sources */,
 				7ED822F21B13D258001BB249 /* DataStore.m in Sources */,
 				7ED822981B13D258001BB249 /* BGCharacterTest.m in Sources */,
+				7E4F09B61B258CA2000945B8 /* Arrow.m in Sources */,
 				7ED822BC1B13D258001BB249 /* UIBossIntroParticle.m in Sources */,
 				BB771B221B23F777002BA595 /* DialogueBubble.m in Sources */,
 				7E386D381B23A0BE00DDEFF6 /* PlayerSharedParams.m in Sources */,
@@ -2158,6 +2176,7 @@
 				7ED822CD1B13D258001BB249 /* GameUI.m in Sources */,
 				7ED822DC1B13D258001BB249 /* TouchButton.m in Sources */,
 				7ED8230C1B13D258001BB249 /* SpriterNodeCache.m in Sources */,
+				7E4F09B01B258C9A000945B8 /* ChargedArrow.m in Sources */,
 				7ED822A01B13D258001BB249 /* GameEngineScene.m in Sources */,
 				7ED822CA1B13D258001BB249 /* PlayerProjectile.m in Sources */,
 				7ED823181B13D258001BB249 /* TouchTrackingLayer.m in Sources */,
@@ -2192,6 +2211,7 @@
 				7ED822B81B13D258001BB249 /* RotateFadeOutParticle.m in Sources */,
 				7ED822EB1B13D258001BB249 /* BatchDraw.m in Sources */,
 				7ED823031B13D258001BB249 /* SpriterData.m in Sources */,
+				7E4F09B51B258CA2000945B8 /* Arrow.m in Sources */,
 				BB771B011B22F602002BA595 /* DialogueBubble.m in Sources */,
 				7ED822941B13D258001BB249 /* BGCharacterOldMan.m in Sources */,
 			);

@@ -18,7 +18,3 @@
 -(void)get_sat_poly:(SATPoly *)in_poly;
 -(BOOL)get_active;
 @end
-
-@interface Arrow : PlayerProjectile
-+(Arrow*)cons_pos:(CGPoint)pos dir:(Vec3D)dir;
-@end

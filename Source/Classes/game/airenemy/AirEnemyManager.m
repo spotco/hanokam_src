@@ -13,9 +13,10 @@
 #import "PufferBasicAirEnemy.h"
 #import "RotateFadeOutParticle.h" 
 
-void PlayerHitParams_init(PlayerHitParams *params, Vec3D dir) {
+void PlayerHitParams_init(PlayerHitParams *params, PlayerHitType type, Vec3D dir) {
 	params->_dir = dir;
 	params->_pushback_force = 1;
+	params->_type = type;
 }
 
 @implementation BaseAirEnemy
@@ -26,8 +27,7 @@ void PlayerHitParams_init(PlayerHitParams *params, Vec3D dir) {
 -(void)do_remove:(GameEngineScene *)g{ }
 -(HitRect)get_hit_rect{ return hitrect_cons_xy_widhei(self.position.x, self.position.y, 0, 0); }
 -(void)get_sat_poly:(SATPoly *)in_poly { }
--(void)hit_projectile:(GameEngineScene*)g params:(PlayerHitParams*)params{}
--(void)hit_melee:(GameEngineScene*)g params:(PlayerHitParams*)params{}
+-(void)hit:(GameEngineScene*)g params:(PlayerHitParams*)params{}
 -(BOOL)is_alive{ return YES; }
 -(BOOL)is_stunned { return NO; }
 -(BOOL)arrow_will_stick{ return YES; }

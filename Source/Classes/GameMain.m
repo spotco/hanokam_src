@@ -12,7 +12,9 @@
 /*
 TODO --
 GAMEPLAY IDEAS:
- hold super arrow (penetrating)
+ super arrow only stun
+ pufferenemy real health, not hack with ui healthbars
+ basicenemy end on off screen not t
  
 arrow decreasing bar
 energy bar

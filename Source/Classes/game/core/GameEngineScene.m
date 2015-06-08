@@ -243,7 +243,9 @@
 	
 	[_ui i_update:self];
 	
-	if (HMCFG_DRAW_HITBOXES) [self debug_draw_hitboxes];
+#ifdef HMCFG_DRAW_HITBOXES
+	[self debug_draw_hitboxes];
+#endif
 	
 	[self.get_control_manager clear_proc_swipe];
 	[self.get_control_manager clear_proc_tap];

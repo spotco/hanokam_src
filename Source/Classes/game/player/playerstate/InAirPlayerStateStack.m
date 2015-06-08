@@ -8,12 +8,12 @@
 
 #import "InAirPlayerStateStack.h"
 #import "PlayerAirCombatParams.h"
-#import "PlayerProjectile.h"
+#import "Arrow.h"
+#import "ChargedArrow.h"
 #import "AirEnemyManager.h"
 #import "ChainedMovementParticle.h"
 #import "AirToGroundTransitionPlayerStateStack.h"
 #import "RotateFadeOutParticle.h"
-
 #import "SwordSlashParticle.h"
 
 @implementation InAirPlayerStateStack {
@@ -122,7 +122,12 @@
 				
 				float rad_arrow_variance = ABS(deg_to_rad(arrow_variance_angle));
 				
-				[g add_player_projectile:[Arrow cons_pos:g.player.position dir:vec_rotate_rad(vec_cons_norm(delta.x, delta.y, 0), float_random(-rad_arrow_variance, rad_arrow_variance) )]];
+				if (arrow_variance_angle <= 0) {
+					[g shake_for:6 distance:3.5];
+					[g add_player_projectile:[ChargedArrow cons_pos:g.player.position dir:vec_rotate_rad(vec_cons_norm(delta.x, delta.y, 0), float_random(-rad_arrow_variance, rad_arrow_variance) )]];
+				} else {
+					[g add_player_projectile:[Arrow cons_pos:g.player.position dir:vec_rotate_rad(vec_cons_norm(delta.x, delta.y, 0), float_random(-rad_arrow_variance, rad_arrow_variance) )]];
+				}
 				
 				_air_params._sword_out = NO;
 				_air_params._dashing = NO;
@@ -165,9 +170,9 @@
 						_air_params._w_upwards_vel = 4;
 						_air_params._sword_out = NO;
 						PlayerHitParams hit_params;
-						PlayerHitParams_init(&hit_params, vec_cons_norm(0, -1, 0));
+						PlayerHitParams_init(&hit_params, PlayerHitType_Melee, vec_cons_norm(0, -1, 0));
 						hit_params._pushback_force = 3;
-						[itr hit_melee:g params:&hit_params];
+						[itr hit:g params:&hit_params];
 						
 						_air_params._s_vel = ccp(_air_params._s_vel.x,10);
 						_air_params._sword_out = NO;
@@ -192,9 +197,9 @@
 						_air_params._w_upwards_vel = 2;
 						
 						PlayerHitParams hit_params;
-						PlayerHitParams_init(&hit_params, vec_cons_norm(_air_params._s_vel.x, _air_params._s_vel.y, 0));
+						PlayerHitParams_init(&hit_params, PlayerHitType_Melee, vec_cons_norm(_air_params._s_vel.x, _air_params._s_vel.y, 0));
 						hit_params._pushback_force = 0.5;
-						[itr hit_melee:g params:&hit_params];
+						[itr hit:g params:&hit_params];
 						
 						[g add_particle:[SwordSlashParticle cons_pos:itr.position dir:vec_cons_norm(_air_params._s_vel.x, _air_params._s_vel.y, 0)]];
 						_air_params._invuln_ct = MAX(_air_params._invuln_ct,5);
@@ -216,10 +221,11 @@
 						_air_params._sword_out = NO;
 						_air_params._invuln_ct = 30;
 						
+						//SPTODO -- fix
 						PlayerHitParams hit_params;
-						PlayerHitParams_init(&hit_params, vec_dir_between_points(g.player.get_center, itr.position));
+						PlayerHitParams_init(&hit_params, PlayerHitType_Projectile, vec_dir_between_points(g.player.get_center, itr.position));
 						hit_params._pushback_force = 3;
-						[itr hit_projectile:g params:&hit_params];
+						[itr hit:g params:&hit_params];
 						
 						[g shake_for:10 distance:5];
 					}
