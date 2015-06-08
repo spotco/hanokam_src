@@ -153,7 +153,7 @@
 //mapped move direction+value
 float accel_x_move_val(GameEngineScene *g, float from_val) {
 	return clampf(
-		((160 + g.get_control_manager.get_frame_accel_x_vel * 320) - from_val) * .07 ,
+		((game_screen().width/2 + g.get_control_manager.get_frame_accel_x_vel * game_screen().width) - from_val) * .07 ,
 		-7 , 7)
 		* dt_scale_get();
 }

@@ -103,13 +103,11 @@
 		
 	break;
 	case PlayerHitType_ChargedProjectile:;
+		_charged_arrow_hit_ct+=dt_scale_get();
 		_is_stunned = YES;
 		_stunned_anim_ct = 150;
-		_rel_offset_vel = CGPointAdd(_rel_offset_vel,ccp(params->_dir.x*force,params->_dir.y*force));
-		_charged_arrow_hit_ct+=dt_scale_get();
-		if (_charged_arrow_hit_ct > 15) {
-			_is_dead = YES;
-			_death_anim_ct = 50;
+		if (_charged_arrow_hit_ct < 15) {
+			_rel_offset_vel = CGPointAdd(_rel_offset_vel,ccp(params->_dir.x*force,params->_dir.y*force));
 		}
 	break;
 	}

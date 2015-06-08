@@ -57,8 +57,6 @@
 				[g shake_for:5 distance:2];
 				
 				[BaseAirEnemy particle_blood_effect:game pos:itr.position ct:3];
-				
-				return;
 			}
 		}
 	}
