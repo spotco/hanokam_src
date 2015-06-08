@@ -27,6 +27,7 @@
 #define TEX_PARTICLES_SPRITESHEET @"particles_spritesheet"
 #define TEX_RIPPLE @"ripple"
 #define TEX_HUD_SPRITESHEET @"hud_spritesheet"
+#define TEX_GAMEPLAY_ELEMENTS @"gameplay_elements_ss" 
 
 //todo -- move below to spritesheets
 #define TEX_SH_BUTTON_MIDDLE @"sh_button_middle"

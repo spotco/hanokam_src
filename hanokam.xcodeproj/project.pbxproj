@@ -78,6 +78,21 @@
 		7E386D501B23F6E900DDEFF6 /* VillageUI.m in Sources */ = {isa = PBXBuildFile; fileRef = BB771AFB1B22EB03002BA595 /* VillageUI.m */; };
 		7E386D511B23F6E900DDEFF6 /* VillageUI.m in Sources */ = {isa = PBXBuildFile; fileRef = BB771AFB1B22EB03002BA595 /* VillageUI.m */; };
 		7E386D531B23F6FB00DDEFF6 /* DialogueBubble.m in Sources */ = {isa = PBXBuildFile; fileRef = BB771B001B22F602002BA595 /* DialogueBubble.m */; };
+		7E4F09941B24FC6B000945B8 /* SwordSlashParticle.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E4F09931B24FC6B000945B8 /* SwordSlashParticle.m */; };
+		7E4F09951B24FC6B000945B8 /* SwordSlashParticle.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E4F09931B24FC6B000945B8 /* SwordSlashParticle.m */; };
+		7E4F09961B24FC6B000945B8 /* SwordSlashParticle.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E4F09931B24FC6B000945B8 /* SwordSlashParticle.m */; };
+		7E4F09991B250E06000945B8 /* FlashEvery.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E4F09981B250E06000945B8 /* FlashEvery.m */; };
+		7E4F099A1B250E06000945B8 /* FlashEvery.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E4F09981B250E06000945B8 /* FlashEvery.m */; };
+		7E4F099B1B250E06000945B8 /* FlashEvery.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E4F09981B250E06000945B8 /* FlashEvery.m */; };
+		7E4F09A31B2523AE000945B8 /* SPCCSpriteAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E4F09A21B2523AE000945B8 /* SPCCSpriteAnimator.m */; };
+		7E4F09A41B2523AE000945B8 /* SPCCSpriteAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E4F09A21B2523AE000945B8 /* SPCCSpriteAnimator.m */; };
+		7E4F09A51B2523AE000945B8 /* SPCCSpriteAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E4F09A21B2523AE000945B8 /* SPCCSpriteAnimator.m */; };
+		7E4F09A71B252DE4000945B8 /* alpha_gradient_sprite.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 7E4F09A61B252DE4000945B8 /* alpha_gradient_sprite.fsh */; };
+		7E4F09A81B252DE4000945B8 /* alpha_gradient_sprite.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 7E4F09A61B252DE4000945B8 /* alpha_gradient_sprite.fsh */; };
+		7E4F09A91B252DE4000945B8 /* alpha_gradient_sprite.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 7E4F09A61B252DE4000945B8 /* alpha_gradient_sprite.fsh */; };
+		7E4F09AB1B252E60000945B8 /* alpha_gradient_sprite.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 7E4F09AA1B252E60000945B8 /* alpha_gradient_sprite.vsh */; };
+		7E4F09AC1B252E60000945B8 /* alpha_gradient_sprite.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 7E4F09AA1B252E60000945B8 /* alpha_gradient_sprite.vsh */; };
+		7E4F09AD1B252E60000945B8 /* alpha_gradient_sprite.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 7E4F09AA1B252E60000945B8 /* alpha_gradient_sprite.vsh */; };
 		7E8377671B14619900EFC0D9 /* SPDeviceAccelerometer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E8377661B14619900EFC0D9 /* SPDeviceAccelerometer.m */; };
 		7E8377681B14636300EFC0D9 /* SPDeviceAccelerometer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E8377661B14619900EFC0D9 /* SPDeviceAccelerometer.m */; };
 		7E9A44BB1B1D85E100111C35 /* SPRadialFillSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E9A44BA1B1D85E100111C35 /* SPRadialFillSprite.m */; };
@@ -147,15 +162,6 @@
 		7ED822AC1B13D258001BB249 /* Particle.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED822291B13D258001BB249 /* Particle.m */; };
 		7ED822AD1B13D258001BB249 /* Particle.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED822291B13D258001BB249 /* Particle.m */; };
 		7ED822AE1B13D258001BB249 /* Particle.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED822291B13D258001BB249 /* Particle.m */; };
-		7ED822AF1B13D258001BB249 /* ParticleBubble.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED8222B1B13D258001BB249 /* ParticleBubble.m */; };
-		7ED822B01B13D258001BB249 /* ParticleBubble.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED8222B1B13D258001BB249 /* ParticleBubble.m */; };
-		7ED822B11B13D258001BB249 /* ParticleBubble.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED8222B1B13D258001BB249 /* ParticleBubble.m */; };
-		7ED822B21B13D258001BB249 /* ParticleLiquid.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED8222D1B13D258001BB249 /* ParticleLiquid.m */; };
-		7ED822B31B13D258001BB249 /* ParticleLiquid.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED8222D1B13D258001BB249 /* ParticleLiquid.m */; };
-		7ED822B41B13D258001BB249 /* ParticleLiquid.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED8222D1B13D258001BB249 /* ParticleLiquid.m */; };
-		7ED822B51B13D258001BB249 /* ParticlePhysical.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED8222F1B13D258001BB249 /* ParticlePhysical.m */; };
-		7ED822B61B13D258001BB249 /* ParticlePhysical.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED8222F1B13D258001BB249 /* ParticlePhysical.m */; };
-		7ED822B71B13D258001BB249 /* ParticlePhysical.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED8222F1B13D258001BB249 /* ParticlePhysical.m */; };
 		7ED822B81B13D258001BB249 /* RotateFadeOutParticle.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED822311B13D258001BB249 /* RotateFadeOutParticle.m */; };
 		7ED822B91B13D258001BB249 /* RotateFadeOutParticle.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED822311B13D258001BB249 /* RotateFadeOutParticle.m */; };
 		7ED822BA1B13D258001BB249 /* RotateFadeOutParticle.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED822311B13D258001BB249 /* RotateFadeOutParticle.m */; };
@@ -557,6 +563,14 @@
 		7E386D451B23A95B00DDEFF6 /* InAirPlayerStateStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InAirPlayerStateStack.m; sourceTree = "<group>"; };
 		7E386D491B23AB9900DDEFF6 /* AirToGroundTransitionPlayerStateStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AirToGroundTransitionPlayerStateStack.h; sourceTree = "<group>"; };
 		7E386D4A1B23AB9900DDEFF6 /* AirToGroundTransitionPlayerStateStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AirToGroundTransitionPlayerStateStack.m; sourceTree = "<group>"; };
+		7E4F09921B24FC6B000945B8 /* SwordSlashParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwordSlashParticle.h; sourceTree = "<group>"; };
+		7E4F09931B24FC6B000945B8 /* SwordSlashParticle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwordSlashParticle.m; sourceTree = "<group>"; };
+		7E4F09971B250E06000945B8 /* FlashEvery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlashEvery.h; sourceTree = "<group>"; };
+		7E4F09981B250E06000945B8 /* FlashEvery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlashEvery.m; sourceTree = "<group>"; };
+		7E4F09A11B2523AE000945B8 /* SPCCSpriteAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPCCSpriteAnimator.h; sourceTree = "<group>"; };
+		7E4F09A21B2523AE000945B8 /* SPCCSpriteAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPCCSpriteAnimator.m; sourceTree = "<group>"; };
+		7E4F09A61B252DE4000945B8 /* alpha_gradient_sprite.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = alpha_gradient_sprite.fsh; sourceTree = "<group>"; };
+		7E4F09AA1B252E60000945B8 /* alpha_gradient_sprite.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = alpha_gradient_sprite.vsh; sourceTree = "<group>"; };
 		7E8377651B14619900EFC0D9 /* SPDeviceAccelerometer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPDeviceAccelerometer.h; sourceTree = "<group>"; };
 		7E8377661B14619900EFC0D9 /* SPDeviceAccelerometer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPDeviceAccelerometer.m; sourceTree = "<group>"; };
 		7E9A44B91B1D85E100111C35 /* SPRadialFillSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRadialFillSprite.h; sourceTree = "<group>"; };
@@ -605,12 +619,6 @@
 		7ED822271B13D258001BB249 /* ChainedMovementParticle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChainedMovementParticle.m; sourceTree = "<group>"; };
 		7ED822281B13D258001BB249 /* Particle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Particle.h; sourceTree = "<group>"; };
 		7ED822291B13D258001BB249 /* Particle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Particle.m; sourceTree = "<group>"; };
-		7ED8222A1B13D258001BB249 /* ParticleBubble.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticleBubble.h; sourceTree = "<group>"; };
-		7ED8222B1B13D258001BB249 /* ParticleBubble.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParticleBubble.m; sourceTree = "<group>"; };
-		7ED8222C1B13D258001BB249 /* ParticleLiquid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticleLiquid.h; sourceTree = "<group>"; };
-		7ED8222D1B13D258001BB249 /* ParticleLiquid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParticleLiquid.m; sourceTree = "<group>"; };
-		7ED8222E1B13D258001BB249 /* ParticlePhysical.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticlePhysical.h; sourceTree = "<group>"; };
-		7ED8222F1B13D258001BB249 /* ParticlePhysical.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParticlePhysical.m; sourceTree = "<group>"; };
 		7ED822301B13D258001BB249 /* RotateFadeOutParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RotateFadeOutParticle.h; sourceTree = "<group>"; };
 		7ED822311B13D258001BB249 /* RotateFadeOutParticle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RotateFadeOutParticle.m; sourceTree = "<group>"; };
 		7ED822321B13D258001BB249 /* UIBossIntroParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBossIntroParticle.h; sourceTree = "<group>"; };
@@ -1126,16 +1134,12 @@
 				7ED822271B13D258001BB249 /* ChainedMovementParticle.m */,
 				7ED822281B13D258001BB249 /* Particle.h */,
 				7ED822291B13D258001BB249 /* Particle.m */,
-				7ED8222A1B13D258001BB249 /* ParticleBubble.h */,
-				7ED8222B1B13D258001BB249 /* ParticleBubble.m */,
-				7ED8222C1B13D258001BB249 /* ParticleLiquid.h */,
-				7ED8222D1B13D258001BB249 /* ParticleLiquid.m */,
-				7ED8222E1B13D258001BB249 /* ParticlePhysical.h */,
-				7ED8222F1B13D258001BB249 /* ParticlePhysical.m */,
 				7ED822301B13D258001BB249 /* RotateFadeOutParticle.h */,
 				7ED822311B13D258001BB249 /* RotateFadeOutParticle.m */,
 				7ED822321B13D258001BB249 /* UIBossIntroParticle.h */,
 				7ED822331B13D258001BB249 /* UIBossIntroParticle.m */,
+				7E4F09921B24FC6B000945B8 /* SwordSlashParticle.h */,
+				7E4F09931B24FC6B000945B8 /* SwordSlashParticle.m */,
 			);
 			path = particle;
 			sourceTree = "<group>";
@@ -1258,6 +1262,10 @@
 				7E9A58511B22EFA3008EC348 /* AlphaGradientSprite.m */,
 				7E9A585F1B23098C008EC348 /* FlashCount.h */,
 				7E9A58601B23098C008EC348 /* FlashCount.m */,
+				7E4F09971B250E06000945B8 /* FlashEvery.h */,
+				7E4F09981B250E06000945B8 /* FlashEvery.m */,
+				7E4F09A11B2523AE000945B8 /* SPCCSpriteAnimator.h */,
+				7E4F09A21B2523AE000945B8 /* SPCCSpriteAnimator.m */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -1391,6 +1399,8 @@
 				7ED8235A1B13D2A6001BB249 /* ripple_effect.vsh */,
 				7E9A44BE1B1DA29C00111C35 /* charge_circle.fsh */,
 				7E9A44C01B1DA2AC00111C35 /* charge_circle.vsh */,
+				7E4F09A61B252DE4000945B8 /* alpha_gradient_sprite.fsh */,
+				7E4F09AA1B252E60000945B8 /* alpha_gradient_sprite.vsh */,
 			);
 			path = shaders;
 			sourceTree = "<group>";
@@ -1679,6 +1689,7 @@
 				7ED823A11B13D2A6001BB249 /* oldman_ss.json in Resources */,
 				7ED823AA1B13D2A6001BB249 /* villager_fishwoman.png in Resources */,
 				7ED823651B13D2A6001BB249 /* 5ceta_mono.ttf in Resources */,
+				7E4F09A91B252DE4000945B8 /* alpha_gradient_sprite.fsh in Resources */,
 				7ED823BC1B13D2A6001BB249 /* aiming_bar.png in Resources */,
 				7ED8238F1B13D2A6001BB249 /* hanokav2.png in Resources */,
 				7ED8236E1B13D2A6001BB249 /* bg_test_tile_sky.png in Resources */,
@@ -1737,6 +1748,7 @@
 				7ED823F51B13D2A6001BB249 /* spriter_test.scml in Resources */,
 				7A40370319DE401F007B6E8F /* Default.png in Resources */,
 				7ED823861B13D2A6001BB249 /* underwater_spritesheet.png in Resources */,
+				7E4F09AD1B252E60000945B8 /* alpha_gradient_sprite.vsh in Resources */,
 				7A40370419DE401F007B6E8F /* Default@2x.png in Resources */,
 				7A4036F619DE3FFC007B6E8F /* Published-iOS in Resources */,
 			);
@@ -1809,6 +1821,8 @@
 				7EFEE7A01B1F070F0055C989 /* charge_circle.fsh in Resources */,
 				927F61BB196C771E000F43EF /* iPad-old.png in Resources */,
 				7ED823D91B13D2A6001BB249 /* reflection_am_down.fsh in Resources */,
+				7E4F09AC1B252E60000945B8 /* alpha_gradient_sprite.vsh in Resources */,
+				7E4F09A81B252DE4000945B8 /* alpha_gradient_sprite.fsh in Resources */,
 				7ED823F11B13D2A6001BB249 /* spriter_test.png in Resources */,
 				7ED823E81B13D2A6001BB249 /* sh_button_side.png in Resources */,
 			);
@@ -1881,6 +1895,8 @@
 				7ED823B41B13D2A6001BB249 /* particles_spritesheet.png in Resources */,
 				B71F5911188484E7003F4D28 /* iPad-old.png in Resources */,
 				7ED823D81B13D2A6001BB249 /* reflection_am_down.fsh in Resources */,
+				7E4F09AB1B252E60000945B8 /* alpha_gradient_sprite.vsh in Resources */,
+				7E4F09A71B252DE4000945B8 /* alpha_gradient_sprite.fsh in Resources */,
 				7ED823F01B13D2A6001BB249 /* spriter_test.png in Resources */,
 				7ED823E71B13D2A6001BB249 /* sh_button_side.png in Resources */,
 			);
@@ -1944,11 +1960,13 @@
 				7ED822841B13D258001BB249 /* PufferBasicAirEnemy.m in Sources */,
 				7EFEE79E1B1F06880055C989 /* PlayerChargeIndicator.m in Sources */,
 				7ED822931B13D258001BB249 /* BGWater.m in Sources */,
+				7E4F09961B24FC6B000945B8 /* SwordSlashParticle.m in Sources */,
 				7E386D241B239FE600DDEFF6 /* OnGroundPlayerStateStack.m in Sources */,
 				7ED8230B1B13D258001BB249 /* SpriterNode.m in Sources */,
 				7ED822811B13D258001BB249 /* BasicAirEnemy.m in Sources */,
 				7E386D4F1B23F6DC00DDEFF6 /* BGCharacterBase.m in Sources */,
 				7A4036E819DE3F33007B6E8F /* MainScene.m in Sources */,
+				7E4F09A51B2523AE000945B8 /* SPCCSpriteAnimator.m in Sources */,
 				7ED822F01B13D258001BB249 /* Common.m in Sources */,
 				7ED822AB1B13D258001BB249 /* ChainedMovementParticle.m in Sources */,
 				7ED8227E1B13D258001BB249 /* AirEnemyManager.m in Sources */,
@@ -1961,6 +1979,7 @@
 				7E386D311B23A0AC00DDEFF6 /* PlayerLandParams.m in Sources */,
 				7ED8231D1B13D258001BB249 /* Vec3D.m in Sources */,
 				7ED822A51B13D258001BB249 /* GameObject.m in Sources */,
+				7E4F099B1B250E06000945B8 /* FlashEvery.m in Sources */,
 				7ED822901B13D258001BB249 /* BGVillage.m in Sources */,
 				7ED822DB1B13D258001BB249 /* MainMenuScene.m in Sources */,
 				7ED822991B13D258001BB249 /* BGCharacterTest.m in Sources */,
@@ -1991,11 +2010,9 @@
 				7ED823201B13D258001BB249 /* WebRequest.m in Sources */,
 				BB771B271B23F787002BA595 /* DialogUI.m in Sources */,
 				7ED822F31B13D258001BB249 /* DataStore.m in Sources */,
-				7ED822B11B13D258001BB249 /* ParticleBubble.m in Sources */,
 				7ED822F61B13D258001BB249 /* FileCache.m in Sources */,
 				7E386D481B23A95B00DDEFF6 /* InAirPlayerStateStack.m in Sources */,
 				7ED822BD1B13D258001BB249 /* UIBossIntroParticle.m in Sources */,
-				7ED822B71B13D258001BB249 /* ParticlePhysical.m in Sources */,
 				7ED822E41B13D258001BB249 /* SHButton.m in Sources */,
 				7E9A58541B22EFA3008EC348 /* AlphaGradientSprite.m in Sources */,
 				7ED822D51B13D258001BB249 /* PlayerUIHealthIndicator.m in Sources */,
@@ -2011,7 +2028,6 @@
 				7ED823051B13D258001BB249 /* SpriterData.m in Sources */,
 				7ED822961B13D258001BB249 /* BGCharacterOldMan.m in Sources */,
 				7E386D4D1B23AB9900DDEFF6 /* AirToGroundTransitionPlayerStateStack.m in Sources */,
-				7ED822B41B13D258001BB249 /* ParticleLiquid.m in Sources */,
 				7E386D431B23A75F00DDEFF6 /* DiveReturnPlayerStateStack.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2026,11 +2042,13 @@
 				7ED822D71B13D258001BB249 /* GameMain.m in Sources */,
 				7ED8227D1B13D258001BB249 /* AirEnemyManager.m in Sources */,
 				7E386D331B23A0AC00DDEFF6 /* PlayerUnderwaterCombatParams.m in Sources */,
+				7E4F09951B24FC6B000945B8 /* SwordSlashParticle.m in Sources */,
 				7EFEE79B1B1F06860055C989 /* PlayerChargeIndicator.m in Sources */,
 				7ED8229E1B13D258001BB249 /* ControlManager.m in Sources */,
 				7ED822831B13D258001BB249 /* PufferBasicAirEnemy.m in Sources */,
 				7ED822AA1B13D258001BB249 /* ChainedMovementParticle.m in Sources */,
 				7ED822951B13D258001BB249 /* BGCharacterOldMan.m in Sources */,
+				7E4F09A41B2523AE000945B8 /* SPCCSpriteAnimator.m in Sources */,
 				7ED822CE1B13D258001BB249 /* GameUI.m in Sources */,
 				7EFEE79F1B1F06970055C989 /* SPRadialFillSprite.m in Sources */,
 				7ED823161B13D258001BB249 /* SpriterXMLParser.m in Sources */,
@@ -2043,11 +2061,10 @@
 				7ED822AD1B13D258001BB249 /* Particle.m in Sources */,
 				BB771B1C1B23F763002BA595 /* InDialoguePlayerStateStack.m in Sources */,
 				7ED8231F1B13D258001BB249 /* WebRequest.m in Sources */,
+				7E4F099A1B250E06000945B8 /* FlashEvery.m in Sources */,
 				7ED822E91B13D258001BB249 /* SHItemRow.m in Sources */,
 				7E386D231B239FE600DDEFF6 /* OnGroundPlayerStateStack.m in Sources */,
-				7ED822B01B13D258001BB249 /* ParticleBubble.m in Sources */,
 				7ED8228C1B13D258001BB249 /* BGSky.m in Sources */,
-				7ED822B31B13D258001BB249 /* ParticleLiquid.m in Sources */,
 				7ED822F81B13D258001BB249 /* GEventDispatcher.m in Sources */,
 				7E9A58621B23098C008EC348 /* FlashCount.m in Sources */,
 				7E8377681B14636300EFC0D9 /* SPDeviceAccelerometer.m in Sources */,
@@ -2070,7 +2087,6 @@
 				7ED8230A1B13D258001BB249 /* SpriterNode.m in Sources */,
 				7ED823101B13D258001BB249 /* SpriterTypes.m in Sources */,
 				7E386D3D1B23A59A00DDEFF6 /* DivePlayerStateStack.m in Sources */,
-				7ED822B61B13D258001BB249 /* ParticlePhysical.m in Sources */,
 				7ED822FE1B13D258001BB249 /* Resource.m in Sources */,
 				7ED822DD1B13D258001BB249 /* TouchButton.m in Sources */,
 				7ED8231C1B13D258001BB249 /* Vec3D.m in Sources */,
@@ -2120,6 +2136,7 @@
 				7E9A44BB1B1D85E100111C35 /* SPRadialFillSprite.m in Sources */,
 				7ED822A91B13D258001BB249 /* ChainedMovementParticle.m in Sources */,
 				7ED8227C1B13D258001BB249 /* AirEnemyManager.m in Sources */,
+				7E4F09A31B2523AE000945B8 /* SPCCSpriteAnimator.m in Sources */,
 				7ED822F71B13D258001BB249 /* GEventDispatcher.m in Sources */,
 				7E9A58441B22CBE7008EC348 /* PlayerUIAimReticule.m in Sources */,
 				7ED8229D1B13D258001BB249 /* ControlManager.m in Sources */,
@@ -2137,6 +2154,7 @@
 				BB771B101B23D0A8002BA595 /* InDialoguePlayerStateStack.m in Sources */,
 				7ED822881B13D258001BB249 /* BGReflection.m in Sources */,
 				7E386D321B23A0AC00DDEFF6 /* PlayerUnderwaterCombatParams.m in Sources */,
+				7E4F09941B24FC6B000945B8 /* SwordSlashParticle.m in Sources */,
 				7ED822CD1B13D258001BB249 /* GameUI.m in Sources */,
 				7ED822DC1B13D258001BB249 /* TouchButton.m in Sources */,
 				7ED8230C1B13D258001BB249 /* SpriterNodeCache.m in Sources */,
@@ -2153,17 +2171,16 @@
 				7ED823001B13D258001BB249 /* ShaderManager.m in Sources */,
 				7ED822BE1B13D258001BB249 /* Player.m in Sources */,
 				7ED823FD1B13DD59001BB249 /* md5.c in Sources */,
+				7E4F09991B250E06000945B8 /* FlashEvery.m in Sources */,
 				BB771B151B23DCBF002BA595 /* DialogUI.m in Sources */,
 				7ED823121B13D258001BB249 /* SpriterUtil.m in Sources */,
 				7E386D4B1B23AB9900DDEFF6 /* AirToGroundTransitionPlayerStateStack.m in Sources */,
 				7ED822FA1B13D258001BB249 /* PolyLib.m in Sources */,
 				7ED8231E1B13D258001BB249 /* WebRequest.m in Sources */,
 				7ED822F11B13D258001BB249 /* DataStore.m in Sources */,
-				7ED822AF1B13D258001BB249 /* ParticleBubble.m in Sources */,
 				7ED822F41B13D258001BB249 /* FileCache.m in Sources */,
 				7ED822BB1B13D258001BB249 /* UIBossIntroParticle.m in Sources */,
 				7E8377671B14619900EFC0D9 /* SPDeviceAccelerometer.m in Sources */,
-				7ED822B51B13D258001BB249 /* ParticlePhysical.m in Sources */,
 				7ED822E21B13D258001BB249 /* SHButton.m in Sources */,
 				7ED822D31B13D258001BB249 /* PlayerUIHealthIndicator.m in Sources */,
 				7ED823061B13D258001BB249 /* SpriterJSONParser.m in Sources */,
@@ -2177,7 +2194,6 @@
 				7ED823031B13D258001BB249 /* SpriterData.m in Sources */,
 				BB771B011B22F602002BA595 /* DialogueBubble.m in Sources */,
 				7ED822941B13D258001BB249 /* BGCharacterOldMan.m in Sources */,
-				7ED822B21B13D258001BB249 /* ParticleLiquid.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

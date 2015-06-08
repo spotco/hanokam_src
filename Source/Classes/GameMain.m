@@ -12,8 +12,9 @@
 /*
 TODO --
 GAMEPLAY IDEAS:
- dash hit sword
- hold super arrow
+ swordplant hit effect
+ enemy pushback (when stunned and touch)
+ hold super arrow (penetrating)
  arrow sticks
  
 when enemy stunned dash through or touch kill
@@ -31,6 +32,8 @@ touchtrackinglayer fadein/out
 homing arrow
 enemy bullets with patterns
 
+QUESTS ARE CHALLENGES - let no enemies escape!
+ 
 TECH --
 player control class make into state machine stack
 scale player accel movement based on screen size

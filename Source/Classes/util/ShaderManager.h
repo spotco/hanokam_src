@@ -5,6 +5,7 @@
 #define SHADER_REFLECTION_AM_DOWN @"reflection_am_down"
 #define SHADER_ABOVEWATER_AM_UP @"abovewater_am_up"
 #define SHADER_CHARGE_CIRCLE @"charge_circle"
+#define SHADER_ALPHA_GRADIENT_SPRITE @"alpha_gradient_sprite"
 
 @interface ShaderManager : NSObject
 +(void)load_all;

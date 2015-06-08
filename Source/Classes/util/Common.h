@@ -74,6 +74,16 @@ fCGPoint fCGPointMake(float x, float y);
 	+(TexRect*)cons_tex:(CCTexture*)tex rect:(CGRect)rect;
 @end
 
+typedef enum HorizDir {
+	HorizDir_Left,
+	HorizDir_Right
+} HorizDir;
+
+typedef enum VertDir {
+	VertDir_Top,
+	VertDir_Bottom
+} VertDir;
+
 typedef struct HitRect {
     float x1,y1,x2,y2;
 } HitRect;

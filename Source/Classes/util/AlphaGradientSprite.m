@@ -1,6 +1,7 @@
 #import "AlphaGradientSprite.h" 
 #import "Resource.h"
 #import "FileCache.h"
+#import "ShaderManager.h"
 
 @implementation AlphaGradientSprite {
 	CCVertex *_vtx;
@@ -31,11 +32,13 @@
 	[self make_triangles];
 	
 	[self setBlendMode:[CCBlendMode alphaMode]];
-    
+	[self setShader:[ShaderManager get_shader:SHADER_ALPHA_GRADIENT_SPRITE]];
+	
 	return self;
 }
 
 -(void)make_triangles {
+	if (_vtx == NULL) return;
 	CGRect texrect = _texrect;
 	CGSize size = _size;
 	CGPoint anchorpt = _anchorpt;
@@ -43,6 +46,8 @@
 	CGRange alphaY = _alphaY;
     CCColor *color = _color;
 	CCTexture *tex = self.texture;
+
+	texrect.origin.y = (tex.pixelHeight-texrect.origin.y)-texrect.size.height;
 	
 	//0,0
 	_vtx[0].position = GLKVector4Make(-size.width*anchorpt.x, -size.height*anchorpt.y, 0, 1);
@@ -63,6 +68,17 @@
 	_vtx[3].position = GLKVector4Make(size.width*(1-anchorpt.x), -size.height*anchorpt.y, 0, 1);
 	_vtx[3].texCoord1 = GLKVector2Make((texrect.origin.x + texrect.size.width)/tex.pixelWidth, texrect.origin.y/tex.pixelHeight);
 	_vtx[3].color = GLKVector4Make(color.red, color.green, color.blue, alphaX.max * alphaY.min);
+	
+	[super setTextureRect:CGRectZero rotated:NO untrimmedSize:CGSizeZero];
+}
+
+-(void)setTextureRect:(CGRect)rect rotated:(BOOL)rotated untrimmedSize:(CGSize)size {
+	[super setTextureRect:rect rotated:rotated untrimmedSize:size];
+	_texrect = rect;
+	[self make_triangles];
+}
+-(void)setTextureRect:(CGRect)rect {
+	[self setTextureRect:rect rotated:NO untrimmedSize:rect.size];
 }
 
 -(void)set_height:(float)val {

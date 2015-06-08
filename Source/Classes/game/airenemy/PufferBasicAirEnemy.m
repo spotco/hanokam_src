@@ -27,6 +27,11 @@
 	return (PufferBasicAirEnemy*)[[PufferBasicAirEnemy node] cons_g:g relstart:relstart relend:relend];
 }
 
+-(void)hit_projectile:(GameEngineScene*)g {
+	[super hit_projectile:g];
+	[_flashcount reset];
+}
+
 -(BasicAirEnemy*)cons_g:(GameEngineScene*)g relstart:(CGPoint)relstart relend:(CGPoint)relend {
 	[super cons_g:g relstart:relstart relend:relend];
 	
@@ -39,7 +44,7 @@
 	_tar_color = ccc4f(1.0, 1.0, 1.0, 1.0);
 	
 	_flashcount = [FlashCount cons];
-	[_flashcount add_flash_at_times:@[@140,@100,@65,@40,@25,@15,@10]];
+	[_flashcount add_flash_at_times:@[@150,@135,@120,@100,@80,@60,@40,@20,@10]];
 	
 	return self;
 }

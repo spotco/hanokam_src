@@ -21,10 +21,7 @@
 -(float)DEFAULT_HEIGHT {
 	return game_screen().height * 0.8;
 }
--(float)BEGIN_SWORD_HOLD_CT {
-	return 15;
-}
--(float)END_SWORD_HOLD_CT {
+-(float)ARROW_AIM_TIME {
 	return 30;
 }
 @end

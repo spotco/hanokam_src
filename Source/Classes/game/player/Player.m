@@ -16,11 +16,14 @@
 #import "PlayerSharedParams.h"
 #import "OnGroundPlayerStateStack.h"
 
+#import "AlphaGradientSprite.h"
+#import "SPCCSpriteAnimator.h"
+
 #import "GameUI.h"
 
 @implementation Player {
 	SpriterNode *_img;
-	
+	CCNode *_swordplant_streak_root;
 	NSString *_current_playing;
 	NSString *_on_finish_play_anim;
 	
@@ -41,6 +44,8 @@
 	_img = [SpriterNode nodeFromData:[FileCache spriter_scml_data_from_file:@"hanokav2.scml" json:@"hanokav2.json" texture:[Resource get_tex:TEX_SPRITER_CHAR_HANOKA_V2]]];
 	[self play_anim:@"idle" repeat:YES];
 	[self addChild:_img z:1];
+	
+	[self cons_swordplant_streak];
 	
 	self.position = ccp(game_screen_pct(0.5, 0).x,g.DOCK_HEIGHT);
 	[g set_camera_height:150];
@@ -69,6 +74,44 @@
 	[_player_state_stack insertObject:item atIndex:0];
 }
 
+-(void)cons_swordplant_streak {
+	_swordplant_streak_root = [CCNode node];
+	[self addChild:_swordplant_streak_root];
+	AlphaGradientSprite *streak_left = [AlphaGradientSprite cons_tex:[Resource get_tex:TEX_GAMEPLAY_ELEMENTS]
+															 texrect:[FileCache get_cgrect_from_plist:TEX_GAMEPLAY_ELEMENTS idname:@"vfx_swordplant_0.png"]
+																size:CGSizeMake(21*1.5, 83*1.5)
+														 anchorPoint:ccp(0.5,0)
+															   color:[CCColor whiteColor]
+															  alphaX:CGRangeMake(1, 1)
+															  alphaY:CGRangeMake(0.8, 0)];
+	[streak_left setPosition:ccp(-15,-20)];
+	[_swordplant_streak_root addChild:streak_left];
+	SPCCSpriteAnimator *streak_left_animate = [SPCCSpriteAnimator cons_target:streak_left speed:4.12];
+	[streak_left_animate add_frame:[FileCache get_cgrect_from_plist:TEX_GAMEPLAY_ELEMENTS idname:@"vfx_swordplant_0.png"]];
+	[streak_left_animate add_frame:[FileCache get_cgrect_from_plist:TEX_GAMEPLAY_ELEMENTS idname:@"vfx_swordplant_1.png"]];
+	[streak_left_animate add_frame:[FileCache get_cgrect_from_plist:TEX_GAMEPLAY_ELEMENTS idname:@"vfx_swordplant_2.png"]];
+	[streak_left addChild:streak_left_animate];
+	
+	AlphaGradientSprite *streak_right = [AlphaGradientSprite cons_tex:[Resource get_tex:TEX_GAMEPLAY_ELEMENTS]
+															 texrect:[FileCache get_cgrect_from_plist:TEX_GAMEPLAY_ELEMENTS idname:@"vfx_swordplant_0.png"]
+																size:CGSizeMake(21*1.5, 83*1.5)
+														 anchorPoint:ccp(0.5,0)
+															   color:[CCColor whiteColor]
+															  alphaX:CGRangeMake(1, 1)
+															  alphaY:CGRangeMake(0.8, 0)];
+	[streak_right setPosition:ccp(15,-20)];
+	[streak_right setScaleX:-1];
+	[_swordplant_streak_root addChild:streak_right];
+	SPCCSpriteAnimator *streak_right_animate = [SPCCSpriteAnimator cons_target:streak_right speed:3.75];
+	[streak_right_animate add_frame:[FileCache get_cgrect_from_plist:TEX_GAMEPLAY_ELEMENTS idname:@"vfx_swordplant_1.png"]];
+	[streak_right_animate add_frame:[FileCache get_cgrect_from_plist:TEX_GAMEPLAY_ELEMENTS idname:@"vfx_swordplant_2.png"]];
+	[streak_right_animate add_frame:[FileCache get_cgrect_from_plist:TEX_GAMEPLAY_ELEMENTS idname:@"vfx_swordplant_0.png"]];
+	[streak_right addChild:streak_right_animate];
+	[self swordplant_streak_set_visible:NO];
+}
+
+-(void)swordplant_streak_set_visible:(BOOL)tar { _swordplant_streak_root.visible = tar; }
+
 -(void)set_health:(float)val { _current_health = val; }
 -(void)add_health:(float)val g:(GameEngineScene*)g {
 	_current_health += val;
@@ -83,6 +126,7 @@
 	} else {
 		[self setZOrder:GameAnchorZ_Player_Out];
 	}
+	
 	
 	if (!_img.current_anim_repeating && _img.current_anim_finished && _on_finish_play_anim != NULL) {
 		[_img playAnim:_on_finish_play_anim repeat:YES];

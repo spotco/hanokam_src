@@ -32,6 +32,8 @@
 
 -(BOOL)is_touch_down;
 
+-(BOOL)this_touch_can_proc_tap;
+
 -(CGPoint)get_player_to_touch_dir;
 
 @end

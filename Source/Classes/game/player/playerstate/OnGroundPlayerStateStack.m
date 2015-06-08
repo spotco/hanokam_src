@@ -47,7 +47,6 @@
 				if (_land_params._prep_dive_hold_ct > _land_params.PREP_DIVE_HOLD_TIME) {
 					_land_params._current_mode = PlayerLandMode_LandToWater;
 					_land_params._vel = ccp(0,10 * dt_scale_get());
-					//SPTODO
 				}
 #if HMCFG_ON_SIMULATOR
             } else if (g.get_control_manager.is_proc_tap) {

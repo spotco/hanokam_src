@@ -36,6 +36,7 @@
 -(void)play_anim:(NSString*)anim repeat:(BOOL)repeat;
 -(void)play_anim:(NSString*)anim1 on_finish_anim:(NSString*)anim2;
 -(SpriterNode*)img;
+-(void)swordplant_streak_set_visible:(BOOL)tar;
 
 -(void)pop_state_stack:(GameEngineScene*)g;
 -(void)push_state_stack:(BasePlayerStateStack*)item;

@@ -80,10 +80,14 @@
 
 -(void)touch_end:(CGPoint)pt {
     _is_touch_down = NO;
-	if (!_this_touch_has_procced_hold && !_this_touch_has_procced_swipe) {
+	if ([self this_touch_can_proc_tap]) {
 		_is_proc_tap = YES;
 		_proc_tap_pt = pt;
 	}
+}
+
+-(BOOL)this_touch_can_proc_tap {
+	return !_this_touch_has_procced_hold && !_this_touch_has_procced_swipe;
 }
 
 -(BOOL)is_proc_swipe {

@@ -26,8 +26,8 @@ typedef enum _PlayerAirCombatMode {
 
 @property(readwrite,assign) int __rescue_last_waypoint_ct;
 @property(readwrite,assign) float _hold_ct;
+@property(readwrite,assign) float _invuln_ct;
 
 -(float)DEFAULT_HEIGHT;
--(float)BEGIN_SWORD_HOLD_CT;
--(float)END_SWORD_HOLD_CT;
+-(float)ARROW_AIM_TIME;
 @end

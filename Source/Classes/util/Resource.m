@@ -69,6 +69,7 @@ static NSSet* dont_load;
 		
 		TEX_HUD_SPRITESHEET: @"hud_spritesheet.png",
 		TEX_PARTICLES_SPRITESHEET: @"particles_spritesheet.png",
+		TEX_GAMEPLAY_ELEMENTS: @"gameplay_elements_ss.png"
 	};
 	
 	dont_load = _NSSET(
