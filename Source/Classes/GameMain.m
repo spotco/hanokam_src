@@ -12,27 +12,20 @@
 /*
 TODO --
 GAMEPLAY IDEAS:
- swordplant hit effect
- enemy pushback (when stunned and touch)
  hold super arrow (penetrating)
- arrow sticks
- 
-when enemy stunned dash through or touch kill
-when hold spinning, sword
-sword slash effects
  
 arrow decreasing bar
 energy bar
-shoot arrow tap target ui effect
 arrow initial inactive time
-after sword enemy invuln time (chain sword hits)
 enemy about to spawn from bottom/sides indicator
-invulnerability time
+invulnerability time anim on player
 touchtrackinglayer fadein/out
 homing arrow
 enemy bullets with patterns
+arrow bounce off + (clear player projectiles after airbattle end)
+dropping arrows after end
 
-QUESTS ARE CHALLENGES - let no enemies escape!
+QUESTS ARE CHALLENGES - let no enemies escape
  
 TECH --
 player control class make into state machine stack

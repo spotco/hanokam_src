@@ -127,3 +127,7 @@ CGPoint vec_basis_transform_point(CGPoint pt, Vec3D a, float as, Vec3D b, float 
 		pt.y + a.y + b.y
 	);
 }
+
+Vec3D vec_dir_between_points(CGPoint a, CGPoint b) {
+	return vec_cons_norm(b.x-a.x, b.y-a.y, 0);
+}

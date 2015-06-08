@@ -14,5 +14,6 @@
 -(void)update_death:(GameEngineScene*)g;
 -(void)update_stunned:(GameEngineScene*)g;
 -(int)get_stunned_anim_ct;
+-(int)get_death_anim_ct;
 @property(readwrite,assign) CGPoint _rel_pos;
 @end

@@ -24,8 +24,9 @@ typedef enum _PlayerState {
 typedef enum _GameAnchorZ {
 	GameAnchorZ_DebugDraw = 999,
 	GameAnchorZ_BGSky_SurfaceReflection = 100,
-	GameAnchorZ_PlayerProjectiles = 82,
+	GameAnchorZ_PlayerAirEffects = 82,
 	GameAnchorZ_Enemies_Air = 81,
+	GameAnchorZ_PlayerProjectiles = 80,
 	GameAnchorZ_BGSky_SurfaceGradient = 80,
 	GameAnchorZ_Player_Out = 79,
 	GameAnchorZ_BGSky_Docks_Pillars_Front = 52,

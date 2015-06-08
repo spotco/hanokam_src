@@ -10,12 +10,21 @@
 #import "GameEngineScene.h"
 #import "Resource.h"
 #import "AirEnemyManager.h"
+#import "RotateFadeOutParticle.h"
 
 @implementation PlayerProjectile
 -(HitRect)get_hit_rect { return hitrect_cons_xy_widhei(self.position.x, self.position.y, 1, 1); }
 -(void)get_sat_poly:(SATPoly *)in_poly { SAT_cons_quad_buf(in_poly, CGPointZero, CGPointZero, CGPointZero, CGPointZero); }
 -(BOOL)get_active { return YES; }
 @end
+
+typedef enum ArrowMode {
+	ArrowMode_Flying,
+	ArrowMode_Floating,
+	ArrowMode_Stuck,
+	ArrowMode_BounceOff,
+	ArrowMode_Falling
+} ArrowMode;
 
 @implementation Arrow {
 	CCSprite *_sprite;
@@ -24,7 +33,11 @@
 	float _ct;
 	float _trail_tar_alpha;
 	
-	BOOL _floating;
+	ArrowMode _current_mode;
+	
+	CGPoint _stuck_offset;
+	CGPoint _falling_vel;
+	BaseAirEnemy *_stuck_target;
 }
 
 +(Arrow*)cons_pos:(CGPoint)pos dir:(Vec3D)dir {
@@ -32,7 +45,8 @@
 }
 
 -(Arrow*)cons_pos:(CGPoint)pos dir:(Vec3D)dir {
-	_floating = NO;
+	_current_mode = ArrowMode_Flying;
+	
 	[self setPosition:pos];
 	[self setRotation:vec_ang_deg_lim180(dir, 0) + 180];
 	_sprite = [CCSprite spriteWithTexture:[Resource get_tex:TEX_PARTICLES_SPRITESHEET] rect:[FileCache get_cgrect_from_plist:TEX_PARTICLES_SPRITESHEET idname:@"arrow.png"]];
@@ -57,26 +71,28 @@
 }
 
 -(void)i_update:(id)g {
-	if (_floating) {
-		[_trail setOpacity:0];
-		if (_dir.x > 0) {
-			[self setRotation:drp(self.rotation, 0, 50)];
-		} else {
-			[self setRotation:drp(self.rotation, 180, 50)];
-		}
-		[self setPosition:CGPointAdd(self.position, ccp(_dir.x*dt_scale_get()*0.1,-2*dt_scale_get()))];
-		_ct-= dt_scale_get();
-		[_sprite setOpacity:lerp(0, 1, _ct/50)];
-		
-	} else {
-	
+	switch (_current_mode) {
+	case ArrowMode_Flying:;
 		if ([[g class] isSubclassOfClass:[GameEngineScene class]]) {
 			GameEngineScene *game = (GameEngineScene*)g;
 			for (BaseAirEnemy *itr in game.get_air_enemy_manager.get_enemies) {
 				if (itr.is_alive && SAT_polyowners_intersect(self, itr)) {
-					_ct = 0;
-					[itr hit_projectile:g];
+					PlayerHitParams hit_params;
+					PlayerHitParams_init(&hit_params, vec_norm(_dir));
+					[itr hit_projectile:g params:&hit_params];
+					
 					[g shake_for:5 distance:2];
+					
+					DO_FOR(1, [self setPosition:CGPointAdd(self.position, ccp(_dir.x*0.5,_dir.y*0.5))];);
+					
+					_current_mode = ArrowMode_Stuck;
+					_stuck_target = itr;
+					_stuck_offset = CGPointSub(self.position,_stuck_target.position);
+					_ct = 1;
+					
+					[BaseAirEnemy particle_blood_effect:game pos:self.position ct:3];
+					
+					return;
 				}
 			}
 		}
@@ -92,18 +108,60 @@
 		if (self.position.x < -50 || self.position.x > game_screen().width + 50) {
 			_ct = 0;
 		} else if (self.position.y <= 0) {
-			_floating = YES;
+			_current_mode = ArrowMode_Floating;
 			if ([[g class] isSubclassOfClass:[GameEngineScene class]]) {
 				GameEngineScene *game = (GameEngineScene*)g;
 				[game add_ripple:self.position];
 				_ct = 50;
 			}
 		}
+	
+	break;
+	case ArrowMode_Stuck:;
+		[_trail setOpacity:0];
+		[self setPosition:CGPointAdd([_stuck_target position], _stuck_offset)];
+		
+		_ct -= dt_scale_get() * 0.0065;
+		[self norm_ct_set_alpha];
+		
+		if ([_stuck_target should_remove] || [_stuck_target arrow_drop_all] || _stuck_target.parent == NULL) {
+			_current_mode = ArrowMode_Falling;
+			_stuck_target = NULL;
+		}
+	
+	break;
+	case ArrowMode_Floating:;
+		[_trail setOpacity:0];
+		if (_dir.x > 0) {
+			[self setRotation:drp(self.rotation, 0, 50)];
+		} else {
+			[self setRotation:drp(self.rotation, 180, 50)];
+		}
+		[self setPosition:CGPointAdd(self.position, ccp(_dir.x*dt_scale_get()*0.1,-2*dt_scale_get()))];
+		_ct-= dt_scale_get();
+		[_sprite setOpacity:lerp(0, 1, _ct/50)];
+	break;
+	case ArrowMode_BounceOff:;
+		//SPTODO
+	break;
+	case ArrowMode_Falling:;
+		[_trail setOpacity:0];
+		self.rotation += shortest_angle(self.rotation, 90) * powf(0.5, dt_scale_get());
+		_falling_vel.y -= 0.2 * dt_scale_get();
+		self.position = ccp(self.position.x+_falling_vel.x*dt_scale_get(),self.position.y+_falling_vel.y*dt_scale_get());
+		_ct -= dt_scale_get() * 0.01;
+		[self norm_ct_set_alpha];
+		
+	break;
 	}
 }
 
+-(void)norm_ct_set_alpha {
+	_sprite.opacity = bezier_point_for_t(ccp(0,1), ccp(0.5,1), ccp(1,1), ccp(1,0), 1-_ct).y;
+}
+
 -(BOOL)get_active {
-	return !_floating;
+	return _current_mode == ArrowMode_Flying;
 }
 
 -(int)get_render_ord {
@@ -118,7 +176,7 @@
 	return satpolyowner_cons_hit_rect(self.position, _sprite.textureRect.size.width, _sprite.textureRect.size.height);
 }
 -(void)get_sat_poly:(SATPoly*)in_poly {
-	return satpolyowner_cons_sat_poly(in_poly, self.position, self.rotation, _sprite.textureRect.size.width, _sprite.textureRect.size.height, ccp(1,1));
+	return satpolyowner_cons_sat_poly(in_poly, self.position, self.rotation, _sprite.textureRect.size.width-45, _sprite.textureRect.size.height, ccp(1,1));
 }
 
 @end

@@ -16,6 +16,7 @@
 -(void)i_update:(GameEngineScene*)g;
 -(BOOL)is_underwater:(GameEngineScene*)g;
 -(HitRect)get_hit_rect;
+-(CGPoint)get_center;
 
 -(void)add_health:(float)val g:(GameEngineScene*)g;
 -(void)set_health:(float)val;

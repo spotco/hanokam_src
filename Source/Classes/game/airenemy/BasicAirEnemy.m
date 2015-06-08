@@ -15,6 +15,7 @@
 
 @implementation BasicAirEnemy {
 	CGPoint _rel_start,_rel_end;
+	CGPoint _rel_offset, _rel_offset_vel;
 	float _anim_t;
 	
 	BOOL _is_dead;
@@ -29,6 +30,8 @@
 	_rel_start = relstart;
 	_rel_end = relend;
 	_rel_pos = _rel_start;
+	_rel_offset = CGPointZero;
+	_rel_offset_vel = CGPointZero;
 	[self update_rel_pos:g];
 	_anim_t = 0;
 	_death_anim_ct = 0;
@@ -38,71 +41,89 @@
 	return self;
 }
 
--(int)get_stunned_anim_ct {
-	return _stunned_anim_ct;
+-(void)i_update:(GameEngineScene *)g {
+	_rel_offset.x += _rel_offset_vel.x * dt_scale_get();
+	_rel_offset.y += _rel_offset_vel.y * dt_scale_get();
+	_rel_offset_vel.x *= powf(0.9, dt_scale_get());
+	_rel_offset_vel.y *= powf(0.9, dt_scale_get());
+	
+	if (_is_dead) {
+		_death_anim_ct -= dt_scale_get();
+		[self update_rel_pos:g];
+		[self update_death:g];
+		
+	} else if (_is_stunned) {
+		_stunned_anim_ct -= dt_scale_get();
+		if (_stunned_anim_ct <= 0) {
+			_is_stunned = NO;
+		}
+		_stun_slow_scf *= powf(0.9, dt_scale_get());
+		[self ih_update_move:g];
+		[self update_stunned:g];
+		
+	} else {
+		_stun_slow_scf = 1;
+		[self ih_update_move:g];
+		[self update_alive:g];
+	}
+}
+
+-(void)ih_update_move:(GameEngineScene*)g {
+	_anim_t += 0.004 * dt_scale_get() * _stun_slow_scf;
+	if (_anim_t > 1) _is_dead = YES;
+	CGPoint bez_ctrl1 = ccp(_rel_start.x,_rel_end.y + 100);
+	CGPoint bez_ctrl2 = CGPointMid(bez_ctrl1, _rel_end);
+	CGPoint next_rel_pos = bezier_point_for_t(_rel_start, bez_ctrl1, bez_ctrl2, _rel_end, _anim_t);
+	Vec3D dir = vec_cons(next_rel_pos.x - _rel_pos.x, next_rel_pos.y - _rel_pos.y, 0);
+	self.rotation = vec_ang_deg_lim180(dir,90);
+	_rel_pos = next_rel_pos;
+	[self update_rel_pos:g];
 }
 
 -(void)update_rel_pos:(GameEngineScene*)g {
 	CGPoint lcorner = ccp(g.get_viewbox.x1,g.get_viewbox.y1);
-	self.position = CGPointAdd(_rel_pos, lcorner);
+	self.position = CGPointAdd(CGPointAdd(_rel_pos, lcorner),_rel_offset);
 }
 
--(void)i_update:(GameEngineScene *)game {
-	if (_is_dead) {
-		_death_anim_ct -= dt_scale_get();
-		[self update_rel_pos:game];
-		[self update_death:game];
-		
-	} else if (_is_stunned) {
-		_stunned_anim_ct -= dt_scale_get();
-		[self update_stunned:game];
-		if (_stunned_anim_ct <= 0) {
-			_is_stunned = NO;
-		}
-		
-		
-		
-		_anim_t += 0.004 * dt_scale_get() * _stun_slow_scf;
-		
-		_stun_slow_scf = drp(_stun_slow_scf, 0, 10);
-		
-		if (_anim_t > 1) _is_dead = YES;
-		CGPoint bez_ctrl1 = ccp(_rel_start.x,_rel_end.y + 100);
-		CGPoint bez_ctrl2 = CGPointMid(bez_ctrl1, _rel_end);
-		CGPoint next_rel_pos = bezier_point_for_t(_rel_start, bez_ctrl1, bez_ctrl2, _rel_end, _anim_t);
-		Vec3D dir = vec_cons(next_rel_pos.x - _rel_pos.x, next_rel_pos.y - _rel_pos.y, 0);
-		
-		self.rotation = vec_ang_deg_lim180(dir,90);
-		
-		_rel_pos = next_rel_pos;
-		[self update_rel_pos:game];
-		
-		
-	} else {
-		_stun_slow_scf = 1;
-		_anim_t += 0.004 * dt_scale_get();
-		if (_anim_t > 1) _is_dead = YES;
-		CGPoint bez_ctrl1 = ccp(_rel_start.x,_rel_end.y + 100);
-		CGPoint bez_ctrl2 = CGPointMid(bez_ctrl1, _rel_end);
-		CGPoint next_rel_pos = bezier_point_for_t(_rel_start, bez_ctrl1, bez_ctrl2, _rel_end, _anim_t);
-		Vec3D dir = vec_cons(next_rel_pos.x - _rel_pos.x, next_rel_pos.y - _rel_pos.y, 0);
-		self.rotation = vec_ang_deg_lim180(dir,90);
-		_rel_pos = next_rel_pos;
-		[self update_rel_pos:game];
-		[self update_alive:game];
-	}
+-(void)hit_projectile:(GameEngineScene*)g params:(PlayerHitParams*)params {
+	_is_stunned = YES;
+	_stunned_anim_ct = 150;
+	
+	float force = params->_pushback_force * 2.5;
+	_rel_offset_vel = CGPointAdd(_rel_offset_vel,ccp(params->_dir.x*force,params->_dir.y*force));
+}
+
+-(void)hit_melee:(GameEngineScene*)g params:(PlayerHitParams*)params {
+	_is_dead = YES;
+	_death_anim_ct = 50;
+	
+	float force = params->_pushback_force * 2.5;
+	_rel_offset_vel = CGPointAdd(_rel_offset_vel,ccp(params->_dir.x*force,params->_dir.y*force));
+}
+
+-(BOOL)should_remove{
+	return _is_dead && _death_anim_ct <= 0;
+}
+
+-(int)get_stunned_anim_ct {
+	return _stunned_anim_ct;
+}
+-(int)get_death_anim_ct {
+	return _death_anim_ct;
 }
 
 -(void)update_alive:(GameEngineScene*)g{}
 -(void)update_death:(GameEngineScene*)g{}
 -(void)update_stunned:(GameEngineScene *)g{};
 
--(BOOL)should_remove{ return _is_dead && _death_anim_ct <= 0; }
--(void)do_remove:(GameEngineScene *)g {}
+-(void)do_remove:(GameEngineScene *)g {
+}
 
--(void)hit_projectile:(GameEngineScene*)g { _is_stunned = YES; _stunned_anim_ct = 150; }
--(void)hit_player_melee:(GameEngineScene*)g { _is_dead = YES; _death_anim_ct = 50; }
--(BOOL)is_stunned{ return _is_stunned; }
--(BOOL)is_alive{ return !_is_dead; }
+-(BOOL)is_stunned{
+	return _is_stunned;
+}
+-(BOOL)is_alive{
+	return !_is_dead;
+}
 
 @end

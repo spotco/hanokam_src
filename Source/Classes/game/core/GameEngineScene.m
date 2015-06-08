@@ -1,4 +1,5 @@
 #import "GameEngineScene.h"
+#import "GameMain.h"
 #import "Player.h"
 #import "Common.h"
 #import "BGVillage.h"

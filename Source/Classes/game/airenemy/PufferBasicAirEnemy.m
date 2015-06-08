@@ -21,14 +21,17 @@
 	
 	ccColor4F _tar_color;
 	FlashCount *_flashcount;
+	
+	BOOL _started_death;
+	BOOL _has_played_blood_anim;
 }
 
 +(PufferBasicAirEnemy*)cons_g:(GameEngineScene*)g relstart:(CGPoint)relstart relend:(CGPoint)relend {
 	return (PufferBasicAirEnemy*)[[PufferBasicAirEnemy node] cons_g:g relstart:relstart relend:relend];
 }
 
--(void)hit_projectile:(GameEngineScene*)g {
-	[super hit_projectile:g];
+-(void)hit_projectile:(GameEngineScene*)g params:(PlayerHitParams *)params {
+	[super hit_projectile:g params:params];
 	[_flashcount reset];
 }
 
@@ -41,6 +44,9 @@
 	[_img update_playAnim:_anim_idle];
 	[_img setScale:0.35];
 	
+	_started_death = NO;
+	_has_played_blood_anim = NO;
+	
 	_tar_color = ccc4f(1.0, 1.0, 1.0, 1.0);
 	
 	_flashcount = [FlashCount cons];
@@ -51,6 +57,11 @@
 
 -(void)update_death:(GameEngineScene *)g {
 	[_img update_playAnim:_anim_die];
+	_started_death = YES;
+	if ([self get_death_anim_ct] < 20 && !_has_played_blood_anim) {
+		[BaseAirEnemy particle_blood_effect:g pos:self.position ct:10];
+		_has_played_blood_anim = YES;
+	}
 }
 
 -(void)update_stunned:(GameEngineScene *)g {
@@ -81,6 +92,10 @@
 		[_img update_playAnim:_anim_idle];
 	
 	}
+}
+
+-(BOOL)arrow_drop_all {
+	return (_started_death && [self get_death_anim_ct] < 20);
 }
 
 -(void)cons_anims {

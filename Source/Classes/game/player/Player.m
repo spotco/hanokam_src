@@ -220,4 +220,9 @@ float accel_x_move_val(GameEngineScene *g, float from_val) {
 -(void)get_sat_poly:(SATPoly*)in_poly {
 	return satpolyowner_cons_sat_poly(in_poly, self.position, self.rotation, self.get_size.x, self.get_size.y, ccp(1,1));
 }
+-(CGPoint)get_center {
+	HitRect hitrect = [self get_hit_rect];
+	return ccp((hitrect.x1+hitrect.x2)/2, (hitrect.y1+hitrect.y2)/2);
+}
+
 @end

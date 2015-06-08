@@ -46,6 +46,6 @@
 }
 
 -(int)get_render_ord {
-	return GameAnchorZ_PlayerProjectiles;
+	return GameAnchorZ_PlayerAirEffects;
 }
 @end

@@ -12,6 +12,7 @@
 #import "AirEnemyManager.h"
 #import "ChainedMovementParticle.h"
 #import "AirToGroundTransitionPlayerStateStack.h"
+#import "RotateFadeOutParticle.h"
 
 #import "SwordSlashParticle.h"
 
@@ -41,7 +42,7 @@
 }
 
 -(void)i_update:(GameEngineScene *)g {
-	g.player.rotation = drp(g.player.rotation, 0, 10);
+	g.player.rotation += shortest_angle(g.player.rotation, 0) * powf(0.5, dt_scale_get());
 	g.player.shared_params._reset_to_center = NO;
 	[g set_zoom:drp(g.get_zoom,1,20)];
 	[g.player swordplant_streak_set_visible:NO];
@@ -61,7 +62,7 @@
 		case PlayerAirCombatMode_Combat:;
 			_air_params._w_upwards_vel *= powf(0.95, dt_scale_get());
 			
-			float arrow_variance_angle = lerp(10,0,clampf(_air_params._hold_ct/_air_params.ARROW_AIM_TIME,0,1));
+			float arrow_variance_angle = lerp(15,0,clampf(_air_params._hold_ct/_air_params.ARROW_AIM_TIME,0,1));
 			
 			if (_air_params._dashing) {
 				[g.player play_anim:@"dash" repeat:YES];
@@ -161,38 +162,69 @@
 			for (BaseAirEnemy *itr in g.get_air_enemy_manager.get_enemies) {
 				if (itr.is_alive && SAT_polyowners_intersect(g.player, itr)) {
 					if (_air_params._sword_out) {
-						[g.player play_anim:@"spin" on_finish_anim:@"in air"];
-						
 						_air_params._w_upwards_vel = 4;
 						_air_params._sword_out = NO;
-						[itr hit_player_melee:g];
+						PlayerHitParams hit_params;
+						PlayerHitParams_init(&hit_params, vec_cons_norm(0, -1, 0));
+						hit_params._pushback_force = 3;
+						[itr hit_melee:g params:&hit_params];
 						
 						_air_params._s_vel = ccp(_air_params._s_vel.x,10);
 						_air_params._sword_out = NO;
 						_air_params._dashing = YES;
 						_air_params._dash_ct += 15;
 						
+						RotateFadeOutParticle *neu_particle = [RotateFadeOutParticle cons_tex:[Resource get_tex:TEX_GAMEPLAY_ELEMENTS] rect:[FileCache get_cgrect_from_plist:TEX_GAMEPLAY_ELEMENTS idname:@"vfx_swordplant_hit.png"]];
+						[neu_particle set_ctmax:10];
+						[neu_particle set_render_ord:GameAnchorZ_PlayerAirEffects];
+						[neu_particle setAnchorPoint:ccp(0.5,0.3)];
+						[neu_particle set_pos:g.player.position];
+						[neu_particle set_scale_min:0.6 max:0.3];
+						[g add_particle:neu_particle];
+						
+						[BaseAirEnemy particle_blood_effect:g pos:itr.position ct:10];
+						
+						[g shake_for:10 distance:5];
+						
 					} else if (_air_params._dashing) {
 						_air_params._dashing = YES;
 						_air_params._dash_ct += 16;
 						_air_params._w_upwards_vel = 2;
-						[itr hit_player_melee:g];
+						
+						PlayerHitParams hit_params;
+						PlayerHitParams_init(&hit_params, vec_cons_norm(_air_params._s_vel.x, _air_params._s_vel.y, 0));
+						hit_params._pushback_force = 0.5;
+						[itr hit_melee:g params:&hit_params];
+						
 						[g add_particle:[SwordSlashParticle cons_pos:itr.position dir:vec_cons_norm(_air_params._s_vel.x, _air_params._s_vel.y, 0)]];
 						_air_params._invuln_ct = MAX(_air_params._invuln_ct,5);
+						
+						[BaseAirEnemy particle_blood_effect:g pos:itr.position ct:6];
+						
+						[g shake_for:10 distance:5];
 						
 					} else if (_air_params._invuln_ct <= 0) {
 						if (!itr.is_stunned) {
 							[g.player add_health:-0.5 g:g];
 							[g.get_ui flash_red];
 							[g.player play_anim:@"hurt air" on_finish_anim:@"in air"];
+							
+							[BaseAirEnemy particle_blood_effect:g pos:g.player.position ct:6];
 						}
 						_air_params._s_vel = ccp(_air_params._s_vel.x,5);
 						_air_params._w_upwards_vel = 4;
 						_air_params._sword_out = NO;
 						_air_params._invuln_ct = 30;
-						[itr hit_projectile:g];
+						
+						PlayerHitParams hit_params;
+						PlayerHitParams_init(&hit_params, vec_dir_between_points(g.player.get_center, itr.position));
+						hit_params._pushback_force = 3;
+						[itr hit_projectile:g params:&hit_params];
+						
+						[g shake_for:10 distance:5];
 					}
-					[g shake_for:10 distance:5];
+					
+					
 					break;
 				}
 			}

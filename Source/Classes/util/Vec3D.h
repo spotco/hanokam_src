@@ -26,4 +26,5 @@ NSString* vec_to_s(Vec3D v);
 CGPoint vec_to_cgpoint(Vec3D v);
 Vec3D cgpoint_to_vec(CGPoint pt);
 CGPoint vec_basis_transform_point(CGPoint pt, Vec3D a, float as, Vec3D b, float bs);
+Vec3D vec_dir_between_points(CGPoint a, CGPoint b);
 #endif

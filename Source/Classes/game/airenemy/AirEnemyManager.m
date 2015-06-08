@@ -11,7 +11,12 @@
 #import "Resource.h"
 #import "FileCache.h"
 #import "PufferBasicAirEnemy.h"
+#import "RotateFadeOutParticle.h" 
 
+void PlayerHitParams_init(PlayerHitParams *params, Vec3D dir) {
+	params->_dir = dir;
+	params->_pushback_force = 1;
+}
 
 @implementation BaseAirEnemy
 -(void)i_update:(GameEngineScene*)game{
@@ -21,10 +26,29 @@
 -(void)do_remove:(GameEngineScene *)g{ }
 -(HitRect)get_hit_rect{ return hitrect_cons_xy_widhei(self.position.x, self.position.y, 0, 0); }
 -(void)get_sat_poly:(SATPoly *)in_poly { }
--(void)hit_projectile:(GameEngineScene*)g{}
--(void)hit_player_melee:(GameEngineScene*)g{}
+-(void)hit_projectile:(GameEngineScene*)g params:(PlayerHitParams*)params{}
+-(void)hit_melee:(GameEngineScene*)g params:(PlayerHitParams*)params{}
 -(BOOL)is_alive{ return YES; }
 -(BOOL)is_stunned { return NO; }
+-(BOOL)arrow_will_stick{ return YES; }
+-(BOOL)arrow_drop_all{ return NO; }
+
++(void)particle_blood_effect:(GameEngineScene *)g pos:(CGPoint)pos ct:(int)ct {
+	DO_FOR(ct,
+		RotateFadeOutParticle *particle = [RotateFadeOutParticle cons_tex:[Resource get_tex:TEX_GAMEPLAY_ELEMENTS] rect:[FileCache get_cgrect_from_plist:TEX_GAMEPLAY_ELEMENTS idname:@"vfx_blood.png"]];
+		[particle set_pos:CGPointAdd(pos, ccp(float_random(-10, 10),float_random(-10, 10)))];
+		[particle set_ctmax:15];
+		[particle set_render_ord:GameAnchorZ_PlayerAirEffects];
+		float scale = float_random(0.2, 0.3);
+		[particle set_scale_min:scale max:scale];
+		[particle set_alpha_start:0.6 end:0.0];
+		[particle set_vr:float_random(-30, 30)];
+		[particle set_vel:ccp(float_random(-3, 3),float_random(-3, 3))];
+		[particle set_gravity:0.5];
+		[g add_particle:particle];
+	);
+}
+
 @end
 
 @implementation AirEnemyManager {
