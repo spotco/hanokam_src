@@ -264,9 +264,6 @@
 		7ED8231E1B13D258001BB249 /* WebRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED8227B1B13D258001BB249 /* WebRequest.m */; };
 		7ED8231F1B13D258001BB249 /* WebRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED8227B1B13D258001BB249 /* WebRequest.m */; };
 		7ED823201B13D258001BB249 /* WebRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED8227B1B13D258001BB249 /* WebRequest.m */; };
-		7ED823631B13D2A6001BB249 /* 5ceta_mono.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7ED823261B13D2A6001BB249 /* 5ceta_mono.ttf */; };
-		7ED823641B13D2A6001BB249 /* 5ceta_mono.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7ED823261B13D2A6001BB249 /* 5ceta_mono.ttf */; };
-		7ED823651B13D2A6001BB249 /* 5ceta_mono.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7ED823261B13D2A6001BB249 /* 5ceta_mono.ttf */; };
 		7ED823661B13D2A6001BB249 /* bg_spritesheet_1.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7ED823281B13D2A6001BB249 /* bg_spritesheet_1.plist */; };
 		7ED823671B13D2A6001BB249 /* bg_spritesheet_1.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7ED823281B13D2A6001BB249 /* bg_spritesheet_1.plist */; };
 		7ED823681B13D2A6001BB249 /* bg_spritesheet_1.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7ED823281B13D2A6001BB249 /* bg_spritesheet_1.plist */; };
@@ -456,6 +453,9 @@
 		B77F1B4017B978D7009739AE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B77F1B3F17B978D7009739AE /* CoreGraphics.framework */; };
 		B77F1B4217B978D7009739AE /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B77F1B4117B978D7009739AE /* CoreText.framework */; };
 		B78A0B10198AF87200C63841 /* Published-Android in Resources */ = {isa = PBXBuildFile; fileRef = B78A0B0F198AF87200C63841 /* Published-Android */; };
+		BB1E153B1B2EA5C000461495 /* 5ceta_mono.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BB1E15381B2EA5C000461495 /* 5ceta_mono.ttf */; };
+		BB1E153C1B2EA5C000461495 /* korean_calligraphy.fnt in Resources */ = {isa = PBXBuildFile; fileRef = BB1E15391B2EA5C000461495 /* korean_calligraphy.fnt */; };
+		BB1E153D1B2EA5C000461495 /* korean_calligraphy.png in Resources */ = {isa = PBXBuildFile; fileRef = BB1E153A1B2EA5C000461495 /* korean_calligraphy.png */; };
 		BB771AF31B22C910002BA595 /* BGCharacterBase.m in Sources */ = {isa = PBXBuildFile; fileRef = BB771AF21B22C910002BA595 /* BGCharacterBase.m */; };
 		BB771AFC1B22EB03002BA595 /* VillageUI.m in Sources */ = {isa = PBXBuildFile; fileRef = BB771AFB1B22EB03002BA595 /* VillageUI.m */; };
 		BB771B011B22F602002BA595 /* DialogueBubble.m in Sources */ = {isa = PBXBuildFile; fileRef = BB771B001B22F602002BA595 /* DialogueBubble.m */; };
@@ -693,7 +693,6 @@
 		7ED822791B13D258001BB249 /* Vec3D.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Vec3D.m; sourceTree = "<group>"; };
 		7ED8227A1B13D258001BB249 /* WebRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebRequest.h; sourceTree = "<group>"; };
 		7ED8227B1B13D258001BB249 /* WebRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebRequest.m; sourceTree = "<group>"; };
-		7ED823261B13D2A6001BB249 /* 5ceta_mono.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = 5ceta_mono.ttf; sourceTree = "<group>"; };
 		7ED823281B13D2A6001BB249 /* bg_spritesheet_1.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = bg_spritesheet_1.plist; sourceTree = "<group>"; };
 		7ED823291B13D2A6001BB249 /* bg_spritesheet_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_spritesheet_1.png; sourceTree = "<group>"; };
 		7ED8232A1B13D2A6001BB249 /* bg_test_tile_sky.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_test_tile_sky.png; sourceTree = "<group>"; };
@@ -777,6 +776,9 @@
 		B77F1B4117B978D7009739AE /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		B78A0B0F198AF87200C63841 /* Published-Android */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Published-Android"; sourceTree = "<group>"; };
 		B7B3713D180358F1007369CC /* libObjectiveChipmunk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libObjectiveChipmunk.a; path = "../libs/cocos2d-iphone/external/Chipmunk/xcode/build/Debug-iphoneos/libObjectiveChipmunk.a"; sourceTree = "<group>"; };
+		BB1E15381B2EA5C000461495 /* 5ceta_mono.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = 5ceta_mono.ttf; sourceTree = "<group>"; };
+		BB1E15391B2EA5C000461495 /* korean_calligraphy.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = korean_calligraphy.fnt; sourceTree = "<group>"; };
+		BB1E153A1B2EA5C000461495 /* korean_calligraphy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = korean_calligraphy.png; sourceTree = "<group>"; };
 		BB771AF11B22C910002BA595 /* BGCharacterBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGCharacterBase.h; sourceTree = "<group>"; };
 		BB771AF21B22C910002BA595 /* BGCharacterBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGCharacterBase.m; sourceTree = "<group>"; };
 		BB771AFA1B22EB03002BA595 /* VillageUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VillageUI.h; sourceTree = "<group>"; };
@@ -1287,8 +1289,8 @@
 		7ED823251B13D2A6001BB249 /* assets */ = {
 			isa = PBXGroup;
 			children = (
+				BB1E15371B2EA5C000461495 /* fonts */,
 				7EBC2AE61B1C4EDF00AC47F1 /* misc */,
-				7ED823261B13D2A6001BB249 /* 5ceta_mono.ttf */,
 				7ED823271B13D2A6001BB249 /* background */,
 				7ED823331B13D2A6001BB249 /* character */,
 				7ED823441B13D2A6001BB249 /* effects */,
@@ -1555,6 +1557,17 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		BB1E15371B2EA5C000461495 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				BB1E15381B2EA5C000461495 /* 5ceta_mono.ttf */,
+				BB1E15391B2EA5C000461495 /* korean_calligraphy.fnt */,
+				BB1E153A1B2EA5C000461495 /* korean_calligraphy.png */,
+			);
+			name = fonts;
+			path = Source/assets/fonts;
+			sourceTree = SOURCE_ROOT;
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1702,7 +1715,6 @@
 				7A4036F719DE401F007B6E8F /* iPad-old.png in Resources */,
 				7ED823A11B13D2A6001BB249 /* oldman_ss.json in Resources */,
 				7ED823AA1B13D2A6001BB249 /* villager_fishwoman.png in Resources */,
-				7ED823651B13D2A6001BB249 /* 5ceta_mono.ttf in Resources */,
 				7E4F09A91B252DE4000945B8 /* alpha_gradient_sprite.fsh in Resources */,
 				7ED823BC1B13D2A6001BB249 /* aiming_bar.png in Resources */,
 				7ED8238F1B13D2A6001BB249 /* hanokav2.png in Resources */,
@@ -1796,7 +1808,6 @@
 				927F61B0196C771E000F43EF /* iPad.png in Resources */,
 				7ED823CA1B13D2A6001BB249 /* puffer_enemy_ss.png in Resources */,
 				7ED823F41B13D2A6001BB249 /* spriter_test.scml in Resources */,
-				7ED823641B13D2A6001BB249 /* 5ceta_mono.ttf in Resources */,
 				7ED823AC1B13D2A6001BB249 /* villager_fishwoman.scml in Resources */,
 				7ED823DF1B13D2A6001BB249 /* ripple_effect.fsh in Resources */,
 				7ED823D01B13D2A6001BB249 /* abovewater_am_up.vsh in Resources */,
@@ -1856,6 +1867,7 @@
 				7ED823EA1B13D2A6001BB249 /* sh_test_item.png in Resources */,
 				7ED823BA1B13D2A6001BB249 /* aiming_bar.png in Resources */,
 				7ED823C01B13D2A6001BB249 /* hud_spritesheet.png in Resources */,
+				BB1E153B1B2EA5C000461495 /* 5ceta_mono.ttf in Resources */,
 				7EBC2AEC1B1C4EDF00AC47F1 /* gameplay_elements_ss.png in Resources */,
 				7ED823751B13D2A6001BB249 /* bg_water_element_fade.png in Resources */,
 				7ED823B11B13D2A6001BB249 /* particles_spritesheet.plist in Resources */,
@@ -1870,9 +1882,9 @@
 				B71F5913188484E7003F4D28 /* iPad.png in Resources */,
 				7ED823C91B13D2A6001BB249 /* puffer_enemy_ss.png in Resources */,
 				7ED823F31B13D2A6001BB249 /* spriter_test.scml in Resources */,
-				7ED823631B13D2A6001BB249 /* 5ceta_mono.ttf in Resources */,
 				7ED823AB1B13D2A6001BB249 /* villager_fishwoman.scml in Resources */,
 				7E9A44C11B1DA2AC00111C35 /* charge_circle.vsh in Resources */,
+				BB1E153C1B2EA5C000461495 /* korean_calligraphy.fnt in Resources */,
 				7ED823DE1B13D2A6001BB249 /* ripple_effect.fsh in Resources */,
 				7ED823CF1B13D2A6001BB249 /* abovewater_am_up.vsh in Resources */,
 				7ED8238D1B13D2A6001BB249 /* hanokav2.png in Resources */,
@@ -1898,6 +1910,7 @@
 				7ED823841B13D2A6001BB249 /* underwater_spritesheet.png in Resources */,
 				7ED823A81B13D2A6001BB249 /* villager_fishwoman.png in Resources */,
 				B7378975180762440076A88C /* Default-568h@2x.png in Resources */,
+				BB1E153D1B2EA5C000461495 /* korean_calligraphy.png in Resources */,
 				7ED823871B13D2A6001BB249 /* hanokav2.json in Resources */,
 				7ED8236F1B13D2A6001BB249 /* bg_test_tile_water.png in Resources */,
 				7ED823901B13D2A6001BB249 /* hanokav2.scml in Resources */,
