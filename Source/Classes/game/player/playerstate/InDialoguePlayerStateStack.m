@@ -26,7 +26,7 @@
     
     _with_character = character;
     
-    _dialogUI = [DialogUI cons:g withText:@"test"];
+    _dialogUI = [DialogUI cons:g withText:character.dialogueText];
     [g.get_ui addChild:_dialogUI];
     
     return self;

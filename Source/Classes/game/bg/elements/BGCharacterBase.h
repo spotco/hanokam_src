@@ -31,6 +31,7 @@ NSString *_on_finish_play_anim;
 @interface BGCharacterBase : CCSprite {
     // Allow subclasses to set dialogueOffset
     @protected CGPoint _dialogueOffset;
+    @protected NSString *_dialogueText;
 }
 
 // States for background characters
@@ -38,6 +39,8 @@ NSString *_on_finish_play_anim;
 
 // Offset position for dialogue bubble
 @property (nonatomic, readonly) CGPoint dialogueOffset;
+
+@property (nonatomic, readonly) NSString *dialogueText;
 
 /**
  *  Update state, handles interactions with other elements in the game

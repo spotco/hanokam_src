@@ -23,6 +23,7 @@
 	[self addChild:_img];
 	
     _dialogueOffset = ccp(-50,50);
+    _dialogueText = @"This is a test";
     
 	return self;
 }
