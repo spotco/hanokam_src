@@ -12,10 +12,10 @@
 
 // Dialog states
 typedef enum {
-    DialogState_FadeIn,
+    DialogState_Entering,
     DialogState_ShowingText,
     DialogState_ShowComplete,
-    DialogState_FadeOut,
+    DialogState_Exiting,
     DialogState_CanRemove
 } DialogState;
 

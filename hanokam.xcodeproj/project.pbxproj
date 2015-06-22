@@ -467,6 +467,7 @@
 		BB771B231B23F777002BA595 /* DialogueBubble.m in Sources */ = {isa = PBXBuildFile; fileRef = BB771B001B22F602002BA595 /* DialogueBubble.m */; };
 		BB771B261B23F786002BA595 /* DialogUI.m in Sources */ = {isa = PBXBuildFile; fileRef = BB771B141B23DCBF002BA595 /* DialogUI.m */; };
 		BB771B271B23F787002BA595 /* DialogUI.m in Sources */ = {isa = PBXBuildFile; fileRef = BB771B141B23DCBF002BA595 /* DialogUI.m */; };
+		BB7A71181B37BEBF00B0EF3C /* SPAnimatedTextCharacter.m in Sources */ = {isa = PBXBuildFile; fileRef = BB7A71171B37BEBF00B0EF3C /* SPAnimatedTextCharacter.m */; };
 		BC5399D81A44DCC90063F482 /* AndroidKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC5399D31A44DCC90063F482 /* AndroidKit.framework */; };
 		BC5399D91A44DCC90063F482 /* CoreJava.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC5399D41A44DCC90063F482 /* CoreJava.framework */; };
 		BC5399DA1A44DCC90063F482 /* GLActivityKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC5399D51A44DCC90063F482 /* GLActivityKit.framework */; };
@@ -789,6 +790,8 @@
 		BB771B0F1B23D0A8002BA595 /* InDialoguePlayerStateStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InDialoguePlayerStateStack.m; sourceTree = "<group>"; };
 		BB771B131B23DCBF002BA595 /* DialogUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DialogUI.h; sourceTree = "<group>"; };
 		BB771B141B23DCBF002BA595 /* DialogUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DialogUI.m; sourceTree = "<group>"; };
+		BB7A71161B37BEBF00B0EF3C /* SPAnimatedTextCharacter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPAnimatedTextCharacter.h; sourceTree = "<group>"; };
+		BB7A71171B37BEBF00B0EF3C /* SPAnimatedTextCharacter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPAnimatedTextCharacter.m; sourceTree = "<group>"; };
 		BC5399D31A44DCC90063F482 /* AndroidKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AndroidKit.framework; path = "../../../../Library/Application Support/Developer/Shared/Xcode/Platforms/Android.platform/Developer/SDKs/SBAndroid.sdk/System/Library/Frameworks/AndroidKit.framework"; sourceTree = "<group>"; };
 		BC5399D41A44DCC90063F482 /* CoreJava.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreJava.framework; path = "../../../../Library/Application Support/Developer/Shared/Xcode/Platforms/Android.platform/Developer/SDKs/SBAndroid.sdk/System/Library/Frameworks/CoreJava.framework"; sourceTree = "<group>"; };
 		BC5399D51A44DCC90063F482 /* GLActivityKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLActivityKit.framework; path = "../../../../Library/Application Support/Developer/Shared/Xcode/Platforms/Android.platform/Developer/SDKs/SBAndroid.sdk/System/Library/Frameworks/GLActivityKit.framework"; sourceTree = "<group>"; };
@@ -1274,6 +1277,8 @@
 				7E8377661B14619900EFC0D9 /* SPDeviceAccelerometer.m */,
 				7E9A44B91B1D85E100111C35 /* SPRadialFillSprite.h */,
 				7E9A44BA1B1D85E100111C35 /* SPRadialFillSprite.m */,
+				BB7A71161B37BEBF00B0EF3C /* SPAnimatedTextCharacter.h */,
+				BB7A71171B37BEBF00B0EF3C /* SPAnimatedTextCharacter.m */,
 				7E9A58501B22EFA3008EC348 /* AlphaGradientSprite.h */,
 				7E9A58511B22EFA3008EC348 /* AlphaGradientSprite.m */,
 				7E9A585F1B23098C008EC348 /* FlashCount.h */,
@@ -2165,6 +2170,7 @@
 				7E386D371B23A0BE00DDEFF6 /* PlayerSharedParams.m in Sources */,
 				7E386D2C1B23A0AC00DDEFF6 /* PlayerAirCombatParams.m in Sources */,
 				7E9A44BB1B1D85E100111C35 /* SPRadialFillSprite.m in Sources */,
+				BB7A71181B37BEBF00B0EF3C /* SPAnimatedTextCharacter.m in Sources */,
 				7ED822A91B13D258001BB249 /* ChainedMovementParticle.m in Sources */,
 				7ED8227C1B13D258001BB249 /* AirEnemyManager.m in Sources */,
 				7E4F09A31B2523AE000945B8 /* SPCCSpriteAnimator.m in Sources */,
