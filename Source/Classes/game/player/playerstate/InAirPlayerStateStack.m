@@ -15,6 +15,7 @@
 #import "AirToGroundTransitionPlayerStateStack.h"
 #import "RotateFadeOutParticle.h"
 #import "SwordSlashParticle.h"
+#import "TouchTrackingLayer.h"
 
 @implementation InAirPlayerStateStack {
 	PlayerAirCombatParams *_air_params;
@@ -97,11 +98,17 @@
 					_air_params._hold_ct = 0;
 				}
 				_air_params._arrow_last_fired_ct -= dt_scale_get();
+				
 				_air_params._s_vel = ccp(_air_params._s_vel.x*powf(0.9, dt_scale_get()),_air_params._s_vel.y - 0.05 * dt_scale_get());
 				if (_air_params._s_vel.y > 0) {
 					_air_params._s_vel = ccp(
 						_air_params._s_vel.x,
 						_air_params._s_vel.y*powf(0.95, dt_scale_get()));
+				}
+				if (g.get_control_manager.is_touch_down) {
+					_air_params._s_vel = ccp(
+						_air_params._s_vel.x,
+						_air_params._s_vel.y*powf(0.8, dt_scale_get()));
 				}
 				
 				if (_air_params._arrow_last_fired_ct <= 0) {
@@ -111,7 +118,9 @@
 						[g.player play_anim:@"in air" repeat:YES];
 					}
 				}
-				
+			}
+			if (!g.get_control_manager.this_touch_can_proc_tap) {
+				[g.get_touch_tracking_layer hide_touch_hold_pulse];
 			}
 			
 			if (g.get_control_manager.is_proc_tap) {
@@ -146,6 +155,17 @@
 			}
 			
 			if (g.get_control_manager.is_proc_swipe) {
+				if (arrow_variance_angle <= 0) {
+					_air_params._arrow_last_fired_ct = 20;
+					CGPoint tap = g.get_control_manager.get_proc_tap;
+					CGPoint delta = CGPointSub(tap, g.player.shared_params._s_pos);
+					float rad_arrow_variance = 0;
+					if (arrow_variance_angle <= 0) {
+						[g shake_for:6 distance:3.5];
+						[g add_player_projectile:[ChargedArrow cons_pos:g.player.position dir:vec_rotate_rad(vec_cons_norm(delta.x, delta.y, 0), float_random(-rad_arrow_variance, rad_arrow_variance) )]];
+					}
+				}
+			
 				Vec3D swipe_dir = g.get_control_manager.get_proc_swipe_dir;
 				float angle = rad_to_deg(vec_ang_rad(swipe_dir));
 				if (angle < -60 && angle > -120) {
@@ -221,7 +241,6 @@
 						_air_params._sword_out = NO;
 						_air_params._invuln_ct = 30;
 						
-						//SPTODO -- fix
 						PlayerHitParams hit_params;
 						PlayerHitParams_init(&hit_params, PlayerHitType_Projectile, vec_dir_between_points(g.player.get_center, itr.position));
 						hit_params._pushback_force = 3;

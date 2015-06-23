@@ -112,6 +112,7 @@
 -(AirEnemyManager*)get_air_enemy_manager { return _air_enemy_manager; }
 -(ControlManager*)get_control_manager { return _controls; }
 -(GameUI*)get_ui{ return _ui; }
+-(TouchTrackingLayer*)get_touch_tracking_layer{ return _touch_tracking; }
 -(SpriterNodeCache*)get_spriter_node_cache { return _spriter_node_cache; }
 
 -(PlayerState)get_player_state {

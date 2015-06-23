@@ -22,8 +22,10 @@ typedef struct PlayerHitParams {
 	Vec3D _dir;
 	float _pushback_force;
 	PlayerHitType _type;
+	long _id;
 } PlayerHitParams;
 void PlayerHitParams_init(PlayerHitParams *params, PlayerHitType type,Vec3D dir);
+long PlayerHitParams_idalloc();
 
 @interface BaseAirEnemy : CCSprite <SATPolyHitOwner>
 -(void)i_update:(GameEngineScene*)game;

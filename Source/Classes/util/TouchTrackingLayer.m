@@ -8,6 +8,7 @@
     CCSprite *_touch_button;
 	BOOL _is_touch_down;
 	int _ct;
+	int _hide_touch_hold_pulse_ct;
 }
 
 -(id)init{
@@ -25,7 +26,7 @@
 
 -(void)update:(CCTime)delta {
 	_ct++;
-	if (_is_touch_down) {
+	if (_is_touch_down && _hide_touch_hold_pulse_ct <= 0) {
 		_touch_button.scale = drp(_touch_button.scale, 1, 30.0);
 		_touch_button.opacity = drp(_touch_button.opacity, 0.25, 30.0);
 		if (_ct % 20 == 0) {
@@ -35,7 +36,14 @@
 	} else {
 		_touch_button.scale = drp(_touch_button.scale, 1, 20.0);
 		_touch_button.opacity = drp(_touch_button.opacity, 0, 20.0);
+		if (_hide_touch_hold_pulse_ct > 0) _touch_button.opacity = 0;
 	}
+	
+	if (_hide_touch_hold_pulse_ct > 0) _hide_touch_hold_pulse_ct--;
+}
+
+-(void)hide_touch_hold_pulse {
+	_hide_touch_hold_pulse_ct = 2;
 }
 
 -(void)touch_begin:(CGPoint)pt {
@@ -52,12 +60,10 @@
 	_touch_button.opacity = 1;
 	[_touch_button setPosition:pt];
 	[_motion_streak setPosition:pt];
-	//[_motion_streak setVisible:YES];
 }
 -(void)touch_end:(CGPoint)pt {
 	_is_touch_down = NO;
-	[_motion_streak reset];
-	//[_motion_streak setVisible:NO];
+	//[_motion_streak reset];
 }
 
 @end

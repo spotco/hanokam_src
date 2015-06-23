@@ -50,6 +50,7 @@
 	_this_touch_has_procced_hold = NO;
 	_this_touch_has_procced_swipe = NO;
 	[self clear_proc_swipe];
+	_proc_tap_pt = pt;
 }
 
 -(void)touch_move:(CGPoint)pt {
@@ -76,6 +77,7 @@
         _avg_y = 0;
 	}
     _prev_touch = pt;
+	_proc_tap_pt = pt;
 }
 
 -(void)touch_end:(CGPoint)pt {

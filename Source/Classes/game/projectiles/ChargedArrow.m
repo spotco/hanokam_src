@@ -17,6 +17,8 @@
 	CCSprite *_sprite;
 	Vec3D _dir;
 	float _ct;
+	
+	long _id;
 }
 
 +(ChargedArrow*)cons_pos:(CGPoint)pos dir:(Vec3D)dir {
@@ -41,6 +43,7 @@
 	vec_norm_m(&_dir);
 	vec_scale_m(&_dir, 10);
 	_ct = 100;
+	_id = PlayerHitParams_idalloc();
 	return self;
 }
 
@@ -51,6 +54,7 @@
 			if (itr.is_alive && SAT_polyowners_intersect(self, itr)) {
 				PlayerHitParams hit_params;
 				PlayerHitParams_init(&hit_params, PlayerHitType_ChargedProjectile, vec_norm(_dir));
+				hit_params._id = _id;
 				hit_params._pushback_force = 0.5;
 				[itr hit:g params:&hit_params];
 				

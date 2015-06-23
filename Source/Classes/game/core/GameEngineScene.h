@@ -10,6 +10,7 @@
 @class ControlManager;
 @class PlayerProjectile;
 @class GameUI;
+@class TouchTrackingLayer;
 @class SpriterNodeCache;
 
 typedef enum _PlayerState {
@@ -74,6 +75,7 @@ typedef enum _GameAnchorZ {
 -(SpiritManager*)get_spirit_manager;
 -(AirEnemyManager*)get_air_enemy_manager;
 -(GameUI*)get_ui;
+-(TouchTrackingLayer*)get_touch_tracking_layer;
 
 -(void)add_ripple:(CGPoint)pos;
 -(float)get_ground_depth;

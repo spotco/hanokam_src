@@ -13,10 +13,16 @@
 #import "PufferBasicAirEnemy.h"
 #import "RotateFadeOutParticle.h" 
 
+static long _playerhitparams_alloct = 1;
+
 void PlayerHitParams_init(PlayerHitParams *params, PlayerHitType type, Vec3D dir) {
 	params->_dir = dir;
 	params->_pushback_force = 1;
 	params->_type = type;
+	params->_id = PlayerHitParams_idalloc();
+}
+long PlayerHitParams_idalloc() {
+	return _playerhitparams_alloct++;
 }
 
 @implementation BaseAirEnemy

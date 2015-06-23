@@ -20,11 +20,14 @@
 	
 	BOOL _is_dead;
 	BOOL _is_stunned;
-	float _stunned_anim_ct;
+	float _stunned_anim_ct, _stunned_anim_ct_max, _last_move_rotation;
 	float _death_anim_ct;
 	float _stun_slow_scf;
 	
 	float _charged_arrow_hit_ct;
+	
+	long _last_hit_chargedprojectile_id;
+	float _anim_theta;
 }
 @synthesize _rel_pos;
 
@@ -44,10 +47,15 @@
 }
 
 -(void)i_update:(GameEngineScene *)g {
-	_rel_offset.x += _rel_offset_vel.x * dt_scale_get();
-	_rel_offset.y += _rel_offset_vel.y * dt_scale_get();
+	CGPoint scaled_rel_vel = ccp(_rel_offset_vel.x * dt_scale_get(),_rel_offset_vel.y * dt_scale_get());
+	CGPoint neu_rel_offset = CGPointAdd(_rel_offset, scaled_rel_vel);
+	if (![self rel_offset:neu_rel_offset is_out_of_view:g]) {
+		_rel_offset = neu_rel_offset;
+	}
 	_rel_offset_vel.x *= powf(0.9, dt_scale_get());
 	_rel_offset_vel.y *= powf(0.9, dt_scale_get());
+	
+	_anim_theta = fmodf(_anim_theta + dt_scale_get() / (3.14 * 2),3.14*2);
 	
 	if (_is_dead) {
 		_death_anim_ct -= dt_scale_get();
@@ -61,30 +69,60 @@
 		}
 		_stun_slow_scf *= powf(0.9, dt_scale_get());
 		[self ih_update_move:g];
+		self.rotation =
+			_last_move_rotation
+				+ lerp(30, 5, 1-_stunned_anim_ct/_stunned_anim_ct_max)
+				* sin(_anim_theta * lerp(1,7,1-_stunned_anim_ct/_stunned_anim_ct_max));
+		
 		[self update_stunned:g];
 		
 	} else {
 		_stun_slow_scf = 1;
 		[self ih_update_move:g];
+		_last_move_rotation = self.rotation;
 		[self update_alive:g];
 	}
 }
 
 -(void)ih_update_move:(GameEngineScene*)g {
 	_anim_t += 0.004 * dt_scale_get() * _stun_slow_scf;
-	if (_anim_t > 1) _is_dead = YES;
 	CGPoint bez_ctrl1 = ccp(_rel_start.x,_rel_end.y + 100);
 	CGPoint bez_ctrl2 = CGPointMid(bez_ctrl1, _rel_end);
-	CGPoint next_rel_pos = bezier_point_for_t(_rel_start, bez_ctrl1, bez_ctrl2, _rel_end, _anim_t);
-	Vec3D dir = vec_cons(next_rel_pos.x - _rel_pos.x, next_rel_pos.y - _rel_pos.y, 0);
-	self.rotation = vec_ang_deg_lim180(dir,90);
-	_rel_pos = next_rel_pos;
-	[self update_rel_pos:g];
+	
+	if (_anim_t < 1) {
+		CGPoint next_rel_pos = bezier_point_for_t(_rel_start, bez_ctrl1, bez_ctrl2, _rel_end, _anim_t);
+		Vec3D dir = vec_cons(next_rel_pos.x - _rel_pos.x, next_rel_pos.y - _rel_pos.y, 0);
+		self.rotation += shortest_angle(self.rotation, vec_ang_deg_lim180(dir,90)) * 0.25;
+		
+		_rel_pos = next_rel_pos;
+		[self update_rel_pos:g];
+		
+	} else {
+		CGPoint end_m_delta = bezier_point_for_t(_rel_start, bez_ctrl1, bez_ctrl2, _rel_end, 1.0-0.004);
+		Vec3D end_tangent = vec_cons_norm(_rel_end.x-end_m_delta.x, _rel_end.y-end_m_delta.y, 0);
+		vec_scale_m(&end_tangent, CGPointDist(_rel_end, end_m_delta) * dt_scale_get());
+		_rel_pos = CGPointAdd(_rel_pos, vec_to_cgpoint(end_tangent));
+		[self update_rel_pos:g];
+		
+		BOOL off_screen = self.position.x < -50 || self.position.x > game_screen().width + 50 || self.position.y < g.get_viewbox.y1 - 50 || self.position.y > g.get_viewbox.y2 + 50;
+		
+		if (off_screen) {
+			_is_dead = YES;
+			_death_anim_ct = 0;
+		}
+		
+	}
 }
 
 -(void)update_rel_pos:(GameEngineScene*)g {
 	CGPoint lcorner = ccp(g.get_viewbox.x1,g.get_viewbox.y1);
 	self.position = CGPointAdd(CGPointAdd(_rel_pos, lcorner),_rel_offset);
+}
+
+-(BOOL)rel_offset:(CGPoint)rel_offset is_out_of_view:(GameEngineScene*)g {
+	CGPoint lcorner = ccp(g.get_viewbox.x1,g.get_viewbox.y1);
+	CGPoint calc_pos = CGPointAdd(CGPointAdd(_rel_pos, lcorner),rel_offset);
+	return calc_pos.x < 15 || calc_pos.x > game_screen().width - 15 || calc_pos.y < lcorner.y + 15 || calc_pos.y > lcorner.y+game_screen().height - 15;
 }
 
 -(void)hit:(GameEngineScene*)g params:(PlayerHitParams*)params {
@@ -98,14 +136,20 @@
 	break;
 	case PlayerHitType_Projectile:;
 		_is_stunned = YES;
-		_stunned_anim_ct = 150;
+		_stunned_anim_ct = _stunned_anim_ct_max = 150;
 		_rel_offset_vel = CGPointAdd(_rel_offset_vel,ccp(params->_dir.x*force,params->_dir.y*force));
 		
 	break;
 	case PlayerHitType_ChargedProjectile:;
-		_charged_arrow_hit_ct+=dt_scale_get();
+		if (_last_hit_chargedprojectile_id == params->_id) {
+			_charged_arrow_hit_ct+=dt_scale_get();
+		} else {
+			_charged_arrow_hit_ct = 0;
+		}
+		_last_hit_chargedprojectile_id = params->_id;
+			
 		_is_stunned = YES;
-		_stunned_anim_ct = 150;
+		_stunned_anim_ct = _stunned_anim_ct_max = 150;
 		if (_charged_arrow_hit_ct < 15) {
 			_rel_offset_vel = CGPointAdd(_rel_offset_vel,ccp(params->_dir.x*force,params->_dir.y*force));
 		}
