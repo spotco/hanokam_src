@@ -23,6 +23,7 @@ enemy about to spawn from bottom/sides indicator
 invulnerability time anim on player
 touchtrackinglayer fadein/out
 homing arrow
+ curved swipe direction a la speedypups
 enemy bullets with patterns
 arrow bounce off + (clear player projectiles after airbattle end)
 dropping arrows after end
@@ -32,7 +33,7 @@ QUESTS ARE CHALLENGES - let no enemies escape
 TECH --
 player control class make into state machine stack
 scale player accel movement based on screen size
-curved swipe direction a la speedypups
+
 make TGSpriter classes structs instead
 */
 
