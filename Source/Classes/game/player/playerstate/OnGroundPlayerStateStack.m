@@ -28,7 +28,7 @@
 }
 
 -(void)i_update:(GameEngineScene *)g {
-    g.player.shared_params._reset_to_center = (!HMCFG_ON_SIMULATOR) ? YES : NO;
+    g.player.shared_params._reset_to_center = (!TARGET_IPHONE_SIMULATOR) ? YES : NO;
 	switch(_land_params._current_mode) {
 		case PlayerLandMode_OnDock:;
 			[g set_zoom:drp(g.get_zoom,1,20)];
@@ -48,7 +48,7 @@
 					_land_params._current_mode = PlayerLandMode_LandToWater;
 					_land_params._vel = ccp(0,10 * dt_scale_get());
 				}
-#if HMCFG_ON_SIMULATOR
+#if TARGET_IPHONE_SIMULATOR
             } else if (g.get_control_manager.is_proc_tap) {
                 CGPoint tapPos = g.get_control_manager.get_proc_tap;
                 CGFloat newXPos;
