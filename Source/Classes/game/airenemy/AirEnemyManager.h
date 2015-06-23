@@ -40,6 +40,10 @@ long PlayerHitParams_idalloc();
 -(BOOL)arrow_will_stick;
 -(BOOL)arrow_drop_all;
 
+-(CGPoint)get_healthbar_offset;
+-(float)get_health_pct;
+-(BOOL)should_show_health_bar;
+
 +(void)particle_blood_effect:(GameEngineScene*)g pos:(CGPoint)pos ct:(int)ct;
 @end
 
@@ -48,5 +52,16 @@ long PlayerHitParams_idalloc();
 -(void)i_update:(GameEngineScene*)game;
 -(void)add_enemy:(BaseAirEnemy*)enemy game:(GameEngineScene*)game;
 -(NSArray*)get_enemies;
+-(NSArray*)get_enemies_future_spawn;
 -(void)remove_all_enemies:(GameEngineScene*)g;
+@end
+
+@interface BaseAirEnemyFutureSpawn : NSObject
++(BaseAirEnemyFutureSpawn*)cons_time:(float)time screen:(CGPoint)screen enemy:(BaseAirEnemy*)enemy;
+-(void)i_update:(GameEngineScene*)mgr;
+-(BOOL)should_remove;
+-(void)do_remove:(GameEngineScene*)mgr;
+-(float)get_ct;
+-(float)get_ctmax;
+-(CGPoint)get_screen_pos;
 @end

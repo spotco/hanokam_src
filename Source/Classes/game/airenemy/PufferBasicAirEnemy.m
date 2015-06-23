@@ -24,6 +24,7 @@
 	
 	BOOL _started_death;
 	BOOL _has_played_blood_anim;
+	
 }
 
 +(PufferBasicAirEnemy*)cons_g:(GameEngineScene*)g relstart:(CGPoint)relstart relend:(CGPoint)relend {
@@ -93,6 +94,9 @@
 	
 	}
 }
+
+-(CGPoint)get_healthbar_offset { return ccp(0,30); }
+-(BOOL)should_show_health_bar { return !_started_death && [super should_show_health_bar]; }
 
 -(BOOL)arrow_drop_all {
 	return (_started_death && [self get_death_anim_ct] < 20);

@@ -39,6 +39,10 @@ long PlayerHitParams_idalloc() {
 -(BOOL)arrow_will_stick{ return YES; }
 -(BOOL)arrow_drop_all{ return NO; }
 
+-(CGPoint)get_healthbar_offset { return CGPointZero; }
+-(float)get_health_pct { return 0.5; }
+-(BOOL)should_show_health_bar { return YES; }
+
 +(void)particle_blood_effect:(GameEngineScene *)g pos:(CGPoint)pos ct:(int)ct {
 	DO_FOR(ct,
 		RotateFadeOutParticle *particle = [RotateFadeOutParticle cons_tex:[Resource get_tex:TEX_GAMEPLAY_ELEMENTS] rect:[FileCache get_cgrect_from_plist:TEX_GAMEPLAY_ELEMENTS idname:@"vfx_blood.png"]];
@@ -54,23 +58,58 @@ long PlayerHitParams_idalloc() {
 		[g add_particle:particle];
 	);
 }
+@end
 
+@implementation BaseAirEnemyFutureSpawn {
+	float _time, _time_max;
+	CGPoint _screen;
+	BaseAirEnemy *_enemy;
+}
++(BaseAirEnemyFutureSpawn*)cons_time:(float)time screen:(CGPoint)screen enemy:(BaseAirEnemy*)enemy {
+	return [[[BaseAirEnemyFutureSpawn alloc] init] cons_time:time screen:screen enemy:enemy];
+}
+-(BaseAirEnemyFutureSpawn*)cons_time:(float)time screen:(CGPoint)screen enemy:(BaseAirEnemy*)enemy {
+	_time = _time_max = time;
+	_enemy = enemy;
+	_screen = screen;
+	return self;
+}
+-(void)i_update:(GameEngineScene*)g {
+	_time -= dt_scale_get();
+}
+-(BOOL)should_remove {
+	return _time <= 0;
+}
+-(void)do_remove:(GameEngineScene*)g {
+	[g.get_air_enemy_manager add_enemy:_enemy game:g];
+}
+-(float)get_ct {
+	return _time;
+}
+-(float)get_ctmax {
+	return _time_max;
+}
+-(CGPoint)get_screen_pos {
+	return _screen;
+}
 @end
 
 @implementation AirEnemyManager {
 	NSMutableArray *_enemies;
+	NSMutableArray *_enemies_future_spawns;
 }
 +(AirEnemyManager*)cons:(GameEngineScene*)g {
 	return [[[AirEnemyManager alloc] init] cons:g];
 }
 -(AirEnemyManager*)cons:(GameEngineScene*)game {
 	_enemies = [NSMutableArray array];
+	_enemies_future_spawns = [NSMutableArray array];
 	return self;
 }
 
 -(void)test_spawn_enemies:(GameEngineScene*)game {
 	if ([game get_player_state] == PlayerState_InAir) {
-		if (_enemies.count == 0 || float_random(0, 50) < 1) {
+		if ( (_enemies.count == 0 && _enemies_future_spawns.count == 0) || float_random(0, 50) < 1) {
 			CGPoint start_pos = game_screen_pct(float_random(0.15, 0.85), 0);
 			start_pos.y -= 50;
 			
@@ -83,17 +122,29 @@ long PlayerHitParams_idalloc() {
 				end_pos.x += 50;
 			}
 			
-			
-			[self add_enemy:[PufferBasicAirEnemy cons_g:game relstart:start_pos relend:end_pos] game:game];
+			[self add_enemy_future_spawn:[BaseAirEnemyFutureSpawn cons_time:50 screen:ccp(start_pos.x,20) enemy:[PufferBasicAirEnemy cons_g:game relstart:start_pos relend:end_pos]]];
 		}
 	}
 }
 
+static NSMutableArray *do_remove;
+
 -(void)i_update:(GameEngineScene*)game {
 	[self test_spawn_enemies:game];
-
-	NSMutableArray *do_remove = [NSMutableArray array];
-	for (int i = _enemies.count-1; i >= 0; i--) {
+	
+	if (do_remove == NULL) do_remove = [NSMutableArray array];
+	for (long i = _enemies_future_spawns.count-1; i >= 0; i--) {
+		BaseAirEnemyFutureSpawn *itr = [_enemies_future_spawns objectAtIndex:i];
+		[itr i_update:game];
+		if ([itr should_remove]) {
+			[itr do_remove:game];
+			[do_remove addObject:itr];
+		}
+	}
+	[_enemies_future_spawns removeObjectsInArray:do_remove];
+	[do_remove removeAllObjects];
+	
+	for (long i = _enemies.count-1; i >= 0; i--) {
 		BaseAirEnemy *itr = [_enemies objectAtIndex:i];
 		[itr i_update:game];
 		if ([itr should_remove]) {
@@ -105,6 +156,11 @@ long PlayerHitParams_idalloc() {
 	[_enemies removeObjectsInArray:do_remove];
 	[do_remove removeAllObjects];
 }
+-(void)add_enemy_future_spawn:(BaseAirEnemyFutureSpawn*)spawn {
+	[_enemies_future_spawns addObject:spawn];
+}
+-(NSArray*)get_enemies_future_spawn { return _enemies_future_spawns; }
+
 -(void)add_enemy:(BaseAirEnemy*)enemy game:(GameEngineScene*)game {
 	[[game get_anchor] addChild:enemy z:GameAnchorZ_Enemies_Air];
 	[_enemies addObject:enemy];

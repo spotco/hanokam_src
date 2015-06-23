@@ -28,6 +28,8 @@
 	
 	long _last_hit_chargedprojectile_id;
 	float _anim_theta;
+	
+	float _health, _health_max;
 }
 @synthesize _rel_pos;
 
@@ -43,8 +45,11 @@
 	_stunned_anim_ct = 0;
 	_is_dead = NO;
 	_is_stunned = NO;
+	_health = _health_max = 10;
 	return self;
 }
+-(float)get_health_pct { return clampf(_health/_health_max,0,1); }
+-(BOOL)should_show_health_bar { return _health < _health_max; }
 
 -(void)i_update:(GameEngineScene *)g {
 	CGPoint scaled_rel_vel = ccp(_rel_offset_vel.x * dt_scale_get(),_rel_offset_vel.y * dt_scale_get());
@@ -129,13 +134,13 @@
 	float force = params->_pushback_force * 2.5;
 	switch (params->_type) {
 	case PlayerHitType_Melee:;
-		_is_dead = YES;
-		_death_anim_ct = 50;
+		_health -= 10;
 		_rel_offset_vel = CGPointAdd(_rel_offset_vel,ccp(params->_dir.x*force,params->_dir.y*force));
 		
 	break;
 	case PlayerHitType_Projectile:;
 		_is_stunned = YES;
+		_health -= 1;
 		_stunned_anim_ct = _stunned_anim_ct_max = 150;
 		_rel_offset_vel = CGPointAdd(_rel_offset_vel,ccp(params->_dir.x*force,params->_dir.y*force));
 		
@@ -145,6 +150,7 @@
 			_charged_arrow_hit_ct+=dt_scale_get();
 		} else {
 			_charged_arrow_hit_ct = 0;
+			_health -= 2;
 		}
 		_last_hit_chargedprojectile_id = params->_id;
 			
@@ -155,9 +161,14 @@
 		}
 	break;
 	}
+	
+	if (_health <= 0) {
+		_is_dead = YES;
+		_death_anim_ct = 50;
+	}
 }
 
--(BOOL)should_remove{
+-(BOOL)should_remove {
 	return _is_dead && _death_anim_ct <= 0;
 }
 

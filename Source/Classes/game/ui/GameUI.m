@@ -12,6 +12,8 @@
 #import "PlayerUIAimReticule.h"
 #import "VillageUI.h"
 #import "DialogUI.h"
+#import "EnemyUIHealthIndicators.h"
+#import "EnemyWarningUI.h"
 
 typedef enum _GameUIBossIntroMode {
 	GameUIBossIntroMode_None,
@@ -20,23 +22,27 @@ typedef enum _GameUIBossIntroMode {
 } GameUIBossIntroMode;
 
 @implementation GameUI {
-	NSMutableDictionary *_enemy_health_bars;
+	//TODO -- move this to new class
 	HealthBar *_boss_health_bar;
 	CCLabelTTF *_boss_health_label;
 	GameUIBossIntroMode _current_boss_mode;
 	float _boss_fillin_pct;
+	//
 	
 	ParticleSystem *_particles;
 	
+	//TODO -- move this to new class
 	CCSprite *_depth_bar_back;
 	CCSprite *_depth_bar_fill;
-	
 	CCSprite *_depth_bar_icon_player, *_depth_bar_icon_boss;
+	//
 	
 	PlayerUIHealthIndicator *_player_health_ui;
 	PlayerChargeIndicator *_player_charge_ui;
 	PlayerUIAimReticule *_player_aim_reticule;
-    
+	EnemyUIHealthIndicators *_enemy_ui_health_indicators;
+	EnemyWarningUI *_enemy_warning_ui;
+	
     VillageUI *_villageUI;
     
     DialogUI *_dialogUI;
@@ -62,9 +68,7 @@ typedef enum _GameUIBossIntroMode {
 	[_black_fadeout_overlay setOpacity:_tar_black_fadeout_overlay_alpha];
 	[self addChild:_black_fadeout_overlay];
 	
-	_enemy_health_bars = [NSMutableDictionary dictionary];
-	
-	_boss_health_bar = [HealthBar cons_size:CGSizeMake(game_screen().width-10, 15) anchor:ccp(0,0)];
+	_boss_health_bar = [HealthBar cons_pooled_size:CGSizeMake(game_screen().width-10, 15) anchor:ccp(0,0)];
 	[_boss_health_bar setPosition:game_screen_anchor_offset(ScreenAnchor_BL, ccp(5,5))];
 	[self addChild:_boss_health_bar];
 	[_boss_health_bar set_pct:0.5];
@@ -72,6 +76,12 @@ typedef enum _GameUIBossIntroMode {
 	[_boss_health_bar addChild:_boss_health_label];
 	_particles = [ParticleSystem cons_anchor:self];
 	_current_boss_mode = GameUIBossIntroMode_None;
+	
+	_enemy_ui_health_indicators = [EnemyUIHealthIndicators cons:game];
+	[self addChild:_enemy_ui_health_indicators];
+	
+	_enemy_warning_ui = [EnemyWarningUI cons:game];
+	[self addChild:_enemy_warning_ui];
 	
 	_depth_bar_back = [CCSprite spriteWithTexture:[Resource get_tex:TEX_HUD_SPRITESHEET] rect:[FileCache get_cgrect_from_plist:TEX_HUD_SPRITESHEET idname:@"hudicon_depthbar_back.png"]];
 	[_depth_bar_back setAnchorPoint:ccp(0,0.5)];
@@ -118,6 +128,7 @@ typedef enum _GameUIBossIntroMode {
 	return self;
 }
 
+//TODO -- move me to new class
 -(float)depth_bar_from_top_fill_pct:(float)pct {
 	CGRect rect = [FileCache get_cgrect_from_plist:TEX_HUD_SPRITESHEET idname:@"hudicon_depthbar_fill.png"];
 	float hei = rect.size.height * (1-pct);
@@ -143,6 +154,7 @@ typedef enum _GameUIBossIntroMode {
 	[_boss_health_bar setVisible:YES];
 	[_boss_health_label setString:title];
 }
+//
 
 -(void)flash_red {
 	[_red_flash_overlay setOpacity:0.5];
@@ -175,8 +187,9 @@ typedef enum _GameUIBossIntroMode {
 
 -(void)i_update:(GameEngineScene*)game {
 	[_player_charge_ui i_update:game];
-	[self update_enemy_health_bars:game];
 	[self update_boss_ui:game];
+	[_enemy_ui_health_indicators i_update:game];
+	[_enemy_warning_ui i_update:game];
 	[_player_health_ui i_update:game];
 	[_particles update_particles:self];
 	[_red_flash_overlay setOpacity:MAX(0,_red_flash_overlay.opacity-0.025*dt_scale_get())];
@@ -198,6 +211,7 @@ typedef enum _GameUIBossIntroMode {
 	}
 }
 
+//todo -- move me to new class
 -(void)update_boss_ui:(GameEngineScene*)game {
 	switch (_current_boss_mode) {
 		case GameUIBossIntroMode_None:;
@@ -216,31 +230,6 @@ typedef enum _GameUIBossIntroMode {
 			[_boss_health_bar set_pct:1.0];
 		break;
 	}
-}
-
--(void)update_enemy_health_bars:(GameEngineScene*)game {
-	/*
-	NSMutableSet *active_enemy_objhash = _enemy_health_bars.keySet;
-	for (SpiritBase *itr_enemy in game.get_spirit_manager.get_spirits) {
-		if (![itr_enemy has_health_bar]) continue;
-		NSNumber *itr_hash = @([itr_enemy hash]);
-		if ([active_enemy_objhash containsObject:itr_hash]) {
-			[active_enemy_objhash removeObject:itr_hash];
-		} else {
-			_enemy_health_bars[itr_hash] = [HealthBar cons_size:CGSizeMake(20, 4) anchor:ccp(0.5,0.5)];
-			[self addChild:_enemy_health_bars[itr_hash]];
-		}
-		HealthBar *itr_healthbar = _enemy_health_bars[itr_hash];
-		[itr_healthbar setPosition:CGPointAdd([itr_enemy convertToWorldSpace:CGPointZero],[itr_enemy get_healthbar_offset])];
-		[itr_healthbar set_pct:[itr_enemy get_health_pct]];
-	}
-	
-	for (NSNumber *itr_hash in active_enemy_objhash) {
-		HealthBar *itr_healthbar = _enemy_health_bars[itr_hash];
-		[self removeChild:itr_healthbar];
-		[_enemy_health_bars removeObjectForKey:itr_hash];
-	}
-	*/
 }
 
 @end

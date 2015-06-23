@@ -12,12 +12,11 @@
 /*
 TODO --
 GAMEPLAY IDEAS:
-pufferenemy real health, not hack with ui healthbars
 enemy about to spawn from bottom/sides indicator
 enemy bullets with patterns
 curved swipe direction a la speedypups
  
- hanoka char art in
+hanoka char art in
 
  
 arrow bounce off + (clear player projectiles after airbattle end)
@@ -27,6 +26,7 @@ dropping arrows after end
 QUESTS ARE CHALLENGES - let no enemies escape
  
 TECH --
+pool arrows and other stuff
 scale player accel movement based on screen size
 make TGSpriter classes structs instead
 */

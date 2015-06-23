@@ -99,6 +99,9 @@
 		7E4F09B51B258CA2000945B8 /* Arrow.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E4F09B41B258CA2000945B8 /* Arrow.m */; };
 		7E4F09B61B258CA2000945B8 /* Arrow.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E4F09B41B258CA2000945B8 /* Arrow.m */; };
 		7E4F09B71B258CA2000945B8 /* Arrow.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E4F09B41B258CA2000945B8 /* Arrow.m */; };
+		7E6A045A1B3978C6004890F5 /* EnemyUIHealthIndicators.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EF34CF41B395A8D00111963 /* EnemyUIHealthIndicators.m */; };
+		7E6A045D1B3978CF004890F5 /* EnemyWarningUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EF34CFA1B3963F400111963 /* EnemyWarningUI.m */; };
+		7E6A045E1B3978EC004890F5 /* ObjectPool.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EF34CF71B395FF400111963 /* ObjectPool.m */; };
 		7E8377671B14619900EFC0D9 /* SPDeviceAccelerometer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E8377661B14619900EFC0D9 /* SPDeviceAccelerometer.m */; };
 		7E8377681B14636300EFC0D9 /* SPDeviceAccelerometer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E8377661B14619900EFC0D9 /* SPDeviceAccelerometer.m */; };
 		7E9A44BB1B1D85E100111C35 /* SPRadialFillSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E9A44BA1B1D85E100111C35 /* SPRadialFillSprite.m */; };
@@ -405,6 +408,9 @@
 		7ED823FD1B13DD59001BB249 /* md5.c in Sources */ = {isa = PBXBuildFile; fileRef = 7ED823FC1B13DD59001BB249 /* md5.c */; };
 		7ED823FE1B13DD59001BB249 /* md5.c in Sources */ = {isa = PBXBuildFile; fileRef = 7ED823FC1B13DD59001BB249 /* md5.c */; };
 		7ED823FF1B13DD59001BB249 /* md5.c in Sources */ = {isa = PBXBuildFile; fileRef = 7ED823FC1B13DD59001BB249 /* md5.c */; };
+		7EF34CF51B395A8D00111963 /* EnemyUIHealthIndicators.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EF34CF41B395A8D00111963 /* EnemyUIHealthIndicators.m */; };
+		7EF34CF81B395FF400111963 /* ObjectPool.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EF34CF71B395FF400111963 /* ObjectPool.m */; };
+		7EF34CFB1B3963F400111963 /* EnemyWarningUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EF34CFA1B3963F400111963 /* EnemyWarningUI.m */; };
 		7EFEE79B1B1F06860055C989 /* PlayerChargeIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E9A44C31B1DADBA00111C35 /* PlayerChargeIndicator.m */; };
 		7EFEE79E1B1F06880055C989 /* PlayerChargeIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E9A44C31B1DADBA00111C35 /* PlayerChargeIndicator.m */; };
 		7EFEE79F1B1F06970055C989 /* SPRadialFillSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E9A44BA1B1D85E100111C35 /* SPRadialFillSprite.m */; };
@@ -741,6 +747,12 @@
 		7ED823621B13D2A6001BB249 /* spriter_test.scml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = spriter_test.scml; sourceTree = "<group>"; };
 		7ED823FC1B13DD59001BB249 /* md5.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = md5.c; sourceTree = "<group>"; };
 		7ED824001B13DD66001BB249 /* md5.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = md5.h; sourceTree = "<group>"; };
+		7EF34CF31B395A8D00111963 /* EnemyUIHealthIndicators.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnemyUIHealthIndicators.h; sourceTree = "<group>"; };
+		7EF34CF41B395A8D00111963 /* EnemyUIHealthIndicators.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnemyUIHealthIndicators.m; sourceTree = "<group>"; };
+		7EF34CF61B395FF400111963 /* ObjectPool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectPool.h; sourceTree = "<group>"; };
+		7EF34CF71B395FF400111963 /* ObjectPool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjectPool.m; sourceTree = "<group>"; };
+		7EF34CF91B3963F400111963 /* EnemyWarningUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnemyWarningUI.h; sourceTree = "<group>"; };
+		7EF34CFA1B3963F400111963 /* EnemyWarningUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnemyWarningUI.m; sourceTree = "<group>"; };
 		8392007918EE8E3300B6C429 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		927F61BF196C771E000F43EF /* hanokam Android.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "hanokam Android.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B71F5907188484E7003F4D28 /* iPad-old.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iPad-old.png"; path = "Icons/iPad-old.png"; sourceTree = "<group>"; };
@@ -1197,6 +1209,10 @@
 				BB771B001B22F602002BA595 /* DialogueBubble.m */,
 				BB771B131B23DCBF002BA595 /* DialogUI.h */,
 				BB771B141B23DCBF002BA595 /* DialogUI.m */,
+				7EF34CF31B395A8D00111963 /* EnemyUIHealthIndicators.h */,
+				7EF34CF41B395A8D00111963 /* EnemyUIHealthIndicators.m */,
+				7EF34CF91B3963F400111963 /* EnemyWarningUI.h */,
+				7EF34CFA1B3963F400111963 /* EnemyWarningUI.m */,
 			);
 			path = ui;
 			sourceTree = "<group>";
@@ -1280,6 +1296,8 @@
 				7E4F09981B250E06000945B8 /* FlashEvery.m */,
 				7E4F09A11B2523AE000945B8 /* SPCCSpriteAnimator.h */,
 				7E4F09A21B2523AE000945B8 /* SPCCSpriteAnimator.m */,
+				7EF34CF61B395FF400111963 /* ObjectPool.h */,
+				7EF34CF71B395FF400111963 /* ObjectPool.m */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -2060,6 +2078,7 @@
 				7E386D331B23A0AC00DDEFF6 /* PlayerUnderwaterCombatParams.m in Sources */,
 				7E4F09951B24FC6B000945B8 /* SwordSlashParticle.m in Sources */,
 				7EFEE79B1B1F06860055C989 /* PlayerChargeIndicator.m in Sources */,
+				7E6A045E1B3978EC004890F5 /* ObjectPool.m in Sources */,
 				7ED8229E1B13D258001BB249 /* ControlManager.m in Sources */,
 				7ED822831B13D258001BB249 /* PufferBasicAirEnemy.m in Sources */,
 				7ED822AA1B13D258001BB249 /* ChainedMovementParticle.m in Sources */,
@@ -2076,6 +2095,7 @@
 				7E386D1E1B239EDE00DDEFF6 /* BasePlayerStateStack.m in Sources */,
 				7ED822AD1B13D258001BB249 /* Particle.m in Sources */,
 				BB771B1C1B23F763002BA595 /* InDialoguePlayerStateStack.m in Sources */,
+				7E6A045A1B3978C6004890F5 /* EnemyUIHealthIndicators.m in Sources */,
 				7ED8231F1B13D258001BB249 /* WebRequest.m in Sources */,
 				7E4F099A1B250E06000945B8 /* FlashEvery.m in Sources */,
 				7ED822E91B13D258001BB249 /* SHItemRow.m in Sources */,
@@ -2128,6 +2148,7 @@
 				5B121030197484FA004C1E1D /* hanokamActivity.m in Sources */,
 				7E386D301B23A0AC00DDEFF6 /* PlayerLandParams.m in Sources */,
 				7ED822A71B13D258001BB249 /* ShopScene.m in Sources */,
+				7E6A045D1B3978CF004890F5 /* EnemyWarningUI.m in Sources */,
 				7ED822BF1B13D258001BB249 /* Player.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2136,6 +2157,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7EF34CFB1B3963F400111963 /* EnemyWarningUI.m in Sources */,
 				7E386D411B23A75F00DDEFF6 /* DiveReturnPlayerStateStack.m in Sources */,
 				7ED822E81B13D258001BB249 /* SHItemRow.m in Sources */,
 				7E386D3C1B23A59A00DDEFF6 /* DivePlayerStateStack.m in Sources */,
@@ -2144,6 +2166,7 @@
 				7ED822911B13D258001BB249 /* BGWater.m in Sources */,
 				7ED823091B13D258001BB249 /* SpriterNode.m in Sources */,
 				7E386D221B239FE600DDEFF6 /* OnGroundPlayerStateStack.m in Sources */,
+				7EF34CF81B395FF400111963 /* ObjectPool.m in Sources */,
 				7ED8227F1B13D258001BB249 /* BasicAirEnemy.m in Sources */,
 				B73789871807631A0076A88C /* main.m in Sources */,
 				7E386D1D1B239EDE00DDEFF6 /* BasePlayerStateStack.m in Sources */,
@@ -2154,6 +2177,7 @@
 				7E9A44BB1B1D85E100111C35 /* SPRadialFillSprite.m in Sources */,
 				7ED822A91B13D258001BB249 /* ChainedMovementParticle.m in Sources */,
 				7ED8227C1B13D258001BB249 /* AirEnemyManager.m in Sources */,
+				7EF34CF51B395A8D00111963 /* EnemyUIHealthIndicators.m in Sources */,
 				7E4F09A31B2523AE000945B8 /* SPCCSpriteAnimator.m in Sources */,
 				7ED822F71B13D258001BB249 /* GEventDispatcher.m in Sources */,
 				7E9A58441B22CBE7008EC348 /* PlayerUIAimReticule.m in Sources */,
