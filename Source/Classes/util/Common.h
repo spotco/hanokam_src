@@ -166,6 +166,7 @@ HitRect hitrect_cons_x1y1_x2y2(float x1, float y1, float x2, float y2);
 HitRect hitrect_cons_xy_widhei(float x1, float y1, float wid, float hei);
 CGRect hitrect_to_cgrect(HitRect rect);
 BOOL hitrect_touch(HitRect r1, HitRect r2);
+BOOL hitrect_contains_point(HitRect rect, CGPoint pt);
 
 CGPoint line_seg_intersection_pts(CGPoint a1, CGPoint a2, CGPoint b1, CGPoint b2);
 CGPoint line_seg_intersection(line_seg a, line_seg b);

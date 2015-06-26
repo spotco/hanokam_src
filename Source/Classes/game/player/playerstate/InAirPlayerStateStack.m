@@ -35,11 +35,34 @@
 	_air_params._sword_out = NO;
 	_air_params._hold_ct = 0;
 	_air_params._invuln_ct = 0;
+	[g.get_event_dispatcher add_listener:self];
 	return self;
 }
 
--(void)on_state_end:(GameEngineScene *)game {
+-(void)on_state_end:(GameEngineScene *)g {
 	_rescue_anim = NULL;
+	[g.get_event_dispatcher remove_listener:self];
+}
+
+-(void)dispatch_event:(GEvent *)e {
+	GameEngineScene *g = e.context;
+	switch (e.type) {
+	case GEventType_BulletHitPlayer:;
+		if (_air_params._current_mode == PlayerAirCombatMode_Combat) {
+			[g.player add_health:-0.5 g:g];
+			[g.get_ui flash_red];
+			[g.player play_anim:@"hurt air" on_finish_anim:@"in air"];
+			[BaseAirEnemy particle_blood_effect:g pos:g.player.position ct:6];
+			_air_params._s_vel = ccp(_air_params._s_vel.x,5);
+			_air_params._w_upwards_vel = 4;
+			_air_params._sword_out = NO;
+			_air_params._invuln_ct = 30;
+			[g shake_for:10 distance:5];
+		}
+    break;
+	default:
+	break;
+	}
 }
 
 -(void)i_update:(GameEngineScene *)g {

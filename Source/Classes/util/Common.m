@@ -319,6 +319,10 @@ BOOL hitrect_touch(HitRect r1, HitRect r2) {
              r2.y1 > r1.y2);
 }
 
+BOOL hitrect_contains_point(HitRect rect, CGPoint pt) {
+	return pt.x >= rect.x1 && pt.y >= rect.y1 && pt.x <= rect.x2 && pt.y <= rect.y2;
+}
+
 CGFloat SEG_NO_VALUE() {
 	return -99999.995;
 }

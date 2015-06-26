@@ -13,6 +13,8 @@
 #import "Player.h"
 #import "FlashCount.h"
 
+#import "EnemyBulletProjectile.h"
+
 @implementation PufferBasicAirEnemy {
 	CCSprite_Animated *_img;
 	
@@ -25,6 +27,7 @@
 	BOOL _started_death;
 	BOOL _has_played_blood_anim;
 	
+	BOOL _has_shot_bullets;
 }
 
 +(PufferBasicAirEnemy*)cons_g:(GameEngineScene*)g relstart:(CGPoint)relstart relend:(CGPoint)relend {
@@ -52,6 +55,8 @@
 	
 	_flashcount = [FlashCount cons];
 	[_flashcount add_flash_at_times:@[@150,@135,@120,@100,@80,@60,@40,@20,@10]];
+	
+	_has_shot_bullets = NO;
 	
 	return self;
 }
@@ -91,7 +96,18 @@
 		
 	} else {
 		[_img update_playAnim:_anim_idle];
+	}
 	
+	if ([self get_anim_t] > 0.5 && !_has_shot_bullets) {
+		float start_dir = float_random(-3.14, 3.14);
+		float add_dir = 0;
+		while (add_dir < 3.14*2) {
+			Vec3D vel_vec = vec_cons_norm(cosf(start_dir+add_dir), sinf(start_dir+add_dir), 0);
+			vec_scale_m(&vel_vec, 2);
+			[g add_enemy_projectile:[EnemyBulletProjectile cons_pos:self.position vel:vel_vec g:g]];
+			add_dir += (3.14*2)/(6.0);
+		}
+		_has_shot_bullets = YES;
 	}
 }
 

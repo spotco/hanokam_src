@@ -175,5 +175,6 @@ static NSMutableArray *do_remove;
 		[[g get_anchor] removeChild:itr];
 	}
 	[_enemies removeAllObjects];
+	[_enemies_future_spawns removeAllObjects];
 }
 @end

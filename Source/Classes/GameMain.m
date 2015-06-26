@@ -12,20 +12,21 @@
 /*
 TODO --
 GAMEPLAY IDEAS:
-enemy about to spawn from bottom/sides indicator
 enemy bullets with patterns
 curved swipe direction a la speedypups
- 
 hanoka char art in
-
  
+underwater gameplay system
+
+QUESTS ARE CHALLENGES - let no enemies escape
+
 arrow bounce off + (clear player projectiles after airbattle end)
 dropping arrows after end
  homing arrow
 
-QUESTS ARE CHALLENGES - let no enemies escape
- 
 TECH --
+
+
 pool arrows and other stuff
 scale player accel movement based on screen size
 make TGSpriter classes structs instead

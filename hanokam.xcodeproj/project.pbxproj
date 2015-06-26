@@ -9,9 +9,7 @@
 /* Begin PBXBuildFile section */
 		5B121030197484FA004C1E1D /* hanokamActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B12102F197484FA004C1E1D /* hanokamActivity.m */; };
 		5B121038197487F2004C1E1D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B737893E1807617C0076A88C /* AppDelegate.m */; };
-		7A046D8C19E8A20E004C4763 /* MainScene.m in Sources */ = {isa = PBXBuildFile; fileRef = B7378993180767190076A88C /* MainScene.m */; };
 		7A40360419DDEE84007B6E8F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A40360319DDEE84007B6E8F /* main.m */; };
-		7A4036E819DE3F33007B6E8F /* MainScene.m in Sources */ = {isa = PBXBuildFile; fileRef = B7378993180767190076A88C /* MainScene.m */; };
 		7A4036EB19DE3F8E007B6E8F /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8392007918EE8E3300B6C429 /* GLKit.framework */; };
 		7A4036EC19DE3F90007B6E8F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B77F1B3117B978D7009739AE /* QuartzCore.framework */; };
 		7A4036EE19DE3F93007B6E8F /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B77F1B3517B978D7009739AE /* OpenAL.framework */; };
@@ -123,6 +121,12 @@
 		7EBC2AEC1B1C4EDF00AC47F1 /* gameplay_elements_ss.png in Resources */ = {isa = PBXBuildFile; fileRef = 7EBC2AE81B1C4EDF00AC47F1 /* gameplay_elements_ss.png */; };
 		7EBC2AED1B1C4EDF00AC47F1 /* gameplay_elements_ss.png in Resources */ = {isa = PBXBuildFile; fileRef = 7EBC2AE81B1C4EDF00AC47F1 /* gameplay_elements_ss.png */; };
 		7EBC2AEE1B1C4EDF00AC47F1 /* gameplay_elements_ss.png in Resources */ = {isa = PBXBuildFile; fileRef = 7EBC2AE81B1C4EDF00AC47F1 /* gameplay_elements_ss.png */; };
+		7ECCC6641B3D27F0006A70B9 /* EnemyProjectile.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ECCC6631B3D27F0006A70B9 /* EnemyProjectile.m */; };
+		7ECCC6651B3D27F0006A70B9 /* EnemyProjectile.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ECCC6631B3D27F0006A70B9 /* EnemyProjectile.m */; };
+		7ECCC6661B3D27F0006A70B9 /* EnemyProjectile.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ECCC6631B3D27F0006A70B9 /* EnemyProjectile.m */; };
+		7ECCC6691B3D2894006A70B9 /* EnemyBulletProjectile.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ECCC6681B3D2894006A70B9 /* EnemyBulletProjectile.m */; };
+		7ECCC66A1B3D2894006A70B9 /* EnemyBulletProjectile.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ECCC6681B3D2894006A70B9 /* EnemyBulletProjectile.m */; };
+		7ECCC66B1B3D2894006A70B9 /* EnemyBulletProjectile.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ECCC6681B3D2894006A70B9 /* EnemyBulletProjectile.m */; };
 		7ED8227C1B13D258001BB249 /* AirEnemyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED822051B13D258001BB249 /* AirEnemyManager.m */; };
 		7ED8227D1B13D258001BB249 /* AirEnemyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED822051B13D258001BB249 /* AirEnemyManager.m */; };
 		7ED8227E1B13D258001BB249 /* AirEnemyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED822051B13D258001BB249 /* AirEnemyManager.m */; };
@@ -417,7 +421,6 @@
 		7EFEE7A01B1F070F0055C989 /* charge_circle.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 7E9A44BE1B1DA29C00111C35 /* charge_circle.fsh */; };
 		7EFEE7A11B1F07120055C989 /* charge_circle.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 7E9A44C01B1DA2AC00111C35 /* charge_circle.vsh */; };
 		8392007A18EE8E3300B6C429 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8392007918EE8E3300B6C429 /* GLKit.framework */; };
-		927F619E196C771E000F43EF /* MainScene.m in Sources */ = {isa = PBXBuildFile; fileRef = B7378993180767190076A88C /* MainScene.m */; };
 		927F61A5196C771E000F43EF /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B77F1B3517B978D7009739AE /* OpenAL.framework */; };
 		927F61A9196C771E000F43EF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B77F1B3D17B978D7009739AE /* Foundation.framework */; };
 		927F61AA196C771E000F43EF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B77F1B3F17B978D7009739AE /* CoreGraphics.framework */; };
@@ -603,6 +606,10 @@
 		7E9A58601B23098C008EC348 /* FlashCount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlashCount.m; sourceTree = "<group>"; };
 		7EBC2AE71B1C4EDF00AC47F1 /* gameplay_elements_ss.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = gameplay_elements_ss.plist; sourceTree = "<group>"; };
 		7EBC2AE81B1C4EDF00AC47F1 /* gameplay_elements_ss.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gameplay_elements_ss.png; sourceTree = "<group>"; };
+		7ECCC6621B3D27F0006A70B9 /* EnemyProjectile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnemyProjectile.h; sourceTree = "<group>"; };
+		7ECCC6631B3D27F0006A70B9 /* EnemyProjectile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnemyProjectile.m; sourceTree = "<group>"; };
+		7ECCC6671B3D2894006A70B9 /* EnemyBulletProjectile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnemyBulletProjectile.h; sourceTree = "<group>"; };
+		7ECCC6681B3D2894006A70B9 /* EnemyBulletProjectile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnemyBulletProjectile.m; sourceTree = "<group>"; };
 		7ED822041B13D258001BB249 /* AirEnemyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AirEnemyManager.h; sourceTree = "<group>"; };
 		7ED822051B13D258001BB249 /* AirEnemyManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AirEnemyManager.m; sourceTree = "<group>"; };
 		7ED822061B13D258001BB249 /* BasicAirEnemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicAirEnemy.h; sourceTree = "<group>"; };
@@ -775,8 +782,6 @@
 		B737896E180762440076A88C /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "Source/Resources/Default@2x.png"; sourceTree = SOURCE_ROOT; };
 		B73789851807631A0076A88C /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Source/Platforms/iOS/main.m; sourceTree = SOURCE_ROOT; };
 		B73789861807631A0076A88C /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Prefix.pch; path = Source/Prefix.pch; sourceTree = SOURCE_ROOT; };
-		B7378992180767190076A88C /* MainScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainScene.h; path = Source/MainScene.h; sourceTree = "<group>"; };
-		B7378993180767190076A88C /* MainScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainScene.m; path = Source/MainScene.m; sourceTree = "<group>"; };
 		B77F1B2E17B978D7009739AE /* hanokam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hanokam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B77F1B3117B978D7009739AE /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		B77F1B3317B978D7009739AE /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -1062,6 +1067,17 @@
 			path = misc;
 			sourceTree = "<group>";
 		};
+		7ECCC65F1B3D25E8006A70B9 /* enemyprojectile */ = {
+			isa = PBXGroup;
+			children = (
+				7ECCC6621B3D27F0006A70B9 /* EnemyProjectile.h */,
+				7ECCC6631B3D27F0006A70B9 /* EnemyProjectile.m */,
+				7ECCC6671B3D2894006A70B9 /* EnemyBulletProjectile.h */,
+				7ECCC6681B3D2894006A70B9 /* EnemyBulletProjectile.m */,
+			);
+			path = enemyprojectile;
+			sourceTree = "<group>";
+		};
 		7ED822011B13D258001BB249 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -1079,6 +1095,7 @@
 		7ED822021B13D258001BB249 /* game */ = {
 			isa = PBXGroup;
 			children = (
+				7ECCC65F1B3D25E8006A70B9 /* enemyprojectile */,
 				7ED822031B13D258001BB249 /* airenemy */,
 				7ED8220A1B13D258001BB249 /* bg */,
 				7ED8221C1B13D258001BB249 /* core */,
@@ -1469,8 +1486,6 @@
 			isa = PBXGroup;
 			children = (
 				7A40362019DDEF0D007B6E8F /* Platforms */,
-				B7378992180767190076A88C /* MainScene.h */,
-				B7378993180767190076A88C /* MainScene.m */,
 				D352B48019EC608A00829775 /* MetalShaders */,
 			);
 			name = Source;
@@ -1997,7 +2012,6 @@
 				7ED8230B1B13D258001BB249 /* SpriterNode.m in Sources */,
 				7ED822811B13D258001BB249 /* BasicAirEnemy.m in Sources */,
 				7E386D4F1B23F6DC00DDEFF6 /* BGCharacterBase.m in Sources */,
-				7A4036E819DE3F33007B6E8F /* MainScene.m in Sources */,
 				7E4F09A51B2523AE000945B8 /* SPCCSpriteAnimator.m in Sources */,
 				7ED822F01B13D258001BB249 /* Common.m in Sources */,
 				7ED822AB1B13D258001BB249 /* ChainedMovementParticle.m in Sources */,
@@ -2052,11 +2066,13 @@
 				7ED8228D1B13D258001BB249 /* BGSky.m in Sources */,
 				7ED822FF1B13D258001BB249 /* Resource.m in Sources */,
 				7E386D391B23A0BE00DDEFF6 /* PlayerSharedParams.m in Sources */,
+				7ECCC66B1B3D2894006A70B9 /* EnemyBulletProjectile.m in Sources */,
 				7E4F09B21B258C9A000945B8 /* ChargedArrow.m in Sources */,
 				7A59498E19E3941300F65F90 /* AppDelegate.m in Sources */,
 				7ED822D81B13D258001BB249 /* GameMain.m in Sources */,
 				7E4F09B71B258CA2000945B8 /* Arrow.m in Sources */,
 				7ED822E11B13D258001BB249 /* SHBackground.m in Sources */,
+				7ECCC6661B3D27F0006A70B9 /* EnemyProjectile.m in Sources */,
 				7ED822BA1B13D258001BB249 /* RotateFadeOutParticle.m in Sources */,
 				7ED822ED1B13D258001BB249 /* BatchDraw.m in Sources */,
 				7ED823051B13D258001BB249 /* SpriterData.m in Sources */,
@@ -2071,6 +2087,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7E386D501B23F6E900DDEFF6 /* VillageUI.m in Sources */,
+				7ECCC66A1B3D2894006A70B9 /* EnemyBulletProjectile.m in Sources */,
 				7ED822EF1B13D258001BB249 /* Common.m in Sources */,
 				7E386D4C1B23AB9900DDEFF6 /* AirToGroundTransitionPlayerStateStack.m in Sources */,
 				7ED822D71B13D258001BB249 /* GameMain.m in Sources */,
@@ -2107,7 +2124,6 @@
 				7ED823131B13D258001BB249 /* SpriterUtil.m in Sources */,
 				7ED823191B13D258001BB249 /* TouchTrackingLayer.m in Sources */,
 				7ED822A11B13D258001BB249 /* GameEngineScene.m in Sources */,
-				927F619E196C771E000F43EF /* MainScene.m in Sources */,
 				7ED823FE1B13DD59001BB249 /* md5.c in Sources */,
 				7ED822A41B13D258001BB249 /* GameObject.m in Sources */,
 				7ED822FB1B13D258001BB249 /* PolyLib.m in Sources */,
@@ -2150,6 +2166,7 @@
 				7ED822A71B13D258001BB249 /* ShopScene.m in Sources */,
 				7E6A045D1B3978CF004890F5 /* EnemyWarningUI.m in Sources */,
 				7ED822BF1B13D258001BB249 /* Player.m in Sources */,
+				7ECCC6651B3D27F0006A70B9 /* EnemyProjectile.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2182,7 +2199,6 @@
 				7ED822F71B13D258001BB249 /* GEventDispatcher.m in Sources */,
 				7E9A58441B22CBE7008EC348 /* PlayerUIAimReticule.m in Sources */,
 				7ED8229D1B13D258001BB249 /* ControlManager.m in Sources */,
-				7A046D8C19E8A20E004C4763 /* MainScene.m in Sources */,
 				7ED8230F1B13D258001BB249 /* SpriterTypes.m in Sources */,
 				7ED8231B1B13D258001BB249 /* Vec3D.m in Sources */,
 				7E386D2F1B23A0AC00DDEFF6 /* PlayerLandParams.m in Sources */,
@@ -2194,6 +2210,7 @@
 				7ED822D91B13D258001BB249 /* MainMenuScene.m in Sources */,
 				7ED822971B13D258001BB249 /* BGCharacterTest.m in Sources */,
 				BB771B101B23D0A8002BA595 /* InDialoguePlayerStateStack.m in Sources */,
+				7ECCC6691B3D2894006A70B9 /* EnemyBulletProjectile.m in Sources */,
 				7ED822881B13D258001BB249 /* BGReflection.m in Sources */,
 				7E386D321B23A0AC00DDEFF6 /* PlayerUnderwaterCombatParams.m in Sources */,
 				7E4F09941B24FC6B000945B8 /* SwordSlashParticle.m in Sources */,
@@ -2204,6 +2221,7 @@
 				7ED822A01B13D258001BB249 /* GameEngineScene.m in Sources */,
 				7ED822CA1B13D258001BB249 /* PlayerProjectile.m in Sources */,
 				7ED823181B13D258001BB249 /* TouchTrackingLayer.m in Sources */,
+				7ECCC6641B3D27F0006A70B9 /* EnemyProjectile.m in Sources */,
 				7ED822D01B13D258001BB249 /* HealthBar.m in Sources */,
 				7ED822AC1B13D258001BB249 /* Particle.m in Sources */,
 				BB771AF31B22C910002BA595 /* BGCharacterBase.m in Sources */,

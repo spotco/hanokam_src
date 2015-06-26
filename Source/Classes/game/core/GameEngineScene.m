@@ -15,9 +15,11 @@
 #import "ControlManager.h"
 #import "Resource.h"
 #import "PlayerProjectile.h"
+#import "EnemyProjectile.h"
 #import "GameMain.h"
 #import "SpriterNodeCache.h"
 #import "SPDeviceAccelerometer.h"
+#import "GEventDispatcher.h"
 
 
 @implementation RippleInfo {
@@ -77,6 +79,8 @@
 	CCSprite *_ripple_proto;
 	NSMutableArray *_ripples;
 	
+	GEventDispatcher *_event_dispatcher;
+	
 	// CAM
 	CCNode *_zoom_node, *_game_anchor;
 	
@@ -87,6 +91,7 @@
 	// WORLD
 	Player *_player;
 	ParticleSystem *_player_projectiles;
+	ParticleSystem *_enemy_projectiles;
 	
 	BGVillage *_bg_village;
 	BGWater *_bg_water;
@@ -132,6 +137,8 @@
 	_controls = [ControlManager cons];
 	dt_unset();
 	
+	_event_dispatcher = [GEventDispatcher cons];
+	
 	_spriter_node_cache = [SpriterNodeCache cons];
 	[_spriter_node_cache precache];
 	
@@ -148,6 +155,7 @@
 	
 	_particles = [ParticleSystem cons_anchor:_game_anchor];
 	_player_projectiles = [ParticleSystem cons_anchor:_game_anchor];
+	_enemy_projectiles = [ParticleSystem cons_anchor:_game_anchor];
 	
 	[self reset_camera];
 	_player = (Player*)[[Player cons_g:self] add_to:_game_anchor z:GameAnchorZ_Player];
@@ -184,11 +192,16 @@
 	[_player_projectiles add_particle:tar];
 }
 
+-(void)add_enemy_projectile:(EnemyProjectile*)tar {
+	[_enemy_projectiles add_particle:tar];
+}
+
 -(void)addChild:(CCNode *)node { [NSException raise:@"Do not add children to GameEngineScene" format:@""]; }
 -(NSArray*)get_ripple_infos { return _ripples; }
 -(CCSprite*)get_ripple_proto { return _ripple_proto; }
 -(NSNumber*)get_tick_mod_pi { return @(fmodf(_tick * 0.01,M_PI * 2)); }
 -(BGVillage*)get_bg_village { return _bg_village; }
+-(GEventDispatcher*)get_event_dispatcher { return _event_dispatcher; }
 
 -(void)add_ripple:(CGPoint)pos {
 	if ([_ripples count] > 6) return;
@@ -234,6 +247,7 @@
 	[self update_camera];
 	[_particles update_particles:self];
 	[_player_projectiles update_particles:self];
+	[_enemy_projectiles update_particles:self];
 	
 	for (BGElement *itr in _bg_elements) {
 		[itr i_update:self];
@@ -386,6 +400,8 @@
 	CCColor *enemy_sat_color = [CCColor colorWithCcColor4f:ccc4f(1, 0, 0, 0.75)];
 	CCColor *projectile_color = [CCColor colorWithCcColor4f:ccc4f(1, 1, 0, 0.25)];
 	CCColor *projectile_sat_color = [CCColor colorWithCcColor4f:ccc4f(1, 1, 0, 0.75)];
+	CCColor *enemy_projectile_color = [CCColor colorWithCcColor4f:ccc4f(0.8, 0.4, 0, 0.25)];
+	CCColor *enemy_projectile_sat_color = [CCColor colorWithCcColor4f:ccc4f(0.8, 0.4, 0, 0.75)];
 	
 	SATPoly itr_poly;
 	
@@ -403,6 +419,12 @@
 		[self draw_hit_rect:itr.get_hit_rect color:projectile_color];
 		[itr get_sat_poly:&itr_poly];
 		[self draw_sat_poly:&itr_poly color:projectile_sat_color];
+	}
+	
+	for (EnemyProjectile *itr in _enemy_projectiles.list) {
+		[self draw_hit_rect:itr.get_hit_rect color:enemy_projectile_color];
+		[itr get_sat_poly:&itr_poly];
+		[self draw_sat_poly:&itr_poly color:enemy_projectile_sat_color];
 	}
 }
 

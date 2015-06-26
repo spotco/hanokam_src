@@ -12,6 +12,8 @@
 @class GameUI;
 @class TouchTrackingLayer;
 @class SpriterNodeCache;
+@class EnemyProjectile;
+@class GEventDispatcher;
 
 typedef enum _PlayerState {
 	PlayerState_Dive = 0,
@@ -96,8 +98,10 @@ typedef enum _GameAnchorZ {
 -(NSArray*)get_ripple_infos;
 -(CCSprite*)get_ripple_proto;
 -(BGVillage*)get_bg_village;
+-(GEventDispatcher*)get_event_dispatcher;
 
 -(void)add_player_projectile:(PlayerProjectile*)tar;
+-(void)add_enemy_projectile:(EnemyProjectile*)tar;
 
 -(SpriterNodeCache*)get_spriter_node_cache;
 @end

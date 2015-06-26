@@ -51,6 +51,8 @@
 -(float)get_health_pct { return clampf(_health/_health_max,0,1); }
 -(BOOL)should_show_health_bar { return _health < _health_max; }
 
+-(float)get_anim_t { return _anim_t; }
+
 -(void)i_update:(GameEngineScene *)g {
 	CGPoint scaled_rel_vel = ccp(_rel_offset_vel.x * dt_scale_get(),_rel_offset_vel.y * dt_scale_get());
 	CGPoint neu_rel_offset = CGPointAdd(_rel_offset, scaled_rel_vel);
