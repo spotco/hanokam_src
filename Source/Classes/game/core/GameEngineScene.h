@@ -78,6 +78,7 @@ typedef enum _GameAnchorZ {
 -(AirEnemyManager*)get_air_enemy_manager;
 -(GameUI*)get_ui;
 -(TouchTrackingLayer*)get_touch_tracking_layer;
+-(NSArray*)get_player_projectiles;
 
 -(void)add_ripple:(CGPoint)pos;
 -(float)get_ground_depth;

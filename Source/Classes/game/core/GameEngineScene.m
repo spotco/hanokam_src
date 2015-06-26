@@ -119,6 +119,7 @@
 -(GameUI*)get_ui{ return _ui; }
 -(TouchTrackingLayer*)get_touch_tracking_layer{ return _touch_tracking; }
 -(SpriterNodeCache*)get_spriter_node_cache { return _spriter_node_cache; }
+-(NSArray*)get_player_projectiles { return _player_projectiles.list; }
 
 -(PlayerState)get_player_state {
 	return _player.get_player_state;

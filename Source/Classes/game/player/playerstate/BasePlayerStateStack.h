@@ -14,11 +14,15 @@
 #import "GameUI.h" 
 #import "SpriterNode.h" 
 
+#import "PlayerAirCombatParams.h"
+
 @interface BasePlayerStateStack : NSObject
 -(void)i_update:(GameEngineScene*)game;
 -(PlayerState)get_state;
 -(void)on_state_end:(GameEngineScene*)game;
 -(BOOL)on_land:(GameEngineScene*)game;
+
+-(PlayerAirCombatParams*)cond_get_inair_combat_params;
 @end
 
 @interface IdlePlayerStateStack : BasePlayerStateStack

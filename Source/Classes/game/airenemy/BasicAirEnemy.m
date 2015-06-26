@@ -12,6 +12,8 @@
 #import "GameEngineScene.h"
 #import "Common.h"
 #import "Vec3D.h"
+#import "BasePlayerStateStack.h"
+#import "GEventDispatcher.h"
 
 @implementation BasicAirEnemy {
 	CGPoint _rel_start,_rel_end;
@@ -63,6 +65,8 @@
 	_rel_offset_vel.y *= powf(0.9, dt_scale_get());
 	
 	_anim_theta = fmodf(_anim_theta + dt_scale_get() / (3.14 * 2),3.14*2);
+	
+	[self check_hit:g];
 	
 	if (_is_dead) {
 		_death_anim_ct -= dt_scale_get();
@@ -130,6 +134,38 @@
 	CGPoint lcorner = ccp(g.get_viewbox.x1,g.get_viewbox.y1);
 	CGPoint calc_pos = CGPointAdd(CGPointAdd(_rel_pos, lcorner),rel_offset);
 	return calc_pos.x < 15 || calc_pos.x > game_screen().width - 15 || calc_pos.y < lcorner.y + 15 || calc_pos.y > lcorner.y+game_screen().height - 15;
+}
+
+-(void)check_hit:(GameEngineScene*)g {
+	PlayerAirCombatParams *air_params = g.player.get_top_state.cond_get_inair_combat_params;
+	if (air_params._current_mode == PlayerAirCombatMode_Combat && self.is_alive && SAT_polyowners_intersect(g.player, self)) {
+		if (air_params._sword_out) {
+			[g.get_event_dispatcher push_event:[[GEvent cons_context:g type:GEventType_PlayerHitEnemySword] set_target:self]];
+		
+			PlayerHitParams hit_params;
+			PlayerHitParams_init(&hit_params, PlayerHitType_Melee, vec_cons_norm(0, -1, 0));
+			hit_params._pushback_force = 3;
+			[self hit:g params:&hit_params];
+			
+		} else if (air_params._dashing) {
+			[g.get_event_dispatcher push_event:[[GEvent cons_context:g type:GEventType_PlayerHitEnemyDash] set_target:self]];
+		
+			PlayerHitParams hit_params;
+			PlayerHitParams_init(&hit_params, PlayerHitType_Melee, vec_cons_norm(air_params._s_vel.x, air_params._s_vel.y, 0));
+			hit_params._pushback_force = 0.5;
+			[self hit:g params:&hit_params];
+			
+		} else if ([air_params is_hittable]) {
+			[g.get_event_dispatcher push_event:[[GEvent cons_context:g type:GEventType_PlayerTouchEnemy] set_target:self]];
+			
+			PlayerHitParams hit_params;
+			PlayerHitParams_init(&hit_params, PlayerHitType_Projectile, vec_dir_between_points(g.player.get_center, self.position));
+			hit_params._pushback_force = 3;
+			[self hit:g params:&hit_params];
+			
+			
+		}
+	}
 }
 
 -(void)hit:(GameEngineScene*)g params:(PlayerHitParams*)params {

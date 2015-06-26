@@ -12,8 +12,9 @@
 /*
 TODO --
 GAMEPLAY IDEAS:
-enemy bullets with patterns
 curved swipe direction a la speedypups
+top of player arrow decreasing bar
+charged arrow more damage
 hanoka char art in
  
 underwater gameplay system

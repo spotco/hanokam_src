@@ -18,10 +18,10 @@
 @synthesize _dash_ct, _arrow_last_fired_ct;
 @synthesize  __rescue_last_waypoint_ct;
 @synthesize _hold_ct;
--(float)DEFAULT_HEIGHT {
-	return game_screen().height * 0.8;
-}
--(float)ARROW_AIM_TIME {
-	return 30;
+-(float)DEFAULT_HEIGHT { return game_screen().height * 0.8; }
+-(float)ARROW_AIM_TIME { return 30; }
+
+-(BOOL)is_hittable {
+	return _current_mode == PlayerAirCombatMode_Combat && self._invuln_ct <= 0;
 }
 @end

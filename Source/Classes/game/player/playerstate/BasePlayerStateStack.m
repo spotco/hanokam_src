@@ -13,6 +13,7 @@
 -(PlayerState)get_state{return PlayerState_OnGround;}
 -(void)on_state_end:(GameEngineScene*)game{}
 -(BOOL)on_land:(GameEngineScene*)game { return NO; }
+-(PlayerAirCombatParams*)cond_get_inair_combat_params { return NULL; }
 @end
 
 @implementation IdlePlayerStateStack

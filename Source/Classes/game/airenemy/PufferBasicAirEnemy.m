@@ -98,7 +98,7 @@
 		[_img update_playAnim:_anim_idle];
 	}
 	
-	if ([self get_anim_t] > 0.5 && !_has_shot_bullets) {
+	if ([self get_anim_t] > 0.25 && CGPointDist(self.position, g.player.position) > 100 && !_has_shot_bullets) {
 		float start_dir = float_random(-3.14, 3.14);
 		float add_dir = 0;
 		while (add_dir < 3.14*2) {

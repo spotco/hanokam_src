@@ -30,4 +30,6 @@ typedef enum _PlayerAirCombatMode {
 
 -(float)DEFAULT_HEIGHT;
 -(float)ARROW_AIM_TIME;
+
+-(BOOL)is_hittable;
 @end

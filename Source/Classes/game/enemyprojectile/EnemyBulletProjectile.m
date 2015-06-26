@@ -14,6 +14,9 @@
 #import "GameUI.h"
 #import "AirEnemyManager.h"
 #import "GEventDispatcher.h"
+#import "BasePlayerStateStack.h"
+#import "RotateFadeOutParticle.h"
+#import "PlayerProjectile.h"
 
 @implementation EnemyBulletProjectile {
 	Vec3D _vel;
@@ -43,13 +46,38 @@
 	
 	[self setPosition:CGPointAdd(self.position, ccp(_vel.x*dt_scale_get(),_vel.y*dt_scale_get()))];
 	
-	if (hitrect_touch(self.get_hit_rect, g.player.get_hit_rect) && SAT_polyowners_intersect(self, g.player)) {
-		_active = NO;
-		[g.get_event_dispatcher push_event:[GEvent cons_context:g type:GEventType_BulletHitPlayer]];
-		
-	} else if (!hitrect_contains_point([g get_viewbox],self.position)) {
+	PlayerAirCombatParams *air_params = g.player.get_top_state.cond_get_inair_combat_params;
+	if (air_params._current_mode == PlayerAirCombatMode_Combat && _active && SAT_polyowners_intersect(self, g.player)) {
+		if (!air_params._sword_out && !air_params._dashing && [air_params is_hittable]) {
+			[g.get_event_dispatcher push_event:[GEvent cons_context:g type:GEventType_BulletHitPlayer]];
+		} else {
+			[g.get_event_dispatcher push_event:[[GEvent cons_context:g type:GEventType_PlayerHitEnemyDash] set_target:self]];
+		}
+		[self hit_effect:g];
 		_active = NO;
 	}
+	
+	for (PlayerProjectile *itr in g.get_player_projectiles) {
+		if (SAT_polyowners_intersect(self, itr)) {
+			_active = NO;
+			[self hit_effect:g];
+			break;
+		}
+	}
+	
+	if (!hitrect_contains_point([g get_viewbox],self.position)) {
+		_active = NO;
+	}
+}
+
+-(void)hit_effect:(GameEngineScene*)g {
+	RotateFadeOutParticle *particle = [RotateFadeOutParticle cons_tex:[Resource get_tex:TEX_PARTICLES_SPRITESHEET] rect:[FileCache get_cgrect_from_plist:TEX_PARTICLES_SPRITESHEET idname:@"grey_particle"]];
+	[particle set_pos:self.position];
+	[particle set_ctmax:15];
+	[particle set_render_ord:GameAnchorZ_PlayerAirEffects];
+	[particle set_scale_min:2 max:3];
+	[particle set_alpha_start:1.0 end:0.0];
+	[g add_particle:particle];
 }
 
 -(int)get_render_ord {

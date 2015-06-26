@@ -1,17 +1,19 @@
 #import <Foundation/Foundation.h>
 
 typedef enum {
-    GEventType_BulletHitPlayer
+    GEventType_BulletHitPlayer,
+	GEventType_PlayerHitEnemySword,
+	GEventType_PlayerHitEnemyDash,
+	GEventType_PlayerTouchEnemy
+	
 } GEventType;
-
-#define GEventKey_BulletHitPlayer_EffectParams @"GEventKey_BulletHitPlayer_EffectParams"
 
 @interface GEvent : NSObject
 +(GEvent*)cons_context:(id)context type:(GEventType)t;
 -(GEventType)type;
 -(id)context;
--(GEvent*)add_key:(NSString*)k value:(id)v;
--(id)get_value:(NSString*)key;
+-(GEvent*)set_target:(id)target;
+-(id)target;
 @end
 
 @protocol GEventListener <NSObject>

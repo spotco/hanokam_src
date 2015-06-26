@@ -31,6 +31,7 @@
 	GEventType _type;
 	NSMutableDictionary *_dict;
 	id _context;
+	id _target;
 }
 +(GEvent*)cons_context:(id)context type:(GEventType)t {
 	return [[[GEvent alloc] init] cons_context:context type:t];
@@ -42,12 +43,6 @@
 }
 -(GEventType)type { return _type; }
 -(id)context { return _context; }
--(GEvent*)add_key:(NSString*)k value:(id)v {
-	if (_dict == NULL) _dict = [NSMutableDictionary dictionary];
-	_dict[k] = v;
-	return self;
-}
--(id)get_value:(NSString*)key {
-	return [_dict objectForKey:key];
-}
+-(GEvent*)set_target:(id)target { _target = target; return self; }
+-(id)target { return _target; }
 @end

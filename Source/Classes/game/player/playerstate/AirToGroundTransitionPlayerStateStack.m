@@ -25,6 +25,7 @@
 	[g.player add_health:0.25 g:g];
 	[g imm_set_camera_hei:0];
 	g.player.position = ccp(g.player.position.x,300);
+	g.player.rotation = 0;
 	_land_params._vel = ccp(0,0);
 	_land_params._current_mode = PlayerLandMode_AirToGround_FadeIn;
 	return self;
