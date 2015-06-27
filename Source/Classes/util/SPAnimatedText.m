@@ -41,7 +41,7 @@ CGFloat SPACE_WIDTH = 6;
             SPAnimatedTextCharacter *animatedTextChararcter = [SPAnimatedTextCharacter cons:game
                                                                  withCharacter:[text substringWithRange:NSMakeRange(i,1)]
                                                                          color:[CCColor whiteColor]
-                                                                     amplitude:10];
+                                                                     amplitude:3];
             [animatedTextChararcter setScale:0.4f];
             [animatedTextChararcter setPosition:ccp(xPos,0)];
             [animatedTextChararcter setOpacity:0];
@@ -99,22 +99,6 @@ CGFloat SPACE_WIDTH = 6;
                                                                                 ts:fmod((t-i),2*M_PI)+2*M_PI];
             }
             break;
-        case AnimatedTextState_Exiting:
-            // Decrement opacity and scale. If min is reached, proceed to CAN_REMOVE state
-            t += 0.1*dt_scale_get();
-            if (t > 1) {
-                t = 1;
-                self.state = AnimatedTextState_CanRemove;
-            }
-            
-            // Fade out animated text characters
-            for (SPAnimatedTextCharacter *tc in _animatedTextCharacters) {
-                [tc i_update:game ts:t];
-            }
-            break;
-        case AnimatedTextState_CanRemove:
-            // Wait here to be removed
-            break;
         default:
             break;
     }
@@ -135,13 +119,6 @@ CGFloat SPACE_WIDTH = 6;
     
     // Proceed to SHOWING state
     self.state = AnimatedTextState_Showing;
-}
-
--(void)beginExiting {
-    t = 0;
-    
-    // Proceed to EXITING state
-    self.state = AnimatedTextState_Exiting;
 }
 
 @end

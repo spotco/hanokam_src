@@ -14,9 +14,7 @@
 typedef enum {
     AnimatedTextState_Hidden,
     AnimatedTextState_Entering,
-    AnimatedTextState_Showing,
-    AnimatedTextState_Exiting,
-    AnimatedTextState_CanRemove
+    AnimatedTextState_Showing
 } AnimatedTextState;
 
 @interface SPAnimatedText : CCNode
@@ -47,10 +45,5 @@ typedef enum {
  *  Signal to skip any entry animations and immediately show text
  */
 -(void)forceShowing;
-
-/**
- *  Signal to begin hiding text
- */
--(void)beginExiting;
 
 @end

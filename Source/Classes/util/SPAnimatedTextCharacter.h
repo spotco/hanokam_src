@@ -14,9 +14,7 @@
 typedef enum {
     AnimatedTextCharacterState_Hidden,
     AnimatedTextCharacterState_Entering,
-    AnimatedTextCharacterState_Showing,
-    AnimatedTextCharacterState_Exiting,
-    AnimatedTextCharacterState_CanRemove
+    AnimatedTextCharacterState_Showing
 } AnimatedTextCharacterState;
 
 /**
@@ -45,6 +43,7 @@ typedef enum {
  *  Update state, handles interactions with other elements in the game
  *
  *  @param  game        an object containing information about the current game state
+ *  @param  ts          a time value to help synchronize multiple instances of SPAnimatedTextCharacter
  */
 -(void)i_update:(GameEngineScene*)game
              ts:(CGFloat)ts;
@@ -58,10 +57,5 @@ typedef enum {
  *  Signal to skip any entry animations and immediately show character
  */
 -(void)forceShowing;
-
-/**
- *  Signal to begin hiding character
- */
--(void)beginExiting;
 
 @end

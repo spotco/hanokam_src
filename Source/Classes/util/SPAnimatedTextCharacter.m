@@ -75,20 +75,7 @@ CGFloat CHAR_DROP_HEIGHT = 20;
             break;
         case AnimatedTextCharacterState_Showing:
             // Sine wave style oscillation
-            [_characterLabel setPosition:ccp(self.position.x,self.position.y+_amplitude*sinf(ts))];
-            break;
-        case AnimatedTextCharacterState_Exiting:
-            if (ts < 1) {
-                // fade out animation for character label
-                [_characterLabel setOpacity:1-ts];
-            } else {
-                // Once min is reached, proceed to CAN_REMOVE state
-                [_characterLabel setOpacity:0];
-                self.state = AnimatedTextCharacterState_CanRemove;
-            }
-            break;
-        case AnimatedTextCharacterState_CanRemove:
-            // Wait here to be removed
+            [_characterLabel setPosition:ccp(self.position.x,self.position.y+_amplitude*sinf(ts-1))];
             break;
         default:
             break;
@@ -106,11 +93,6 @@ CGFloat CHAR_DROP_HEIGHT = 20;
     [_characterLabel setPosition:ccp(self.position.x,self.position.y)];
     self.state = AnimatedTextCharacterState_Showing;
     
-}
-
--(void)beginExiting {
-    // Proceed to EXITING state
-    self.state = AnimatedTextCharacterState_Exiting;
 }
 
 @end
