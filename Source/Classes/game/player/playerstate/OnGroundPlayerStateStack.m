@@ -41,7 +41,7 @@
 				}
 			}
 			if (g.get_control_manager.is_touch_down) {
-				[g.player play_anim:@"prep dive" repeat:NO];
+				[g.player play_anim:@"Prep Dive" repeat:NO];
 				_land_params._prep_dive_hold_ct += dt_scale_get();
 				[g.get_ui set_charge_pct:_land_params._prep_dive_hold_ct/_land_params.PREP_DIVE_HOLD_TIME g:g];
 				if (_land_params._prep_dive_hold_ct > _land_params.PREP_DIVE_HOLD_TIME) {
@@ -72,18 +72,18 @@
 					_land_params._move_hold_ct += dt_scale_get();
 					if (_land_params._move_hold_ct > _land_params.MOVE_HOLD_TIME) {
 						[g.player update_accel_x_position:g];
-						[g.player play_anim:@"run" repeat:YES];
+						[g.player play_anim:@"Run" repeat:YES];
 						if (vx > 0) {
 							g.player.img.scaleX = ABS(g.player.img.scaleX);
 						} else {
 							g.player.img.scaleX = -ABS(g.player.img.scaleX);
 						}
 					} else {
-						[g.player play_anim:@"idle" repeat:YES];
+						[g.player play_anim:@"Idle" repeat:YES];
 					}
 				} else {
 					_land_params._move_hold_ct = 0;
-					[g.player play_anim:@"idle" repeat:YES];
+					[g.player play_anim:@"Idle" repeat:YES];
 				}
 				g.player.position = ccp(g.player.position.x,g.DOCK_HEIGHT);
 				[g.player read_s_pos:g];
@@ -101,7 +101,7 @@
 			g.player.rotation += shortest_angle(g.player.rotation, tar_rotation) * 0.25;
 			
 			[g.player apply_s_pos:g];
-			[g.player play_anim:@"dive" repeat:YES];
+			[g.player play_anim:@"Dive" repeat:YES];
 			if (g.player.position.y < 0) {
 				[g.player pop_state_stack:g];
 				[g.player push_state_stack:[DivePlayerStateStack cons:g]];

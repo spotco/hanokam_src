@@ -42,7 +42,7 @@
 			if (g.get_ui.is_faded_in) _land_params._current_mode = PlayerLandMode_AirToGround_FallToWater;
 			
 		case PlayerLandMode_AirToGround_FallToWater:;
-			[g.player play_anim:@"fall" repeat:YES];
+			[g.player play_anim:@"Fall" repeat:YES];
 			_land_params._vel = ccp(_land_params._vel.x,_land_params._vel.y - 0.3 * dt_scale_get());
 			g.player.position = CGPointAdd(g.player.position, ccp(0,_land_params._vel.y*dt_scale_get()));
 			[g set_camera_height:drp(g.get_current_camera_center_y,0,20)];
@@ -55,7 +55,7 @@
 			
 		break;
 		case PlayerLandMode_AirToGround_WaterDiveUp:;
-			[g.player play_anim:@"swim" repeat:YES];
+			[g.player play_anim:@"Swim" repeat:YES];
 			_land_params._vel = ccp(_land_params._vel.x,_land_params._vel.y + 0.4 * dt_scale_get());
 			g.player.position = CGPointAdd(g.player.position, ccp(0,_land_params._vel.y*dt_scale_get()));
 			if (g.player.position.y > 0) {
@@ -68,7 +68,7 @@
 		
 		break;
 		case PlayerLandMode_AirToGround_FlipToDock:;
-			[g.player play_anim:@"spin" repeat:YES];
+			[g.player play_anim:@"Spin" repeat:YES];
 			_land_params._vel = ccp(_land_params._vel.x,_land_params._vel.y - 0.4 * dt_scale_get());
 			g.player.position = CGPointAdd(g.player.position, ccp(0,_land_params._vel.y*dt_scale_get()));
 			if (_land_params._vel.y < 0 && g.player.position.y < g.DOCK_HEIGHT) {

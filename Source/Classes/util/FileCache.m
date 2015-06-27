@@ -58,6 +58,7 @@ NSString* hash_for_scmldata(NSString *file, NSString *json, CCTexture *texture) 
 
 static NSMutableDictionary *_spriter_scml_data_files;
 +(SpriterData*)spriter_scml_data_from_file:(NSString*)file json:(NSString*)json texture:(CCTexture*)texture {
+	/*
 	if (_spriter_scml_data_files == NULL) _spriter_scml_data_files = [NSMutableDictionary dictionary];
 	NSString *hash = hash_for_scmldata(file, json, texture);
 	if (![_spriter_scml_data_files objectForKey:hash]) {
@@ -65,6 +66,8 @@ static NSMutableDictionary *_spriter_scml_data_files;
 		_spriter_scml_data_files[hash] = [SpriterData dataFromSpriteSheet:texture frames:json_data scml:file];
 	}
 	return _spriter_scml_data_files[hash];
+	*/
+	return NULL;
 }
 
 @end

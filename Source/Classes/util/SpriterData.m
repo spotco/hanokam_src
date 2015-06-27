@@ -6,14 +6,11 @@
 @implementation SpriterData {
 	NSMutableDictionary *_folders;
 	NSMutableDictionary *_animations;
-	NSMutableArray *_bones;
-	CCTexture *_texture;
+	NSMutableDictionary *_atlas;
 }
 
 -(NSDictionary*)folders { return _folders; }
 -(NSDictionary*)animations { return _animations; }
--(NSArray*)bones { return _bones; }
--(CCTexture*)texture { return _texture; }
 
 -(TGSpriterAnimation*)anim_of_name:(NSString*)name { return [_animations objectForKey:name]; }
 -(TGSpriterFile*)file_for_folderid:(int)folderid fileid:(int)fileid {
@@ -21,24 +18,23 @@
 	return [folder._files objectForKey:[NSNumber numberWithInt:fileid]];
 }
 
-+(SpriterData*)dataFromSpriteSheet:(CCTexture*)spriteSheet frames:(id<SpriteSheetReader>)frames scml:(NSString*)scml {
-	return [[SpriterData alloc] initFromSpriteSheet:spriteSheet frames:frames scml:scml];
++(SpriterData*)cons_data_from_spritesheetreaders:(NSArray*)sheetreaders scml:(NSString*)scml {
+	return [[SpriterData alloc] cons_data_from_spritesheetreaders:sheetreaders scml:scml];
 }
 
--(id)initFromSpriteSheet:(CCTexture*)spriteSheet frames:(id<SpriteSheetReader>)frames scml:(NSString*)scml {
-	self = [super init];
-	if (!self) return self;
-	_texture = spriteSheet;
+-(SpriterData*)cons_data_from_spritesheetreaders:(NSArray*)sheetreaders scml:(NSString*)scml {
 	TGSpriterConfigNode *root = [[[SpriterXMLParser alloc] init] parseSCML:scml];
-	id<SpriteSheetReader> spritesheet_frames = frames;
 	
 	_folders = [NSMutableDictionary dictionary];
 	_animations = [NSMutableDictionary dictionary];
-	_bones = [NSMutableArray array];
+	_atlas = [NSMutableDictionary dictionary];
 	
     for (TGSpriterConfigNode *itr_base in [[root.children objectAtIndex:0] children]) {
-        if ([[itr_base name] isEqualToString:@"folder"]) {
-			[self handle_folder:itr_base frames:spritesheet_frames];
+		if ([[itr_base name] isEqualToString:@"atlas"]) {
+			[self handle_atlas:itr_base sheetreaders:sheetreaders];
+			
+		} else if ([[itr_base name] isEqualToString:@"folder"]) {
+			[self handle_folder:itr_base];
 			
         } else if ([[itr_base name] isEqualToString:@"entity"]) {
             for (TGSpriterConfigNode *itr_entity_child in itr_base.children) {
@@ -53,16 +49,33 @@
 	return self;
 }
 
--(void)handle_folder:(TGSpriterConfigNode*)itr_base frames:(id<SpriteSheetReader>)spritesheet_frames {
+-(void)handle_atlas:(TGSpriterConfigNode*)itr_base sheetreaders:(NSArray*)sheetreaders {
+	for (int i = 0; i < itr_base.children.count; i++) {
+		TGSpriterConfigNode *itr_atlas_element = [itr_base.children objectAtIndex:i];
+		NSString *itr_atlas_element_name = itr_atlas_element.properties[@"name"];
+		for (id<SpriteSheetReader> itr_sheetreaders in sheetreaders) {
+			if ([[itr_sheetreaders filepath] isEqualToString:itr_atlas_element_name]) {
+				_atlas[@(i)] = itr_sheetreaders;
+				break;
+			}
+		}
+	}
+}
+
+-(void)handle_folder:(TGSpriterConfigNode*)itr_base {
 	TGSpriterFolder *neu_folder = [[TGSpriterFolder alloc] init];
 	neu_folder._id = [itr_base getId];
+	neu_folder._atlas = [itr_base.properties[@"atlas"] intValue];
+	
+	id<SpriteSheetReader> atlas_element = _atlas[@(neu_folder._atlas)];
 	
 	for (TGSpriterConfigNode *itr_files in itr_base.children) {
 		TGSpriterFile *neu_file = [[TGSpriterFile alloc] init];
 		neu_file._id = [itr_files getId];
-		neu_file._name = [itr_files name];
+		neu_file._name = itr_files.properties[@"name"];
 		neu_file._pivot = ccp([itr_files getVal:@"pivot_x"],[itr_files getVal:@"pivot_y"]);
-		neu_file._rect = [spritesheet_frames cgRectForFrame:itr_files.properties[@"name"]];
+		neu_file._rect = [atlas_element cgRectForFrame:itr_files.properties[@"name"]];
+		neu_file._texture = atlas_element.texture;
 		
 		neu_folder._files[[NSNumber numberWithInt:neu_file._id]] = neu_file;
 	}

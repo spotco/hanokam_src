@@ -32,7 +32,9 @@ static int _alloct = 0;
 -(void)add_to_cache_scml:(NSString*)scml json:(NSString*)json texture:(NSString*)texture {
 	NSString *hash = hash_for(scml, json, texture);
 	if ([_cache objectForKey:hash] == NULL) _cache[hash] = [NSMutableArray array];
-	SpriterNode *neu = [SpriterNode nodeFromData:[FileCache spriter_scml_data_from_file:scml json:json texture:[Resource get_tex:texture]]];
+	SpriterNode *neu;
+	//SPTODO -- FIX
+	//= [SpriterNode nodeFromData:[FileCache spriter_scml_data_from_file:scml json:json texture:[Resource get_tex:texture]]];
 	[((NSMutableArray*)_cache[hash]) addObject:neu];
 	
 	_alloct++;

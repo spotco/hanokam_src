@@ -33,7 +33,7 @@
 
 -(void)i_update:(GameEngineScene *)g {
 	g.player.shared_params._reset_to_center = YES;
-	[g.player play_anim:@"swim" repeat:YES];
+	[g.player play_anim:@"Swim" repeat:YES];
 	CGPoint last_pos = g.player.position;
 	switch (_underwater_params._current_mode) {
 		case PlayerUnderwaterCombatMode_TransitionIn:;

@@ -257,6 +257,8 @@ typedef struct CCSpriteTexCoordSet {
 /** Returns whether or not the texture rectangle is rotated. Sprite sheet editors may rotate sprite frames in a texture to fit more sprites in the same atlas. */
 @property (nonatomic,readonly) BOOL textureRectRotated;
 
+@property(readwrite,assign) NSInteger _globalSortOrder;
+
 /**
  *  Set the texture rect of the CCSprite in points.
  *  It will call setTextureRect:rotated:untrimmedSize with rotated = NO, and utrimmedSize = rect.size.

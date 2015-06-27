@@ -8,7 +8,11 @@
 #import "SpriterJSONParser.h"
 #import "SpriterData.h"
 
-@implementation BGCharacterOldMan 
+@implementation BGCharacterOldMan {
+	SpriterNode *_img;
+	NSString *_current_playing;
+	NSString *_on_finish_play_anim;
+}
 
 +(BGCharacterOldMan*)cons_pos:(CGPoint)pos {
 	return [[BGCharacterOldMan node] cons_pos:pos];
@@ -17,17 +21,25 @@
 -(BGCharacterOldMan*)cons_pos:(CGPoint)pos {
 	[self setPosition:pos];
 	
-	[self setScale:0.45];
 	[self setScaleX:self.scale*-1];
+	
+	SpriterData *data = [SpriterData cons_data_from_spritesheetreaders:@[
+		[SpriterJSONParser cons_texture:[Resource get_tex:TEX_SPRITER_CHAR_OLDMAN] file:@"oldman_ss.json"]
+	] scml:@"oldman.scml"];
+	_img = [SpriterNode nodeFromData:data render_size:ccp(300,300)];
+	[_img set_render_placement:ccp(0.5,0.1)];
+	[_img playAnim:@"idle" repeat:YES];
+	[self addChild:_img];
+	
+	/*
 	_img = [SpriterNode nodeFromData:[FileCache spriter_scml_data_from_file:@"oldman.scml" json:@"oldman_ss.json" texture:[Resource get_tex:TEX_SPRITER_CHAR_OLDMAN]]];
 	[self play_anim:@"idle" repeat:YES];
 	[self addChild:_img];
-    
-    _dialogueOffset = ccp(-30,50);
-    _dialogueText = @"gotta eat big to get big!";
-    
+    */
 	return self;
 }
+
+-(CGPoint)dialogueOffset { return ccp(-30,50); }
 
 -(void)play_anim:(NSString*)anim repeat:(BOOL)repeat {
 	_on_finish_play_anim = NULL;
