@@ -31,6 +31,9 @@ typedef enum {
 // Offset position for dialogue bubble
 -(CGPoint)dialogueOffset;
 
+// Dialog text
+-(NSString*)dialogueText;
+
 /**
  *  Update state, handles interactions with other elements in the game
  *

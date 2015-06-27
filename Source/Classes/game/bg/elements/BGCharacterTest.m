@@ -75,6 +75,10 @@ todo:
 	return self;
 }
 
+-(CGPoint)dialogueOffset { return CGPointZero; }
+
+-(NSString*)dialogueText { return @"I AM ERROR"; }
+
 static int _test = 0;
 static bool _last_touch_down = NO;
 -(void)i_update:(GameEngineScene*)g {

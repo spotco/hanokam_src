@@ -23,7 +23,17 @@ static CGFloat const TAP_RANGE = 50;
 
 @implementation BGCharacterBase
 
--(CGPoint)dialogueOffset { return CGPointZero; }
+-(CGPoint)dialogueOffset {
+    NSAssert(NO, @"%@ : %@ should be overridden in sub-class", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
+    return CGPointZero;
+}
+
+-(NSString*)dialogueText {
+    NSAssert(NO, @"%@ : %@ should be overridden in sub-class", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
+    return nil;
+}
+
+#pragma mark - State Machine
 
 -(void)i_update:(GameEngineScene*)g {
     // Only handle state transitions if player is currently on the dock

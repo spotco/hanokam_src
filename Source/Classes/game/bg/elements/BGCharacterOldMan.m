@@ -41,6 +41,8 @@
 
 -(CGPoint)dialogueOffset { return ccp(-30,50); }
 
+-(NSString*)dialogueText { return @"Gotta eat big to get big!"; };
+
 -(void)play_anim:(NSString*)anim repeat:(BOOL)repeat {
 	_on_finish_play_anim = NULL;
 	if(_current_playing != anim) {

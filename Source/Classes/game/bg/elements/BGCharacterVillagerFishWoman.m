@@ -35,6 +35,8 @@
 
 -(CGPoint)dialogueOffset { return ccp(-50,50); }
 
+-(NSString*)dialogueText { return @"ayyy lmao"; }
+
 -(void)play_anim:(NSString*)anim repeat:(BOOL)repeat {
 	_on_finish_play_anim = NULL;
 	if(_current_playing != anim) {

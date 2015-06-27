@@ -58,7 +58,6 @@ CGFloat SPACE_WIDTH = 6;
     return self;
 }
 
-
 #pragma mark - State Machine
 
 -(void)i_update:(GameEngineScene *)game {
