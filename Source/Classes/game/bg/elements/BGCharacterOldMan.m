@@ -24,6 +24,7 @@
 	[self addChild:_img];
     
     _dialogueOffset = ccp(-30,50);
+    _dialogueText = @"gotta eat big to get big!";
     
 	return self;
 }

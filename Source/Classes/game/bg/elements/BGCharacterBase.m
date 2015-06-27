@@ -24,6 +24,7 @@ static CGFloat const TAP_RANGE = 50;
 @implementation BGCharacterBase
 
 @synthesize dialogueOffset = _dialogueOffset;
+@synthesize dialogueText = _dialogueText;
 
 -(void)i_update:(GameEngineScene*)g {
     // Only handle state transitions if player is currently on the dock
