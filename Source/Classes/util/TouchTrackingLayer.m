@@ -13,7 +13,7 @@
 
 -(id)init{
     self=[super init];
-	_motion_streak = [CCMotionStreak streakWithFade:0.4 minSeg:10 width:10 color:[CCColor whiteColor] texture:[Resource get_tex:TEX_BLANK]];
+	_motion_streak = [CCMotionStreak streakWithFade:0.15 minSeg:10 width:10 color:[CCColor whiteColor] texture:[Resource get_tex:TEX_BLANK]];
 	[self addChild:_motion_streak];
 	
 	_touch_button = [CCSprite spriteWithTexture:[Resource get_tex:TEX_PARTICLES_SPRITESHEET] rect:[FileCache get_cgrect_from_plist:TEX_PARTICLES_SPRITESHEET idname:@"grey_particle"]];

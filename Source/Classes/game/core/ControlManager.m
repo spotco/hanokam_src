@@ -28,6 +28,8 @@
 	CGPoint _last_player_world_pos;
 	
 	float _frame_accel_x_vel;
+	
+	CGPoint _post_swipe_drag;
 }
 
 +(ControlManager*)cons {
@@ -42,6 +44,10 @@
 	return _frame_accel_x_vel;
 }
 
+-(CGPoint)get_post_swipe_drag {
+	return _post_swipe_drag;
+}
+
 -(void)touch_begin:(CGPoint)pt {
     _is_touch_down = YES;
     _touch_move_counter = 0;
@@ -51,6 +57,7 @@
 	_this_touch_has_procced_swipe = NO;
 	[self clear_proc_swipe];
 	_proc_tap_pt = pt;
+	_post_swipe_drag = CGPointZero;
 }
 
 -(void)touch_move:(CGPoint)pt {
@@ -62,6 +69,9 @@
     _avg_x += (pt.x-_prev_touch.x) / avg_ct;
 	_avg_y -= _avg_y / avg_ct;
     _avg_y += (pt.y-_prev_touch.y) / avg_ct;
+	
+	_post_swipe_drag.x += pt.x-_prev_touch.x;
+	_post_swipe_drag.y += pt.y-_prev_touch.y;
     
     if(_touch_move_counter == 3) {
         float avg = _touch_dist_sum/_touch_move_counter;
@@ -82,6 +92,7 @@
 
 -(void)touch_end:(CGPoint)pt {
     _is_touch_down = NO;
+	_post_swipe_drag = CGPointZero;
 	if ([self this_touch_can_proc_tap]) {
 		_is_proc_tap = YES;
 		_proc_tap_pt = pt;

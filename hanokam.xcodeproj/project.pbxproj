@@ -102,6 +102,7 @@
 		7E6A045E1B3978EC004890F5 /* ObjectPool.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EF34CF71B395FF400111963 /* ObjectPool.m */; };
 		7E8377671B14619900EFC0D9 /* SPDeviceAccelerometer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E8377661B14619900EFC0D9 /* SPDeviceAccelerometer.m */; };
 		7E8377681B14636300EFC0D9 /* SPDeviceAccelerometer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E8377661B14619900EFC0D9 /* SPDeviceAccelerometer.m */; };
+		7E8CF09D1B3E766300FA6277 /* PlayerUIArrowsIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E8CF09C1B3E766300FA6277 /* PlayerUIArrowsIndicator.m */; };
 		7E9A44BB1B1D85E100111C35 /* SPRadialFillSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E9A44BA1B1D85E100111C35 /* SPRadialFillSprite.m */; };
 		7E9A44BF1B1DA29C00111C35 /* charge_circle.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 7E9A44BE1B1DA29C00111C35 /* charge_circle.fsh */; };
 		7E9A44C11B1DA2AC00111C35 /* charge_circle.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 7E9A44C01B1DA2AC00111C35 /* charge_circle.vsh */; };
@@ -592,6 +593,8 @@
 		7E4F09B41B258CA2000945B8 /* Arrow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Arrow.m; sourceTree = "<group>"; };
 		7E8377651B14619900EFC0D9 /* SPDeviceAccelerometer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPDeviceAccelerometer.h; sourceTree = "<group>"; };
 		7E8377661B14619900EFC0D9 /* SPDeviceAccelerometer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPDeviceAccelerometer.m; sourceTree = "<group>"; };
+		7E8CF09B1B3E766300FA6277 /* PlayerUIArrowsIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerUIArrowsIndicator.h; sourceTree = "<group>"; };
+		7E8CF09C1B3E766300FA6277 /* PlayerUIArrowsIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerUIArrowsIndicator.m; sourceTree = "<group>"; };
 		7E9A44B91B1D85E100111C35 /* SPRadialFillSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRadialFillSprite.h; sourceTree = "<group>"; };
 		7E9A44BA1B1D85E100111C35 /* SPRadialFillSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRadialFillSprite.m; sourceTree = "<group>"; };
 		7E9A44BE1B1DA29C00111C35 /* charge_circle.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = charge_circle.fsh; sourceTree = "<group>"; };
@@ -1230,6 +1233,8 @@
 				7EF34CF41B395A8D00111963 /* EnemyUIHealthIndicators.m */,
 				7EF34CF91B3963F400111963 /* EnemyWarningUI.h */,
 				7EF34CFA1B3963F400111963 /* EnemyWarningUI.m */,
+				7E8CF09B1B3E766300FA6277 /* PlayerUIArrowsIndicator.h */,
+				7E8CF09C1B3E766300FA6277 /* PlayerUIArrowsIndicator.m */,
 			);
 			path = ui;
 			sourceTree = "<group>";
@@ -2215,6 +2220,7 @@
 				7E386D321B23A0AC00DDEFF6 /* PlayerUnderwaterCombatParams.m in Sources */,
 				7E4F09941B24FC6B000945B8 /* SwordSlashParticle.m in Sources */,
 				7ED822CD1B13D258001BB249 /* GameUI.m in Sources */,
+				7E8CF09D1B3E766300FA6277 /* PlayerUIArrowsIndicator.m in Sources */,
 				7ED822DC1B13D258001BB249 /* TouchButton.m in Sources */,
 				7ED8230C1B13D258001BB249 /* SpriterNodeCache.m in Sources */,
 				7E4F09B01B258C9A000945B8 /* ChargedArrow.m in Sources */,

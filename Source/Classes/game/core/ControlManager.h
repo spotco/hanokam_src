@@ -16,6 +16,8 @@
 -(void)accel_report_x:(float)x;
 -(float)get_frame_accel_x_vel;
 
+-(CGPoint)get_post_swipe_drag;
+
 -(void)touch_begin:(CGPoint)pt;
 -(void)touch_move:(CGPoint)pt;
 -(void)touch_end:(CGPoint)pt;

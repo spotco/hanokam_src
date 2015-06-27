@@ -16,10 +16,12 @@
 #import "RotateFadeOutParticle.h"
 #import "SwordSlashParticle.h"
 #import "TouchTrackingLayer.h"
+#import "FlashEvery.h"
 
 @implementation InAirPlayerStateStack {
 	PlayerAirCombatParams *_air_params;
 	ChainedMovementParticle *_rescue_anim;
+	FlashEvery *_arrow_restore_tick;
 }
 +(InAirPlayerStateStack*)cons:(GameEngineScene*)g {
 	return [[[InAirPlayerStateStack alloc] init] cons:g];
@@ -35,6 +37,8 @@
 	_air_params._sword_out = NO;
 	_air_params._hold_ct = 0;
 	_air_params._invuln_ct = 0;
+	_arrow_restore_tick = [FlashEvery cons_time:3];
+	
 	[g.get_event_dispatcher add_listener:self];
 	return self;
 }
@@ -86,7 +90,7 @@
 		CCNode *itr = e.target;
 		
 		_air_params._dashing = YES;
-		_air_params._dash_ct += 16;
+		_air_params._dash_ct = MIN(_air_params._dash_ct+16,40);
 		_air_params._w_upwards_vel = 2;
 		[g add_particle:[SwordSlashParticle cons_pos:itr.position dir:vec_cons_norm(_air_params._s_vel.x, _air_params._s_vel.y, 0)]];
 		_air_params._invuln_ct = MAX(_air_params._invuln_ct,5);
@@ -145,6 +149,15 @@
 					_air_params._dashing = NO;
 				}
 				
+				if (!CGPointEqualToPoint(g.get_control_manager.get_post_swipe_drag, CGPointZero)) {
+					float vel = CGPointDist(CGPointZero, _air_params._s_vel);
+					Vec3D post_dir = vec_cons_norm(g.get_control_manager.get_post_swipe_drag.x, g.get_control_manager.get_post_swipe_drag.y, 0);
+					Vec3D cur_dir = vec_cons_norm(_air_params._s_vel.x, _air_params._s_vel.y, 0);
+					Vec3D final_dir = vec_cons_norm(cur_dir.x+post_dir.x*2, cur_dir.y+post_dir.y*2, 0);
+					vec_scale_m(&final_dir, vel);
+					_air_params._s_vel = ccp(final_dir.x,final_dir.y);
+				}
+				
 				if (_air_params._s_vel.y > 0) {
 					_air_params._s_vel = ccp(
 						_air_params._s_vel.x,
@@ -164,7 +177,7 @@
 				[g.player play_anim:@"sword hold" repeat:YES];
 
 			} else {
-				if (g.get_control_manager.is_touch_down) {
+				if (g.get_control_manager.is_touch_down  && _air_params._arrows_left_ct > 0) {
 					if (g.get_control_manager.this_touch_can_proc_tap) [g.get_ui hold_reticule_visible:arrow_variance_angle];
 					_air_params._hold_ct += dt_scale_get();
 				} else {
@@ -185,7 +198,7 @@
 				}
 				
 				if (_air_params._arrow_last_fired_ct <= 0) {
-					if (g.get_control_manager.is_touch_down && g.get_control_manager.this_touch_can_proc_tap) {
+					if (g.get_control_manager.is_touch_down && g.get_control_manager.this_touch_can_proc_tap && _air_params._arrows_left_ct > 0) {
 						[g.player play_anim:@"bow aim" repeat:NO];
 					} else {
 						[g.player play_anim:@"in air" repeat:YES];
@@ -196,9 +209,21 @@
 				[g.get_touch_tracking_layer hide_touch_hold_pulse];
 			}
 			
-			if (g.get_control_manager.is_proc_tap) {
+			[_arrow_restore_tick i_update:dt_scale_get()];
+			if (_air_params._arrows_recharge_ct > 0) {
+				_air_params._arrows_recharge_ct -= dt_scale_get();
+			} else {
+				if ([_arrow_restore_tick do_flash]) {
+					_air_params._arrows_left_ct = MIN(_air_params._arrows_left_ct+1,_air_params.GET_MAX_ARROWS);
+				}
+			}
+			[_arrow_restore_tick do_flash];
+			
+			if (g.get_control_manager.is_proc_tap && _air_params._arrows_left_ct > 0) {
 				[g.player play_anim:@"bow fire" on_finish_anim:@"bow hold"];
 				_air_params._arrow_last_fired_ct = 20;
+				_air_params._arrows_left_ct--;
+				_air_params._arrows_recharge_ct = [_air_params GET_ARROWS_RECHARGE_TIME];
 				CGPoint tap = g.get_control_manager.get_proc_tap;
 				CGPoint delta = CGPointSub(tap, g.player.shared_params._s_pos);
 				
@@ -213,6 +238,7 @@
 				
 				_air_params._sword_out = NO;
 				_air_params._dashing = NO;
+				_air_params._dash_ct = 0;
 				
 				_air_params._s_vel = ccp(
 					_air_params._s_vel.x,
@@ -244,6 +270,7 @@
 				if (angle < -60 && angle > -120) {
 					_air_params._sword_out = YES;
 					_air_params._dashing = NO;
+					_air_params._dash_ct = 0;
 					
 				} else {
 					_air_params._sword_out = NO;

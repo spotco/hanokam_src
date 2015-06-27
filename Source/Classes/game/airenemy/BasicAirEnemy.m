@@ -188,7 +188,7 @@
 			_charged_arrow_hit_ct+=dt_scale_get();
 		} else {
 			_charged_arrow_hit_ct = 0;
-			_health -= 2;
+			_health -= 4;
 		}
 		_last_hit_chargedprojectile_id = params->_id;
 			

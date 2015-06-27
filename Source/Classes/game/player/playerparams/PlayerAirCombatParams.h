@@ -22,14 +22,20 @@ typedef enum _PlayerAirCombatMode {
 
 @property(readwrite,assign) BOOL _sword_out;
 @property(readwrite,assign) BOOL _dashing;
-@property(readwrite,assign) float _dash_ct, _arrow_last_fired_ct;
+@property(readwrite,assign) float _dash_ct;
+@property(readwrite,assign) float _arrow_last_fired_ct; //for anim reset
 
 @property(readwrite,assign) int __rescue_last_waypoint_ct;
 @property(readwrite,assign) float _hold_ct;
 @property(readwrite,assign) float _invuln_ct;
 
+@property(readwrite,assign) int _arrows_left_ct;
+@property(readwrite,assign) float _arrows_recharge_ct; //for arrows bar recharge
+
 -(float)DEFAULT_HEIGHT;
 -(float)ARROW_AIM_TIME;
+-(float)GET_MAX_ARROWS;
+-(float)GET_ARROWS_RECHARGE_TIME;
 
 -(BOOL)is_hittable;
 @end

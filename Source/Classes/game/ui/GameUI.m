@@ -14,6 +14,7 @@
 #import "DialogUI.h"
 #import "EnemyUIHealthIndicators.h"
 #import "EnemyWarningUI.h"
+#import "PlayerUIArrowsIndicator.h"
 
 typedef enum _GameUIBossIntroMode {
 	GameUIBossIntroMode_None,
@@ -37,9 +38,11 @@ typedef enum _GameUIBossIntroMode {
 	CCSprite *_depth_bar_icon_player, *_depth_bar_icon_boss;
 	//
 	
+	//TODO -- organize these to hud class
 	PlayerUIHealthIndicator *_player_health_ui;
 	PlayerChargeIndicator *_player_charge_ui;
 	PlayerUIAimReticule *_player_aim_reticule;
+	PlayerUIArrowsIndicator *_player_arrows_indicator;
 	EnemyUIHealthIndicators *_enemy_ui_health_indicators;
 	EnemyWarningUI *_enemy_warning_ui;
 	
@@ -116,6 +119,9 @@ typedef enum _GameUIBossIntroMode {
 	[_player_health_ui setPosition:game_screen_anchor_offset(ScreenAnchor_TL, ccp((heart_size.size.width*0.5 + 3),-(heart_size.size.height*0.5 + 3)))];
 	[self addChild:_player_health_ui];
 	
+	_player_arrows_indicator = [PlayerUIArrowsIndicator cons:game];
+	[self addChild:_player_arrows_indicator];
+	
 	_player_charge_ui = [PlayerChargeIndicator cons];
 	[self addChild:_player_charge_ui];
 	
@@ -156,6 +162,7 @@ typedef enum _GameUIBossIntroMode {
 }
 //
 
+//TODO -- these should be done as events instead
 -(void)flash_red {
 	[_red_flash_overlay setOpacity:0.5];
 }
@@ -195,6 +202,7 @@ typedef enum _GameUIBossIntroMode {
 	[_red_flash_overlay setOpacity:MAX(0,_red_flash_overlay.opacity-0.025*dt_scale_get())];
 	[_black_fadeout_overlay setOpacity:(_tar_black_fadeout_overlay_alpha>0.5)?MIN(1,_black_fadeout_overlay.opacity+0.01*dt_scale_get()):MAX(0,_black_fadeout_overlay.opacity-0.01*dt_scale_get())];
 	[_player_aim_reticule i_update:game];
+	[_player_arrows_indicator i_update:game];
 	
 	if ([game get_player_state] == PlayerState_Dive) {
 		[_depth_bar_back setVisible:YES];
