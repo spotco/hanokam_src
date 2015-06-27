@@ -24,6 +24,26 @@
 
 @implementation SpriterJSONParser {
 	NSMutableDictionary *_frames;
+	CCTexture *_texture;
+	NSString *_filepath;
+}
+
++(SpriterJSONParser*)cons_texture:(CCTexture*)tex file:(NSString*)filepath {
+	return [[[SpriterJSONParser alloc] init] cons_texture:tex file:filepath];
+}
+
+-(SpriterJSONParser*)cons_texture:(CCTexture*)tex file:(NSString*)filepath {
+	_texture = tex;
+	_filepath = filepath;
+	[self parseFile:filepath];
+	return self;
+}
+
+-(CCTexture*)texture {
+	return _texture;
+}
+-(NSString*)filepath {
+	return _filepath;
 }
 
 -(SpriterJSONParser*)parseFile:(NSString*)filepath {

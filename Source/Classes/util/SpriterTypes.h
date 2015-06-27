@@ -1,7 +1,7 @@
 #import <Foundation/Foundation.h>
 
 @interface TGSpriterFolder : NSObject
-@property(readwrite,assign) int _id;
+@property(readwrite,assign) int _id, _atlas;
 @property(readwrite,strong) NSMutableDictionary *_files;
 @end
 
@@ -10,6 +10,7 @@
 @property(readwrite,assign) NSString *_name;
 @property(readwrite,assign) CGRect _rect;
 @property(readwrite,assign) CGPoint _pivot;
+@property(readwrite,strong) CCTexture *_texture;
 @end
 
 @interface TGSpriterObjectRef : NSObject

@@ -62,10 +62,10 @@ CCNodeTransform(CCNode *node, GLKMatrix4 parentTransform)
 @implementation CCSprite(NoARC)
 
 static inline void
-EnqueueTriangles(CCSprite *self, CCRenderer *renderer, const GLKMatrix4 *transform)
+EnqueueTriangles(CCSprite *self, CCRenderer *renderer, const GLKMatrix4 *transform, NSInteger globalSortOrder)
 {
 	CCRenderState *state = self->_renderState ?: self.renderState;
-	CCRenderBuffer buffer = [renderer enqueueTriangles:2 andVertexes:4 withState:state globalSortOrder:0];
+	CCRenderBuffer buffer = [renderer enqueueTriangles:2 andVertexes:4 withState:state globalSortOrder:globalSortOrder];
 	
 	CCRenderBufferSetVertex(buffer, 0, CCVertexApplyTransform(self->_verts.bl, transform));
 	CCRenderBufferSetVertex(buffer, 1, CCVertexApplyTransform(self->_verts.br, transform));
@@ -98,7 +98,7 @@ EnqueueTriangles(CCSprite *self, CCRenderer *renderer, const GLKMatrix4 *transfo
 	}
 	else
 	{
-		EnqueueTriangles(self, renderer, transform);
+		EnqueueTriangles(self, renderer, transform, self._globalSortOrder);
 	}
     
 #if CC_SPRITE_DEBUG_DRAW
@@ -120,7 +120,7 @@ EnqueueTriangles(CCSprite *self, CCRenderer *renderer, const GLKMatrix4 *transfo
 
 -(void)enqueueTriangles:(CCRenderer *)renderer transform:(const GLKMatrix4 *)transform
 {
-	EnqueueTriangles(self, renderer, transform);
+	EnqueueTriangles(self, renderer, transform, self._globalSortOrder);
 }
 
 @end

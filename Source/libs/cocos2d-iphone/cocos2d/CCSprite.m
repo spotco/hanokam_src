@@ -59,6 +59,8 @@
 	BOOL _flipX, _flipY;
 }
 
+@synthesize _globalSortOrder;
+
 +(instancetype)spriteWithImageNamed:(NSString*)imageName
 {
     return [[self alloc] initWithImageNamed:imageName];

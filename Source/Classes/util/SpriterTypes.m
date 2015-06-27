@@ -7,6 +7,7 @@
 	return self;
 }
 @synthesize _files;
+@synthesize _atlas, _id;
 @end
 
 @implementation TGSpriterFile
@@ -14,6 +15,7 @@
 @synthesize _name;
 @synthesize _pivot;
 @synthesize _rect;
+@synthesize _texture;
 @end
 
 @implementation TGSpriterAnimation

@@ -5,14 +5,14 @@
 
 @protocol SpriteSheetReader <NSObject>
 -(CGRect)cgRectForFrame:(NSString*)key;
+-(CCTexture*)texture;
+-(NSString*)filepath;
 @end
 
 @interface SpriterData : NSObject
-+(SpriterData*)dataFromSpriteSheet:(CCTexture*)spriteSheet frames:(id<SpriteSheetReader>)frames scml:(NSString*)scml;
++(SpriterData*)cons_data_from_spritesheetreaders:(NSArray*)sheetreaders scml:(NSString*)scml;
 -(NSDictionary*)folders;
 -(NSDictionary*)animations;
--(NSArray*)bones;
--(CCTexture*)texture;
 -(TGSpriterAnimation*)anim_of_name:(NSString*)name;
 -(TGSpriterFile*)file_for_folderid:(int)folderid fileid:(int)fileid;
 @end

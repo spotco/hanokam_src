@@ -2,6 +2,8 @@
 #import "SpriterData.h"
 #import "SpriterTypes.h"
 #import "SpriterUtil.h"
+#import "CCTexture_Private.h"
+#import "Common.h"
 
 @interface CCNode_Bone : CCNode
 @property(readwrite,assign) int _timeline_id;
@@ -26,6 +28,8 @@
 	NSMutableDictionary *_unused_objs;
 	
 	CCNode_Bone *_root_bone;
+	CCNode *_root_bone_holder;
+	CCRenderTexture *_render_target;
 	
 	NSString *_current_anim_name;
 	
@@ -37,15 +41,21 @@
 	NSString *_on_finish_play_anim, *_current_playing;
 	
 	long _last_bone_structure_hash;
+	
+	CGPoint _render_placement;
 }
 
 -(BOOL)current_anim_repeating { return _repeat_anim; }
 -(BOOL)current_anim_finished { return _anim_finished; }
 
-+(SpriterNode*)nodeFromData:(SpriterData*)data {
-	return [[SpriterNode node] initFromData:data];
+-(void)set_render_placement:(CGPoint)placement {
+	_render_placement = placement;
 }
--(SpriterNode*)initFromData:(SpriterData*)data {
+
++(SpriterNode*)nodeFromData:(SpriterData*)data render_size:(CGPoint)pt {
+	return [[SpriterNode node] initFromData:data render_size:pt];
+}
+-(SpriterNode*)initFromData:(SpriterData*)data render_size:(CGPoint)pt {
 	_data = data;
 	_bones = [NSMutableDictionary dictionary];
 	_objs = [NSMutableDictionary dictionary];
@@ -53,6 +63,13 @@
 	
 	_unused_bones = [NSMutableDictionary dictionary];
 	_unused_objs = [NSMutableDictionary dictionary];
+	
+	_root_bone_holder = [CCNode node];
+	
+	_render_placement = ccp(0.5,0.5);
+	_render_target = [CCRenderTexture renderTextureWithWidth:pt.x height:pt.y];
+	[self addChild:_render_target];
+	[self setScale:0.5];
 	
 	return self;
 }
@@ -98,6 +115,14 @@
 	}
 	[self update_mainline_keyframes];
 	[self update_timeline_keyframes];
+	
+	//[_render_target clear:255 g:0 b:0 a:255];
+	[_render_target clear:0 g:0 b:0 a:0];
+	[_render_target begin];
+	[_root_bone_holder setPosition:pct_of_obj(_render_target, _render_placement.x, _render_placement.y)];
+	[_root_bone_holder visit];
+	[_render_target end];
+	
 }
 
 float get_t_for_keyframes(TGSpriterTimelineKey *keyframe_current, TGSpriterTimelineKey *keyframe_next, float _current_anim_time, float _anim_duration, bool _repeat_anim) {
@@ -126,6 +151,7 @@ float get_t_for_keyframes(TGSpriterTimelineKey *keyframe_current, TGSpriterTimel
 		float t = get_t_for_keyframes(keyframe_current, keyframe_next, _current_anim_time, _anim_duration, _repeat_anim);
 		
 		[self interpolate:itr_bone from:keyframe_current to:keyframe_next t:t];
+
 	}
 	for (NSNumber *itr in _objs) {
 		CCSprite_Object *itr_obj = _objs[itr];
@@ -138,19 +164,35 @@ float get_t_for_keyframes(TGSpriterTimelineKey *keyframe_current, TGSpriterTimel
 		[self interpolate:itr_obj from:keyframe_current to:keyframe_next t:t];
 		
 		TGSpriterFile *file = [_data file_for_folderid:keyframe_current.folder fileid:keyframe_current.file];
-		itr_obj.texture = [_data texture];
+		itr_obj.texture = file._texture;
 		itr_obj.textureRect = file._rect;
+		itr_obj._globalSortOrder = itr_obj._zindex;
 	}
 }
 
--(void)interpolate:(CCNode*)node from:(TGSpriterTimelineKey*)from to:(TGSpriterTimelineKey*)to t:(float)t{
-	node.position = ccp(scubic_interp(from.position.x, to.position.x, t),scubic_interp(from.position.y, to.position.y, t));
+-(CGPoint)get_root_chain_scale:(CCNode*)tar {
+	float scfx = 1, scfy = 1;
+	while (tar.parent != NULL) {
+		tar = tar.parent;
+		if (tar.class == [CCNode_Bone class]) {
+			scfx *= tar.scaleX;
+			scfy *= tar.scaleY;
+		} else {
+			break;
+		}
+	}
+	return ccp(scfx,scfy);
+}
+
+-(void)interpolate:(CCNode*)node from:(TGSpriterTimelineKey*)from to:(TGSpriterTimelineKey*)to t:(float)t {
+	CGPoint rcs = [self get_root_chain_scale:node];
+
+	node.position = ccp(scubic_interp(from.position.x/rcs.x, to.position.x/rcs.x, t),scubic_interp(from.position.y/rcs.y, to.position.y/rcs.y, t));
 	node.rotation = scubic_angular_interp(from.rotation, to.rotation, t);
 	node.scaleX = scubic_interp(from.scaleX, to.scaleX, t);
 	node.scaleY = scubic_interp(from.scaleY, to.scaleY, t);
 	node.opacity = scubic_interp(from.alpha, to.alpha, t);
 	node.anchorPoint = ccp(scubic_interp(from.anchorPoint.x, to.anchorPoint.x, t),scubic_interp(from.anchorPoint.y, to.anchorPoint.y, t));
-
 }
 
 -(void)update_mainline_keyframes {
@@ -166,25 +208,8 @@ float get_t_for_keyframes(TGSpriterTimelineKey *keyframe_current, TGSpriterTimel
 	if (_last_bone_structure_hash != mainline_key._hash) {
 		[self make_bone_hierarchy:mainline_key];
 		[self attach_objects_to_bone_hierarchy:mainline_key];
-		[self set_z_indexes:_root_bone];
 		
 		_last_bone_structure_hash = mainline_key._hash;
-	}
-}
-
--(int)set_z_indexes:(CCNode*)itr {
-	if ([itr isKindOfClass:[CCNode_Bone class]]) {
-		int z = 0;
-		for (CCNode *child in itr.children) {
-			z = MAX([self set_z_indexes:child], z);
-		}
-		[itr setZOrder:z];
-		return z;
-		
-	} else {
-		CCSprite_Object *itr_obj = (CCSprite_Object*)itr;
-		[itr setZOrder:itr_obj._zindex];
-		return itr_obj._zindex;
 	}
 }
 
@@ -218,7 +243,7 @@ float get_t_for_keyframes(TGSpriterTimelineKey *keyframe_current, TGSpriterTimel
 		[itr_bone removeFromParent];
 		if (bone_ref._is_root) {
 			_root_bone = itr_bone;
-			[self addChild:_root_bone];
+			[_root_bone_holder addChild:_root_bone];
 		} else {
 			CCNode_Bone *itr_bone_parent = _bones[[NSNumber numberWithInt:bone_ref._parent_bone_id]];
 			[itr_bone_parent addChild:itr_bone];

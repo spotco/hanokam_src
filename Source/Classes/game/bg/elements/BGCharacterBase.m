@@ -23,7 +23,7 @@ static CGFloat const TAP_RANGE = 50;
 
 @implementation BGCharacterBase
 
-@synthesize dialogueOffset = _dialogueOffset;
+-(CGPoint)dialogueOffset { return CGPointZero; }
 
 -(void)i_update:(GameEngineScene*)g {
     // Only handle state transitions if player is currently on the dock
@@ -33,7 +33,7 @@ static CGFloat const TAP_RANGE = 50;
                 // Proceed to CAN_SPEAK state if player is within range
                 CGFloat x1 = [g.player convertToWorldSpace:CGPointZero].x;
                 CGFloat x2 = [self convertToWorldSpace:CGPointZero].x;
-                if (abs(x1 - x2) < DIALOGUE_RANGE) {
+                if (ABS(x1 - x2) < DIALOGUE_RANGE) {
                     _state = BGCharacter_CanSpeak;
                 }
                 break;
@@ -51,7 +51,7 @@ static CGFloat const TAP_RANGE = 50;
                 // If player leaves range move to IDLE state
                 x1 = [g.player convertToWorldSpace:CGPointZero].x;
                 x2 = [self convertToWorldSpace:CGPointZero].x;
-                if (abs(x1 - x2) > DIALOGUE_RANGE) {
+                if (ABS(x1 - x2) > DIALOGUE_RANGE) {
                     _state = BGCharacter_Idle;
                 }
                 break;

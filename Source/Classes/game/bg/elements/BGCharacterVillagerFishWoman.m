@@ -8,7 +8,11 @@
 #import "SpriterJSONParser.h"
 #import "SpriterData.h"
 
-@implementation BGCharacterVillagerFishWoman
+@implementation BGCharacterVillagerFishWoman {
+	SpriterNode *_img;
+	NSString *_current_playing;
+	NSString *_on_finish_play_anim;
+}
 
 +(BGCharacterVillagerFishWoman*)cons_pos:(CGPoint)pos {
 	return [[BGCharacterVillagerFishWoman node] cons_pos:pos];
@@ -17,15 +21,19 @@
 -(BGCharacterVillagerFishWoman*)cons_pos:(CGPoint)pos {
 	[self setPosition:pos];
 	
-	[self setScale:0.45];
-	_img = [SpriterNode nodeFromData:[FileCache spriter_scml_data_from_file:@"villager_fishwoman.scml" json:@"villager_fishwoman.json" texture:[Resource get_tex:TEX_SPRITER_CHAR_VILLAGER_FISHWOMAN]]];
-	[self play_anim:@"Idle" repeat:YES];
+	
+	SpriterData *data = [SpriterData cons_data_from_spritesheetreaders:@[
+		[SpriterJSONParser cons_texture:[Resource get_tex:TEX_SPRITER_CHAR_VILLAGER_FISHWOMAN] file:@"villager_fishwoman.json"]
+	] scml:@"villager_fishwoman.scml"];
+	_img = [SpriterNode nodeFromData:data render_size:ccp(150,300)];
+	[_img playAnim:@"Idle" repeat:YES];
+	[_img set_render_placement:ccp(0.5,0.1)];
 	[self addChild:_img];
 	
-    _dialogueOffset = ccp(-50,50);
-    
 	return self;
 }
+
+-(CGPoint)dialogueOffset { return ccp(-50,50); }
 
 -(void)play_anim:(NSString*)anim repeat:(BOOL)repeat {
 	_on_finish_play_anim = NULL;

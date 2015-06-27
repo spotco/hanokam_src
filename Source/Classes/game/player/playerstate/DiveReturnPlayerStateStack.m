@@ -39,7 +39,7 @@
 		[g.player pop_state_stack:g];
 		[g.player push_state_stack:[InAirPlayerStateStack cons:g]];
 		
-		[g.player play_anim:@"in air" repeat:YES];
+		[g.player play_anim:@"In Air Idle" repeat:YES];
 		[g add_ripple:ccp(g.player.position.x,0)];
 	}
 	[g.player read_s_pos:g];

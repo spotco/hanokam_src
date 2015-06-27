@@ -3,6 +3,7 @@
 #import "MainMenuScene.h"
 #import "ShopScene.h"
 #import "DataStore.h"
+#import "TestScene.h"
 
 #import "Resource.h"
 #import "ShaderManager.h"
@@ -23,8 +24,7 @@ dropping arrows after end
  homing arrow
 
 TECH --
-
-
+spriterdata cache
 pool arrows and other stuff
 scale player accel movement based on screen size
 make TGSpriter classes structs instead
@@ -41,6 +41,7 @@ make TGSpriter classes structs instead
 	NSLog(@"CC2DV:%@",cocos2dVersion());
 	//return [MainMenuScene cons];
 	return [GameEngineScene cons];
+	//return [TestScene cons];
 	//return [ShopScene cons];
 }
 +(void)to_scene:(CCScene*)tar {

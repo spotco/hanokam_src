@@ -21,13 +21,17 @@
 #define TEX_SPRITER_CHAR_OLDMAN @"oldman_ss"
 #define TEX_SPRITER_CHAR_VILLAGER_FISHWOMAN @"villager_fishwoman"
 
+#define TEX_SPRITER_CHAR_HANOKA_PLAYER @"hanoka_player"
+#define TEX_SPRITER_CHAR_HANOKA_SWORD @"hanoka_sword"
+#define TEX_SPRITER_CHAR_HANOKA_BOW @"hanoka_bow"
+
 #define TEX_ENEMY_PUFFER @"puffer_enemy_ss"
 #define TEX_SPRITER_TEST @"spriter_test"
 
 #define TEX_PARTICLES_SPRITESHEET @"particles_spritesheet"
 #define TEX_RIPPLE @"ripple"
 #define TEX_HUD_SPRITESHEET @"hud_spritesheet"
-#define TEX_GAMEPLAY_ELEMENTS @"gameplay_elements_ss" 
+#define TEX_GAMEPLAY_ELEMENTS @"gameplay_elements_ss"
 
 //todo -- move below to spritesheets
 #define TEX_SH_BUTTON_MIDDLE @"sh_button_middle"

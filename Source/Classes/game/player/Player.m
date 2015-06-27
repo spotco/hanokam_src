@@ -41,8 +41,14 @@
 	_player_shared_params = [[PlayerSharedParams alloc] init];
 	_player_state_stack = [NSMutableArray array];
 	
-	_img = [SpriterNode nodeFromData:[FileCache spriter_scml_data_from_file:@"hanokav2.scml" json:@"hanokav2.json" texture:[Resource get_tex:TEX_SPRITER_CHAR_HANOKA_V2]]];
-	[self play_anim:@"idle" repeat:YES];
+	SpriterData *data = [SpriterData cons_data_from_spritesheetreaders:@[
+		[SpriterJSONParser cons_texture:[Resource get_tex:TEX_SPRITER_CHAR_HANOKA_PLAYER] file:@"hanoka_player.json"],
+		[SpriterJSONParser cons_texture:[Resource get_tex:TEX_SPRITER_CHAR_HANOKA_BOW] file:@"hanoka_bow.json"],
+		[SpriterJSONParser cons_texture:[Resource get_tex:TEX_SPRITER_CHAR_HANOKA_SWORD] file:@"hanoka_sword.json"],
+	] scml:@"hanoka_player.scml"];
+	_img = [SpriterNode nodeFromData:data render_size:ccp(180,230)];
+	[_img set_render_placement:ccp(0.5,0.45)];
+	[_img playAnim:@"Idle" repeat:YES];
 	[self addChild:_img z:1];
 	
 	[self cons_swordplant_streak];
@@ -51,8 +57,6 @@
 	[g set_camera_height:150];
 	[self push_state_stack:[IdlePlayerStateStack cons]];
 	[self push_state_stack:[OnGroundPlayerStateStack cons:g]];
-	
-	[_img set_scale:0.25];
 	
 	_player_shared_params._calc_accel_x_pos = game_screen().width/2;
 	_player_shared_params._reset_to_center = YES;

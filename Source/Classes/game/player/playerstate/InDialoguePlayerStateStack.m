@@ -22,7 +22,7 @@
 -(InDialoguePlayerStateStack*)cons:(GameEngineScene*)g withCharacter:(BGCharacterBase *)character {
     g.player.rotation = 0;
     [g.player read_s_pos:g];
-    [g.player play_anim:@"idle" repeat:YES];
+    [g.player play_anim:@"Idle" repeat:YES];
     
     _with_character = character;
     

@@ -56,7 +56,7 @@
 	case GEventType_BulletHitPlayer: {
 		[g.player add_health:-0.5 g:g];
 		[g.get_ui flash_red];
-		[g.player play_anim:@"hurt air" on_finish_anim:@"in air"];
+		[g.player play_anim:@"In Air Hurt" on_finish_anim:@"In Air Idle"];
 		[BaseAirEnemy particle_blood_effect:g pos:g.player.position ct:6];
 		_air_params._s_vel = ccp(_air_params._s_vel.x,5);
 		_air_params._w_upwards_vel = 4;
@@ -103,7 +103,7 @@
 		if (!itr.is_stunned) {
 			[g.player add_health:-0.5 g:g];
 			[g.get_ui flash_red];
-			[g.player play_anim:@"hurt air" on_finish_anim:@"in air"];
+			[g.player play_anim:@"In Air Hurt" on_finish_anim:@"In Air Idle"];
 			
 			[BaseAirEnemy particle_blood_effect:g pos:g.player.position ct:6];
 		}
@@ -143,7 +143,7 @@
 			float arrow_variance_angle = lerp(15,0,clampf(_air_params._hold_ct/_air_params.ARROW_AIM_TIME,0,1));
 			
 			if (_air_params._dashing) {
-				[g.player play_anim:@"dash" repeat:YES];
+				[g.player play_anim:@"Spin" repeat:YES];
 				_air_params._dash_ct -= dt_scale_get();
 				if (_air_params._dash_ct <= 0) {
 					_air_params._dashing = NO;
@@ -174,7 +174,7 @@
 				_air_params._hold_ct = 0;
 				_air_params._s_vel = ccp(0,-15);
 				_air_params._hold_ct = 0;
-				[g.player play_anim:@"sword hold" repeat:YES];
+				[g.player play_anim:@"Sword Plant" repeat:YES];
 
 			} else {
 				if (g.get_control_manager.is_touch_down  && _air_params._arrows_left_ct > 0) {
@@ -199,9 +199,9 @@
 				
 				if (_air_params._arrow_last_fired_ct <= 0) {
 					if (g.get_control_manager.is_touch_down && g.get_control_manager.this_touch_can_proc_tap && _air_params._arrows_left_ct > 0) {
-						[g.player play_anim:@"bow aim" repeat:NO];
+						[g.player play_anim:@"Bow Aim" repeat:NO];
 					} else {
-						[g.player play_anim:@"in air" repeat:YES];
+						[g.player play_anim:@"In Air Idle" repeat:YES];
 					}
 				}
 			}
@@ -220,7 +220,7 @@
 			[_arrow_restore_tick do_flash];
 			
 			if (g.get_control_manager.is_proc_tap && _air_params._arrows_left_ct > 0) {
-				[g.player play_anim:@"bow fire" on_finish_anim:@"bow hold"];
+				[g.player play_anim:@"Bow Fire" repeat:NO];
 				_air_params._arrow_last_fired_ct = 20;
 				_air_params._arrows_left_ct--;
 				_air_params._arrows_recharge_ct = [_air_params GET_ARROWS_RECHARGE_TIME];
@@ -332,7 +332,7 @@
 		break;
 		case PlayerAirCombatMode_FallToGround:;
 			[g.get_ui fadeout:YES];
-			[g.player play_anim:@"fall" repeat:YES];
+			[g.player play_anim:@"Fall" repeat:YES];
 			_air_params._s_vel = ccp(_air_params._s_vel.x,_air_params._s_vel.y - 0.4 * dt_scale_get());
 			_air_params._w_upwards_vel = 0;
 			g.player.shared_params._s_pos = ccp(

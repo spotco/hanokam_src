@@ -18,26 +18,18 @@ typedef enum {
     BGCharacter_Speaking
 } BGCharacterState;
 
-// Private inherited variables
-SpriterNode *_img;
-NSString *_current_playing;
-NSString *_on_finish_play_anim;
-
 /**
  *  @class  BGCharacterBase
  *
  *  Base CCSprite for background characters. Should never be instantiated
  */
-@interface BGCharacterBase : CCSprite {
-    // Allow subclasses to set dialogueOffset
-    @protected CGPoint _dialogueOffset;
-}
+@interface BGCharacterBase : CCSprite
 
 // States for background characters
 @property (nonatomic, readonly) BGCharacterState state;
 
 // Offset position for dialogue bubble
-@property (nonatomic, readonly) CGPoint dialogueOffset;
+-(CGPoint)dialogueOffset;
 
 /**
  *  Update state, handles interactions with other elements in the game

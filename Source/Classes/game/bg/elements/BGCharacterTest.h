@@ -6,10 +6,9 @@
 //  Copyright (c) 2015 Apportable. All rights reserved.
 //
 
-#import "CCSprite.h"
+#import "BGCharacterBase.h"
 @class GameEngineScene;
-@interface BGCharacterTest : CCSprite
-+(BGCharacterTest*)cons_pos:(CGPoint)pos;
--(void)i_update:(GameEngineScene*)g;
 
+@interface BGCharacterTest : BGCharacterBase
++(BGCharacterTest*)cons_pos:(CGPoint)pos;
 @end
