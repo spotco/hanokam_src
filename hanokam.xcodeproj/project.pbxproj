@@ -456,6 +456,7 @@
 		BB1E153B1B2EA5C000461495 /* 5ceta_mono.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BB1E15381B2EA5C000461495 /* 5ceta_mono.ttf */; };
 		BB1E153C1B2EA5C000461495 /* korean_calligraphy.fnt in Resources */ = {isa = PBXBuildFile; fileRef = BB1E15391B2EA5C000461495 /* korean_calligraphy.fnt */; };
 		BB1E153D1B2EA5C000461495 /* korean_calligraphy.png in Resources */ = {isa = PBXBuildFile; fileRef = BB1E153A1B2EA5C000461495 /* korean_calligraphy.png */; };
+		BB6AE7AE1B3E7BD300E8F6E8 /* SPAnimatedText.m in Sources */ = {isa = PBXBuildFile; fileRef = BB6AE7AD1B3E7BD300E8F6E8 /* SPAnimatedText.m */; };
 		BB771AF31B22C910002BA595 /* BGCharacterBase.m in Sources */ = {isa = PBXBuildFile; fileRef = BB771AF21B22C910002BA595 /* BGCharacterBase.m */; };
 		BB771AFC1B22EB03002BA595 /* VillageUI.m in Sources */ = {isa = PBXBuildFile; fileRef = BB771AFB1B22EB03002BA595 /* VillageUI.m */; };
 		BB771B011B22F602002BA595 /* DialogueBubble.m in Sources */ = {isa = PBXBuildFile; fileRef = BB771B001B22F602002BA595 /* DialogueBubble.m */; };
@@ -780,6 +781,8 @@
 		BB1E15381B2EA5C000461495 /* 5ceta_mono.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = 5ceta_mono.ttf; sourceTree = "<group>"; };
 		BB1E15391B2EA5C000461495 /* korean_calligraphy.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = korean_calligraphy.fnt; sourceTree = "<group>"; };
 		BB1E153A1B2EA5C000461495 /* korean_calligraphy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = korean_calligraphy.png; sourceTree = "<group>"; };
+		BB6AE7AC1B3E7BD300E8F6E8 /* SPAnimatedText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPAnimatedText.h; sourceTree = "<group>"; };
+		BB6AE7AD1B3E7BD300E8F6E8 /* SPAnimatedText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPAnimatedText.m; sourceTree = "<group>"; };
 		BB771AF11B22C910002BA595 /* BGCharacterBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGCharacterBase.h; sourceTree = "<group>"; };
 		BB771AF21B22C910002BA595 /* BGCharacterBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGCharacterBase.m; sourceTree = "<group>"; };
 		BB771AFA1B22EB03002BA595 /* VillageUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VillageUI.h; sourceTree = "<group>"; };
@@ -1277,6 +1280,8 @@
 				7E8377661B14619900EFC0D9 /* SPDeviceAccelerometer.m */,
 				7E9A44B91B1D85E100111C35 /* SPRadialFillSprite.h */,
 				7E9A44BA1B1D85E100111C35 /* SPRadialFillSprite.m */,
+				BB6AE7AC1B3E7BD300E8F6E8 /* SPAnimatedText.h */,
+				BB6AE7AD1B3E7BD300E8F6E8 /* SPAnimatedText.m */,
 				BB7A71161B37BEBF00B0EF3C /* SPAnimatedTextCharacter.h */,
 				BB7A71171B37BEBF00B0EF3C /* SPAnimatedTextCharacter.m */,
 				7E9A58501B22EFA3008EC348 /* AlphaGradientSprite.h */,
@@ -2176,6 +2181,7 @@
 				7E4F09A31B2523AE000945B8 /* SPCCSpriteAnimator.m in Sources */,
 				7ED822F71B13D258001BB249 /* GEventDispatcher.m in Sources */,
 				7E9A58441B22CBE7008EC348 /* PlayerUIAimReticule.m in Sources */,
+				BB6AE7AE1B3E7BD300E8F6E8 /* SPAnimatedText.m in Sources */,
 				7ED8229D1B13D258001BB249 /* ControlManager.m in Sources */,
 				7A046D8C19E8A20E004C4763 /* MainScene.m in Sources */,
 				7ED8230F1B13D258001BB249 /* SpriterTypes.m in Sources */,

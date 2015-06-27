@@ -12,12 +12,12 @@
 
 // Animation states
 typedef enum {
-    AnimatedTextState_Hidden,
-    AnimatedTextState_Entering,
-    AnimatedTextState_Showing,
-    AnimatedTextState_Exiting,
-    AnimatedTextState_CanRemove
-} AnimatedTextState;
+    AnimatedTextCharacterState_Hidden,
+    AnimatedTextCharacterState_Entering,
+    AnimatedTextCharacterState_Showing,
+    AnimatedTextCharacterState_Exiting,
+    AnimatedTextCharacterState_CanRemove
+} AnimatedTextCharacterState;
 
 /**
  *  @class  SPAnimatedTextCharacter
@@ -26,7 +26,7 @@ typedef enum {
  */
 @interface SPAnimatedTextCharacter : CCNode
 
-@property (nonatomic, readonly) AnimatedTextState state;
+@property (nonatomic, readonly) AnimatedTextCharacterState state;
 
 /**
  *  Returns an instance of SPAnimatedTextCharacter
