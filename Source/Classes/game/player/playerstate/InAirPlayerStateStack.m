@@ -37,6 +37,7 @@
 	_air_params._sword_out = NO;
 	_air_params._hold_ct = 0;
 	_air_params._invuln_ct = 0;
+	_air_params._target_rotation = 0;
 	_arrow_restore_tick = [FlashEvery cons_time:3];
 	
 	[g.get_event_dispatcher add_listener:self];
@@ -120,7 +121,7 @@
 }
 
 -(void)i_update:(GameEngineScene *)g {
-	g.player.rotation += shortest_angle(g.player.rotation, 0) * powf(0.5, dt_scale_get());
+	g.player.rotation += shortest_angle(g.player.rotation, _air_params._target_rotation) * powf(0.75, dt_scale_get());
 	g.player.shared_params._reset_to_center = NO;
 	[g set_zoom:drp(g.get_zoom,1,20)];
 	[g.player swordplant_streak_set_visible:NO];
@@ -168,20 +169,38 @@
 					_air_params._s_vel.x*powf(0.9, dt_scale_get()),
 					_air_params._s_vel.y - 0.05 * dt_scale_get());
 				_air_params._hold_ct = 0;
+				_air_params._target_rotation = 0;
 				
 			} else if (_air_params._sword_out) {
 				[g.player swordplant_streak_set_visible:YES];
 				_air_params._hold_ct = 0;
 				_air_params._s_vel = ccp(0,-15);
 				_air_params._hold_ct = 0;
+				_air_params._target_rotation = 0;
 				[g.player play_anim:@"Sword Plant" repeat:YES];
 
 			} else {
 				if (g.get_control_manager.is_touch_down  && _air_params._arrows_left_ct > 0) {
 					if (g.get_control_manager.this_touch_can_proc_tap) [g.get_ui hold_reticule_visible:arrow_variance_angle];
 					_air_params._hold_ct += dt_scale_get();
+					
+					CGPoint tap = g.get_control_manager.get_proc_tap;
+					CGPoint delta = CGPointSub(tap, g.player.shared_params._s_pos);
+					
+					
+					if (delta.x > 0) {
+						g.player.img.scaleX = -ABS(g.player.img.scaleX);
+						_air_params._target_rotation = vec_ang_deg_lim180(vec_cons(delta.x, delta.y, 0),180)+20;
+						
+					} else {
+						g.player.img.scaleX = ABS(g.player.img.scaleX);
+						_air_params._target_rotation = vec_ang_deg_lim180(vec_cons(delta.x, delta.y, 0),0)+20;
+						
+					}
+					
 				} else {
 					_air_params._hold_ct = 0;
+					_air_params._target_rotation = 0;
 				}
 				_air_params._arrow_last_fired_ct -= dt_scale_get();
 				
@@ -245,12 +264,6 @@
 					MAX(lerp(2.5, 0.15, clampf((g.player.shared_params._s_pos.y-100)/300,0,1)), _air_params._s_vel.y)
 				);
 				_air_params._w_upwards_vel = MAX(1,_air_params._w_upwards_vel);
-				
-				if (delta.x > 0) {
-					g.player.img.scaleX = ABS(g.player.img.scaleX);
-				} else {
-					g.player.img.scaleX = -ABS(g.player.img.scaleX);
-				}
 			}
 			
 			if (g.get_control_manager.is_proc_swipe) {

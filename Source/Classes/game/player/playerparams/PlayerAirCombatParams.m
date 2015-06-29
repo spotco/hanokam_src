@@ -21,6 +21,7 @@
 @synthesize _hold_ct;
 @synthesize _arrows_left_ct;
 @synthesize _arrows_recharge_ct;
+@synthesize _target_rotation;
 
 -(float)DEFAULT_HEIGHT { return game_screen().height * 0.8; }
 -(float)ARROW_AIM_TIME { return 30; }

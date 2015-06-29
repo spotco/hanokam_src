@@ -32,6 +32,8 @@ typedef enum _PlayerAirCombatMode {
 @property(readwrite,assign) int _arrows_left_ct;
 @property(readwrite,assign) float _arrows_recharge_ct; //for arrows bar recharge
 
+@property(readwrite,assign) float _target_rotation;
+
 -(float)DEFAULT_HEIGHT;
 -(float)ARROW_AIM_TIME;
 -(float)GET_MAX_ARROWS;

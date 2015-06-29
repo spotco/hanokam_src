@@ -221,8 +221,6 @@
 	[_ripples removeObjectsInArray:to_remove];
 }
 
-//static float _testz = 1;
-
 //static bool TEST_HAS_ACTIVATED_BOSS = false;
 -(void)update:(CCTime)delta {
 	dt_set(delta);

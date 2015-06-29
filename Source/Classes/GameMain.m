@@ -13,9 +13,8 @@
 /*
 TODO --
 GAMEPLAY IDEAS:
-hanoka char art in
-
 underwater gameplay system
+fix anims
 
 QUESTS ARE CHALLENGES - let no enemies escape
 

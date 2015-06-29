@@ -49,6 +49,21 @@
 	return self;
 }
 
+-(void)replace_atlas_index:(int)index with:(id<SpriteSheetReader>)tar {
+	_atlas[@(index)] = tar;
+	for (NSNumber *folder_id in _folders.keySet) {
+		TGSpriterFolder *itr_folder = _folders[folder_id];
+		if (itr_folder._atlas == index) {
+			for (NSNumber *file_id in itr_folder._files.keySet) {
+				TGSpriterFile *itr_file = itr_folder._files[file_id];
+				itr_file._texture = [tar texture];
+				itr_file._rect = [tar cgRectForFrame:itr_file._name];
+				
+			}
+		}
+	}
+}
+
 -(void)handle_atlas:(TGSpriterConfigNode*)itr_base sheetreaders:(NSArray*)sheetreaders {
 	for (int i = 0; i < itr_base.children.count; i++) {
 		TGSpriterConfigNode *itr_atlas_element = [itr_base.children objectAtIndex:i];
@@ -61,6 +76,8 @@
 		}
 	}
 }
+
+
 
 -(void)handle_folder:(TGSpriterConfigNode*)itr_base {
 	TGSpriterFolder *neu_folder = [[TGSpriterFolder alloc] init];

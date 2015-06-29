@@ -74,9 +74,9 @@
 						[g.player update_accel_x_position:g];
 						[g.player play_anim:@"Run" repeat:YES];
 						if (vx > 0) {
-							g.player.img.scaleX = ABS(g.player.img.scaleX);
-						} else {
 							g.player.img.scaleX = -ABS(g.player.img.scaleX);
+						} else {
+							g.player.img.scaleX = ABS(g.player.img.scaleX);
 						}
 					} else {
 						[g.player play_anim:@"Idle" repeat:YES];

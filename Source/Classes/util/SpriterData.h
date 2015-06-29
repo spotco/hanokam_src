@@ -15,4 +15,7 @@
 -(NSDictionary*)animations;
 -(TGSpriterAnimation*)anim_of_name:(NSString*)name;
 -(TGSpriterFile*)file_for_folderid:(int)folderid fileid:(int)fileid;
+
+-(void)replace_atlas_index:(int)index with:(id<SpriteSheetReader>)tar;
+
 @end

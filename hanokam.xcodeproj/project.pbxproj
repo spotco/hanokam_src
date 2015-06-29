@@ -431,6 +431,12 @@
 		7ED823FD1B13DD59001BB249 /* md5.c in Sources */ = {isa = PBXBuildFile; fileRef = 7ED823FC1B13DD59001BB249 /* md5.c */; };
 		7ED823FE1B13DD59001BB249 /* md5.c in Sources */ = {isa = PBXBuildFile; fileRef = 7ED823FC1B13DD59001BB249 /* md5.c */; };
 		7ED823FF1B13DD59001BB249 /* md5.c in Sources */ = {isa = PBXBuildFile; fileRef = 7ED823FC1B13DD59001BB249 /* md5.c */; };
+		7EE566451B411F3C00D63556 /* hanoka_player_redgarb.json in Resources */ = {isa = PBXBuildFile; fileRef = 7EE566431B411F3C00D63556 /* hanoka_player_redgarb.json */; };
+		7EE566461B411F3C00D63556 /* hanoka_player_redgarb.json in Resources */ = {isa = PBXBuildFile; fileRef = 7EE566431B411F3C00D63556 /* hanoka_player_redgarb.json */; };
+		7EE566471B411F3C00D63556 /* hanoka_player_redgarb.json in Resources */ = {isa = PBXBuildFile; fileRef = 7EE566431B411F3C00D63556 /* hanoka_player_redgarb.json */; };
+		7EE566481B411F3C00D63556 /* hanoka_player_redgarb.png in Resources */ = {isa = PBXBuildFile; fileRef = 7EE566441B411F3C00D63556 /* hanoka_player_redgarb.png */; };
+		7EE566491B411F3C00D63556 /* hanoka_player_redgarb.png in Resources */ = {isa = PBXBuildFile; fileRef = 7EE566441B411F3C00D63556 /* hanoka_player_redgarb.png */; };
+		7EE5664A1B411F3C00D63556 /* hanoka_player_redgarb.png in Resources */ = {isa = PBXBuildFile; fileRef = 7EE566441B411F3C00D63556 /* hanoka_player_redgarb.png */; };
 		7EF34CF51B395A8D00111963 /* EnemyUIHealthIndicators.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EF34CF41B395A8D00111963 /* EnemyUIHealthIndicators.m */; };
 		7EF34CF81B395FF400111963 /* ObjectPool.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EF34CF71B395FF400111963 /* ObjectPool.m */; };
 		7EF34CFB1B3963F400111963 /* EnemyWarningUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EF34CFA1B3963F400111963 /* EnemyWarningUI.m */; };
@@ -787,6 +793,8 @@
 		7ED823621B13D2A6001BB249 /* spriter_test.scml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = spriter_test.scml; sourceTree = "<group>"; };
 		7ED823FC1B13DD59001BB249 /* md5.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = md5.c; sourceTree = "<group>"; };
 		7ED824001B13DD66001BB249 /* md5.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = md5.h; sourceTree = "<group>"; };
+		7EE566431B411F3C00D63556 /* hanoka_player_redgarb.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = hanoka_player_redgarb.json; sourceTree = "<group>"; };
+		7EE566441B411F3C00D63556 /* hanoka_player_redgarb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hanoka_player_redgarb.png; sourceTree = "<group>"; };
 		7EF34CF31B395A8D00111963 /* EnemyUIHealthIndicators.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnemyUIHealthIndicators.h; sourceTree = "<group>"; };
 		7EF34CF41B395A8D00111963 /* EnemyUIHealthIndicators.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnemyUIHealthIndicators.m; sourceTree = "<group>"; };
 		7EF34CF61B395FF400111963 /* ObjectPool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectPool.h; sourceTree = "<group>"; };
@@ -1101,6 +1109,7 @@
 		7E8CF0A01B3E8BBB00FA6277 /* hanoka */ = {
 			isa = PBXGroup;
 			children = (
+				7EE566421B411F3C00D63556 /* hanoka_armors */,
 				7E8CF0A11B3E8BBB00FA6277 /* hanoka_bow.json */,
 				7E8CF0A21B3E8BBB00FA6277 /* hanoka_bow.png */,
 				7E8CF0A31B3E8BBB00FA6277 /* hanoka_player.json */,
@@ -1544,6 +1553,15 @@
 			path = test;
 			sourceTree = "<group>";
 		};
+		7EE566421B411F3C00D63556 /* hanoka_armors */ = {
+			isa = PBXGroup;
+			children = (
+				7EE566431B411F3C00D63556 /* hanoka_player_redgarb.json */,
+				7EE566441B411F3C00D63556 /* hanoka_player_redgarb.png */,
+			);
+			path = hanoka_armors;
+			sourceTree = "<group>";
+		};
 		9222E2B918734FF800A246C7 /* libs */ = {
 			isa = PBXGroup;
 			children = (
@@ -1821,6 +1839,7 @@
 				7ED8238F1B13D2A6001BB249 /* hanokav2.png in Resources */,
 				7ED8236E1B13D2A6001BB249 /* bg_test_tile_sky.png in Resources */,
 				7ED823921B13D2A6001BB249 /* hanokav2.scml in Resources */,
+				7EE5664A1B411F3C00D63556 /* hanoka_player_redgarb.png in Resources */,
 				7ED823831B13D2A6001BB249 /* underwater_spritesheet.plist in Resources */,
 				7EBC2AEB1B1C4EDF00AC47F1 /* gameplay_elements_ss.plist in Resources */,
 				7ED823E91B13D2A6001BB249 /* sh_button_side.png in Resources */,
@@ -1835,6 +1854,7 @@
 				7ED823801B13D2A6001BB249 /* sky_spritesheet.png in Resources */,
 				7A4036FA19DE401F007B6E8F /* iPad@2x.png in Resources */,
 				7E8CF0B31B3E8BBB00FA6277 /* hanoka_player.png in Resources */,
+				7EE566471B411F3C00D63556 /* hanoka_player_redgarb.json in Resources */,
 				7ED8236B1B13D2A6001BB249 /* bg_spritesheet_1.png in Resources */,
 				7ED8238C1B13D2A6001BB249 /* hanokav2.plist in Resources */,
 				7A4036FB19DE401F007B6E8F /* iPhone-old.png in Resources */,
@@ -1919,6 +1939,7 @@
 				927F61B0196C771E000F43EF /* iPad.png in Resources */,
 				7ED823CA1B13D2A6001BB249 /* puffer_enemy_ss.png in Resources */,
 				7ED823F41B13D2A6001BB249 /* spriter_test.scml in Resources */,
+				7EE566491B411F3C00D63556 /* hanoka_player_redgarb.png in Resources */,
 				7ED823AC1B13D2A6001BB249 /* villager_fishwoman.scml in Resources */,
 				7ED823DF1B13D2A6001BB249 /* ripple_effect.fsh in Resources */,
 				7ED823D01B13D2A6001BB249 /* abovewater_am_up.vsh in Resources */,
@@ -1945,6 +1966,7 @@
 				7ED823851B13D2A6001BB249 /* underwater_spritesheet.png in Resources */,
 				7ED823A91B13D2A6001BB249 /* villager_fishwoman.png in Resources */,
 				927F61B8196C771E000F43EF /* Default-568h@2x.png in Resources */,
+				7EE566461B411F3C00D63556 /* hanoka_player_redgarb.json in Resources */,
 				7E8CF0B21B3E8BBB00FA6277 /* hanoka_player.png in Resources */,
 				7ED823881B13D2A6001BB249 /* hanokav2.json in Resources */,
 				7ED823701B13D2A6001BB249 /* bg_test_tile_water.png in Resources */,
@@ -2038,8 +2060,10 @@
 				7ED823A21B13D2A6001BB249 /* oldman_ss.png in Resources */,
 				7ED8239C1B13D2A6001BB249 /* oldman.scml in Resources */,
 				7ED823ED1B13D2A6001BB249 /* spriter_test.json in Resources */,
+				7EE566481B411F3C00D63556 /* hanoka_player_redgarb.png in Resources */,
 				7ED823B41B13D2A6001BB249 /* particles_spritesheet.png in Resources */,
 				B71F5911188484E7003F4D28 /* iPad-old.png in Resources */,
+				7EE566451B411F3C00D63556 /* hanoka_player_redgarb.json in Resources */,
 				7ED823D81B13D2A6001BB249 /* reflection_am_down.fsh in Resources */,
 				7E4F09AB1B252E60000945B8 /* alpha_gradient_sprite.vsh in Resources */,
 				7E4F09A71B252DE4000945B8 /* alpha_gradient_sprite.fsh in Resources */,

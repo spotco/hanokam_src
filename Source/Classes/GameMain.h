@@ -3,7 +3,6 @@
 
 //#define HMCFG_DRAW_HITBOXES
 
-
 @interface GameMain : NSObject
 +(CCScene*)main;
 +(void)to_scene:(CCScene*)tar;
