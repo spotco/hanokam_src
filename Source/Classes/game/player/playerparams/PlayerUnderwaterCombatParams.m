@@ -10,10 +10,16 @@
 
 @implementation PlayerUnderwaterCombatParams
 @synthesize _current_mode;
-@synthesize _vy, _tar_camera_offset, _remainder_camera_offset;
+@synthesize _vel;
+@synthesize _camera_offset;
+@synthesize _dash_ct;
+@synthesize _dashing;
 
 @synthesize _initial_camera_offset;
 -(float)DEFAULT_OFFSET {
-	return -game_screen().height/2 * 0.5;
+	return -game_screen().height * 0.25;
+}
+-(float)MAX_OFFSET {
+	return -game_screen().height * 0.1;
 }
 @end

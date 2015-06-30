@@ -96,11 +96,11 @@
 		[self update_scrolling_element:_bg_cliff_right g:game mult:4  offset:0];
 	}
 	if (game.get_current_camera_center_y > 350) {
-		[_bg_cliff_left setPosition:ccp(drp(_bg_cliff_left.position.x,0,10),_bg_cliff_left.position.y)];
-		[_bg_cliff_right setPosition:ccp(drp(_bg_cliff_right.position.x,game_screen().width,10),_bg_cliff_left.position.y)];
+		[_bg_cliff_left setPosition:ccp(drpt(_bg_cliff_left.position.x,0,1/10.0),_bg_cliff_left.position.y)];
+		[_bg_cliff_right setPosition:ccp(drpt(_bg_cliff_right.position.x,game_screen().width,1/10.0),_bg_cliff_left.position.y)];
 	} else {
-		[_bg_cliff_left setPosition:ccp(drp(_bg_cliff_left.position.x,-200,10),_bg_cliff_left.position.y)];
-		[_bg_cliff_right setPosition:ccp(drp(_bg_cliff_right.position.x,game_screen().width+200,10),_bg_cliff_right.position.y)];
+		[_bg_cliff_left setPosition:ccp(drpt(_bg_cliff_left.position.x,-200,1/10.0),_bg_cliff_left.position.y)];
+		[_bg_cliff_right setPosition:ccp(drpt(_bg_cliff_right.position.x,game_screen().width+200,1/10.0),_bg_cliff_right.position.y)];
 	}
 }
 

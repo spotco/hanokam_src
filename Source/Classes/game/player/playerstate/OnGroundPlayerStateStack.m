@@ -31,8 +31,8 @@
     g.player.shared_params._reset_to_center = (!TARGET_IPHONE_SIMULATOR) ? YES : NO;
 	switch(_land_params._current_mode) {
 		case PlayerLandMode_OnDock:;
-			[g set_zoom:drp(g.get_zoom,1,20)];
-			[g set_camera_height:drp(g.get_current_camera_center_y,150,20)];
+			[g set_zoom:drpt(g.get_zoom,1,1/20.0)];
+			[g set_camera_height:drpt(g.get_current_camera_center_y,150,1/20.0)];
 			if (g.player.get_current_health < g.player.get_max_health) {
 				_land_params._health_restore_ct += dt_scale_get();
 				if (_land_params._health_restore_ct > 15) {
@@ -90,8 +90,8 @@
 			}
 		break;
 		case PlayerLandMode_LandToWater:;
-			[g set_zoom:drp(g.get_zoom,1.25,20)];
-			[g set_camera_height:drp(g.get_current_camera_center_y,150,20)];
+			[g set_zoom:drpt(g.get_zoom,1.25,1/20.0)];
+			[g set_camera_height:drpt(g.get_current_camera_center_y,150,1/20.0)];
 			CGPoint last_s_pos = g.player.shared_params._s_pos;
 			[g.player update_accel_x_position:g];
 			_land_params._vel = ccp(0,_land_params._vel.y - 0.4 * dt_scale_get() * dt_scale_get());

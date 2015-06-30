@@ -82,8 +82,8 @@
 -(void)i_update:(GameEngineScene *)game {
 	[super i_update:game];
 	[_img setColor4f:_tar_color];
-	_tar_color.b = drp(_tar_color.b, 1.0, 20.0);
-	_tar_color.g = drp(_tar_color.g, 1.0, 25.0);
+	_tar_color.b = drpt(_tar_color.b, 1.0, 1/20.0);
+	_tar_color.g = drpt(_tar_color.g, 1.0, 1/25.0);
 }
 
 -(void)update_alive:(GameEngineScene *)g {

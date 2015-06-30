@@ -32,12 +32,6 @@ typedef enum _GameUIBossIntroMode {
 	
 	ParticleSystem *_particles;
 	
-	//TODO -- move this to new class
-	CCSprite *_depth_bar_back;
-	CCSprite *_depth_bar_fill;
-	CCSprite *_depth_bar_icon_player, *_depth_bar_icon_boss;
-	//
-	
 	//TODO -- organize these to hud class
 	PlayerUIHealthIndicator *_player_health_ui;
 	PlayerChargeIndicator *_player_charge_ui;
@@ -86,34 +80,6 @@ typedef enum _GameUIBossIntroMode {
 	_enemy_warning_ui = [EnemyWarningUI cons:game];
 	[self addChild:_enemy_warning_ui];
 	
-	_depth_bar_back = [CCSprite spriteWithTexture:[Resource get_tex:TEX_HUD_SPRITESHEET] rect:[FileCache get_cgrect_from_plist:TEX_HUD_SPRITESHEET idname:@"hudicon_depthbar_back.png"]];
-	[_depth_bar_back setAnchorPoint:ccp(0,0.5)];
-	[_depth_bar_back setPosition:game_screen_anchor_offset(ScreenAnchor_ML, ccp(10,0))];
-	[_depth_bar_back setScale:0.85];
-	[self addChild:_depth_bar_back];
-	
-	_depth_bar_fill = [CCSprite spriteWithTexture:[Resource get_tex:TEX_HUD_SPRITESHEET] rect:[FileCache get_cgrect_from_plist:TEX_HUD_SPRITESHEET idname:@"hudicon_depthbar_fill.png"]];
-	[_depth_bar_fill setAnchorPoint:ccp(0,0)];
-	[_depth_bar_back addChild:_depth_bar_fill];
-	
-	_depth_bar_icon_player = [CCSprite spriteWithTexture:[Resource get_tex:TEX_HUD_SPRITESHEET] rect:[FileCache get_cgrect_from_plist:TEX_HUD_SPRITESHEET idname:@"hudicon_selector.png"]];
-	[_depth_bar_icon_player setPosition:ccp(10,100)];
-	[_depth_bar_icon_player setScale:0.15];
-	[_depth_bar_icon_player addChild:
-		[[[CCSprite spriteWithTexture:[Resource get_tex:TEX_HUD_SPRITESHEET]
-							   rect:[FileCache get_cgrect_from_plist:TEX_HUD_SPRITESHEET idname:@"hudicon_hanoka.png"]] set_scale:3] set_pos:ccp(250,45)]
-	];
-	[_depth_bar_back addChild:_depth_bar_icon_player];
-	
-	_depth_bar_icon_boss = [CCSprite spriteWithTexture:[Resource get_tex:TEX_HUD_SPRITESHEET] rect:[FileCache get_cgrect_from_plist:TEX_HUD_SPRITESHEET idname:@"hudicon_selector.png"]];
-	[_depth_bar_icon_boss setPosition:ccp(10,10)];
-	[_depth_bar_icon_boss setScale:0.15];
-	[_depth_bar_icon_boss addChild:
-		[[[CCSprite spriteWithTexture:[Resource get_tex:TEX_HUD_SPRITESHEET]
-							   rect:[FileCache get_cgrect_from_plist:TEX_HUD_SPRITESHEET idname:@"hudicon_skull.png"]] set_scale:3] set_pos:ccp(250,45)]
-	];
-	[_depth_bar_back addChild:_depth_bar_icon_boss];
-	
 	CGRect heart_size = [FileCache get_cgrect_from_plist:TEX_HUD_SPRITESHEET idname:@"heart_fill.png"];
 	_player_health_ui = [PlayerUIHealthIndicator cons:game];
 	[_player_health_ui setPosition:game_screen_anchor_offset(ScreenAnchor_TL, ccp((heart_size.size.width*0.5 + 3),-(heart_size.size.height*0.5 + 3)))];
@@ -132,25 +98,6 @@ typedef enum _GameUIBossIntroMode {
     [self addChild:_villageUI];
     
 	return self;
-}
-
-//TODO -- move me to new class
--(float)depth_bar_from_top_fill_pct:(float)pct {
-	CGRect rect = [FileCache get_cgrect_from_plist:TEX_HUD_SPRITESHEET idname:@"hudicon_depthbar_fill.png"];
-	float hei = rect.size.height * (1-pct);
-	rect.origin.y += hei;
-	rect.size.height -= hei;
-	_depth_bar_fill.textureRect = rect;
-	[_depth_bar_fill setPosition:ccp(0,hei)];
-	return hei;
-}
-
--(float)depth_bar_from_bottom_fill_pct:(float)pct {
-	[_depth_bar_fill setPosition:ccp(0,0)];
-	CGRect rect = [FileCache get_cgrect_from_plist:TEX_HUD_SPRITESHEET idname:@"hudicon_depthbar_fill.png"];
-	rect.size.height *= pct;
-	[_depth_bar_fill setTextureRect:rect];
-	return rect.size.height;
 }
 
 -(void)start_boss:(NSString*)title sub:(NSString*)sub {
@@ -204,18 +151,8 @@ typedef enum _GameUIBossIntroMode {
 	[_player_aim_reticule i_update:game];
 	[_player_arrows_indicator i_update:game];
 	
-	if ([game get_player_state] == PlayerState_Dive) {
-		[_depth_bar_back setVisible:YES];
-		float hei_from_top = [self depth_bar_from_top_fill_pct:game.player.position.y/game.get_ground_depth];
-		[_depth_bar_icon_player setPosition:ccp(_depth_bar_icon_player.position.x,hei_from_top)];
-		
-	} else if ([game get_player_state] == PlayerState_InAir) {
-		[_depth_bar_back setVisible:NO];
-		[self depth_bar_from_bottom_fill_pct:0.5];
-		
-	} else {
+	if ([game get_player_state] == PlayerState_OnGround) {
         [_villageUI i_update:game];
-		[_depth_bar_back setVisible:NO];
 	}
 }
 

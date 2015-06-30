@@ -90,7 +90,7 @@ typedef enum ArrowMode {
 		} else {
 			_trail_tar_alpha = 1;
 		}
-		[_trail setOpacity:drp(_trail.opacity,_trail_tar_alpha,10)];
+		[_trail setOpacity:drpt(_trail.opacity,_trail_tar_alpha,1/10.0)];
 		if (self.position.x < -50 || self.position.x > game_screen().width + 50) {
 			_ct = 0;
 		} else if (self.position.y <= 0) {
@@ -119,9 +119,9 @@ typedef enum ArrowMode {
 	case ArrowMode_Floating:;
 		[_trail setOpacity:0];
 		if (_dir.x > 0) {
-			[self setRotation:drp(self.rotation, 0, 50)];
+			[self setRotation:drpt(self.rotation, 0, 1/50.0)];
 		} else {
-			[self setRotation:drp(self.rotation, 180, 50)];
+			[self setRotation:drpt(self.rotation, 180, 1/50.0)];
 		}
 		[self setPosition:CGPointAdd(self.position, ccp(_dir.x*dt_scale_get()*0.1,-2*dt_scale_get()))];
 		_ct-= dt_scale_get();

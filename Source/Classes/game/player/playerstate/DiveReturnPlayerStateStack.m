@@ -28,10 +28,9 @@
 	CGPoint last_pos = g.player.position;
 
 	[g.player update_accel_x_position:g];
-	_underwater_params._tar_camera_offset = drp(_underwater_params._tar_camera_offset, 0, 10);
-	_underwater_params._remainder_camera_offset = drp(_underwater_params._remainder_camera_offset, 0, 10);
-	_underwater_params._vy = MIN(_underwater_params._vy+0.6*dt_scale_get(), 14);
-	g.player.position = ccp(g.player.position.x,g.player.position.y + _underwater_params._vy * dt_scale_get());
+	_underwater_params._camera_offset = drpt(_underwater_params._camera_offset, 0, 1/10.0);
+	_underwater_params._vel = ccp(_underwater_params._vel.x,MIN(_underwater_params._vel.y+0.2*dt_scale_get(), 30));
+	g.player.position = ccp(g.player.position.x,g.player.position.y + _underwater_params._vel.y * dt_scale_get());
 	
 	float tar_rotation = vec_ang_deg_lim180(vec_cons(g.player.position.x - last_pos.x,g.player.position.y - last_pos.y, 0),90) + 15;
 	g.player.rotation += shortest_angle(g.player.rotation, tar_rotation) * 0.25;
@@ -43,8 +42,8 @@
 		[g add_ripple:ccp(g.player.position.x,0)];
 	}
 	[g.player read_s_pos:g];
-	[g set_camera_height:g.player.position.y + _underwater_params._tar_camera_offset + _underwater_params._remainder_camera_offset];
-	[g set_zoom:drp(g.get_zoom,1.5,20)];
+	[g set_camera_height:g.player.position.y + _underwater_params._camera_offset];
+	[g set_zoom:drpt(g.get_zoom,1.5,1/20.0)];
 }
 
 -(PlayerState)get_state {

@@ -35,7 +35,7 @@
 	g.player.shared_params._reset_to_center = NO;
 	CGPoint last_pos = g.player.position;
 	[g.player update_accel_x_position:g];
-	[g set_zoom:drp(g.get_zoom,1.2,20)];
+	[g set_zoom:drpt(g.get_zoom,1.2,1/20.0)];
 	switch (_land_params._current_mode) {
 		case PlayerLandMode_AirToGround_FadeIn:;
 			[g.get_ui fadeout:NO];
@@ -45,7 +45,7 @@
 			[g.player play_anim:@"Fall" repeat:YES];
 			_land_params._vel = ccp(_land_params._vel.x,_land_params._vel.y - 0.3 * dt_scale_get());
 			g.player.position = CGPointAdd(g.player.position, ccp(0,_land_params._vel.y*dt_scale_get()));
-			[g set_camera_height:drp(g.get_current_camera_center_y,0,20)];
+			[g set_camera_height:drpt(g.get_current_camera_center_y,0,1/20.0)];
 			if (g.player.position.y < 0) {
 			
 				_land_params._current_mode = PlayerLandMode_AirToGround_WaterDiveUp;
@@ -62,7 +62,7 @@
 				[g add_ripple:ccp(g.player.position.x,0)];
 				_land_params._current_mode = PlayerLandMode_AirToGround_FlipToDock;
 			}
-			[g set_camera_height:drp(g.get_current_camera_center_y,-50,20)];
+			[g set_camera_height:drpt(g.get_current_camera_center_y,-50,1/20.0)];
 			float tar_rotation = vec_ang_deg_lim180(vec_cons(g.player.position.x - last_pos.x,g.player.position.y - last_pos.y, 0),90);
 			g.player.rotation += shortest_angle(g.player.rotation, tar_rotation) * 0.25;
 		
@@ -76,7 +76,7 @@
 				[g.player push_state_stack:[OnGroundPlayerStateStack cons:g]];
 				return;
 			}
-			[g set_camera_height:drp(g.get_current_camera_center_y,30,20)];
+			[g set_camera_height:drpt(g.get_current_camera_center_y,30,1/20.0)];
 			
 		break;
 		default:;

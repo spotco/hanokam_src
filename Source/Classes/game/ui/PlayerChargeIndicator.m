@@ -59,7 +59,7 @@ typedef enum PlayerChargeIndicatorMode {
 }
 
 -(void)i_update:(GameEngineScene*)game {
-	[_radial_fill set_pct:drp(_radial_fill.get_pct, _tar_radial_fill_pct, 2)];
+	[_radial_fill set_pct:drpt(_radial_fill.get_pct, _tar_radial_fill_pct, 1/2.0)];
 	[_target setPosition:CGPointAdd(vec_to_cgpoint(vec_scale([_radial_fill get_target_direction],62.5)),[_radial_fill get_center])];
 	
 	[_radial_fill setPosition:[game.player convertToWorldSpace:CGPointZero]];

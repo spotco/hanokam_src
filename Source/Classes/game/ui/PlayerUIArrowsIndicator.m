@@ -44,9 +44,9 @@
 			_indicator_at_max_ct = 0;
 		}
 		if (_indicator_at_max_ct > 30) {
-			_arrows_indicator.opacity = drp(_arrows_indicator.opacity, 0, 5);
+			_arrows_indicator.opacity = drpt(_arrows_indicator.opacity, 0, 1/5.0);
 		} else {
-			_arrows_indicator.opacity = drp(_arrows_indicator.opacity, 1, 5);
+			_arrows_indicator.opacity = drpt(_arrows_indicator.opacity, 1, 1/5.0);
 		}
 		
 		

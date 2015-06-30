@@ -115,7 +115,7 @@ CGRect cctexture_default_rect(CCTexture *tex);
 #define int_random(s,l) arc4random()%l+s
 #define streq(a,b) [a isEqualToString:b]
 #define DO_FOR(cts,a) for(int i = 0; i < cts; i++) { a; }
-float drp(float a, float b, float div);
+float drpt(float a, float b, float fric);
 float lerp(float a, float b, float t);
 CGPoint lerp_point(CGPoint a, CGPoint b, float t);
 long sys_time();

@@ -33,8 +33,8 @@
 }
 
 -(void)i_update:(GameEngineScene *)g {
-    [g set_zoom:drp(g.get_zoom,2.5,20)];
-    [g set_camera_height:drp(g.get_current_camera_center_y,g.player.position.y,20)];
+    [g set_zoom:drpt(g.get_zoom,2.5,1/20.0)];
+    [g set_camera_height:drpt(g.get_current_camera_center_y,g.player.position.y,1/20.0)];
     
     [_dialogUI i_update:g];
     

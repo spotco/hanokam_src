@@ -266,7 +266,7 @@
 }
 
 -(float)get_ground_depth {
-	return -2000;
+	return -10000;
 }
 
 -(void)add_particle:(Particle*)p {

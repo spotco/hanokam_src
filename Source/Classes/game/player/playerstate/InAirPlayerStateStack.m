@@ -123,7 +123,7 @@
 -(void)i_update:(GameEngineScene *)g {
 	g.player.rotation += shortest_angle(g.player.rotation, _air_params._target_rotation) * powf(0.75, dt_scale_get());
 	g.player.shared_params._reset_to_center = NO;
-	[g set_zoom:drp(g.get_zoom,1,20)];
+	[g set_zoom:drpt(g.get_zoom,1,1/20.0)];
 	[g.player swordplant_streak_set_visible:NO];
 	
 	switch (_air_params._current_mode) {
@@ -136,7 +136,7 @@
 			if (_air_params._anim_ct >= 1) {
 				_air_params._current_mode = PlayerAirCombatMode_Combat;
 			}
-			[g set_zoom:drp(g.get_zoom,1,20)];
+			[g set_zoom:drpt(g.get_zoom,1,1/20.0)];
 		break;
 		case PlayerAirCombatMode_Combat:;
 			_air_params._w_upwards_vel *= powf(0.95, dt_scale_get());
@@ -153,7 +153,7 @@
 				if (!CGPointEqualToPoint(g.get_control_manager.get_post_swipe_drag, CGPointZero)) {
 					float vel = CGPointDist(CGPointZero, _air_params._s_vel);
 					Vec3D post_dir = vec_cons_norm(g.get_control_manager.get_post_swipe_drag.x, g.get_control_manager.get_post_swipe_drag.y, 0);
-					Vec3D cur_dir = vec_cons_norm(_air_params._s_vel.x, _air_params._s_vel.y, 0);
+					Vec3D cur_dir = cgpoint_to_vec(_air_params._s_vel);
 					Vec3D final_dir = vec_cons_norm(cur_dir.x+post_dir.x*2, cur_dir.y+post_dir.y*2, 0);
 					vec_scale_m(&final_dir, vel);
 					_air_params._s_vel = ccp(final_dir.x,final_dir.y);
@@ -299,7 +299,7 @@
 			
 			float s_pos_y = g.player.shared_params._s_pos.y+_air_params._s_vel.y*dt_scale_get();
 			if (s_pos_y > _air_params.DEFAULT_HEIGHT) {
-				s_pos_y = drp(s_pos_y, _air_params.DEFAULT_HEIGHT, 6.6);
+				s_pos_y = drpt(s_pos_y, _air_params.DEFAULT_HEIGHT, 1/12.0);
 			}
 			g.player.shared_params._s_pos = ccp(
 				g.player.shared_params._s_pos.x+_air_params._s_vel.x*dt_scale_get(),

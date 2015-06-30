@@ -2,12 +2,13 @@
 #import "Resource.h"
 #import "FileCache.h"
 #import "Common.h"
+#import "FlashEvery.h"
 
 @implementation TouchTrackingLayer {
     CCMotionStreak *_motion_streak;
     CCSprite *_touch_button;
 	BOOL _is_touch_down;
-	int _ct;
+	FlashEvery *_touch_hold_pulse;
 	int _hide_touch_hold_pulse_ct;
 }
 
@@ -20,22 +21,24 @@
     [self addChild:_touch_button];
     [_touch_button setOpacity:0];
 	
+	_touch_hold_pulse = [FlashEvery cons_time:20];
+	
     return self;
 }
 
 
 -(void)update:(CCTime)delta {
-	_ct++;
+	[_touch_hold_pulse i_update:dt_scale_get()];
 	if (_is_touch_down && _hide_touch_hold_pulse_ct <= 0) {
-		_touch_button.scale = drp(_touch_button.scale, 1, 30.0);
-		_touch_button.opacity = drp(_touch_button.opacity, 0.25, 30.0);
-		if (_ct % 20 == 0) {
+		_touch_button.scale = drpt(_touch_button.scale, 1, 1/30.0);
+		_touch_button.opacity = drpt(_touch_button.opacity, 0.25, 1/30.0);
+		if ([_touch_hold_pulse do_flash]) {
 			_touch_button.opacity = 1;
 			_touch_button.scale = 6;
 		}
 	} else {
-		_touch_button.scale = drp(_touch_button.scale, 1, 20.0);
-		_touch_button.opacity = drp(_touch_button.opacity, 0, 20.0);
+		_touch_button.scale = drpt(_touch_button.scale, 1, 1/20.0);
+		_touch_button.opacity = drpt(_touch_button.opacity, 0, 1/20.0);
 		if (_hide_touch_hold_pulse_ct > 0) _touch_button.opacity = 0;
 	}
 	
@@ -55,7 +58,6 @@
 	[_motion_streak setPosition:pt];
 }
 -(void)touch_move:(CGPoint)pt {
-	_ct = 1;
 	_is_touch_down = YES;
 	_touch_button.opacity = 1;
 	[_touch_button setPosition:pt];

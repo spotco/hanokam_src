@@ -15,8 +15,12 @@ typedef enum _PlayerUnderwaterCombatMode {
 
 @interface PlayerUnderwaterCombatParams : NSObject
 @property(readwrite,assign) PlayerUnderwaterCombatMode _current_mode;
-@property(readwrite,assign) float _vy, _tar_camera_offset, _remainder_camera_offset, _anim_ct;
-
+@property(readwrite,assign) CGPoint _vel;
+@property(readwrite,assign) float _camera_offset, _anim_ct;
 @property(readwrite,assign) float _initial_camera_offset;
+@property(readwrite,assign) BOOL _dashing;
+@property(readwrite,assign) float _dash_ct;
+
 -(float)DEFAULT_OFFSET;
+-(float)MAX_OFFSET;
 @end

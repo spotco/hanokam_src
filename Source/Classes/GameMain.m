@@ -13,8 +13,17 @@
 /*
 TODO --
 GAMEPLAY IDEAS:
-underwater gameplay system
+underwater breath bar, immediate restore health village
+underwater bubbles anim (foreground and from character)
+underwater quests reach certain depth/attract certain number of enemies
+
 fix anims
+	-air hurt anim play
+	-bow shoot anim hold rotation
+	-village walk anim fix
+	-try dash spin anim hit
+	
+enemies shoot bullet pause animation
 
 QUESTS ARE CHALLENGES - let no enemies escape
 

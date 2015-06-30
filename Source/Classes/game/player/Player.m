@@ -171,7 +171,7 @@ float accel_x_move_val(GameEngineScene *g, float from_val) {
 	_player_shared_params._calc_accel_x_pos += target_delta;
 	if (_player_shared_params._reset_to_center) {
 		_player_shared_params._s_pos = ccp(
-			drp(_player_shared_params._s_pos.x, _player_shared_params._calc_accel_x_pos, 10),
+			drpt(_player_shared_params._s_pos.x, _player_shared_params._calc_accel_x_pos, 1/10.0),
 			_player_shared_params._s_pos.y
 		);
 	}

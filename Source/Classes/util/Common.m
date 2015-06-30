@@ -138,8 +138,11 @@
 }
 @end
 
-float drp(float a, float b, float div) {
-	return a + (b - a) / div;
+/*float drp(float a, float b, float div) { return a + (b - a) / div; }*/
+float drpt(float a, float b, float fric) {
+	float deltaf = (b - a);
+	deltaf *= powf(fric,1/dt_scale_get());
+	return a + deltaf;
 }
 
 float lerp(float a, float b, float t) {

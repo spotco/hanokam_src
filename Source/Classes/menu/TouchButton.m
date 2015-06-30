@@ -17,7 +17,7 @@
 	return self;
 }
 -(void)update:(CCTime)delta {
-	[self setScale:drp(self.scale, _pressed?1.5:1, 10)];
+	[self setScale:drpt(self.scale, _pressed?1.5:1, 1/10.0)];
 }
 
 -(BOOL)touch_on_self:(CCTouch*)touch {
