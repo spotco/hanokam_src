@@ -180,12 +180,6 @@
 		7ED822A01B13D258001BB249 /* GameEngineScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED822201B13D258001BB249 /* GameEngineScene.m */; };
 		7ED822A11B13D258001BB249 /* GameEngineScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED822201B13D258001BB249 /* GameEngineScene.m */; };
 		7ED822A21B13D258001BB249 /* GameEngineScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED822201B13D258001BB249 /* GameEngineScene.m */; };
-		7ED822A31B13D258001BB249 /* GameObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED822221B13D258001BB249 /* GameObject.m */; };
-		7ED822A41B13D258001BB249 /* GameObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED822221B13D258001BB249 /* GameObject.m */; };
-		7ED822A51B13D258001BB249 /* GameObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED822221B13D258001BB249 /* GameObject.m */; };
-		7ED822A61B13D258001BB249 /* ShopScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED822241B13D258001BB249 /* ShopScene.m */; };
-		7ED822A71B13D258001BB249 /* ShopScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED822241B13D258001BB249 /* ShopScene.m */; };
-		7ED822A81B13D258001BB249 /* ShopScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED822241B13D258001BB249 /* ShopScene.m */; };
 		7ED822A91B13D258001BB249 /* ChainedMovementParticle.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED822271B13D258001BB249 /* ChainedMovementParticle.m */; };
 		7ED822AA1B13D258001BB249 /* ChainedMovementParticle.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED822271B13D258001BB249 /* ChainedMovementParticle.m */; };
 		7ED822AB1B13D258001BB249 /* ChainedMovementParticle.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED822271B13D258001BB249 /* ChainedMovementParticle.m */; };
@@ -219,18 +213,6 @@
 		7ED822DC1B13D258001BB249 /* TouchButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED8224D1B13D258001BB249 /* TouchButton.m */; };
 		7ED822DD1B13D258001BB249 /* TouchButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED8224D1B13D258001BB249 /* TouchButton.m */; };
 		7ED822DE1B13D258001BB249 /* TouchButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED8224D1B13D258001BB249 /* TouchButton.m */; };
-		7ED822DF1B13D258001BB249 /* SHBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED822501B13D258001BB249 /* SHBackground.m */; };
-		7ED822E01B13D258001BB249 /* SHBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED822501B13D258001BB249 /* SHBackground.m */; };
-		7ED822E11B13D258001BB249 /* SHBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED822501B13D258001BB249 /* SHBackground.m */; };
-		7ED822E21B13D258001BB249 /* SHButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED822521B13D258001BB249 /* SHButton.m */; };
-		7ED822E31B13D258001BB249 /* SHButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED822521B13D258001BB249 /* SHButton.m */; };
-		7ED822E41B13D258001BB249 /* SHButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED822521B13D258001BB249 /* SHButton.m */; };
-		7ED822E51B13D258001BB249 /* SHItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED822541B13D258001BB249 /* SHItem.m */; };
-		7ED822E61B13D258001BB249 /* SHItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED822541B13D258001BB249 /* SHItem.m */; };
-		7ED822E71B13D258001BB249 /* SHItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED822541B13D258001BB249 /* SHItem.m */; };
-		7ED822E81B13D258001BB249 /* SHItemRow.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED822561B13D258001BB249 /* SHItemRow.m */; };
-		7ED822E91B13D258001BB249 /* SHItemRow.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED822561B13D258001BB249 /* SHItemRow.m */; };
-		7ED822EA1B13D258001BB249 /* SHItemRow.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED822561B13D258001BB249 /* SHItemRow.m */; };
 		7ED822EE1B13D258001BB249 /* Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED8225B1B13D258001BB249 /* Common.m */; };
 		7ED822EF1B13D258001BB249 /* Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED8225B1B13D258001BB249 /* Common.m */; };
 		7ED822F01B13D258001BB249 /* Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED8225B1B13D258001BB249 /* Common.m */; };
@@ -678,10 +660,6 @@
 		7ED8221E1B13D258001BB249 /* ControlManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ControlManager.m; sourceTree = "<group>"; };
 		7ED8221F1B13D258001BB249 /* GameEngineScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameEngineScene.h; sourceTree = "<group>"; };
 		7ED822201B13D258001BB249 /* GameEngineScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameEngineScene.m; sourceTree = "<group>"; };
-		7ED822211B13D258001BB249 /* GameObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameObject.h; sourceTree = "<group>"; };
-		7ED822221B13D258001BB249 /* GameObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameObject.m; sourceTree = "<group>"; };
-		7ED822231B13D258001BB249 /* ShopScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopScene.h; sourceTree = "<group>"; };
-		7ED822241B13D258001BB249 /* ShopScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopScene.m; sourceTree = "<group>"; };
 		7ED822261B13D258001BB249 /* ChainedMovementParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChainedMovementParticle.h; sourceTree = "<group>"; };
 		7ED822271B13D258001BB249 /* ChainedMovementParticle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChainedMovementParticle.m; sourceTree = "<group>"; };
 		7ED822281B13D258001BB249 /* Particle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Particle.h; sourceTree = "<group>"; };
@@ -704,14 +682,6 @@
 		7ED8224B1B13D258001BB249 /* MainMenuScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuScene.m; sourceTree = "<group>"; };
 		7ED8224C1B13D258001BB249 /* TouchButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchButton.h; sourceTree = "<group>"; };
 		7ED8224D1B13D258001BB249 /* TouchButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TouchButton.m; sourceTree = "<group>"; };
-		7ED8224F1B13D258001BB249 /* SHBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHBackground.h; sourceTree = "<group>"; };
-		7ED822501B13D258001BB249 /* SHBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHBackground.m; sourceTree = "<group>"; };
-		7ED822511B13D258001BB249 /* SHButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHButton.h; sourceTree = "<group>"; };
-		7ED822521B13D258001BB249 /* SHButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHButton.m; sourceTree = "<group>"; };
-		7ED822531B13D258001BB249 /* SHItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHItem.h; sourceTree = "<group>"; };
-		7ED822541B13D258001BB249 /* SHItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHItem.m; sourceTree = "<group>"; };
-		7ED822551B13D258001BB249 /* SHItemRow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHItemRow.h; sourceTree = "<group>"; };
-		7ED822561B13D258001BB249 /* SHItemRow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHItemRow.m; sourceTree = "<group>"; };
 		7ED8225A1B13D258001BB249 /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
 		7ED8225B1B13D258001BB249 /* Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Common.m; sourceTree = "<group>"; };
 		7ED8225C1B13D258001BB249 /* DataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataStore.h; sourceTree = "<group>"; };
@@ -1167,7 +1137,6 @@
 				7ED822471B13D258001BB249 /* GameMain.h */,
 				7ED822481B13D258001BB249 /* GameMain.m */,
 				7ED822491B13D258001BB249 /* menu */,
-				7ED8224E1B13D258001BB249 /* shop */,
 				7ED822571B13D258001BB249 /* util */,
 			);
 			name = Classes;
@@ -1241,10 +1210,6 @@
 				7ED8221E1B13D258001BB249 /* ControlManager.m */,
 				7ED8221F1B13D258001BB249 /* GameEngineScene.h */,
 				7ED822201B13D258001BB249 /* GameEngineScene.m */,
-				7ED822211B13D258001BB249 /* GameObject.h */,
-				7ED822221B13D258001BB249 /* GameObject.m */,
-				7ED822231B13D258001BB249 /* ShopScene.h */,
-				7ED822241B13D258001BB249 /* ShopScene.m */,
 			);
 			path = core;
 			sourceTree = "<group>";
@@ -1316,21 +1281,6 @@
 				7ED8224D1B13D258001BB249 /* TouchButton.m */,
 			);
 			path = menu;
-			sourceTree = "<group>";
-		};
-		7ED8224E1B13D258001BB249 /* shop */ = {
-			isa = PBXGroup;
-			children = (
-				7ED8224F1B13D258001BB249 /* SHBackground.h */,
-				7ED822501B13D258001BB249 /* SHBackground.m */,
-				7ED822511B13D258001BB249 /* SHButton.h */,
-				7ED822521B13D258001BB249 /* SHButton.m */,
-				7ED822531B13D258001BB249 /* SHItem.h */,
-				7ED822541B13D258001BB249 /* SHItem.m */,
-				7ED822551B13D258001BB249 /* SHItemRow.h */,
-				7ED822561B13D258001BB249 /* SHItemRow.m */,
-			);
-			path = shop;
 			sourceTree = "<group>";
 		};
 		7ED822571B13D258001BB249 /* util */ = {
@@ -2169,7 +2119,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				7EF557721B42A59E00992001 /* VillageUI.m in Sources */,
-				7ED822EA1B13D258001BB249 /* SHItemRow.m in Sources */,
 				7E386D341B23A0AC00DDEFF6 /* PlayerUnderwaterCombatParams.m in Sources */,
 				7ED823171B13D258001BB249 /* SpriterXMLParser.m in Sources */,
 				7ED822841B13D258001BB249 /* PufferBasicAirEnemy.m in Sources */,
@@ -2193,7 +2142,6 @@
 				7ED823111B13D258001BB249 /* SpriterTypes.m in Sources */,
 				7E386D311B23A0AC00DDEFF6 /* PlayerLandParams.m in Sources */,
 				7ED8231D1B13D258001BB249 /* Vec3D.m in Sources */,
-				7ED822A51B13D258001BB249 /* GameObject.m in Sources */,
 				7E4F099B1B250E06000945B8 /* FlashEvery.m in Sources */,
 				7EF557601B42A59E00992001 /* EnemyUIHealthIndicators.m in Sources */,
 				7ED822901B13D258001BB249 /* BGVillage.m in Sources */,
@@ -2214,8 +2162,6 @@
 				7ED8231A1B13D258001BB249 /* TouchTrackingLayer.m in Sources */,
 				7ED822D21B13D258001BB249 /* HealthBar.m in Sources */,
 				7ED822AE1B13D258001BB249 /* Particle.m in Sources */,
-				7ED822E71B13D258001BB249 /* SHItem.m in Sources */,
-				7ED822A81B13D258001BB249 /* ShopScene.m in Sources */,
 				7E9A58631B23098C008EC348 /* FlashCount.m in Sources */,
 				7E386D531B23F6FB00DDEFF6 /* DialogueBubble.m in Sources */,
 				7ED8229C1B13D258001BB249 /* BGCharacterVillagerFishWoman.m in Sources */,
@@ -2231,7 +2177,6 @@
 				7ED822F61B13D258001BB249 /* FileCache.m in Sources */,
 				7E386D481B23A95B00DDEFF6 /* InAirPlayerStateStack.m in Sources */,
 				7ED822BD1B13D258001BB249 /* UIBossIntroParticle.m in Sources */,
-				7ED822E41B13D258001BB249 /* SHButton.m in Sources */,
 				7E9A58541B22EFA3008EC348 /* AlphaGradientSprite.m in Sources */,
 				7ED823081B13D258001BB249 /* SpriterJSONParser.m in Sources */,
 				7ED8228D1B13D258001BB249 /* BGSky.m in Sources */,
@@ -2243,7 +2188,6 @@
 				7ED822D81B13D258001BB249 /* GameMain.m in Sources */,
 				7EF5575D1B42A59E00992001 /* DiveUI.m in Sources */,
 				7E4F09B71B258CA2000945B8 /* Arrow.m in Sources */,
-				7ED822E11B13D258001BB249 /* SHBackground.m in Sources */,
 				7ECCC6661B3D27F0006A70B9 /* EnemyProjectile.m in Sources */,
 				7ED822BA1B13D258001BB249 /* RotateFadeOutParticle.m in Sources */,
 				7ED823051B13D258001BB249 /* SpriterData.m in Sources */,
@@ -2278,7 +2222,6 @@
 				7ED823161B13D258001BB249 /* SpriterXMLParser.m in Sources */,
 				7ED822D11B13D258001BB249 /* HealthBar.m in Sources */,
 				7EF5575F1B42A59E00992001 /* EnemyUIHealthIndicators.m in Sources */,
-				7ED822E01B13D258001BB249 /* SHBackground.m in Sources */,
 				7ED8229B1B13D258001BB249 /* BGCharacterVillagerFishWoman.m in Sources */,
 				7ED822F51B13D258001BB249 /* FileCache.m in Sources */,
 				7E386D1E1B239EDE00DDEFF6 /* BasePlayerStateStack.m in Sources */,
@@ -2288,7 +2231,6 @@
 				7ED8231F1B13D258001BB249 /* WebRequest.m in Sources */,
 				7EF557561B42A59E00992001 /* DialogueBubble.m in Sources */,
 				7E4F099A1B250E06000945B8 /* FlashEvery.m in Sources */,
-				7ED822E91B13D258001BB249 /* SHItemRow.m in Sources */,
 				7EF557621B42A59E00992001 /* EnemyWarningUI.m in Sources */,
 				7E8CF0C11B3E8E0400FA6277 /* TestScene.m in Sources */,
 				7E386D231B239FE600DDEFF6 /* OnGroundPlayerStateStack.m in Sources */,
@@ -2301,7 +2243,6 @@
 				7ED822A11B13D258001BB249 /* GameEngineScene.m in Sources */,
 				7ED823FE1B13DD59001BB249 /* md5.c in Sources */,
 				7EF5576B1B42A59E00992001 /* PlayerUIArrowsIndicator.m in Sources */,
-				7ED822A41B13D258001BB249 /* GameObject.m in Sources */,
 				7ED822FB1B13D258001BB249 /* PolyLib.m in Sources */,
 				7ED823011B13D258001BB249 /* ShaderManager.m in Sources */,
 				7E386D421B23A75F00DDEFF6 /* DiveReturnPlayerStateStack.m in Sources */,
@@ -2320,7 +2261,6 @@
 				7ED823071B13D258001BB249 /* SpriterJSONParser.m in Sources */,
 				7E386D471B23A95B00DDEFF6 /* InAirPlayerStateStack.m in Sources */,
 				7E386D2D1B23A0AC00DDEFF6 /* PlayerAirCombatParams.m in Sources */,
-				7ED822E61B13D258001BB249 /* SHItem.m in Sources */,
 				7EF557681B42A59E00992001 /* PlayerUIAimReticule.m in Sources */,
 				7ED822CB1B13D258001BB249 /* PlayerProjectile.m in Sources */,
 				7E386D4E1B23F6DB00DDEFF6 /* BGCharacterBase.m in Sources */,
@@ -2328,7 +2268,6 @@
 				7E9A58531B22EFA3008EC348 /* AlphaGradientSprite.m in Sources */,
 				7ED822DA1B13D258001BB249 /* MainMenuScene.m in Sources */,
 				7ED822921B13D258001BB249 /* BGWater.m in Sources */,
-				7ED822E31B13D258001BB249 /* SHButton.m in Sources */,
 				7EF5575C1B42A59E00992001 /* DiveUI.m in Sources */,
 				7E4F09B11B258C9A000945B8 /* ChargedArrow.m in Sources */,
 				7EF557591B42A59E00992001 /* DialogUI.m in Sources */,
@@ -2339,7 +2278,6 @@
 				7E386D381B23A0BE00DDEFF6 /* PlayerSharedParams.m in Sources */,
 				5B121030197484FA004C1E1D /* hanokamActivity.m in Sources */,
 				7E386D301B23A0AC00DDEFF6 /* PlayerLandParams.m in Sources */,
-				7ED822A71B13D258001BB249 /* ShopScene.m in Sources */,
 				7ED822BF1B13D258001BB249 /* Player.m in Sources */,
 				7ECCC6651B3D27F0006A70B9 /* EnemyProjectile.m in Sources */,
 			);
@@ -2350,7 +2288,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				7E386D411B23A75F00DDEFF6 /* DiveReturnPlayerStateStack.m in Sources */,
-				7ED822E81B13D258001BB249 /* SHItemRow.m in Sources */,
 				7E386D3C1B23A59A00DDEFF6 /* DivePlayerStateStack.m in Sources */,
 				7ED823151B13D258001BB249 /* SpriterXMLParser.m in Sources */,
 				7EF5575E1B42A59E00992001 /* EnemyUIHealthIndicators.m in Sources */,
@@ -2380,7 +2317,6 @@
 				7ED8231B1B13D258001BB249 /* Vec3D.m in Sources */,
 				7E386D2F1B23A0AC00DDEFF6 /* PlayerLandParams.m in Sources */,
 				7E9A58611B23098C008EC348 /* FlashCount.m in Sources */,
-				7ED822A31B13D258001BB249 /* GameObject.m in Sources */,
 				7ED8228E1B13D258001BB249 /* BGVillage.m in Sources */,
 				7E9A58521B22EFA3008EC348 /* AlphaGradientSprite.m in Sources */,
 				7EF557551B42A59E00992001 /* DialogueBubble.m in Sources */,
@@ -2403,8 +2339,6 @@
 				7ED822D01B13D258001BB249 /* HealthBar.m in Sources */,
 				7ED822AC1B13D258001BB249 /* Particle.m in Sources */,
 				BB771AF31B22C910002BA595 /* BGCharacterBase.m in Sources */,
-				7ED822E51B13D258001BB249 /* SHItem.m in Sources */,
-				7ED822A61B13D258001BB249 /* ShopScene.m in Sources */,
 				7ED8229A1B13D258001BB249 /* BGCharacterVillagerFishWoman.m in Sources */,
 				7E9A44C41B1DADBA00111C35 /* PlayerChargeIndicator.m in Sources */,
 				7E8CF0C01B3E8E0400FA6277 /* TestScene.m in Sources */,
@@ -2424,14 +2358,12 @@
 				7EF557701B42A59E00992001 /* VillageUI.m in Sources */,
 				7E8377671B14619900EFC0D9 /* SPDeviceAccelerometer.m in Sources */,
 				7EF557581B42A59E00992001 /* DialogUI.m in Sources */,
-				7ED822E21B13D258001BB249 /* SHButton.m in Sources */,
 				7ED823061B13D258001BB249 /* SpriterJSONParser.m in Sources */,
 				7ED8228B1B13D258001BB249 /* BGSky.m in Sources */,
 				7ED822FD1B13D258001BB249 /* Resource.m in Sources */,
 				7EF557671B42A59E00992001 /* PlayerUIAimReticule.m in Sources */,
 				5B121038197487F2004C1E1D /* AppDelegate.m in Sources */,
 				7ED822D61B13D258001BB249 /* GameMain.m in Sources */,
-				7ED822DF1B13D258001BB249 /* SHBackground.m in Sources */,
 				7ED822B81B13D258001BB249 /* RotateFadeOutParticle.m in Sources */,
 				7ED823031B13D258001BB249 /* SpriterData.m in Sources */,
 				7E4F09B51B258CA2000945B8 /* Arrow.m in Sources */,
