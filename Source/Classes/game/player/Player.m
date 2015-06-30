@@ -123,7 +123,7 @@
 -(void)set_health:(float)val { _current_health = val; }
 -(void)add_health:(float)val g:(GameEngineScene*)g {
 	_current_health += val;
-	[g.get_ui pulse_heart_lastfill];
+	[g.get_event_dispatcher push_event:[GEvent cons_context:g type:GeventType_PlayerHealthHeal]];
 }
 -(int)get_max_health { return _max_health; }
 -(float)get_current_health { return _current_health; }

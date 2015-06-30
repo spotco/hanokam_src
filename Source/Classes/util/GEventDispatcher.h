@@ -4,7 +4,13 @@ typedef enum {
     GEventType_BulletHitPlayer,
 	GEventType_PlayerHitEnemySword,
 	GEventType_PlayerHitEnemyDash,
-	GEventType_PlayerTouchEnemy
+	GEventType_PlayerTouchEnemy,
+	
+	GEventType_PlayerTakeDamage,
+	GEventType_PlayerChargePct,
+	GEventType_PlayerChargeFail,
+	GEventType_PlayerAimVariance,
+	GeventType_PlayerHealthHeal
 	
 } GEventType;
 
@@ -14,6 +20,10 @@ typedef enum {
 -(id)context;
 -(GEvent*)set_target:(id)target;
 -(id)target;
+-(GEvent*)set_float_value:(float)tar;
+-(GEvent*)set_bool_value:(BOOL)tar;
+-(float)float_value;
+-(BOOL)bool_value;
 @end
 
 @protocol GEventListener <NSObject>

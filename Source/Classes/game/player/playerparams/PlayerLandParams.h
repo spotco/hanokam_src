@@ -20,7 +20,7 @@ typedef enum _PlayerLandMode {
 
 @interface PlayerLandParams : NSObject
 @property(readwrite,assign) CGPoint _vel;
-@property(readwrite,assign) float _move_hold_ct, _prep_dive_hold_ct, _health_restore_ct;
+@property(readwrite,assign) float _move_hold_ct, _prep_dive_hold_ct;
 @property(readwrite,assign) PlayerLandMode _current_mode;
 
 -(float)MOVE_CUTOFF_VAL;

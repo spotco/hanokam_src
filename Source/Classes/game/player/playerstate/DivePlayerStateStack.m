@@ -108,22 +108,6 @@
 			}
 			[g set_camera_height:MIN(g.player.position.y + _underwater_params._camera_offset, g.get_current_camera_center_y)];
 			
-			/*
-			if (g.get_control_manager.is_touch_down) {
-					_underwater_params._tar_camera_offset = _underwater_params.DEFAULT_OFFSET;
-					[g set_camera_height:MIN(g.player.position.y + _underwater_params._tar_camera_offset + _underwater_params._remainder_camera_offset, g.get_current_camera_center_y)];
-					_underwater_params._remainder_camera_offset *= powf(0.95, dt_scale_get());
-			} else {
-				if (g.player.position.y > (g.get_viewbox.y2-g.get_viewbox.y1)*0.3 + g.get_viewbox.y1) {
-					_underwater_params._remainder_camera_offset = - ((g.player.position.y + _underwater_params._tar_camera_offset)-g.get_current_camera_center_y);
-				} else {
-					_underwater_params._tar_camera_offset = _underwater_params.DEFAULT_OFFSET;
-					[g set_camera_height:MIN(g.player.position.y + _underwater_params._tar_camera_offset + _underwater_params._remainder_camera_offset, g.get_current_camera_center_y)];
-					_underwater_params._remainder_camera_offset *= powf(0.95, dt_scale_get());
-				}
-			}
-			*/
-			
 			if (g.player.position.y > g.get_viewbox.y2) {
 				[g.player pop_state_stack:g];
 				[g.player push_state_stack:[DiveReturnPlayerStateStack cons:g waterparams:_underwater_params]];

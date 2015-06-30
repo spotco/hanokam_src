@@ -24,6 +24,7 @@ fix anims
 	-try dash spin anim hit
 	
 enemies shoot bullet pause animation
+no arrows popup dialogue
 
 QUESTS ARE CHALLENGES - let no enemies escape
 

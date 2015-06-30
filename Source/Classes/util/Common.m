@@ -140,6 +140,8 @@
 
 /*float drp(float a, float b, float div) { return a + (b - a) / div; }*/
 float drpt(float a, float b, float fric) {
+	if (fric == 0) NSLog(@"ERROR FRIC 0");
+	if (fric >= 1) NSLog(@"ERROR FRIC >= 1");
 	float deltaf = (b - a);
 	deltaf *= powf(fric,1/dt_scale_get());
 	return a + deltaf;

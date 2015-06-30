@@ -3,69 +3,134 @@
 #import "FileCache.h"
 #import "Common.h"
 #import "GameEngineScene.h"
-#import "HealthBar.h"
 #import "Particle.h"
-#import "UIBossIntroParticle.h"
 #import "Player.h"
-#import "PlayerUIHealthIndicator.h"
+
 #import "PlayerChargeIndicator.h"
-#import "PlayerUIAimReticule.h"
+
+#import "InAirUI.h"
 #import "VillageUI.h"
 #import "DialogUI.h"
-#import "EnemyUIHealthIndicators.h"
-#import "EnemyWarningUI.h"
-#import "PlayerUIArrowsIndicator.h"
+#import "DiveUI.h"
 
+@implementation GameUISubView
+-(void)i_update:(GameEngineScene *)g{}
+@end
+
+@implementation GameUI {
+	//shared ui
+	ParticleSystem *_particles;
+	PlayerChargeIndicator *_player_charge_ui;
+	CCNode *_red_flash_overlay;
+	CCNode *_black_fadeout_overlay;
+	float _tar_black_fadeout_overlay_alpha;
+	
+	//modal ui
+	InAirUI *_in_air_ui;
+    VillageUI *_villageUI;
+    DialogUI *_dialogUI;
+	DiveUI *_dive_ui;
+	NSArray *_gameui_subviews;
+}
+
++(GameUI*)cons:(GameEngineScene*)g {
+	return [[GameUI node] cons:g];
+}
+
+-(GameUI*)cons:(GameEngineScene*)g {
+	[g.get_event_dispatcher add_listener:self];
+	[self setAnchorPoint:ccp(0,0)];
+	
+	_red_flash_overlay = [CCNodeColor nodeWithColor:[CCColor redColor]];
+	[_red_flash_overlay setOpacity:0];
+	[self addChild:_red_flash_overlay];
+	_player_charge_ui = [PlayerChargeIndicator cons];
+	[self addChild:_player_charge_ui];
+	_black_fadeout_overlay = [CCNodeColor nodeWithColor:[CCColor blackColor]];
+	_tar_black_fadeout_overlay_alpha = 0;
+	[_black_fadeout_overlay setOpacity:_tar_black_fadeout_overlay_alpha];
+	[self addChild:_black_fadeout_overlay];
+	
+	_dialogUI = [DialogUI cons:g];
+    _villageUI = [VillageUI cons:g];
+	_in_air_ui = [InAirUI cons:g];
+	_dive_ui = [DiveUI cons:g];
+	
+	_gameui_subviews = @[_villageUI,_in_air_ui,_dialogUI,_dive_ui];
+    for (GameUISubView *itr in _gameui_subviews) [self addChild:itr];
+	
+	return self;
+}
+
+-(void)dispatch_event:(GEvent *)e {
+	GameEngineScene *g = e.context;
+	switch (e.type) {
+	case GEventType_PlayerTakeDamage: {
+		[_red_flash_overlay setOpacity:0.5];
+	}
+	break;
+	case GEventType_PlayerChargePct : {
+		[_player_charge_ui set_pct:e.float_value g:g];
+	}
+	break;
+	case GEventType_PlayerChargeFail : {
+		[_player_charge_ui fadeout_fail];
+	};
+	break;
+	default: {}
+	}
+}
+
+-(GameUISubView*)ui_for_playerstate:(PlayerState)state {
+	switch (state) {
+		case PlayerState_OnGround: return _villageUI;
+		case PlayerState_AirToGroundTransition: return NULL;
+		case PlayerState_Dive: return _dive_ui;
+		case PlayerState_DiveReturn: return NULL;
+		case PlayerState_InAir: return _in_air_ui;
+		case PlayerState_InDialogue: return _dialogUI;
+	}
+}
+
+-(void)fadeout:(BOOL)tar {
+	_tar_black_fadeout_overlay_alpha = tar ? 1 : 0;
+}
+-(BOOL)is_faded_out {
+	return _black_fadeout_overlay.opacity >= 1;
+}
+-(BOOL)is_faded_in {
+	return _black_fadeout_overlay.opacity <= 0;
+}
+
+-(void)i_update:(GameEngineScene*)game {
+	[_player_charge_ui i_update:game];
+	[_particles update_particles:self];
+	[_red_flash_overlay setOpacity:MAX(0,_red_flash_overlay.opacity-0.025*dt_scale_get())];
+	[_black_fadeout_overlay setOpacity:(_tar_black_fadeout_overlay_alpha>0.5)?MIN(1,_black_fadeout_overlay.opacity+0.01*dt_scale_get()):MAX(0,_black_fadeout_overlay.opacity-0.01*dt_scale_get())];
+	
+	for (GameUISubView *itr in _gameui_subviews) {
+		[itr setVisible:NO];
+	}
+	[[self ui_for_playerstate:game.get_player_state] setVisible:YES];
+	[[self ui_for_playerstate:game.get_player_state] i_update:game];
+}
+
+@end
+
+/*
 typedef enum _GameUIBossIntroMode {
 	GameUIBossIntroMode_None,
 	GameUIBossIntroMode_FillInToBoss,
 	GameUIBossIntroMode_Boss
 } GameUIBossIntroMode;
 
-@implementation GameUI {
 	//TODO -- move this to new class
 	HealthBar *_boss_health_bar;
 	CCLabelTTF *_boss_health_label;
 	GameUIBossIntroMode _current_boss_mode;
 	float _boss_fillin_pct;
-	//
 	
-	ParticleSystem *_particles;
-	
-	//TODO -- organize these to hud class
-	PlayerUIHealthIndicator *_player_health_ui;
-	PlayerChargeIndicator *_player_charge_ui;
-	PlayerUIAimReticule *_player_aim_reticule;
-	PlayerUIArrowsIndicator *_player_arrows_indicator;
-	EnemyUIHealthIndicators *_enemy_ui_health_indicators;
-	EnemyWarningUI *_enemy_warning_ui;
-	
-    VillageUI *_villageUI;
-    
-    DialogUI *_dialogUI;
-	
-	CCNode *_red_flash_overlay;
-	CCNode *_black_fadeout_overlay;
-	float _tar_black_fadeout_overlay_alpha;
-}
-
-+(GameUI*)cons:(GameEngineScene*)game {
-	return [(GameUI*)[GameUI node] cons:game];
-}
-
--(GameUI*)cons:(GameEngineScene*)game {
-	[self setAnchorPoint:ccp(0,0)];
-	
-	_red_flash_overlay = [CCNodeColor nodeWithColor:[CCColor redColor]];
-	[_red_flash_overlay setOpacity:0];
-	[self addChild:_red_flash_overlay];
-	
-	_black_fadeout_overlay = [CCNodeColor nodeWithColor:[CCColor blackColor]];
-	_tar_black_fadeout_overlay_alpha = 0;
-	[_black_fadeout_overlay setOpacity:_tar_black_fadeout_overlay_alpha];
-	[self addChild:_black_fadeout_overlay];
-	
-	_boss_health_bar = [HealthBar cons_pooled_size:CGSizeMake(game_screen().width-10, 15) anchor:ccp(0,0)];
+		_boss_health_bar = [HealthBar cons_pooled_size:CGSizeMake(game_screen().width-10, 15) anchor:ccp(0,0)];
 	[_boss_health_bar setPosition:game_screen_anchor_offset(ScreenAnchor_BL, ccp(5,5))];
 	[self addChild:_boss_health_bar];
 	[_boss_health_bar set_pct:0.5];
@@ -74,88 +139,6 @@ typedef enum _GameUIBossIntroMode {
 	_particles = [ParticleSystem cons_anchor:self];
 	_current_boss_mode = GameUIBossIntroMode_None;
 	
-	_enemy_ui_health_indicators = [EnemyUIHealthIndicators cons:game];
-	[self addChild:_enemy_ui_health_indicators];
-	
-	_enemy_warning_ui = [EnemyWarningUI cons:game];
-	[self addChild:_enemy_warning_ui];
-	
-	CGRect heart_size = [FileCache get_cgrect_from_plist:TEX_HUD_SPRITESHEET idname:@"heart_fill.png"];
-	_player_health_ui = [PlayerUIHealthIndicator cons:game];
-	[_player_health_ui setPosition:game_screen_anchor_offset(ScreenAnchor_TL, ccp((heart_size.size.width*0.5 + 3),-(heart_size.size.height*0.5 + 3)))];
-	[self addChild:_player_health_ui];
-	
-	_player_arrows_indicator = [PlayerUIArrowsIndicator cons:game];
-	[self addChild:_player_arrows_indicator];
-	
-	_player_charge_ui = [PlayerChargeIndicator cons];
-	[self addChild:_player_charge_ui];
-	
-	_player_aim_reticule = [PlayerUIAimReticule cons];
-	[self addChild:_player_aim_reticule];
-	
-    _villageUI = [VillageUI cons:game];
-    [self addChild:_villageUI];
-    
-	return self;
-}
-
--(void)start_boss:(NSString*)title sub:(NSString*)sub {
-	[_particles add_particle:[UIBossIntroParticle cons_header:title sub:sub]];
-	_current_boss_mode = GameUIBossIntroMode_FillInToBoss;
-	_boss_fillin_pct = 0;
-	[_boss_health_bar setVisible:YES];
-	[_boss_health_label setString:title];
-}
-//
-
-//TODO -- these should be done as events instead
--(void)flash_red {
-	[_red_flash_overlay setOpacity:0.5];
-}
-
--(void)hold_reticule_visible:(float)variance {
-	[_player_aim_reticule hold_visible:variance];
-}
-
--(void)fadeout:(BOOL)tar {
-	_tar_black_fadeout_overlay_alpha = tar?1:0;
-}
--(BOOL)is_faded_out {
-	return _black_fadeout_overlay.opacity >= 1;
-}
--(BOOL)is_faded_in {
-	return _black_fadeout_overlay.opacity <= 0;
-}
--(void)pulse_heart_lastfill {
-	[_player_health_ui pulse_heart_lastfill];
-}
-
--(void)set_charge_pct:(float)pct g:(GameEngineScene*)g {
-	[_player_charge_ui set_pct:pct g:g];
-}
-
--(void)charge_fail {
-	[_player_charge_ui fadeout_fail];
-}
-
--(void)i_update:(GameEngineScene*)game {
-	[_player_charge_ui i_update:game];
-	[self update_boss_ui:game];
-	[_enemy_ui_health_indicators i_update:game];
-	[_enemy_warning_ui i_update:game];
-	[_player_health_ui i_update:game];
-	[_particles update_particles:self];
-	[_red_flash_overlay setOpacity:MAX(0,_red_flash_overlay.opacity-0.025*dt_scale_get())];
-	[_black_fadeout_overlay setOpacity:(_tar_black_fadeout_overlay_alpha>0.5)?MIN(1,_black_fadeout_overlay.opacity+0.01*dt_scale_get()):MAX(0,_black_fadeout_overlay.opacity-0.01*dt_scale_get())];
-	[_player_aim_reticule i_update:game];
-	[_player_arrows_indicator i_update:game];
-	
-	if ([game get_player_state] == PlayerState_OnGround) {
-        [_villageUI i_update:game];
-	}
-}
-
 //todo -- move me to new class
 -(void)update_boss_ui:(GameEngineScene*)game {
 	switch (_current_boss_mode) {
@@ -177,4 +160,11 @@ typedef enum _GameUIBossIntroMode {
 	}
 }
 
-@end
+-(void)start_boss:(NSString*)title sub:(NSString*)sub {
+	[_particles add_particle:[UIBossIntroParticle cons_header:title sub:sub]];
+	_current_boss_mode = GameUIBossIntroMode_FillInToBoss;
+	_boss_fillin_pct = 0;
+	[_boss_health_bar setVisible:YES];
+	[_boss_health_label setString:title];
+}
+*/

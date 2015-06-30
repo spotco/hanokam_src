@@ -17,6 +17,7 @@
 #import "SwordSlashParticle.h"
 #import "TouchTrackingLayer.h"
 #import "FlashEvery.h"
+#import "GEventDispatcher.h"
 
 @implementation InAirPlayerStateStack {
 	PlayerAirCombatParams *_air_params;
@@ -56,7 +57,7 @@
 	switch (e.type) {
 	case GEventType_BulletHitPlayer: {
 		[g.player add_health:-0.5 g:g];
-		[g.get_ui flash_red];
+		[g.get_event_dispatcher push_event:[GEvent cons_context:g type:GEventType_PlayerTakeDamage]];
 		[g.player play_anim:@"In Air Hurt" on_finish_anim:@"In Air Idle"];
 		[BaseAirEnemy particle_blood_effect:g pos:g.player.position ct:6];
 		_air_params._s_vel = ccp(_air_params._s_vel.x,5);
@@ -103,7 +104,7 @@
 		BaseAirEnemy *itr = e.target;
 		if (!itr.is_stunned) {
 			[g.player add_health:-0.5 g:g];
-			[g.get_ui flash_red];
+			[g.get_event_dispatcher push_event:[GEvent cons_context:g type:GEventType_PlayerTakeDamage]];
 			[g.player play_anim:@"In Air Hurt" on_finish_anim:@"In Air Idle"];
 			
 			[BaseAirEnemy particle_blood_effect:g pos:g.player.position ct:6];
@@ -181,7 +182,7 @@
 
 			} else {
 				if (g.get_control_manager.is_touch_down  && _air_params._arrows_left_ct > 0) {
-					if (g.get_control_manager.this_touch_can_proc_tap) [g.get_ui hold_reticule_visible:arrow_variance_angle];
+					if (g.get_control_manager.this_touch_can_proc_tap) [g.get_event_dispatcher push_event:[[GEvent cons_context:g type:GEventType_PlayerAimVariance] set_float_value:arrow_variance_angle]];
 					_air_params._hold_ct += dt_scale_get();
 					
 					CGPoint tap = g.get_control_manager.get_proc_tap;
@@ -308,7 +309,7 @@
 			
 			if (g.player.shared_params._s_pos.y < -50) {
 				[g.player add_health:-0.25 g:g];
-				[g.get_ui flash_red];
+				[g.get_event_dispatcher push_event:[GEvent cons_context:g type:GEventType_PlayerTakeDamage]];
 				[g shake_for:10 distance:5];
 				_air_params._w_upwards_vel = 0;
 				_air_params._s_vel = CGPointZero;

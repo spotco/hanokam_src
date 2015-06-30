@@ -10,6 +10,7 @@
 #import "PlayerLandParams.h"
 #import "DivePlayerStateStack.h"
 #import "GameMain.h"
+#import "GEventDispatcher.h"
 
 @implementation OnGroundPlayerStateStack {
 	PlayerLandParams *_land_params;
@@ -34,16 +35,14 @@
 			[g set_zoom:drpt(g.get_zoom,1,1/20.0)];
 			[g set_camera_height:drpt(g.get_current_camera_center_y,150,1/20.0)];
 			if (g.player.get_current_health < g.player.get_max_health) {
-				_land_params._health_restore_ct += dt_scale_get();
-				if (_land_params._health_restore_ct > 15) {
-					_land_params._health_restore_ct = 0;
-					[g.player add_health:0.25 g:g];
-				}
+				[g.player set_health:g.player.get_max_health];
 			}
 			if (g.get_control_manager.is_touch_down) {
 				[g.player play_anim:@"Prep Dive" repeat:NO];
 				_land_params._prep_dive_hold_ct += dt_scale_get();
-				[g.get_ui set_charge_pct:_land_params._prep_dive_hold_ct/_land_params.PREP_DIVE_HOLD_TIME g:g];
+				[g.get_event_dispatcher push_event:[[GEvent cons_context:g type:GEventType_PlayerChargePct] set_float_value:_land_params._prep_dive_hold_ct/_land_params.PREP_DIVE_HOLD_TIME]];
+				
+				
 				if (_land_params._prep_dive_hold_ct > _land_params.PREP_DIVE_HOLD_TIME) {
 					_land_params._current_mode = PlayerLandMode_LandToWater;
 					_land_params._vel = ccp(0,10 * dt_scale_get());
@@ -62,7 +61,7 @@
 #endif
             } else {
 				if (_land_params._prep_dive_hold_ct > 0) {
-					[g.get_ui charge_fail];
+					[g.get_event_dispatcher push_event:[GEvent cons_context:g type:GEventType_PlayerChargePct]];
 					_land_params._prep_dive_hold_ct = 0;
 				}
 				float vx = [g.player get_next_update_accel_x_position_delta:g];

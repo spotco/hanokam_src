@@ -16,9 +16,9 @@
 #import "SPAnimatedText.h"
 #import "SPAnimatedTextCharacter.h"
 
-CGFloat BG_HORIZONTAL_INSET = 10;
-CGFloat BG_VERTICAL_INSET = 10;
-CGFloat BG_SCREEN_HEIGHT_PERCENT = 0.33f;
+static CGFloat BG_HORIZONTAL_INSET = 10;
+static CGFloat BG_VERTICAL_INSET = 10;
+static CGFloat BG_SCREEN_HEIGHT_PERCENT = 0.33f;
 
 @interface DialogUI()
 @property (nonatomic, readwrite) DialogState state;
@@ -32,11 +32,15 @@ CGFloat BG_SCREEN_HEIGHT_PERCENT = 0.33f;
 
 #pragma mark - Constructors
 
-+(DialogUI*)cons:(GameEngineScene *)game withText:(NSString *)text {
-    return [(DialogUI*)[DialogUI node] cons:game withText:text];
++(DialogUI*)cons:(GameEngineScene *)game {
+    return [DialogUI node];
 }
 
--(DialogUI*)cons:(GameEngineScene*)game withText:(NSString *)text {
+-(DialogUI*)start:(GameEngineScene*)game withText:(NSString *)text {
+	
+	//TODO--let's make everything more reusable than this!!
+	[self removeAllChildrenWithCleanup:YES];
+	
     [self setAnchorPoint:ccp(0,0)];
     
     // Create background box for dialog
@@ -59,6 +63,7 @@ CGFloat BG_SCREEN_HEIGHT_PERCENT = 0.33f;
     
     // Initialize time variables
     t = 0;
+	self.state = DialogState_Entering;
     
     return self;
 }

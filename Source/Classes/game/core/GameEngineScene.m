@@ -221,15 +221,8 @@
 	[_ripples removeObjectsInArray:to_remove];
 }
 
-//static bool TEST_HAS_ACTIVATED_BOSS = false;
 -(void)update:(CCTime)delta {
 	dt_set(delta);
-	/*
-	if (!TEST_HAS_ACTIVATED_BOSS && _player.position.y <= self.get_ground_depth + 50) {
-		TEST_HAS_ACTIVATED_BOSS = YES;
-		[_ui start_boss:@"Big Bad Boss" sub:@"This guy mad."];
-	}
-	*/
 	
 	[_controls accel_report_x:[SPDeviceAccelerometer accel_x]];
 	

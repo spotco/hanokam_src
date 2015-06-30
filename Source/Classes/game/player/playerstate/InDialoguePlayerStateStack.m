@@ -26,8 +26,8 @@
     
     _with_character = character;
     
-    _dialogUI = [DialogUI cons:g withText:character.dialogueText];
-    [g.get_ui addChild:_dialogUI];
+    _dialogUI = (DialogUI*)[g.get_ui ui_for_playerstate:PlayerState_InDialogue];
+	[_dialogUI start:g withText:character.dialogueText];
     
     return self;
 }
@@ -35,9 +35,11 @@
 -(void)i_update:(GameEngineScene *)g {
     [g set_zoom:drpt(g.get_zoom,2.5,1/20.0)];
     [g set_camera_height:drpt(g.get_current_camera_center_y,g.player.position.y,1/20.0)];
-    
-    [_dialogUI i_update:g];
-    
+	
+	//note to kenny: the logic for advancing to another state should be in here
+	//and just any internal logic for displaying stuff should be in the DialogUI
+	//also logic for cycling through the strings too
+	
     if (_dialogUI.state == DialogState_CanRemove) {
         [g.player pop_state_stack:g];
     }
@@ -45,7 +47,11 @@
 
 -(void)on_state_end:(GameEngineScene *)game {
     [_with_character doneSpeaking];
-    [game.get_ui removeChild:_dialogUI];
+	_dialogUI = NULL;
+}
+
+-(PlayerState)get_state {
+	return PlayerState_InDialogue;
 }
 
 @end

@@ -1,19 +1,16 @@
-#import "CCNode.h"
-@class GameEngineScene;
-@interface GameUI : CCNode
-+(GameUI*)cons:(GameEngineScene*)game;
--(void)i_update:(GameEngineScene*)game;
+#import "GameEngineScene.h"
+#import "GEventDispatcher.h"
 
--(void)set_charge_pct:(float)pct g:(GameEngineScene*)g;
--(void)charge_fail;
+@interface GameUISubView : CCNode
+-(void)i_update:(GameEngineScene*)g;
+@end
 
--(void)flash_red;
--(void)hold_reticule_visible:(float)variance;
+@interface GameUI : CCNode <GEventListener>
++(GameUI*)cons:(GameEngineScene*)g;
+-(GameUISubView*)ui_for_playerstate:(PlayerState)state;
+-(void)i_update:(GameEngineScene*)g;
+
 -(void)fadeout:(BOOL)tar;
 -(BOOL)is_faded_out;
 -(BOOL)is_faded_in;
-
--(void)pulse_heart_lastfill;
-
--(void)start_boss:(NSString*)title sub:(NSString*)sub;
 @end

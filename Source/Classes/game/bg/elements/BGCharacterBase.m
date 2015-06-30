@@ -54,6 +54,7 @@ static CGFloat const TAP_RANGE = 50;
                     CGPoint p2 = [self convertToWorldSpace:CGPointZero];
                     if (CGPointDist(p1, p2) < TAP_RANGE) {
                         _state = BGCharacter_Speaking;
+						[g.get_control_manager clear_proc_tap]; //consume this tap, nobody else will see it
                         [g.player push_state_stack:[InDialoguePlayerStateStack cons:g withCharacter:self]];
                         break;
                     }

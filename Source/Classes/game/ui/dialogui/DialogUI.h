@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Apportable. All rights reserved.
 //
 
-#import "CCNode.h"
+#import "GameUI.h"
 
 @class GameEngineScene;
 
@@ -24,7 +24,7 @@ typedef enum {
  *
  *  Manages the display of conversation dialogs
  */
-@interface DialogUI : CCNode
+@interface DialogUI : GameUISubView
 
 @property (nonatomic, readonly) DialogState state;
 
@@ -34,14 +34,8 @@ typedef enum {
  *  @param  game        an object containing information about the current game state
  *  @param  text        the text to display
  */
-+(DialogUI*)cons:(GameEngineScene*)game withText:(NSString*)text;
-
-/**
- *  Update state, handles interactions with other elements in the game
- *
- *  @param  game        an object containing information about the current game state
- */
--(void)i_update:(GameEngineScene*)game;
++(DialogUI*)cons:(GameEngineScene *)game;
+-(DialogUI*)start:(GameEngineScene*)game withText:(NSString *)text;
 
 
 @end

@@ -54,7 +54,7 @@ CGFloat SPACE_WIDTH = 6;
         }
     }
     _animatedTextCharacters = [NSArray arrayWithArray:textCharacterArray];
-    
+    self.state = AnimatedTextState_Hidden;
     return self;
 }
 
