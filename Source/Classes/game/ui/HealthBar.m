@@ -62,4 +62,7 @@
 -(void)repool {
 	[ObjectPool repool:self class:[HealthBar class]];
 }
+-(CGRect)boundingBox {
+    return _hpbar_back.boundingBox;
+}
 @end

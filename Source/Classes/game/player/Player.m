@@ -29,16 +29,13 @@
 	
 	PlayerSharedParams *_player_shared_params;
 	NSMutableArray *_player_state_stack;
-		
-	float _current_health;
-	int _max_health;
 }
 
 +(Player*)cons_g:(GameEngineScene*)g {
 	return [[Player node] cons_g:g];
 }
 -(Player*)cons_g:(GameEngineScene*)g {
-	_player_shared_params = [[PlayerSharedParams alloc] init];
+    _player_shared_params = [PlayerSharedParams cons];
 	_player_state_stack = [NSMutableArray array];
 	
 	SpriterData *data = [SpriterData cons_data_from_spritesheetreaders:@[
@@ -64,9 +61,6 @@
 	
 	_player_shared_params._calc_accel_x_pos = game_screen().width/2;
 	_player_shared_params._reset_to_center = YES;
-	
-	_max_health = 3;
-	_current_health = _max_health;
 	
 	return self;
 }
@@ -119,14 +113,6 @@
 }
 
 -(void)swordplant_streak_set_visible:(BOOL)tar { _swordplant_streak_root.visible = tar; }
-
--(void)set_health:(float)val { _current_health = val; }
--(void)add_health:(float)val g:(GameEngineScene*)g {
-	_current_health += val;
-	[g.get_event_dispatcher push_event:[GEvent cons_context:g type:GeventType_PlayerHealthHeal]];
-}
--(int)get_max_health { return _max_health; }
--(float)get_current_health { return _current_health; }
 
 -(void)i_update:(GameEngineScene*)g {
 	if (self.get_player_state == PlayerState_OnGround && [g.player.get_top_state on_land:g]) {

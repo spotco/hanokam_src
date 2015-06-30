@@ -5,7 +5,7 @@
 
 @class GameEngineScene;
 @class PlayerLandParams;
-@class PlayerSharedParams;
+#import "PlayerSharedParams.h"
 @class SpriterNode;
 @class BasePlayerStateStack;
 
@@ -17,11 +17,6 @@
 -(BOOL)is_underwater:(GameEngineScene*)g;
 -(HitRect)get_hit_rect;
 -(CGPoint)get_center;
-
--(void)add_health:(float)val g:(GameEngineScene*)g;
--(void)set_health:(float)val;
--(int)get_max_health;
--(float)get_current_health;
 
 -(PlayerState)get_player_state;
 -(BasePlayerStateStack*)get_top_state;

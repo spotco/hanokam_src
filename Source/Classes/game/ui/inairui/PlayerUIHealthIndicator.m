@@ -52,7 +52,7 @@ void calc_r_i_pos(CGRect r_full, CGRect *r_i) {
 	CGRect r_i[4];
 	calc_r_i_pos(r_full, r_i);
 	
-	for (int i = 0; i < g.player.get_max_health; i++) {
+	for (int i = 0; i < g.player.shared_params.get_max_health; i++) {
 		UIHealthHeart *itr_backfill_spr = [UIHealthHeart spriteWithTexture:[Resource get_tex:TEX_HUD_SPRITESHEET] rect:img_rect];
 		[itr_backfill_spr setPosition:ccp(i*(img_rect.size.width+2),0)];
 		[self addChild:itr_backfill_spr];
@@ -86,15 +86,15 @@ void calc_r_i_pos(CGRect r_full, CGRect *r_i) {
 	
 	int i = 1;
 	UIHealthHeart *rtv;
-	for (;i<g.player.get_current_health+1 && i<_fill_spr.count+1;i++) {
+	for (;i<g.player.shared_params.get_current_health+1 && i<_fill_spr.count+1;i++) {
 		UIHealthHeart *itr = _fill_spr[i-1];
-		if (i <= floor(g.player.get_current_health)) {
+		if (i <= floor(g.player.shared_params.get_current_health)) {
 			itr._h0.textureRect = r_i[0];
 			itr._h1.textureRect = r_i[1];
 			itr._h2.textureRect = r_i[2];
 			itr._h3.textureRect = r_i[3];
 		} else {
-			float pct = (g.player.get_current_health - floor(g.player.get_current_health));
+			float pct = (g.player.shared_params.get_current_health - floor(g.player.shared_params.get_current_health));
 			itr._h0.textureRect = pct > 0 ? r_i[0] : CGRectZero;
 			itr._h1.textureRect = pct > 0.25 ? r_i[1] : CGRectZero;
 			itr._h2.textureRect = pct > 0.5 ? r_i[2] : CGRectZero;
@@ -102,7 +102,7 @@ void calc_r_i_pos(CGRect r_full, CGRect *r_i) {
 		}
 		rtv = itr;
 	}
-	for (;i<g.player.get_max_health+1 && i<_fill_spr.count+1;i++) {
+	for (;i<g.player.shared_params.get_max_health+1 && i<_fill_spr.count+1;i++) {
 		UIHealthHeart *itr = _fill_spr[i-1];
 		itr._h0.textureRect = itr._h1.textureRect = itr._h2.textureRect = itr._h3.textureRect = CGRectZero;
 	}

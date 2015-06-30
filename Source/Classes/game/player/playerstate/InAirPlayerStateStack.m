@@ -40,6 +40,7 @@
 	_air_params._invuln_ct = 0;
 	_air_params._target_rotation = 0;
 	_arrow_restore_tick = [FlashEvery cons_time:3];
+    [g.player.shared_params set_health:g.player.shared_params.get_max_health];
 	
 	[g.get_event_dispatcher add_listener:self];
 	return self;
@@ -56,7 +57,7 @@
 	GameEngineScene *g = e.context;
 	switch (e.type) {
 	case GEventType_BulletHitPlayer: {
-		[g.player add_health:-0.5 g:g];
+		[g.player.shared_params add_health:-0.5 g:g];
 		[g.get_event_dispatcher push_event:[GEvent cons_context:g type:GEventType_PlayerTakeDamage]];
 		[g.player play_anim:@"In Air Hurt" on_finish_anim:@"In Air Idle"];
 		[BaseAirEnemy particle_blood_effect:g pos:g.player.position ct:6];
@@ -103,7 +104,7 @@
 	case GEventType_PlayerTouchEnemy: {
 		BaseAirEnemy *itr = e.target;
 		if (!itr.is_stunned) {
-			[g.player add_health:-0.5 g:g];
+			[g.player.shared_params add_health:-0.5 g:g];
 			[g.get_event_dispatcher push_event:[GEvent cons_context:g type:GEventType_PlayerTakeDamage]];
 			[g.player play_anim:@"In Air Hurt" on_finish_anim:@"In Air Idle"];
 			
@@ -308,7 +309,7 @@
 			);
 			
 			if (g.player.shared_params._s_pos.y < -50) {
-				[g.player add_health:-0.25 g:g];
+				[g.player.shared_params add_health:-0.25 g:g];
 				[g.get_event_dispatcher push_event:[GEvent cons_context:g type:GEventType_PlayerTakeDamage]];
 				[g shake_for:10 distance:5];
 				_air_params._w_upwards_vel = 0;
@@ -317,7 +318,7 @@
 				_air_params._current_mode = PlayerAirCombatMode_RescueBackToTop;
 				[g.player play_anim:@"in air" repeat:YES];
 				
-				if (g.player.get_current_health > 0) {
+				if (g.player.shared_params.get_current_health > 0) {
 					_rescue_anim = [ChainedMovementParticle cons];
 					[_rescue_anim setTexture:[Resource get_tex:TEX_PARTICLES_SPRITESHEET]];
 					[_rescue_anim setTextureRect:[FileCache get_cgrect_from_plist:TEX_PARTICLES_SPRITESHEET idname:@"grey_particle"]];
@@ -364,7 +365,7 @@
 		break;
 	}
 	
-	if (g.player.get_current_health <= 0 && _air_params._current_mode != PlayerAirCombatMode_FallToGround) {
+	if (g.player.shared_params.get_current_health <= 0 && _air_params._current_mode != PlayerAirCombatMode_FallToGround) {
 		_air_params._current_mode = PlayerAirCombatMode_FallToGround;
 	}
 	

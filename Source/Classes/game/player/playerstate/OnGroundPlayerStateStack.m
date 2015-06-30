@@ -34,9 +34,6 @@
 		case PlayerLandMode_OnDock:;
 			[g set_zoom:drpt(g.get_zoom,1,1/20.0)];
 			[g set_camera_height:drpt(g.get_current_camera_center_y,150,1/20.0)];
-			if (g.player.get_current_health < g.player.get_max_health) {
-				[g.player set_health:g.player.get_max_health];
-			}
 			if (g.get_control_manager.is_touch_down) {
 				[g.player play_anim:@"Prep Dive" repeat:NO];
 				_land_params._prep_dive_hold_ct += dt_scale_get();

@@ -26,6 +26,7 @@
 	_underwater_params._current_mode = PlayerUnderwaterCombatMode_TransitionIn;
 	_underwater_params._anim_ct = 0;
 	_underwater_params._initial_camera_offset = _underwater_params._camera_offset;
+    [g.player.shared_params set_breath:g.player.shared_params.get_max_breath];
 	[g.player read_s_pos:g];
 	
 	return self;
@@ -93,6 +94,12 @@
 					_underwater_params._dash_ct += 20;
 				}
 			}
+            
+            [g.player.shared_params set_breath:g.player.shared_params.get_current_breath-dt_scale_get()];
+            if (g.player.shared_params.get_current_breath <= 0 || g.player.position.y > g.get_viewbox.y2) {
+                [g.player pop_state_stack:g];
+                [g.player push_state_stack:[DiveReturnPlayerStateStack cons:g waterparams:_underwater_params]];
+            }
 			
 			if (g.get_control_manager.is_touch_down) {
 				_underwater_params._camera_offset = drpt(_underwater_params._camera_offset, _underwater_params.DEFAULT_OFFSET, 1/15.0);
@@ -107,11 +114,6 @@
 				}
 			}
 			[g set_camera_height:MIN(g.player.position.y + _underwater_params._camera_offset, g.get_current_camera_center_y)];
-			
-			if (g.player.position.y > g.get_viewbox.y2) {
-				[g.player pop_state_stack:g];
-				[g.player push_state_stack:[DiveReturnPlayerStateStack cons:g waterparams:_underwater_params]];
-			}
 			
 			g.player.position = ccp(g.player.position.x,clampf(g.player.position.y + _underwater_params._vel.y * dt_scale_get(),g.get_ground_depth,0));
 			[g.player read_s_pos:g];

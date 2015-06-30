@@ -20,9 +20,7 @@
 
 -(AirToGroundTransitionPlayerStateStack*)cons:(GameEngineScene*)g {
 	_land_params = [[PlayerLandParams alloc] init];
-	
-	[g.player set_health:0];
-	[g.player add_health:0.25 g:g];
+    
 	[g imm_set_camera_hei:0];
 	g.player.position = ccp(g.player.position.x,300);
 	g.player.rotation = 0;
