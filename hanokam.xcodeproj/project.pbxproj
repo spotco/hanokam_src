@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		20E087CA1B43607A00AD486A /* UnderwaterBubbleParticle.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E087C91B43607A00AD486A /* UnderwaterBubbleParticle.m */; };
+		20E087CB1B43607A00AD486A /* UnderwaterBubbleParticle.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E087C91B43607A00AD486A /* UnderwaterBubbleParticle.m */; };
+		20E087CC1B43607A00AD486A /* UnderwaterBubbleParticle.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E087C91B43607A00AD486A /* UnderwaterBubbleParticle.m */; };
+		20E087D11B4362A800AD486A /* DelayAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E087D01B4362A800AD486A /* DelayAction.m */; };
+		20E087D21B4362A800AD486A /* DelayAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E087D01B4362A800AD486A /* DelayAction.m */; };
+		20E087D31B4362A800AD486A /* DelayAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E087D01B4362A800AD486A /* DelayAction.m */; };
+		20E087D61B43660200AD486A /* RippleInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E087D51B43660200AD486A /* RippleInfo.m */; };
+		20E087D71B43660200AD486A /* RippleInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E087D51B43660200AD486A /* RippleInfo.m */; };
+		20E087D81B43660200AD486A /* RippleInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E087D51B43660200AD486A /* RippleInfo.m */; };
 		5B121030197484FA004C1E1D /* hanokamActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B12102F197484FA004C1E1D /* hanokamActivity.m */; };
 		5B121038197487F2004C1E1D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B737893E1807617C0076A88C /* AppDelegate.m */; };
 		7A40360419DDEE84007B6E8F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A40360319DDEE84007B6E8F /* main.m */; };
@@ -555,6 +564,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		20E087C81B43607A00AD486A /* UnderwaterBubbleParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnderwaterBubbleParticle.h; sourceTree = "<group>"; };
+		20E087C91B43607A00AD486A /* UnderwaterBubbleParticle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnderwaterBubbleParticle.m; sourceTree = "<group>"; };
+		20E087CF1B4362A800AD486A /* DelayAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DelayAction.h; sourceTree = "<group>"; };
+		20E087D01B4362A800AD486A /* DelayAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DelayAction.m; sourceTree = "<group>"; };
+		20E087D41B43660200AD486A /* RippleInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RippleInfo.h; sourceTree = "<group>"; };
+		20E087D51B43660200AD486A /* RippleInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RippleInfo.m; sourceTree = "<group>"; };
 		5B12100919748273004C1E1D /* libEGL.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libEGL.so; path = /usr/lib/armv7a/libEGL.so; sourceTree = SDKROOT; };
 		5B12100F197483EE004C1E1D /* ic_launcher.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_launcher.png; sourceTree = "<group>"; };
 		5B121011197483EE004C1E1D /* ic_launcher.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_launcher.png; sourceTree = "<group>"; };
@@ -1184,6 +1199,8 @@
 				7ED822131B13D258001BB249 /* BGWater.h */,
 				7ED822141B13D258001BB249 /* BGWater.m */,
 				7ED822151B13D258001BB249 /* elements */,
+				20E087D41B43660200AD486A /* RippleInfo.h */,
+				20E087D51B43660200AD486A /* RippleInfo.m */,
 			);
 			path = bg;
 			sourceTree = "<group>";
@@ -1227,6 +1244,8 @@
 				7ED822331B13D258001BB249 /* UIBossIntroParticle.m */,
 				7E4F09921B24FC6B000945B8 /* SwordSlashParticle.h */,
 				7E4F09931B24FC6B000945B8 /* SwordSlashParticle.m */,
+				20E087C81B43607A00AD486A /* UnderwaterBubbleParticle.h */,
+				20E087C91B43607A00AD486A /* UnderwaterBubbleParticle.m */,
 			);
 			path = particle;
 			sourceTree = "<group>";
@@ -1340,6 +1359,8 @@
 				7E4F09A21B2523AE000945B8 /* SPCCSpriteAnimator.m */,
 				7EF34CF61B395FF400111963 /* ObjectPool.h */,
 				7EF34CF71B395FF400111963 /* ObjectPool.m */,
+				20E087CF1B4362A800AD486A /* DelayAction.h */,
+				20E087D01B4362A800AD486A /* DelayAction.m */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -2133,6 +2154,7 @@
 				7E4F09A51B2523AE000945B8 /* SPCCSpriteAnimator.m in Sources */,
 				7EF5576C1B42A59E00992001 /* PlayerUIArrowsIndicator.m in Sources */,
 				7ED822F01B13D258001BB249 /* Common.m in Sources */,
+				20E087D81B43660200AD486A /* RippleInfo.m in Sources */,
 				7ED822AB1B13D258001BB249 /* ChainedMovementParticle.m in Sources */,
 				7ED8227E1B13D258001BB249 /* AirEnemyManager.m in Sources */,
 				7ED822F91B13D258001BB249 /* GEventDispatcher.m in Sources */,
@@ -2154,6 +2176,7 @@
 				7ED8230E1B13D258001BB249 /* SpriterNodeCache.m in Sources */,
 				7E386D3E1B23A59A00DDEFF6 /* DivePlayerStateStack.m in Sources */,
 				7ED822A21B13D258001BB249 /* GameEngineScene.m in Sources */,
+				20E087CC1B43607A00AD486A /* UnderwaterBubbleParticle.m in Sources */,
 				7ED822CC1B13D258001BB249 /* PlayerProjectile.m in Sources */,
 				BB771B1F1B23F764002BA595 /* InDialoguePlayerStateStack.m in Sources */,
 				7EF557691B42A59E00992001 /* PlayerUIAimReticule.m in Sources */,
@@ -2188,6 +2211,7 @@
 				7ED822D81B13D258001BB249 /* GameMain.m in Sources */,
 				7EF5575D1B42A59E00992001 /* DiveUI.m in Sources */,
 				7E4F09B71B258CA2000945B8 /* Arrow.m in Sources */,
+				20E087D31B4362A800AD486A /* DelayAction.m in Sources */,
 				7ECCC6661B3D27F0006A70B9 /* EnemyProjectile.m in Sources */,
 				7ED822BA1B13D258001BB249 /* RotateFadeOutParticle.m in Sources */,
 				7ED823051B13D258001BB249 /* SpriterData.m in Sources */,
@@ -2216,6 +2240,7 @@
 				7ED822831B13D258001BB249 /* PufferBasicAirEnemy.m in Sources */,
 				7ED822AA1B13D258001BB249 /* ChainedMovementParticle.m in Sources */,
 				7ED822951B13D258001BB249 /* BGCharacterOldMan.m in Sources */,
+				20E087CB1B43607A00AD486A /* UnderwaterBubbleParticle.m in Sources */,
 				7E4F09A41B2523AE000945B8 /* SPCCSpriteAnimator.m in Sources */,
 				7ED822CE1B13D258001BB249 /* GameUI.m in Sources */,
 				7EFEE79F1B1F06970055C989 /* SPRadialFillSprite.m in Sources */,
@@ -2240,6 +2265,7 @@
 				7E8377681B14636300EFC0D9 /* SPDeviceAccelerometer.m in Sources */,
 				7ED823131B13D258001BB249 /* SpriterUtil.m in Sources */,
 				7ED823191B13D258001BB249 /* TouchTrackingLayer.m in Sources */,
+				20E087D71B43660200AD486A /* RippleInfo.m in Sources */,
 				7ED822A11B13D258001BB249 /* GameEngineScene.m in Sources */,
 				7ED823FE1B13DD59001BB249 /* md5.c in Sources */,
 				7EF5576B1B42A59E00992001 /* PlayerUIArrowsIndicator.m in Sources */,
@@ -2270,6 +2296,7 @@
 				7ED822921B13D258001BB249 /* BGWater.m in Sources */,
 				7EF5575C1B42A59E00992001 /* DiveUI.m in Sources */,
 				7E4F09B11B258C9A000945B8 /* ChargedArrow.m in Sources */,
+				20E087D21B4362A800AD486A /* DelayAction.m in Sources */,
 				7EF557591B42A59E00992001 /* DialogUI.m in Sources */,
 				7ED822F21B13D258001BB249 /* DataStore.m in Sources */,
 				7ED822981B13D258001BB249 /* BGCharacterTest.m in Sources */,
@@ -2290,6 +2317,7 @@
 				7E386D411B23A75F00DDEFF6 /* DiveReturnPlayerStateStack.m in Sources */,
 				7E386D3C1B23A59A00DDEFF6 /* DivePlayerStateStack.m in Sources */,
 				7ED823151B13D258001BB249 /* SpriterXMLParser.m in Sources */,
+				20E087D61B43660200AD486A /* RippleInfo.m in Sources */,
 				7EF5575E1B42A59E00992001 /* EnemyUIHealthIndicators.m in Sources */,
 				7ED822821B13D258001BB249 /* PufferBasicAirEnemy.m in Sources */,
 				7ED822911B13D258001BB249 /* BGWater.m in Sources */,
@@ -2345,12 +2373,14 @@
 				7EF5576D1B42A59E00992001 /* PlayerUIHealthIndicator.m in Sources */,
 				7ED823001B13D258001BB249 /* ShaderManager.m in Sources */,
 				7EF5576A1B42A59E00992001 /* PlayerUIArrowsIndicator.m in Sources */,
+				20E087CA1B43607A00AD486A /* UnderwaterBubbleParticle.m in Sources */,
 				7ED822BE1B13D258001BB249 /* Player.m in Sources */,
 				7ED823FD1B13DD59001BB249 /* md5.c in Sources */,
 				7E4F09991B250E06000945B8 /* FlashEvery.m in Sources */,
 				7ED823121B13D258001BB249 /* SpriterUtil.m in Sources */,
 				7E386D4B1B23AB9900DDEFF6 /* AirToGroundTransitionPlayerStateStack.m in Sources */,
 				7ED822FA1B13D258001BB249 /* PolyLib.m in Sources */,
+				20E087D11B4362A800AD486A /* DelayAction.m in Sources */,
 				7ED8231E1B13D258001BB249 /* WebRequest.m in Sources */,
 				7ED822F11B13D258001BB249 /* DataStore.m in Sources */,
 				7ED822F41B13D258001BB249 /* FileCache.m in Sources */,

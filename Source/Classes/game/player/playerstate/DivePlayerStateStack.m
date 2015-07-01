@@ -9,9 +9,12 @@
 #import "DivePlayerStateStack.h"
 #import "PlayerUnderwaterCombatParams.h"
 #import "DiveReturnPlayerStateStack.h"
+#import "UnderwaterBubbleParticle.h"
+#import "FlashEvery.h"
 
 @implementation DivePlayerStateStack {
 	PlayerUnderwaterCombatParams *_underwater_params;
+    FlashEvery *_bubble_every;
 }
 
 +(DivePlayerStateStack*)cons:(GameEngineScene*)g {
@@ -28,6 +31,9 @@
 	_underwater_params._initial_camera_offset = _underwater_params._camera_offset;
     [g.player.shared_params set_breath:g.player.shared_params.get_max_breath];
 	[g.player read_s_pos:g];
+    [self proc_multiple_bubbles2:g];
+    
+    _bubble_every = [FlashEvery cons_time:30];
 	
 	return self;
 }
@@ -45,7 +51,7 @@
 			_underwater_params._anim_ct += 0.025 * dt_scale_get();
 			[g.player read_s_pos:g];
 			if (_underwater_params._anim_ct >= 1) _underwater_params._current_mode = PlayerUnderwaterCombatMode_MainGame;
-			
+            
 		break;
 		case PlayerUnderwaterCombatMode_MainGame:;
 			[g set_zoom:drpt(g.get_zoom,1,1/20.0)];
@@ -92,13 +98,21 @@
 					_underwater_params._dashing = YES;
 					_underwater_params._vel = vec_to_cgpoint(vec_scale(swipe_dir, spd));
 					_underwater_params._dash_ct += 20;
+                    [self proc_multiple_bubbles:g];
 				}
 			}
+            
+            [_bubble_every i_update:dt_scale_get()];
+            if ([_bubble_every do_flash]) {
+                (int_random(0, 4) == 0) ? [_bubble_every set_time:float_random(1, 3)] : [_bubble_every set_time:float_random(20, 40)];
+                [self proc_bubble:g];
+            }
             
             [g.player.shared_params set_breath:g.player.shared_params.get_current_breath-dt_scale_get()];
             if (g.player.shared_params.get_current_breath <= 0 || g.player.position.y > g.get_viewbox.y2) {
                 [g.player pop_state_stack:g];
                 [g.player push_state_stack:[DiveReturnPlayerStateStack cons:g waterparams:_underwater_params]];
+                [self proc_multiple_bubbles:g];
             }
 			
 			if (g.get_control_manager.is_touch_down) {
@@ -130,6 +144,27 @@
 	
 	float tar_rotation = vec_ang_deg_lim180(vec_cons(low_filter(g.player.position.x - last_pos.x,0.25),low_filter(g.player.position.y - last_pos.y,0.25), 0),90);
 	g.player.rotation += shortest_angle(g.player.rotation, tar_rotation) * 0.25;
+}
+
+-(void)proc_multiple_bubbles:(GameEngineScene*)g {
+    [self proc_bubble:g];
+    DO_FOR(8,
+        [g add_delayed_action:[DelayAction cons_in:float_random(0, 12) action:^(){
+            CGPoint pos = CGPointAdd(g.player.position, ccp(float_random(-5, 5),float_random(-5, 5)));
+            [g add_particle:[UnderwaterBubbleParticle cons_start:pos end:CGPointAdd(pos, ccp(0,100+float_random(-50, 50)))]];
+        }]];
+    );
+}
+-(void)proc_multiple_bubbles2:(GameEngineScene*)g {
+    DO_FOR(25,
+           [g add_delayed_action:[DelayAction cons_in:float_random(10, 35) action:^(){
+        CGPoint pos = CGPointAdd(g.player.position, ccp(float_random(-25, 25),float_random(-25, 25)));
+        [g add_particle:[UnderwaterBubbleParticle cons_start:pos end:CGPointAdd(pos, ccp(0,100+float_random(-50, 50)))]];
+    }]];
+    );
+}
+-(void)proc_bubble:(GameEngineScene*)g {
+    [g add_particle:[UnderwaterBubbleParticle cons_start:g.player.position end:CGPointAdd(g.player.position, ccp(0,100+float_random(-80, 10)))]];
 }
 
 -(PlayerState)get_state {

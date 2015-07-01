@@ -12,4 +12,5 @@
 +(FlashEvery*)cons_time:(float)time;
 -(void)i_update:(float)time_scale;
 -(BOOL)do_flash;
+-(void)set_time:(float)time;
 @end

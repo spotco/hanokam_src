@@ -1,5 +1,7 @@
 #import "cocos2d.h"
 #import "Common.h"
+#import "RippleInfo.h"
+#import "DelayAction.h"
 
 @class GameObject;
 @class Particle;
@@ -27,6 +29,7 @@ typedef enum _PlayerState {
 typedef enum _GameAnchorZ {
 	GameAnchorZ_DebugDraw = 999,
 	GameAnchorZ_BGSky_SurfaceReflection = 100,
+    GameAnchorZ_UnderwaterForegroundElements = 83,
 	GameAnchorZ_PlayerAirEffects = 82,
 	GameAnchorZ_Enemies_Air = 81,
 	GameAnchorZ_PlayerProjectiles = 80,
@@ -52,11 +55,6 @@ typedef enum _GameAnchorZ {
 	GameAnchorZ_BGWater_Elements = -12,
 	GameAnchorZ_BGWater_RepeatBG = -13
 } GameAnchorZ;
-
-@interface RippleInfo : NSObject
--(void)render_reflected:(CCSprite*)proto offset:(CGPoint)offset scymult:(float)scymult;
--(void)render_default:(CCSprite*)proto offset:(CGPoint)offset scymult:(float)scymult;
-@end
 
 @interface GameEngineScene : CCScene
 
@@ -100,6 +98,8 @@ typedef enum _GameAnchorZ {
 -(CCSprite*)get_ripple_proto;
 -(BGVillage*)get_bg_village;
 -(GEventDispatcher*)get_event_dispatcher;
+
+-(void)add_delayed_action:(DelayAction*)delayed_action;
 
 -(void)add_player_projectile:(PlayerProjectile*)tar;
 -(void)add_enemy_projectile:(EnemyProjectile*)tar;

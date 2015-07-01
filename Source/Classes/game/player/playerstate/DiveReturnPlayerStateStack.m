@@ -9,9 +9,13 @@
 #import "DiveReturnPlayerStateStack.h"
 #import "PlayerUnderwaterCombatParams.h"
 #import "InAirPlayerStateStack.h"
+#import "GameEngineScene.h"
+#import "UnderwaterBubbleParticle.h"
+#import "FlashEvery.h"
 
 @implementation DiveReturnPlayerStateStack {
 	PlayerUnderwaterCombatParams *_underwater_params;
+    FlashEvery *_bubble_every;
 }
 
 +(DiveReturnPlayerStateStack*)cons:(GameEngineScene*)g waterparams:(PlayerUnderwaterCombatParams *)waterparams {
@@ -20,6 +24,8 @@
 
 -(DiveReturnPlayerStateStack*)cons:(GameEngineScene*)g waterparams:(PlayerUnderwaterCombatParams *)waterparams  {
 	_underwater_params = waterparams;
+    [g.player play_anim:@"Swim" repeat:YES];
+    _bubble_every = [FlashEvery cons_time:4];
 	return self;
 }
 
@@ -44,6 +50,16 @@
 	[g.player read_s_pos:g];
 	[g set_camera_height:g.player.position.y + _underwater_params._camera_offset];
 	[g set_zoom:drpt(g.get_zoom,1.5,1/20.0)];
+    
+    [_bubble_every i_update:dt_scale_get()];
+    if ([_bubble_every do_flash] && _underwater_params._vel.y > 10) {
+        [self proc_bubble:g];
+    }
+}
+
+-(void)proc_bubble:(GameEngineScene*)g {
+    CGPoint pos = CGPointAdd(g.player.position, ccp(float_random(-10, 10),float_random(-15, 5)));
+    [g add_particle:[UnderwaterBubbleParticle cons_start:pos end:CGPointAdd(pos, ccp(0,200))]];
 }
 
 -(PlayerState)get_state {

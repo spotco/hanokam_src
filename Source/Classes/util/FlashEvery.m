@@ -19,6 +19,9 @@
 	_time = 0;
 	return self;
 }
+-(void)set_time:(float)time {
+    _max_time = time;
+}
 -(void)i_update:(float)time_scale {
 	_time -= time_scale;
 }
