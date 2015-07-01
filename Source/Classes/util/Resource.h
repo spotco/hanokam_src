@@ -34,10 +34,4 @@
 #define TEX_HUD_SPRITESHEET @"hud_spritesheet"
 #define TEX_GAMEPLAY_ELEMENTS @"gameplay_elements_ss"
 
-//todo -- move below to spritesheets
-#define TEX_SH_BUTTON_MIDDLE @"sh_button_middle"
-#define TEX_SH_BUTTON_SIDE @"sh_button_side"
-#define TEX_TEST_SH_ITEM @"sh_test_item"
-
-
 @end

@@ -50,6 +50,21 @@
 		7A97910819E62F84001FFC4D /* libcocos2dAndroid.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A97910019E62E40001FFC4D /* libcocos2dAndroid.a */; };
 		7A97911719E631C6001FFC4D /* libcocos2d-mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A97910419E62E40001FFC4D /* libcocos2d-mac.a */; };
 		7A97911819E631CD001FFC4D /* libcocos2d.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A9790FE19E62E40001FFC4D /* libcocos2d.a */; };
+		7E0D6D3B1B43C51B00F2023F /* WaterEnemyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E0D6D3A1B43C51B00F2023F /* WaterEnemyManager.m */; };
+		7E0D6D3C1B43C51B00F2023F /* WaterEnemyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E0D6D3A1B43C51B00F2023F /* WaterEnemyManager.m */; };
+		7E0D6D3D1B43C51B00F2023F /* WaterEnemyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E0D6D3A1B43C51B00F2023F /* WaterEnemyManager.m */; };
+		7E0D6D401B43C9B400F2023F /* BasicWaterEnemy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E0D6D3F1B43C9B400F2023F /* BasicWaterEnemy.m */; };
+		7E0D6D411B43C9B400F2023F /* BasicWaterEnemy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E0D6D3F1B43C9B400F2023F /* BasicWaterEnemy.m */; };
+		7E0D6D421B43C9B400F2023F /* BasicWaterEnemy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E0D6D3F1B43C9B400F2023F /* BasicWaterEnemy.m */; };
+		7E0D6D451B43CA6800F2023F /* PufferBasicWaterEnemy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E0D6D441B43CA6800F2023F /* PufferBasicWaterEnemy.m */; };
+		7E0D6D461B43CA6800F2023F /* PufferBasicWaterEnemy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E0D6D441B43CA6800F2023F /* PufferBasicWaterEnemy.m */; };
+		7E0D6D471B43CA6800F2023F /* PufferBasicWaterEnemy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E0D6D441B43CA6800F2023F /* PufferBasicWaterEnemy.m */; };
+		7E0D6D4B1B43CE5100F2023F /* PufferEnemySprite.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E0D6D4A1B43CE5100F2023F /* PufferEnemySprite.m */; };
+		7E0D6D4C1B43CE5100F2023F /* PufferEnemySprite.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E0D6D4A1B43CE5100F2023F /* PufferEnemySprite.m */; };
+		7E0D6D4D1B43CE5100F2023F /* PufferEnemySprite.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E0D6D4A1B43CE5100F2023F /* PufferEnemySprite.m */; };
+		7E0D6D501B43DCB600F2023F /* EnemyNoticeParticle.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E0D6D4F1B43DCB600F2023F /* EnemyNoticeParticle.m */; };
+		7E0D6D511B43DCB600F2023F /* EnemyNoticeParticle.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E0D6D4F1B43DCB600F2023F /* EnemyNoticeParticle.m */; };
+		7E0D6D521B43DCB600F2023F /* EnemyNoticeParticle.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E0D6D4F1B43DCB600F2023F /* EnemyNoticeParticle.m */; };
 		7E386D1D1B239EDE00DDEFF6 /* BasePlayerStateStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E386D1C1B239EDE00DDEFF6 /* BasePlayerStateStack.m */; };
 		7E386D1E1B239EDE00DDEFF6 /* BasePlayerStateStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E386D1C1B239EDE00DDEFF6 /* BasePlayerStateStack.m */; };
 		7E386D1F1B239EDE00DDEFF6 /* BasePlayerStateStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E386D1C1B239EDE00DDEFF6 /* BasePlayerStateStack.m */; };
@@ -387,15 +402,6 @@
 		7ED823E11B13D2A6001BB249 /* ripple_effect.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 7ED8235A1B13D2A6001BB249 /* ripple_effect.vsh */; };
 		7ED823E21B13D2A6001BB249 /* ripple_effect.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 7ED8235A1B13D2A6001BB249 /* ripple_effect.vsh */; };
 		7ED823E31B13D2A6001BB249 /* ripple_effect.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 7ED8235A1B13D2A6001BB249 /* ripple_effect.vsh */; };
-		7ED823E41B13D2A6001BB249 /* sh_button_middle.png in Resources */ = {isa = PBXBuildFile; fileRef = 7ED8235C1B13D2A6001BB249 /* sh_button_middle.png */; };
-		7ED823E51B13D2A6001BB249 /* sh_button_middle.png in Resources */ = {isa = PBXBuildFile; fileRef = 7ED8235C1B13D2A6001BB249 /* sh_button_middle.png */; };
-		7ED823E61B13D2A6001BB249 /* sh_button_middle.png in Resources */ = {isa = PBXBuildFile; fileRef = 7ED8235C1B13D2A6001BB249 /* sh_button_middle.png */; };
-		7ED823E71B13D2A6001BB249 /* sh_button_side.png in Resources */ = {isa = PBXBuildFile; fileRef = 7ED8235D1B13D2A6001BB249 /* sh_button_side.png */; };
-		7ED823E81B13D2A6001BB249 /* sh_button_side.png in Resources */ = {isa = PBXBuildFile; fileRef = 7ED8235D1B13D2A6001BB249 /* sh_button_side.png */; };
-		7ED823E91B13D2A6001BB249 /* sh_button_side.png in Resources */ = {isa = PBXBuildFile; fileRef = 7ED8235D1B13D2A6001BB249 /* sh_button_side.png */; };
-		7ED823EA1B13D2A6001BB249 /* sh_test_item.png in Resources */ = {isa = PBXBuildFile; fileRef = 7ED8235E1B13D2A6001BB249 /* sh_test_item.png */; };
-		7ED823EB1B13D2A6001BB249 /* sh_test_item.png in Resources */ = {isa = PBXBuildFile; fileRef = 7ED8235E1B13D2A6001BB249 /* sh_test_item.png */; };
-		7ED823EC1B13D2A6001BB249 /* sh_test_item.png in Resources */ = {isa = PBXBuildFile; fileRef = 7ED8235E1B13D2A6001BB249 /* sh_test_item.png */; };
 		7ED823ED1B13D2A6001BB249 /* spriter_test.json in Resources */ = {isa = PBXBuildFile; fileRef = 7ED823601B13D2A6001BB249 /* spriter_test.json */; };
 		7ED823EE1B13D2A6001BB249 /* spriter_test.json in Resources */ = {isa = PBXBuildFile; fileRef = 7ED823601B13D2A6001BB249 /* spriter_test.json */; };
 		7ED823EF1B13D2A6001BB249 /* spriter_test.json in Resources */ = {isa = PBXBuildFile; fileRef = 7ED823601B13D2A6001BB249 /* spriter_test.json */; };
@@ -592,6 +598,16 @@
 		7AFCD5DB19E9BD9F00BCCCDA /* cocos2d.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = cocos2d.h; path = "Source/libs/cocos2d-iphone/cocos2d/cocos2d.h"; sourceTree = "<group>"; };
 		7AFCD5DD19E9BDC200BCCCDA /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Bridging-Header.h"; path = "Source/Bridging-Header.h"; sourceTree = "<group>"; };
 		7BF6AF9F1A425F9800FFF9BA /* JavaFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaFoundation.framework; path = "../../../../../../../Library/SBAndroid/Application Support/Developer/Shared/Xcode/Platforms/Android.platform/Developer/SDKs/SBAndroid.sdk/System/Library/Frameworks/JavaFoundation.framework"; sourceTree = "<group>"; };
+		7E0D6D391B43C51B00F2023F /* WaterEnemyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaterEnemyManager.h; sourceTree = "<group>"; };
+		7E0D6D3A1B43C51B00F2023F /* WaterEnemyManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaterEnemyManager.m; sourceTree = "<group>"; };
+		7E0D6D3E1B43C9B400F2023F /* BasicWaterEnemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicWaterEnemy.h; sourceTree = "<group>"; };
+		7E0D6D3F1B43C9B400F2023F /* BasicWaterEnemy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicWaterEnemy.m; sourceTree = "<group>"; };
+		7E0D6D431B43CA6800F2023F /* PufferBasicWaterEnemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PufferBasicWaterEnemy.h; sourceTree = "<group>"; };
+		7E0D6D441B43CA6800F2023F /* PufferBasicWaterEnemy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PufferBasicWaterEnemy.m; sourceTree = "<group>"; };
+		7E0D6D491B43CE5100F2023F /* PufferEnemySprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PufferEnemySprite.h; sourceTree = "<group>"; };
+		7E0D6D4A1B43CE5100F2023F /* PufferEnemySprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PufferEnemySprite.m; sourceTree = "<group>"; };
+		7E0D6D4E1B43DCB600F2023F /* EnemyNoticeParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnemyNoticeParticle.h; sourceTree = "<group>"; };
+		7E0D6D4F1B43DCB600F2023F /* EnemyNoticeParticle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnemyNoticeParticle.m; sourceTree = "<group>"; };
 		7E386D1B1B239EDE00DDEFF6 /* BasePlayerStateStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasePlayerStateStack.h; sourceTree = "<group>"; };
 		7E386D1C1B239EDE00DDEFF6 /* BasePlayerStateStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasePlayerStateStack.m; sourceTree = "<group>"; };
 		7E386D201B239FE600DDEFF6 /* OnGroundPlayerStateStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnGroundPlayerStateStack.h; sourceTree = "<group>"; };
@@ -769,9 +785,6 @@
 		7ED823581B13D2A6001BB249 /* reflection_am_down.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = reflection_am_down.vsh; sourceTree = "<group>"; };
 		7ED823591B13D2A6001BB249 /* ripple_effect.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ripple_effect.fsh; sourceTree = "<group>"; };
 		7ED8235A1B13D2A6001BB249 /* ripple_effect.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ripple_effect.vsh; sourceTree = "<group>"; };
-		7ED8235C1B13D2A6001BB249 /* sh_button_middle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sh_button_middle.png; sourceTree = "<group>"; };
-		7ED8235D1B13D2A6001BB249 /* sh_button_side.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sh_button_side.png; sourceTree = "<group>"; };
-		7ED8235E1B13D2A6001BB249 /* sh_test_item.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sh_test_item.png; sourceTree = "<group>"; };
 		7ED823601B13D2A6001BB249 /* spriter_test.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = spriter_test.json; sourceTree = "<group>"; };
 		7ED823611B13D2A6001BB249 /* spriter_test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spriter_test.png; sourceTree = "<group>"; };
 		7ED823621B13D2A6001BB249 /* spriter_test.scml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = spriter_test.scml; sourceTree = "<group>"; };
@@ -1065,6 +1078,28 @@
 			name = Mac;
 			sourceTree = "<group>";
 		};
+		7E0D6D381B43C4E900F2023F /* waterenemy */ = {
+			isa = PBXGroup;
+			children = (
+				7E0D6D391B43C51B00F2023F /* WaterEnemyManager.h */,
+				7E0D6D3A1B43C51B00F2023F /* WaterEnemyManager.m */,
+				7E0D6D3E1B43C9B400F2023F /* BasicWaterEnemy.h */,
+				7E0D6D3F1B43C9B400F2023F /* BasicWaterEnemy.m */,
+				7E0D6D431B43CA6800F2023F /* PufferBasicWaterEnemy.h */,
+				7E0D6D441B43CA6800F2023F /* PufferBasicWaterEnemy.m */,
+			);
+			path = waterenemy;
+			sourceTree = "<group>";
+		};
+		7E0D6D481B43CE3800F2023F /* enemyshared */ = {
+			isa = PBXGroup;
+			children = (
+				7E0D6D491B43CE5100F2023F /* PufferEnemySprite.h */,
+				7E0D6D4A1B43CE5100F2023F /* PufferEnemySprite.m */,
+			);
+			path = enemyshared;
+			sourceTree = "<group>";
+		};
 		7E386D181B239EC900DDEFF6 /* playerstate */ = {
 			isa = PBXGroup;
 			children = (
@@ -1161,7 +1196,9 @@
 		7ED822021B13D258001BB249 /* game */ = {
 			isa = PBXGroup;
 			children = (
+				7E0D6D481B43CE3800F2023F /* enemyshared */,
 				7E8CF0BD1B3E8DEE00FA6277 /* test */,
+				7E0D6D381B43C4E900F2023F /* waterenemy */,
 				7ECCC65F1B3D25E8006A70B9 /* enemyprojectile */,
 				7ED822031B13D258001BB249 /* airenemy */,
 				7ED8220A1B13D258001BB249 /* bg */,
@@ -1246,6 +1283,8 @@
 				7E4F09931B24FC6B000945B8 /* SwordSlashParticle.m */,
 				20E087C81B43607A00AD486A /* UnderwaterBubbleParticle.h */,
 				20E087C91B43607A00AD486A /* UnderwaterBubbleParticle.m */,
+				7E0D6D4E1B43DCB600F2023F /* EnemyNoticeParticle.h */,
+				7E0D6D4F1B43DCB600F2023F /* EnemyNoticeParticle.m */,
 			);
 			path = particle;
 			sourceTree = "<group>";
@@ -1376,7 +1415,6 @@
 				7ED823491B13D2A6001BB249 /* hud */,
 				7ED8234D1B13D2A6001BB249 /* monster */,
 				7ED823521B13D2A6001BB249 /* shaders */,
-				7ED8235B1B13D2A6001BB249 /* shop_menu */,
 				7ED8235F1B13D2A6001BB249 /* test */,
 			);
 			name = assets;
@@ -1498,16 +1536,6 @@
 				7E4F09AA1B252E60000945B8 /* alpha_gradient_sprite.vsh */,
 			);
 			path = shaders;
-			sourceTree = "<group>";
-		};
-		7ED8235B1B13D2A6001BB249 /* shop_menu */ = {
-			isa = PBXGroup;
-			children = (
-				7ED8235C1B13D2A6001BB249 /* sh_button_middle.png */,
-				7ED8235D1B13D2A6001BB249 /* sh_button_side.png */,
-				7ED8235E1B13D2A6001BB249 /* sh_test_item.png */,
-			);
-			path = shop_menu;
 			sourceTree = "<group>";
 		};
 		7ED8235F1B13D2A6001BB249 /* test */ = {
@@ -1857,7 +1885,6 @@
 				7EE5664A1B411F3C00D63556 /* hanoka_player_redgarb.png in Resources */,
 				7ED823831B13D2A6001BB249 /* underwater_spritesheet.plist in Resources */,
 				7EBC2AEB1B1C4EDF00AC47F1 /* gameplay_elements_ss.plist in Resources */,
-				7ED823E91B13D2A6001BB249 /* sh_button_side.png in Resources */,
 				7ED823B91B13D2A6001BB249 /* ripple.png in Resources */,
 				7ED823E01B13D2A6001BB249 /* ripple_effect.fsh in Resources */,
 				7ED823DD1B13D2A6001BB249 /* reflection_am_down.vsh in Resources */,
@@ -1901,10 +1928,8 @@
 				7ED823981B13D2A6001BB249 /* hanoka v0.01.png in Resources */,
 				7ED823741B13D2A6001BB249 /* bg_underwater_surface_gradient.png in Resources */,
 				7ED8239B1B13D2A6001BB249 /* hanoka v0.01.scml in Resources */,
-				7ED823E61B13D2A6001BB249 /* sh_button_middle.png in Resources */,
 				7ED823681B13D2A6001BB249 /* bg_spritesheet_1.plist in Resources */,
 				7ED823C21B13D2A6001BB249 /* hud_spritesheet.png in Resources */,
-				7ED823EC1B13D2A6001BB249 /* sh_test_item.png in Resources */,
 				7ED823BF1B13D2A6001BB249 /* hud_spritesheet.plist in Resources */,
 				7ED823A41B13D2A6001BB249 /* oldman_ss.png in Resources */,
 				7A40370119DE401F007B6E8F /* Default-568h@2x.png in Resources */,
@@ -1935,7 +1960,6 @@
 				7ED823CD1B13D2A6001BB249 /* abovewater_am_up.fsh in Resources */,
 				7E8CF0AC1B3E8BBB00FA6277 /* hanoka_bow.png in Resources */,
 				927F61AD196C771E000F43EF /* Settings.png in Resources */,
-				7ED823EB1B13D2A6001BB249 /* sh_test_item.png in Resources */,
 				7ED823BB1B13D2A6001BB249 /* aiming_bar.png in Resources */,
 				7ED823C11B13D2A6001BB249 /* hud_spritesheet.png in Resources */,
 				7EBC2AED1B1C4EDF00AC47F1 /* gameplay_elements_ss.png in Resources */,
@@ -1963,7 +1987,6 @@
 				7ED8238B1B13D2A6001BB249 /* hanokav2.plist in Resources */,
 				927F61B2196C771E000F43EF /* iPhone-old@2x.png in Resources */,
 				927F61B4196C771E000F43EF /* Settings@2x.png in Resources */,
-				7ED823E51B13D2A6001BB249 /* sh_button_middle.png in Resources */,
 				7ED8239A1B13D2A6001BB249 /* hanoka v0.01.scml in Resources */,
 				927F61B5196C771E000F43EF /* Default-Landscape~ipad.png in Resources */,
 				7ED8237C1B13D2A6001BB249 /* sky_spritesheet.plist in Resources */,
@@ -1999,7 +2022,6 @@
 				7E4F09AC1B252E60000945B8 /* alpha_gradient_sprite.vsh in Resources */,
 				7E4F09A81B252DE4000945B8 /* alpha_gradient_sprite.fsh in Resources */,
 				7ED823F11B13D2A6001BB249 /* spriter_test.png in Resources */,
-				7ED823E81B13D2A6001BB249 /* sh_button_side.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2016,7 +2038,6 @@
 				7ED823CC1B13D2A6001BB249 /* abovewater_am_up.fsh in Resources */,
 				7E8CF0AB1B3E8BBB00FA6277 /* hanoka_bow.png in Resources */,
 				B71F5919188484E7003F4D28 /* Settings.png in Resources */,
-				7ED823EA1B13D2A6001BB249 /* sh_test_item.png in Resources */,
 				7ED823BA1B13D2A6001BB249 /* aiming_bar.png in Resources */,
 				7ED823C01B13D2A6001BB249 /* hud_spritesheet.png in Resources */,
 				BB1E153B1B2EA5C000461495 /* 5ceta_mono.ttf in Resources */,
@@ -2046,7 +2067,6 @@
 				7ED8238A1B13D2A6001BB249 /* hanokav2.plist in Resources */,
 				B71F5916188484E7003F4D28 /* iPhone-old@2x.png in Resources */,
 				B737893B180761570076A88C /* Published-iOS in Resources */,
-				7ED823E41B13D2A6001BB249 /* sh_button_middle.png in Resources */,
 				7ED823991B13D2A6001BB249 /* hanoka v0.01.scml in Resources */,
 				B71F591A188484E7003F4D28 /* Settings@2x.png in Resources */,
 				7ED8237B1B13D2A6001BB249 /* sky_spritesheet.plist in Resources */,
@@ -2083,7 +2103,6 @@
 				7E4F09AB1B252E60000945B8 /* alpha_gradient_sprite.vsh in Resources */,
 				7E4F09A71B252DE4000945B8 /* alpha_gradient_sprite.fsh in Resources */,
 				7ED823F01B13D2A6001BB249 /* spriter_test.png in Resources */,
-				7ED823E71B13D2A6001BB249 /* sh_button_side.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2150,6 +2169,7 @@
 				7EF5576F1B42A59E00992001 /* PlayerUIHealthIndicator.m in Sources */,
 				7ED8230B1B13D258001BB249 /* SpriterNode.m in Sources */,
 				7ED822811B13D258001BB249 /* BasicAirEnemy.m in Sources */,
+				7E0D6D421B43C9B400F2023F /* BasicWaterEnemy.m in Sources */,
 				7E386D4F1B23F6DC00DDEFF6 /* BGCharacterBase.m in Sources */,
 				7E4F09A51B2523AE000945B8 /* SPCCSpriteAnimator.m in Sources */,
 				7EF5576C1B42A59E00992001 /* PlayerUIArrowsIndicator.m in Sources */,
@@ -2177,6 +2197,7 @@
 				7E386D3E1B23A59A00DDEFF6 /* DivePlayerStateStack.m in Sources */,
 				7ED822A21B13D258001BB249 /* GameEngineScene.m in Sources */,
 				20E087CC1B43607A00AD486A /* UnderwaterBubbleParticle.m in Sources */,
+				7E0D6D521B43DCB600F2023F /* EnemyNoticeParticle.m in Sources */,
 				7ED822CC1B13D258001BB249 /* PlayerProjectile.m in Sources */,
 				BB771B1F1B23F764002BA595 /* InDialoguePlayerStateStack.m in Sources */,
 				7EF557691B42A59E00992001 /* PlayerUIAimReticule.m in Sources */,
@@ -2197,10 +2218,12 @@
 				7EF5575A1B42A59E00992001 /* DialogUI.m in Sources */,
 				7ED823201B13D258001BB249 /* WebRequest.m in Sources */,
 				7ED822F31B13D258001BB249 /* DataStore.m in Sources */,
+				7E0D6D471B43CA6800F2023F /* PufferBasicWaterEnemy.m in Sources */,
 				7ED822F61B13D258001BB249 /* FileCache.m in Sources */,
 				7E386D481B23A95B00DDEFF6 /* InAirPlayerStateStack.m in Sources */,
 				7ED822BD1B13D258001BB249 /* UIBossIntroParticle.m in Sources */,
 				7E9A58541B22EFA3008EC348 /* AlphaGradientSprite.m in Sources */,
+				7E0D6D3D1B43C51B00F2023F /* WaterEnemyManager.m in Sources */,
 				7ED823081B13D258001BB249 /* SpriterJSONParser.m in Sources */,
 				7ED8228D1B13D258001BB249 /* BGSky.m in Sources */,
 				7ED822FF1B13D258001BB249 /* Resource.m in Sources */,
@@ -2211,6 +2234,7 @@
 				7ED822D81B13D258001BB249 /* GameMain.m in Sources */,
 				7EF5575D1B42A59E00992001 /* DiveUI.m in Sources */,
 				7E4F09B71B258CA2000945B8 /* Arrow.m in Sources */,
+				7E0D6D4D1B43CE5100F2023F /* PufferEnemySprite.m in Sources */,
 				20E087D31B4362A800AD486A /* DelayAction.m in Sources */,
 				7ECCC6661B3D27F0006A70B9 /* EnemyProjectile.m in Sources */,
 				7ED822BA1B13D258001BB249 /* RotateFadeOutParticle.m in Sources */,
@@ -2237,6 +2261,7 @@
 				7EFEE79B1B1F06860055C989 /* PlayerChargeIndicator.m in Sources */,
 				7E6A045E1B3978EC004890F5 /* ObjectPool.m in Sources */,
 				7ED8229E1B13D258001BB249 /* ControlManager.m in Sources */,
+				7E0D6D411B43C9B400F2023F /* BasicWaterEnemy.m in Sources */,
 				7ED822831B13D258001BB249 /* PufferBasicAirEnemy.m in Sources */,
 				7ED822AA1B13D258001BB249 /* ChainedMovementParticle.m in Sources */,
 				7ED822951B13D258001BB249 /* BGCharacterOldMan.m in Sources */,
@@ -2244,6 +2269,7 @@
 				7E4F09A41B2523AE000945B8 /* SPCCSpriteAnimator.m in Sources */,
 				7ED822CE1B13D258001BB249 /* GameUI.m in Sources */,
 				7EFEE79F1B1F06970055C989 /* SPRadialFillSprite.m in Sources */,
+				7E0D6D4C1B43CE5100F2023F /* PufferEnemySprite.m in Sources */,
 				7ED823161B13D258001BB249 /* SpriterXMLParser.m in Sources */,
 				7ED822D11B13D258001BB249 /* HealthBar.m in Sources */,
 				7EF5575F1B42A59E00992001 /* EnemyUIHealthIndicators.m in Sources */,
@@ -2252,6 +2278,7 @@
 				7E386D1E1B239EDE00DDEFF6 /* BasePlayerStateStack.m in Sources */,
 				7ED822AD1B13D258001BB249 /* Particle.m in Sources */,
 				BB771B1C1B23F763002BA595 /* InDialoguePlayerStateStack.m in Sources */,
+				7E0D6D3C1B43C51B00F2023F /* WaterEnemyManager.m in Sources */,
 				7EF5576E1B42A59E00992001 /* PlayerUIHealthIndicator.m in Sources */,
 				7ED8231F1B13D258001BB249 /* WebRequest.m in Sources */,
 				7EF557561B42A59E00992001 /* DialogueBubble.m in Sources */,
@@ -2261,6 +2288,7 @@
 				7E386D231B239FE600DDEFF6 /* OnGroundPlayerStateStack.m in Sources */,
 				7ED8228C1B13D258001BB249 /* BGSky.m in Sources */,
 				7ED822F81B13D258001BB249 /* GEventDispatcher.m in Sources */,
+				7E0D6D511B43DCB600F2023F /* EnemyNoticeParticle.m in Sources */,
 				7E9A58621B23098C008EC348 /* FlashCount.m in Sources */,
 				7E8377681B14636300EFC0D9 /* SPDeviceAccelerometer.m in Sources */,
 				7ED823131B13D258001BB249 /* SpriterUtil.m in Sources */,
@@ -2297,6 +2325,7 @@
 				7EF5575C1B42A59E00992001 /* DiveUI.m in Sources */,
 				7E4F09B11B258C9A000945B8 /* ChargedArrow.m in Sources */,
 				20E087D21B4362A800AD486A /* DelayAction.m in Sources */,
+				7E0D6D461B43CA6800F2023F /* PufferBasicWaterEnemy.m in Sources */,
 				7EF557591B42A59E00992001 /* DialogUI.m in Sources */,
 				7ED822F21B13D258001BB249 /* DataStore.m in Sources */,
 				7ED822981B13D258001BB249 /* BGCharacterTest.m in Sources */,
@@ -2325,12 +2354,14 @@
 				7E386D221B239FE600DDEFF6 /* OnGroundPlayerStateStack.m in Sources */,
 				7EF34CF81B395FF400111963 /* ObjectPool.m in Sources */,
 				7ED8227F1B13D258001BB249 /* BasicAirEnemy.m in Sources */,
+				7E0D6D401B43C9B400F2023F /* BasicWaterEnemy.m in Sources */,
 				B73789871807631A0076A88C /* main.m in Sources */,
 				7E386D1D1B239EDE00DDEFF6 /* BasePlayerStateStack.m in Sources */,
 				7ED822EE1B13D258001BB249 /* Common.m in Sources */,
 				7E386D371B23A0BE00DDEFF6 /* PlayerSharedParams.m in Sources */,
 				7E386D2C1B23A0AC00DDEFF6 /* PlayerAirCombatParams.m in Sources */,
 				7E9A44BB1B1D85E100111C35 /* SPRadialFillSprite.m in Sources */,
+				7E0D6D501B43DCB600F2023F /* EnemyNoticeParticle.m in Sources */,
 				BB7A71181B37BEBF00B0EF3C /* SPAnimatedTextCharacter.m in Sources */,
 				7ED822A91B13D258001BB249 /* ChainedMovementParticle.m in Sources */,
 				7ED8227C1B13D258001BB249 /* AirEnemyManager.m in Sources */,
@@ -2340,10 +2371,12 @@
 				7ED822F71B13D258001BB249 /* GEventDispatcher.m in Sources */,
 				BB6AE7AE1B3E7BD300E8F6E8 /* SPAnimatedText.m in Sources */,
 				7ED8229D1B13D258001BB249 /* ControlManager.m in Sources */,
+				7E0D6D4B1B43CE5100F2023F /* PufferEnemySprite.m in Sources */,
 				7EF557611B42A59E00992001 /* EnemyWarningUI.m in Sources */,
 				7ED8230F1B13D258001BB249 /* SpriterTypes.m in Sources */,
 				7ED8231B1B13D258001BB249 /* Vec3D.m in Sources */,
 				7E386D2F1B23A0AC00DDEFF6 /* PlayerLandParams.m in Sources */,
+				7E0D6D451B43CA6800F2023F /* PufferBasicWaterEnemy.m in Sources */,
 				7E9A58611B23098C008EC348 /* FlashCount.m in Sources */,
 				7ED8228E1B13D258001BB249 /* BGVillage.m in Sources */,
 				7E9A58521B22EFA3008EC348 /* AlphaGradientSprite.m in Sources */,
@@ -2375,6 +2408,7 @@
 				7EF5576A1B42A59E00992001 /* PlayerUIArrowsIndicator.m in Sources */,
 				20E087CA1B43607A00AD486A /* UnderwaterBubbleParticle.m in Sources */,
 				7ED822BE1B13D258001BB249 /* Player.m in Sources */,
+				7E0D6D3B1B43C51B00F2023F /* WaterEnemyManager.m in Sources */,
 				7ED823FD1B13DD59001BB249 /* md5.c in Sources */,
 				7E4F09991B250E06000945B8 /* FlashEvery.m in Sources */,
 				7ED823121B13D258001BB249 /* SpriterUtil.m in Sources */,
@@ -2702,7 +2736,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = hanokam;
-				PROVISIONING_PROFILE = "9b7885f5-c02e-451e-95b5-f6499e477bc8";
+				PROVISIONING_PROFILE = "23a63c42-e4ef-434f-81b7-a703c6e65aaa";
 				SWIFT_OBJC_BRIDGING_HEADER = "Source/Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -2736,7 +2770,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = hanokam;
-				PROVISIONING_PROFILE = "9b7885f5-c02e-451e-95b5-f6499e477bc8";
+				PROVISIONING_PROFILE = "23a63c42-e4ef-434f-81b7-a703c6e65aaa";
 				SWIFT_OBJC_BRIDGING_HEADER = "Source/Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;

@@ -41,6 +41,8 @@
 	[g.get_event_dispatcher add_listener:self];
 	[self setAnchorPoint:ccp(0,0)];
 	
+	_particles = [ParticleSystem cons_anchor:self];
+	
 	_red_flash_overlay = [CCNodeColor nodeWithColor:[CCColor redColor]];
 	[_red_flash_overlay setOpacity:0];
 	[self addChild:_red_flash_overlay];
@@ -114,7 +116,9 @@
 	[[self ui_for_playerstate:game.get_player_state] setVisible:YES];
 	[[self ui_for_playerstate:game.get_player_state] i_update:game];
 }
-
+-(void)add_particle:(Particle*)tar {
+	[_particles add_particle:tar];
+}
 @end
 
 /*
@@ -136,7 +140,6 @@ typedef enum _GameUIBossIntroMode {
 	[_boss_health_bar set_pct:0.5];
 	_boss_health_label = (CCLabelTTF*)[label_cons(ccp(0,15), ccc3(255, 255, 255), 6, @"Big Badass Boss") set_anchor_pt:ccp(0,0)];
 	[_boss_health_bar addChild:_boss_health_label];
-	_particles = [ParticleSystem cons_anchor:self];
 	_current_boss_mode = GameUIBossIntroMode_None;
 	
 //todo -- move me to new class

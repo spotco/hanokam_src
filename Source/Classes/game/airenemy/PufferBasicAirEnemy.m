@@ -14,11 +14,10 @@
 #import "FlashCount.h"
 
 #import "EnemyBulletProjectile.h"
+#import "PufferEnemySprite.h"
 
 @implementation PufferBasicAirEnemy {
-	CCSprite_Animated *_img;
-	
-	CCAction *_anim_idle, *_anim_attack, *_anim_die, *_anim_follow, *_anim_hurt;
+	PufferEnemySprite *_img;
 	int _angry_ct;
 	
 	ccColor4F _tar_color;
@@ -42,11 +41,8 @@
 -(BasicAirEnemy*)cons_g:(GameEngineScene*)g relstart:(CGPoint)relstart relend:(CGPoint)relend {
 	[super cons_g:g relstart:relstart relend:relend];
 	
-	[self cons_anims];
-	_img = [CCSprite_Animated node];
+	_img = [PufferEnemySprite cons];
 	[self addChild:_img];
-	[_img update_playAnim:_anim_idle];
-	[_img setScale:0.35];
 	
 	_started_death = NO;
 	_has_played_blood_anim = NO;
@@ -62,7 +58,7 @@
 }
 
 -(void)update_death:(GameEngineScene *)g {
-	[_img update_playAnim:_anim_die];
+	[_img update_playAnim:_img._anim_die];
 	_started_death = YES;
 	if ([self get_death_anim_ct] < 20 && !_has_played_blood_anim) {
 		[BaseAirEnemy particle_blood_effect:g pos:self.position ct:10];
@@ -71,7 +67,7 @@
 }
 
 -(void)update_stunned:(GameEngineScene *)g {
-	[_img update_playAnim:_anim_hurt];
+	[_img update_playAnim:_img._anim_hurt];
 	_angry_ct = 50;
 	if ([_flashcount do_flash_given_time:[self get_stunned_anim_ct]]) {
 		_tar_color.b = 0.0;
@@ -88,14 +84,14 @@
 
 -(void)update_alive:(GameEngineScene *)g {
 	if (_angry_ct > 0) {
-		[_img update_playAnim:_anim_follow];
+		[_img update_playAnim:_img._anim_follow];
 		_angry_ct -= dt_scale_get();
 		
 	} else if (CGPointDist(self.position, g.player.position) < 150) {
-		[_img update_playAnim:_anim_attack];
+		[_img update_playAnim:_img._anim_attack];
 		
 	} else {
-		[_img update_playAnim:_anim_idle];
+		[_img update_playAnim:_img._anim_idle];
 	}
 	
 	if ([self get_anim_t] > 0.25 && CGPointDist(self.position, g.player.position) > 100 && !_has_shot_bullets) {
@@ -118,38 +114,7 @@
 	return (_started_death && [self get_death_anim_ct] < 20);
 }
 
--(void)cons_anims {
-	NSMutableArray *anim_strs = [NSMutableArray array];
-	float anim_interval = 0.055;
-	
-	DO_FOR(27, [anim_strs addObject:strf("puffer_idle__%03d.png",i)]; );
-	_anim_idle = animaction_cons(anim_strs, anim_interval, TEX_ENEMY_PUFFER);
-	[anim_strs removeAllObjects];
-	
-	DO_FOR(5, [anim_strs addObject:strf("puffer_attack__%03d.png",i)]; );
-	_anim_attack = animaction_cons(anim_strs, anim_interval, TEX_ENEMY_PUFFER);
-	[anim_strs removeAllObjects];
-	
-	DO_FOR(14, [anim_strs addObject:strf("puffer_die__%03d.png",i)]; );
-	_anim_die = animaction_nonrepeating_cons(anim_strs, anim_interval, TEX_ENEMY_PUFFER);
-	[anim_strs removeAllObjects];
-	
-	DO_FOR(5, [anim_strs addObject:strf("puffer_follow__%03d.png",i)]; );
-	_anim_follow = animaction_cons(anim_strs, anim_interval, TEX_ENEMY_PUFFER);
-	[anim_strs removeAllObjects];
-	
-	DO_FOR(5, [anim_strs addObject:strf("puffer_hurt__%03d.png",i)]; );
-	_anim_hurt = animaction_cons(anim_strs, anim_interval * 1.25, TEX_ENEMY_PUFFER);
-	[anim_strs removeAllObjects];
-}
-
--(HitRect)get_hit_rect {
-	CGRect rect = [FileCache get_cgrect_from_plist:TEX_ENEMY_PUFFER idname:@"puffer_idle__000.png"];
-	return satpolyowner_cons_hit_rect(self.position, rect.size.width, rect.size.height,0.25);
-}
--(void)get_sat_poly:(SATPoly*)in_poly {
-	CGRect rect = [FileCache get_cgrect_from_plist:TEX_ENEMY_PUFFER idname:@"puffer_idle__000.png"];
-	return satpolyowner_cons_sat_poly(in_poly, self.position, self.rotation, rect.size.width, rect.size.height, ccp(0.5,0.9),0.25);
-}
+-(HitRect)get_hit_rect { return [_img get_hit_rect_pos:self.position]; }
+-(void)get_sat_poly:(SATPoly*)in_poly { return [_img get_sat_poly:in_poly pos:self.position rot:self.rotation]; }
 
 @end

@@ -13,4 +13,6 @@
 -(void)fadeout:(BOOL)tar;
 -(BOOL)is_faded_out;
 -(BOOL)is_faded_in;
+
+-(void)add_particle:(Particle*)tar;
 @end

@@ -11,7 +11,7 @@
 #import "Particle.h"
 #import "TouchTrackingLayer.h"
 #import "AirEnemyManager.h"
-#import "CCTexture_Private.h"
+#import "WaterEnemyManager.h"
 #import "ControlManager.h"
 #import "Resource.h"
 #import "PlayerProjectile.h"
@@ -55,16 +55,14 @@
 	BGSky *_bg_sky;
 	NSArray *_bg_elements;
 	
-	SpiritManager *_spirit_manager;
 	AirEnemyManager *_air_enemy_manager;
+	WaterEnemyManager *_water_enemy_manager;
     
     DelayActionQueue *_delay_action_queue;
 	
 	// GUI
 	CCLabelTTF *_water_text;
 	GameUI *_ui;
-	
-	SpriterNodeCache *_spriter_node_cache;
 	TouchTrackingLayer *_touch_tracking;
 	CCDrawNode *_debug_draw;
 	
@@ -72,12 +70,11 @@
 
 -(Player*)player { return _player; }
 -(float)tick { return _tick; }
--(SpiritManager*)get_spirit_manager{ return _spirit_manager; }
 -(AirEnemyManager*)get_air_enemy_manager { return _air_enemy_manager; }
+-(WaterEnemyManager*)get_water_enemy_manager { return _water_enemy_manager; }
 -(ControlManager*)get_control_manager { return _controls; }
 -(GameUI*)get_ui{ return _ui; }
 -(TouchTrackingLayer*)get_touch_tracking_layer{ return _touch_tracking; }
--(SpriterNodeCache*)get_spriter_node_cache { return _spriter_node_cache; }
 -(NSArray*)get_player_projectiles { return _player_projectiles.list; }
 
 -(PlayerState)get_player_state {
@@ -99,9 +96,6 @@
 	dt_unset();
 	
 	_event_dispatcher = [GEventDispatcher cons];
-	
-	_spriter_node_cache = [SpriterNodeCache cons];
-	[_spriter_node_cache precache];
 	
 	_touch_tracking = [TouchTrackingLayer node];
 	[super addChild:_touch_tracking z:99];
@@ -132,6 +126,7 @@
 	_bg_elements = @[_bg_village, _bg_water, _bg_sky];
 	
 	_air_enemy_manager = [AirEnemyManager cons:self];
+	_water_enemy_manager = [WaterEnemyManager cons:self];
 	
 	_ui = [GameUI cons:self];
 	[super addChild:_ui z:2];
@@ -187,6 +182,7 @@
 
 -(void)update:(CCTime)delta {
 	dt_set(delta);
+	
 	[_controls accel_report_x:[SPDeviceAccelerometer accel_x]];
 	
 	_tick += dt_scale_get(); 
@@ -209,7 +205,11 @@
 		[itr i_update:self];
 	}
 	
+	//TODO -- move these to their respective state stacks
 	[_air_enemy_manager i_update:self];
+	[_water_enemy_manager i_update:self];
+	
+	//TODO -- move this to bgwater
 	[self update_ripples];
 	
 	[_ui i_update:self];
@@ -341,6 +341,7 @@
 	[_zoom_node setPosition:CGPointAdd(_zoom_node.position, ccp(sinf(_tick / 3) * _rumble_slow_dist / 2, cosf(_tick / 3) * _rumble_slow_dist))];
 }
 
+//TODO -- this doesn't freeze animations
 -(void)freeze_frame:(int)ct{
 	_freeze = ct;
 }
@@ -366,6 +367,12 @@
 	[self draw_sat_poly:&itr_poly color:player_sat_color];
 	
 	for (BaseAirEnemy *itr in _air_enemy_manager.get_enemies) {
+		[self draw_hit_rect:itr.get_hit_rect color:enemy_color];
+		[itr get_sat_poly:&itr_poly];
+		[self draw_sat_poly:&itr_poly color:enemy_sat_color];
+	}
+	
+	for (BaseWaterEnemy *itr in _water_enemy_manager.get_enemies) {
 		[self draw_hit_rect:itr.get_hit_rect color:enemy_color];
 		[itr get_sat_poly:&itr_poly];
 		[self draw_sat_poly:&itr_poly color:enemy_sat_color];

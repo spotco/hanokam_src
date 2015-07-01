@@ -71,29 +71,29 @@
 			<false/>
 		</dict>
 		
-		<key>heart_empty.png</key>
+		<key>exclamation_mark.png</key>
 		<dict>
 			<key>aliases</key>
 			<array>
 			
 			</array>
 			<key>spriteColorRect</key>
-			<string>{{0, 0}, {29, 28}}</string>
+			<string>{{0, 0}, {18, 59}}</string>
 			<key>spriteOffset</key>
 			<string>{0, -0}</string>
 			<key>spriteSize</key>
-			<string>{29, 28}</string>
+			<string>{18, 59}</string>
 			<key>spriteSourceSize</key>
-			<string>{29, 28}</string>
+			<string>{18, 59}</string>
 			<key>spriteTrimmed</key>
 			<true/>
 			<key>textureRect</key>
-			<string>{{981, 0}, {29, 28}}</string>
+			<string>{{166, 0}, {18, 59}}</string>
 			<key>textureRotated</key>
 			<false/>
 		</dict>
 		
-		<key>heart_fill.png</key>
+		<key>heart_empty.png</key>
 		<dict>
 			<key>aliases</key>
 			<array>
@@ -115,6 +115,28 @@
 			<false/>
 		</dict>
 		
+		<key>heart_fill.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{0, 0}, {29, 28}}</string>
+			<key>spriteOffset</key>
+			<string>{0, -0}</string>
+			<key>spriteSize</key>
+			<string>{29, 28}</string>
+			<key>spriteSourceSize</key>
+			<string>{29, 28}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{981, 0}, {29, 28}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
 		<key>hudicon_depthbar_back.png</key>
 		<dict>
 			<key>aliases</key>
@@ -132,7 +154,7 @@
 			<key>spriteTrimmed</key>
 			<false/>
 			<key>textureRect</key>
-			<string>{{0, 0}, {17, 410}}</string>
+			<string>{{19, 0}, {17, 410}}</string>
 			<key>textureRotated</key>
 			<false/>
 		</dict>
@@ -154,7 +176,7 @@
 			<key>spriteTrimmed</key>
 			<false/>
 			<key>textureRect</key>
-			<string>{{19, 0}, {17, 410}}</string>
+			<string>{{0, 0}, {17, 410}}</string>
 			<key>textureRotated</key>
 			<false/>
 		</dict>

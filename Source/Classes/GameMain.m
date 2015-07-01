@@ -12,9 +12,13 @@
 /*
 TODO --
 GAMEPLAY IDEAS:
-underwater breath bar, immediate restore health village
-underwater bubbles anim (foreground and from character)
-underwater quests reach certain depth/attract certain number of enemies
+underwater enemies - idle, attention
+underwater enemies - followgroup
+underwater treasure get
+
+quest + dialogue system stubs + simple quests
+perf run, village and etc hiding
+air and underwater mode powerup/gold drops
 
 fix anims
 	-air hurt anim play
@@ -26,14 +30,16 @@ enemies shoot bullet pause animation
 no arrows popup dialogue
 
 QUESTS ARE CHALLENGES - let no enemies escape
+	underwater quests reach certain depth/attract certain number of enemies
 
 arrow bounce off + (clear player projectiles after airbattle end)
 dropping arrows after end
- homing arrow
+homing arrow
 
 TECH --
 spriterdata cache
 pool arrows and other stuff
+check leaks
 scale player accel movement based on screen size
 make TGSpriter classes structs instead
 */

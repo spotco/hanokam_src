@@ -17,7 +17,7 @@
 
 @synthesize _initial_camera_offset;
 -(float)DEFAULT_OFFSET {
-	return -game_screen().height * 0.25;
+	return -game_screen().height * 0.3;
 }
 -(float)MAX_OFFSET {
 	return -game_screen().height * 0.1;

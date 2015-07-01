@@ -6,7 +6,6 @@
 @class GameObject;
 @class Particle;
 @class Player;
-@class SpiritManager;
 @class BGVillage;
 @class AirEnemyManager;
 @class ControlManager;
@@ -16,6 +15,7 @@
 @class SpriterNodeCache;
 @class EnemyProjectile;
 @class GEventDispatcher;
+@class WaterEnemyManager;
 
 typedef enum _PlayerState {
 	PlayerState_Dive = 0,
@@ -72,7 +72,7 @@ typedef enum _GameAnchorZ {
 -(PlayerState)get_player_state;
 -(HitRect)get_viewbox;
 -(CCNode*)get_anchor;
--(SpiritManager*)get_spirit_manager;
+-(WaterEnemyManager*)get_water_enemy_manager;
 -(AirEnemyManager*)get_air_enemy_manager;
 -(GameUI*)get_ui;
 -(TouchTrackingLayer*)get_touch_tracking_layer;
@@ -103,8 +103,6 @@ typedef enum _GameAnchorZ {
 
 -(void)add_player_projectile:(PlayerProjectile*)tar;
 -(void)add_enemy_projectile:(EnemyProjectile*)tar;
-
--(SpriterNodeCache*)get_spriter_node_cache;
 @end
 
 @interface BGElement : NSObject

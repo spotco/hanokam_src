@@ -12,6 +12,7 @@
 #import "GameEngineScene.h"
 #import "UnderwaterBubbleParticle.h"
 #import "FlashEvery.h"
+#import "WaterEnemyManager.h"
 
 @implementation DiveReturnPlayerStateStack {
 	PlayerUnderwaterCombatParams *_underwater_params;
@@ -46,6 +47,7 @@
 		
 		[g.player play_anim:@"In Air Idle" repeat:YES];
 		[g add_ripple:ccp(g.player.position.x,0)];
+		[g.get_water_enemy_manager remove_all_enemies:g];
 	}
 	[g.player read_s_pos:g];
 	[g set_camera_height:g.player.position.y + _underwater_params._camera_offset];

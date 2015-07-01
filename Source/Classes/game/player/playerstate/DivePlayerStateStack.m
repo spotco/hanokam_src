@@ -11,6 +11,10 @@
 #import "DiveReturnPlayerStateStack.h"
 #import "UnderwaterBubbleParticle.h"
 #import "FlashEvery.h"
+#import "GameEngineScene.h"
+
+#import "WaterEnemyManager.h" 
+#import "PufferBasicWaterEnemy.h"
 
 @implementation DivePlayerStateStack {
 	PlayerUnderwaterCombatParams *_underwater_params;
@@ -34,6 +38,10 @@
     [self proc_multiple_bubbles2:g];
     
     _bubble_every = [FlashEvery cons_time:30];
+	
+	[g.get_water_enemy_manager add_enemy:[PufferBasicWaterEnemy cons_g:g pt1:ccp(game_screen().width*0.25,-900) pt2:ccp(game_screen().width*0.75,-900)] game:g];
+	[g.get_water_enemy_manager add_enemy:[PufferBasicWaterEnemy cons_g:g pt1:ccp(game_screen().width*0.25,-1000) pt2:ccp(game_screen().width*0.75,-1000)] game:g];
+	[g.get_water_enemy_manager add_enemy:[PufferBasicWaterEnemy cons_g:g pt1:ccp(game_screen().width*0.25,-1100) pt2:ccp(game_screen().width*0.75,-1100)] game:g];
 	
 	return self;
 }

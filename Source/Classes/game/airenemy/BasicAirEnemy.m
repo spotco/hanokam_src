@@ -103,7 +103,7 @@
 	if (_anim_t < 1) {
 		CGPoint next_rel_pos = bezier_point_for_t(_rel_start, bez_ctrl1, bez_ctrl2, _rel_end, _anim_t);
 		Vec3D dir = vec_cons(next_rel_pos.x - _rel_pos.x, next_rel_pos.y - _rel_pos.y, 0);
-		self.rotation += shortest_angle(self.rotation, vec_ang_deg_lim180(dir,90)) * 0.25;
+		self.rotation = drpt(self.rotation,shortest_angle(self.rotation, vec_ang_deg_lim180(dir,90)),1/10.0);
 		
 		_rel_pos = next_rel_pos;
 		[self update_rel_pos:g];
