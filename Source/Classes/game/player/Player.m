@@ -46,8 +46,8 @@
 	
 	[data replace_atlas_index:0 with:[SpriterJSONParser cons_texture:[Resource get_tex:TEX_SPRITER_CHAR_HANOKA_PLAYER_REDGARB] file:@"hanoka_player_redgarb.json"]];
 	
-	_img = [SpriterNode nodeFromData:data render_size:ccp(180,230)];
-	[_img set_render_placement:ccp(0.5,0.45)];
+	_img = [SpriterNode nodeFromData:data render_size:ccp(180,320)];
+	[_img set_render_placement:ccp(0.5,0.3)];
 	[_img playAnim:@"Idle" repeat:YES];
 	[_img setScale:0.225];
 	[self addChild:_img z:1];
