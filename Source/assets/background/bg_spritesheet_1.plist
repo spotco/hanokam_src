@@ -88,7 +88,7 @@
 			<key>spriteTrimmed</key>
 			<true/>
 			<key>textureRect</key>
-			<string>{{1288, 0}, {653, 850}}</string>
+			<string>{{656, 0}, {653, 850}}</string>
 			<key>textureRotated</key>
 			<false/>
 		</dict>
@@ -132,7 +132,7 @@
 			<key>spriteTrimmed</key>
 			<false/>
 			<key>textureRect</key>
-			<string>{{1284, 1783}, {640, 200}}</string>
+			<string>{{642, 1783}, {640, 200}}</string>
 			<key>textureRotated</key>
 			<false/>
 		</dict>
@@ -154,7 +154,7 @@
 			<key>spriteTrimmed</key>
 			<false/>
 			<key>textureRect</key>
-			<string>{{642, 1783}, {640, 200}}</string>
+			<string>{{1284, 1783}, {640, 200}}</string>
 			<key>textureRotated</key>
 			<false/>
 		</dict>
@@ -198,7 +198,7 @@
 			<key>spriteTrimmed</key>
 			<false/>
 			<key>textureRect</key>
-			<string>{{944, 852}, {640, 100}}</string>
+			<string>{{1288, 1358}, {640, 100}}</string>
 			<key>textureRotated</key>
 			<false/>
 		</dict>
@@ -220,7 +220,51 @@
 			<key>spriteTrimmed</key>
 			<false/>
 			<key>textureRect</key>
-			<string>{{944, 954}, {640, 100}}</string>
+			<string>{{1288, 1256}, {640, 100}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>underwater_temple.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{0, 0}, {640, 402}}</string>
+			<key>spriteOffset</key>
+			<string>{0, -0}</string>
+			<key>spriteSize</key>
+			<string>{640, 402}</string>
+			<key>spriteSourceSize</key>
+			<string>{640, 402}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{1288, 852}, {640, 402}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>underwater_temple_treasure.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{0, 0}, {45, 41}}</string>
+			<key>spriteOffset</key>
+			<string>{0, -0}</string>
+			<key>spriteSize</key>
+			<string>{45, 41}</string>
+			<key>spriteSourceSize</key>
+			<string>{45, 41}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{944, 852}, {45, 41}}</string>
 			<key>textureRotated</key>
 			<false/>
 		</dict>
@@ -235,7 +279,7 @@
 		<key>size</key>
 		<string>{2048, 2048}</string>
 		<key>name</key>
-		<string>bg_spritesheet</string>
+		<string>bg_spritesheet.zwd</string>
 		<key>target</key>
 		<dict>
 			<key>name</key>

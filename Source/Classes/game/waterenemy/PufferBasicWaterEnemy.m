@@ -8,9 +8,12 @@
 
 #import "PufferBasicWaterEnemy.h"
 #import "PufferEnemySprite.h"
+#import "FlashCount.h"
 
 @implementation PufferBasicWaterEnemy {
 	PufferEnemySprite *_img;
+	ccColor4F _tar_color;
+	FlashCount *_flashcount;
 	
 }
 
@@ -23,6 +26,10 @@
 	_img = [PufferEnemySprite cons];
 	[self addChild:_img];
 	
+	_tar_color = ccc4f(1.0, 1.0, 1.0, 1.0);
+	_flashcount = [FlashCount cons];
+	[_flashcount add_flash_at_times:@[@30,@20,@10]];
+	
 	return self;
 }
 
@@ -32,13 +39,21 @@
 	switch (self._current_mode) {
 	case BasicWaterEnemyMode_IdleMove:{
 		[_img update_playAnim:_img._anim_idle];
-	}
-	break;
+	} break;
 	case BasicWaterEnemyMode_InPack:{
 		[_img update_playAnim:_img._anim_follow];
-	}
+	} break;
+	case BasicWaterEnemyMode_Stunned:{
+		if ([_flashcount do_flash_given_time:[self get_stunned_anim_ct]]) {
+			_tar_color.b = 0.0;
+			_tar_color.g = 0.0;
+		}
+	} break;
 	default:break;
 	}
+	[_img setColor4f:_tar_color];
+	_tar_color.b = drpt(_tar_color.b, 1.0, 1/8.0);
+	_tar_color.g = drpt(_tar_color.g, 1.0, 1/8.0);
 }
 
 -(HitRect)get_hit_rect { return [_img get_hit_rect_pos:self.position]; }

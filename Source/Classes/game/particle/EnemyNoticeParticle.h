@@ -7,7 +7,8 @@
 //
 
 #import "Particle.h"
+#import "GEventDispatcher.h"
 
-@interface EnemyNoticeParticle : Particle
-+(EnemyNoticeParticle*)cons_pos:(CGPoint)pos;
+@interface EnemyNoticeParticle : Particle <GEventListener>
++(EnemyNoticeParticle*)cons_pos:(CGPoint)pos g:(GameEngineScene *)g target:(id)target;
 @end

@@ -10,33 +10,50 @@
 #import "SPDeviceAccelerometer.h"
 
 /*
-TODO --
-GAMEPLAY IDEAS:
-underwater enemies - idle, attention
-underwater enemies - followgroup
-underwater treasure get
+--TODO
+underwater enemies hit player effect
+underwater treasure get (force end with transition anim)
 
 quest + dialogue system stubs + simple quests
+	-quest1 attract certain number of enemies, ui
+	-quest2 reach certain depth (underwater temple)
+	
 perf run, village and etc hiding
 air and underwater mode powerup/gold drops
 
 fix anims
+	-player hitbox fix
+	-inair pick back up, revert to idle animation and 0 rotation
+	-arrow shoot spawn location
 	-air hurt anim play
 	-bow shoot anim hold rotation
 	-village walk anim fix
 	-try dash spin anim hit
+
 	
 enemies shoot bullet pause animation
 no arrows popup dialogue
 
-QUESTS ARE CHALLENGES - let no enemies escape
-	underwater quests reach certain depth/attract certain number of enemies
+enemy patterns - 4 air enemy patterns
+enemy patterns - 4 water enemy patterns
 
+magic system - charge up energy bar, tap button to unleash
+
+quest challenge mechanics - let no enemies escape
+	underwater quests reach certain depth/
+
+first boss
+store and equipment mechanics
+
+--MISC IDEAS
 arrow bounce off + (clear player projectiles after airbattle end)
 dropping arrows after end
 homing arrow
 
-TECH --
+--ART REQUESTS
+special fast swim animation
+
+--TECH
 spriterdata cache
 pool arrows and other stuff
 check leaks

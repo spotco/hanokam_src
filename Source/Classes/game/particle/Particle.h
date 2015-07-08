@@ -10,7 +10,7 @@
 -(void)i_update:(id)g;
 -(BOOL)should_remove;
 -(int)get_render_ord;
--(void)do_remove;
+-(void)do_remove:(id)g;
 @end
 
 @interface ParticleSystem : NSObject

@@ -64,7 +64,7 @@
     return _anim_t >= 1;
 }
 
--(void)do_remove {
+-(void)do_remove:(id)g {
     [ObjectPool repool:self class:[UnderwaterBubbleParticle class]];
 }
 

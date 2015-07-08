@@ -7,7 +7,8 @@
 //
 
 #import "BasePlayerStateStack.h"
+#import "GEventDispatcher.h"
 
-@interface DivePlayerStateStack : BasePlayerStateStack
+@interface DivePlayerStateStack : BasePlayerStateStack <GEventListener>
 +(DivePlayerStateStack*)cons:(GameEngineScene*)g;
 @end

@@ -15,6 +15,7 @@
 #import "SpriterNode.h" 
 
 #import "PlayerAirCombatParams.h"
+#import "PlayerUnderwaterCombatParams.h"
 
 @interface BasePlayerStateStack : NSObject
 -(void)i_update:(GameEngineScene*)game;
@@ -23,6 +24,7 @@
 -(BOOL)on_land:(GameEngineScene*)game;
 
 -(PlayerAirCombatParams*)cond_get_inair_combat_params;
+-(PlayerUnderwaterCombatParams*)cond_get_underwater_combat_params;
 @end
 
 @interface IdlePlayerStateStack : BasePlayerStateStack

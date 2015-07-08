@@ -12,6 +12,7 @@
 #import "UnderwaterBubbleParticle.h"
 #import "FlashEvery.h"
 #import "GameEngineScene.h"
+#import "SwordSlashParticle.h"
 
 #import "WaterEnemyManager.h" 
 #import "PufferBasicWaterEnemy.h"
@@ -26,6 +27,8 @@
 }
 
 -(DivePlayerStateStack*)cons:(GameEngineScene*)g {
+	[g.get_event_dispatcher add_listener:self];
+
 	_underwater_params = [[PlayerUnderwaterCombatParams alloc] init];
 	
 	_underwater_params._vel = ccp(0,-7);
@@ -44,6 +47,33 @@
 	[g.get_water_enemy_manager add_enemy:[PufferBasicWaterEnemy cons_g:g pt1:ccp(game_screen().width*0.25,-1100) pt2:ccp(game_screen().width*0.75,-1100)] game:g];
 	
 	return self;
+}
+
+-(void)on_state_end:(GameEngineScene *)g {
+	[g.get_event_dispatcher remove_listener:self];
+}
+
+-(void)dispatch_event:(GEvent *)e {
+	GameEngineScene *g = e.context;
+	switch (e.type) {
+	case GEventType_PlayerHitEnemyDash: {
+		BaseWaterEnemy *target = e.target;
+		[g add_particle:[SwordSlashParticle cons_pos:target.position dir:vec_cons_norm(_underwater_params._vel.x, _underwater_params._vel.y, 0)]];
+		[g shake_for:10 distance:5];
+		_underwater_params._dash_ct = MIN(_underwater_params._dash_ct+20,40);
+		
+	} break;
+	case GEventType_PlayerTouchEnemy: {
+		BaseWaterEnemy *target = e.target;
+		_underwater_params._vel = ccp(target.position.x > g.player.position.x ? 7 : -7,_underwater_params._vel.y);
+		[g.get_event_dispatcher push_event:[GEvent cons_context:g type:GEventType_PlayerTakeDamage]];
+		[g shake_for:10 distance:5];
+		[g.player.shared_params set_breath:g.player.shared_params.get_current_breath-50];
+		
+		
+	} break;
+	default: break;
+	}
 }
 
 -(void)i_update:(GameEngineScene *)g {
@@ -177,6 +207,10 @@
 
 -(PlayerState)get_state {
 	return PlayerState_Dive;
+}
+
+-(PlayerUnderwaterCombatParams*)cond_get_underwater_combat_params {
+	return _underwater_params;
 }
 
 @end
