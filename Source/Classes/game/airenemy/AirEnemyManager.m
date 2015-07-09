@@ -108,29 +108,27 @@ long PlayerHitParams_idalloc() {
 }
 
 -(void)test_spawn_enemies:(GameEngineScene*)game {
-	if ([game get_player_state] == PlayerState_InAir) {
-		if ( (_enemies.count == 0 && _enemies_future_spawns.count == 0) || float_random(0, 50) < 1) {
-			CGPoint start_pos = game_screen_pct(float_random(0.15, 0.85), 0);
-			start_pos.y -= 50;
-			
-			CGPoint end_pos;
-			if (float_random(0, 2) < 1) {
-				end_pos = game_screen_pct(0, float_random(0.15, 0.85));
-				end_pos.x -= 50;
-			} else {
-				end_pos = game_screen_pct(1, float_random(0.15, 0.85));
-				end_pos.x += 50;
-			}
-			
-			[self add_enemy_future_spawn:[BaseAirEnemyFutureSpawn cons_time:50 screen:ccp(start_pos.x,20) enemy:[PufferBasicAirEnemy cons_g:game relstart:start_pos relend:end_pos]]];
+	if ( (_enemies.count == 0 && _enemies_future_spawns.count == 0) || float_random(0, 50) < 1) {
+		CGPoint start_pos = game_screen_pct(float_random(0.15, 0.85), 0);
+		start_pos.y -= 50;
+		
+		CGPoint end_pos;
+		if (float_random(0, 2) < 1) {
+			end_pos = game_screen_pct(0, float_random(0.15, 0.85));
+			end_pos.x -= 50;
+		} else {
+			end_pos = game_screen_pct(1, float_random(0.15, 0.85));
+			end_pos.x += 50;
 		}
+		
+		[self add_enemy_future_spawn:[BaseAirEnemyFutureSpawn cons_time:50 screen:ccp(start_pos.x,20) enemy:[PufferBasicAirEnemy cons_g:game relstart:start_pos relend:end_pos]]];
 	}
 }
 
 static NSMutableArray *do_remove;
 
 -(void)i_update:(GameEngineScene*)game {
-	[self test_spawn_enemies:game];
+	if ([game get_player_state] == PlayerState_InAir) [self test_spawn_enemies:game];
 	
 	if (do_remove == NULL) do_remove = [NSMutableArray array];
 	for (long i = _enemies_future_spawns.count-1; i >= 0; i--) {

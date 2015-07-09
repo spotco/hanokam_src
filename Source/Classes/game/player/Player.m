@@ -209,10 +209,12 @@ float accel_x_move_val(GameEngineScene *g, float from_val) {
 
 -(CGPoint)get_size { return ccp(40,130); }
 -(HitRect)get_hit_rect {
-	return satpolyowner_cons_hit_rect(self.position, self.get_size.x, self.get_size.y,0.25);
+	SATPoly poly;
+	[self get_sat_poly:&poly];
+	return SAT_poly_to_bounding_hitrect(&poly,ccp(-10,-10),ccp(10,10));
 }
 -(void)get_sat_poly:(SATPoly*)in_poly {
-	return satpolyowner_cons_sat_poly(in_poly, self.position, self.rotation, self.get_size.x, self.get_size.y, ccp(1,1),0.25);
+	satpolyowner_cons_sat_poly_with_basis_offset(in_poly, self.position, self.rotation, self.get_size.x, self.get_size.y, ccp(1,1),0.25,ccp(10,0));
 }
 -(CGPoint)get_center {
 	HitRect hitrect = [self get_hit_rect];

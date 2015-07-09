@@ -77,6 +77,14 @@ BOOL SAT_polyowners_intersect(id<SATPolyHitOwner> a, id<SATPolyHitOwner> b) {
     return true;
 }
 
+HitRect SAT_poly_to_bounding_hitrect(SATPoly *buf, CGPoint extend_min, CGPoint extend_max) {
+	float min_x = MIN(buf->pts[0].x,MIN(buf->pts[1].x,MIN(buf->pts[2].x,buf->pts[3].x)));
+	float min_y = MIN(buf->pts[0].y,MIN(buf->pts[1].y,MIN(buf->pts[2].y,buf->pts[3].y)));
+	float max_x = MAX(buf->pts[0].x,MAX(buf->pts[1].x,MAX(buf->pts[2].x,buf->pts[3].x)));
+	float max_y = MAX(buf->pts[0].y,MAX(buf->pts[1].y,MAX(buf->pts[2].y,buf->pts[3].y)));
+	return hitrect_cons_x1y1_x2y2(min_x+extend_min.x, min_y+extend_min.y, max_x+extend_max.x, max_y+extend_max.y);
+}
+
 HitRect satpolyowner_cons_hit_rect(CGPoint position, float sizex, float sizey, float scf) {
 	float max_dim = MAX(sizex,sizey);
 	float max_dim_2 = max_dim/2;
@@ -84,6 +92,10 @@ HitRect satpolyowner_cons_hit_rect(CGPoint position, float sizex, float sizey, f
 }
 
 void satpolyowner_cons_sat_poly(SATPoly *in_poly, CGPoint position, float rotation, float sizex, float sizey, CGPoint mul_scf, float scf) {
+	satpolyowner_cons_sat_poly_with_basis_offset(in_poly, position, rotation, sizex, sizey, mul_scf, scf, CGPointZero);
+}
+
+void satpolyowner_cons_sat_poly_with_basis_offset(SATPoly *in_poly, CGPoint position, float rotation, float sizex, float sizey, CGPoint mul_scf, float scf, CGPoint basis_offset) {
 	Vec3D right = vec_from_ccrotation(rotation);
 	Vec3D up = vec_cross(vec_z(), right);
 	float wid = sizex/2 * scf * mul_scf.x;
@@ -91,9 +103,9 @@ void satpolyowner_cons_sat_poly(SATPoly *in_poly, CGPoint position, float rotati
 
 	SAT_cons_quad_buf(
 		in_poly,
-		vec_basis_transform_point(position, up, -hei, right, -wid),
-		vec_basis_transform_point(position, up, -hei, right, wid),
-		vec_basis_transform_point(position, up, hei, right, wid),
-		vec_basis_transform_point(position, up, hei, right, -wid)
+		vec_basis_transform_point(position, up, -hei+basis_offset.x, right, -wid+basis_offset.y),
+		vec_basis_transform_point(position, up, -hei+basis_offset.x, right, wid+basis_offset.y),
+		vec_basis_transform_point(position, up, hei+basis_offset.x, right, wid+basis_offset.y),
+		vec_basis_transform_point(position, up, hei+basis_offset.x, right, -wid+basis_offset.y)
 	);
 }

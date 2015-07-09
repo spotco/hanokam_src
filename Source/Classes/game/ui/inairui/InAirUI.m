@@ -49,12 +49,13 @@
 }
 
 -(void)dispatch_event:(GEvent *)e {
+	if (!self.visible) return;
 	switch (e.type) {
 	case GEventType_PlayerAimVariance: {
 		[_player_aim_reticule hold_visible:e.float_value];
 	}
 	break;
-	case GeventType_PlayerHealthHeal: {
+	case GEventType_PlayerHealthHeal: {
 		[_player_health_ui pulse_heart_lastfill];
 	}
 	default: {}

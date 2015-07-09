@@ -42,10 +42,7 @@
     
     _bubble_every = [FlashEvery cons_time:30];
 	
-	[g.get_water_enemy_manager add_enemy:[PufferBasicWaterEnemy cons_g:g pt1:ccp(game_screen().width*0.25,-900) pt2:ccp(game_screen().width*0.75,-900)] game:g];
-	[g.get_water_enemy_manager add_enemy:[PufferBasicWaterEnemy cons_g:g pt1:ccp(game_screen().width*0.25,-1000) pt2:ccp(game_screen().width*0.75,-1000)] game:g];
-	[g.get_water_enemy_manager add_enemy:[PufferBasicWaterEnemy cons_g:g pt1:ccp(game_screen().width*0.25,-1100) pt2:ccp(game_screen().width*0.75,-1100)] game:g];
-	
+	[g.get_event_dispatcher push_event:[GEvent cons_context:g type:GEventType_ModeDiveStart]];
 	return self;
 }
 
@@ -64,12 +61,10 @@
 		
 	} break;
 	case GEventType_PlayerTouchEnemy: {
-		BaseWaterEnemy *target = e.target;
-		_underwater_params._vel = ccp(target.position.x > g.player.position.x ? 7 : -7,_underwater_params._vel.y);
+		_underwater_params._vel = ccp(0,0);
 		[g.get_event_dispatcher push_event:[GEvent cons_context:g type:GEventType_PlayerTakeDamage]];
 		[g shake_for:10 distance:5];
 		[g.player.shared_params set_breath:g.player.shared_params.get_current_breath-50];
-		
 		
 	} break;
 	default: break;
@@ -118,11 +113,11 @@
 					if (g.player.position.y == g.get_ground_depth) {
 						_underwater_params._vel = ccp(_underwater_params._vel.x,0);
 					} else {
-						_underwater_params._vel = ccp(_underwater_params._vel.x,MAX(_underwater_params._vel.y-0.2*dt_scale_get(), -7));
+						_underwater_params._vel = ccp(_underwater_params._vel.x,MAX(_underwater_params._vel.y-0.2*dt_scale_get(), -5));
 					}
 					
 				} else {
-					_underwater_params._vel = ccp(_underwater_params._vel.x,MIN(_underwater_params._vel.y+0.2*dt_scale_get(), 7));
+					_underwater_params._vel = ccp(_underwater_params._vel.x,MIN(_underwater_params._vel.y+0.2*dt_scale_get(), 5));
 				}
 				
 				if (g.get_control_manager.is_proc_swipe) {

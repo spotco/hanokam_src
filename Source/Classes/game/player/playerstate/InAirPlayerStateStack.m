@@ -252,9 +252,9 @@
 				
 				if (arrow_variance_angle <= 0) {
 					[g shake_for:6 distance:3.5];
-					[g add_player_projectile:[ChargedArrow cons_pos:g.player.position dir:vec_rotate_rad(vec_cons_norm(delta.x, delta.y, 0), float_random(-rad_arrow_variance, rad_arrow_variance) )]];
+					[g add_player_projectile:[ChargedArrow cons_pos:g.player.get_center dir:vec_rotate_rad(vec_cons_norm(delta.x, delta.y, 0), float_random(-rad_arrow_variance, rad_arrow_variance) )]];
 				} else {
-					[g add_player_projectile:[Arrow cons_pos:g.player.position dir:vec_rotate_rad(vec_cons_norm(delta.x, delta.y, 0), float_random(-rad_arrow_variance, rad_arrow_variance) )]];
+					[g add_player_projectile:[Arrow cons_pos:g.player.get_center dir:vec_rotate_rad(vec_cons_norm(delta.x, delta.y, 0), float_random(-rad_arrow_variance, rad_arrow_variance) )]];
 				}
 				
 				_air_params._sword_out = NO;

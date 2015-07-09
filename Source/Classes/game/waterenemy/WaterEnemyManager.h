@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "Common.h" 
 #import "PolyLib.h"
+#import "GEventDispatcher.h"
 @class GameEngineScene;
 
 @interface BaseWaterEnemy : CCSprite <SATPolyHitOwner>
@@ -19,7 +20,7 @@
 -(void)get_sat_poly:(SATPoly *)in_poly;
 @end
 
-@interface WaterEnemyManager : NSObject
+@interface WaterEnemyManager : NSObject <GEventListener>
 +(WaterEnemyManager*)cons:(GameEngineScene*)g;
 -(void)i_update:(GameEngineScene*)g;
 -(NSArray*)get_enemies;

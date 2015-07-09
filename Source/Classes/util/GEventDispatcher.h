@@ -10,7 +10,9 @@ typedef enum {
 	GEventType_PlayerChargePct,
 	GEventType_PlayerChargeFail,
 	GEventType_PlayerAimVariance,
-	GeventType_PlayerHealthHeal
+	GEventType_PlayerHealthHeal,
+	
+	GEventType_ModeDiveStart
 	
 } GEventType;
 

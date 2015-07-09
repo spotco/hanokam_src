@@ -76,7 +76,7 @@
 -(void)i_update:(GameEngineScene*)g {
 	if (g.get_player_state == PlayerState_InAir) {
 		[self setVisible:YES];
-		[self setPosition:[g.player convertToWorldSpace:CGPointZero]];
+		[self setPosition:[g.get_anchor convertToWorldSpace:g.player.get_center]];
 		float tar_ang = vec_ang_deg_lim180(vec_cons(g.get_control_manager.get_player_to_touch_dir.x, g.get_control_manager.get_player_to_touch_dir.y, 0), 0) - 90;
 		_left_line.rotation = tar_ang + _variance;
 		_right_line.rotation = tar_ang - _variance;

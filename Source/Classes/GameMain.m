@@ -11,7 +11,7 @@
 
 /*
 --TODO
-underwater enemies hit player effect
+underwater blood hit effect
 underwater treasure get (force end with transition anim)
 
 quest + dialogue system stubs + simple quests

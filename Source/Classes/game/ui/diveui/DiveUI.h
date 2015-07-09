@@ -8,6 +8,6 @@
 
 #import "GameUI.h"
 
-@interface DiveUI : GameUISubView
+@interface DiveUI : GameUISubView <GEventListener>
 +(DiveUI*)cons:(GameEngineScene*)g;
 @end

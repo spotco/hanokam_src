@@ -43,6 +43,14 @@
 	
 	_particles = [ParticleSystem cons_anchor:self];
 	
+	_dialogUI = [DialogUI cons:g];
+    _villageUI = [VillageUI cons:g];
+	_in_air_ui = [InAirUI cons:g];
+	_dive_ui = [DiveUI cons:g];
+	
+	_gameui_subviews = @[_villageUI,_in_air_ui,_dialogUI,_dive_ui];
+    for (GameUISubView *itr in _gameui_subviews) [self addChild:itr];
+	
 	_red_flash_overlay = [CCNodeColor nodeWithColor:[CCColor redColor]];
 	[_red_flash_overlay setOpacity:0];
 	[self addChild:_red_flash_overlay];
@@ -52,14 +60,6 @@
 	_tar_black_fadeout_overlay_alpha = 0;
 	[_black_fadeout_overlay setOpacity:_tar_black_fadeout_overlay_alpha];
 	[self addChild:_black_fadeout_overlay];
-	
-	_dialogUI = [DialogUI cons:g];
-    _villageUI = [VillageUI cons:g];
-	_in_air_ui = [InAirUI cons:g];
-	_dive_ui = [DiveUI cons:g];
-	
-	_gameui_subviews = @[_villageUI,_in_air_ui,_dialogUI,_dive_ui];
-    for (GameUISubView *itr in _gameui_subviews) [self addChild:itr];
 	
 	return self;
 }
