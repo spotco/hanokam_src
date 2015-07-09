@@ -30,6 +30,7 @@
 	float _pack_ud_theta;
 	float _pack_lr_vtheta, _pack_ud_vtheta;
 	float _pack_cur_vel;
+	float _pack_x_var,_pack_y_var;
 	
 	CGPoint _test_last_target;
 }
@@ -44,6 +45,8 @@
 	_pack_ud_theta = float_random(-3.14, 3.14);
 	_pack_lr_vtheta = float_random(0.045, 0.065);
 	_pack_ud_vtheta = float_random(0.03, 0.04);
+	_pack_x_var = float_random(70, 200);
+	_pack_y_var = float_random(70, 150);
 	return self;
 }
 
@@ -108,7 +111,7 @@
 		_pack_ud_theta += _pack_ud_vtheta * dt_scale_get();
 		_pack_lr_theta += _pack_lr_vtheta * dt_scale_get();
 		
-		CGPoint target_pos = CGPointAdd(g.player.position, ccp( 90*sinf(_pack_lr_theta), 70*cosf(_pack_ud_theta) + 150 ));
+		CGPoint target_pos = CGPointAdd(g.player.position, ccp( _pack_x_var*sinf(_pack_lr_theta), _pack_y_var*cosf(_pack_ud_theta) + _pack_y_var+80 ));
 		Vec3D delta = vec_cons_norm(target_pos.x-self.position.x, target_pos.y-self.position.y, 0);
 		_pack_cur_vel = MIN(drpt(_pack_cur_vel, 10*dt_scale_get(), 1/20.0),CGPointDist(target_pos, self.position));
 		vec_scale_m(&delta, _pack_cur_vel);
@@ -124,7 +127,7 @@
 -(void)i_update_divereturn:(GameEngineScene*)g {
 	_pack_ud_theta += _pack_ud_vtheta * dt_scale_get();
 	_pack_lr_theta += _pack_lr_vtheta * dt_scale_get();
-	CGPoint target_pos = CGPointAdd(g.player.get_center, ccp( 90*sinf(_pack_lr_theta), 70*cosf(_pack_ud_theta)));
+	CGPoint target_pos = CGPointAdd(g.player.get_center, ccp( _pack_x_var*sinf(_pack_lr_theta), _pack_y_var*cosf(_pack_ud_theta)));
 	
 	Vec3D delta = vec_cons_norm(target_pos.x-self.position.x, target_pos.y-self.position.y, 0);
 	_pack_cur_vel = MIN(drpt(_pack_cur_vel, 3*dt_scale_get(), 1/20.0),CGPointDist(target_pos, self.position));
@@ -154,6 +157,7 @@
 		vec_scale_m(&pos_delta, 5);
 		_stun_vel = vec_to_cgpoint(pos_delta);
 		
+		[BaseWaterEnemy particle_blood_effect:g pos:g.player.get_center ct:6];
 	}
 }
 

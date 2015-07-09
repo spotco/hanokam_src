@@ -18,6 +18,8 @@
 -(void)do_remove:(GameEngineScene*)g;
 -(HitRect)get_hit_rect;
 -(void)get_sat_poly:(SATPoly *)in_poly;
+
++(void)particle_blood_effect:(GameEngineScene *)g pos:(CGPoint)pos ct:(int)ct;
 @end
 
 @interface WaterEnemyManager : NSObject <GEventListener>

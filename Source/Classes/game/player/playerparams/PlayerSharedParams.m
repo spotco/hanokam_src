@@ -26,7 +26,7 @@
     _max_health = 3;
     _current_health = _max_health;
     
-    _max_breath = 600;
+    _max_breath = 1000;
     _current_breath = _max_breath;
     return self;
 }

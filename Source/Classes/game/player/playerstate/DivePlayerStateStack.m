@@ -66,6 +66,8 @@
 		[g shake_for:10 distance:5];
 		[g.player.shared_params set_breath:g.player.shared_params.get_current_breath-50];
 		
+		[BaseWaterEnemy particle_blood_effect:g pos:g.player.get_center ct:7];
+		
 	} break;
 	default: break;
 	}
