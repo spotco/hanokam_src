@@ -157,6 +157,7 @@
 -(CCSprite*)get_ripple_proto { return _ripple_proto; }
 -(NSNumber*)get_tick_mod_pi { return @(fmodf(_tick * 0.01,M_PI * 2)); }
 -(BGVillage*)get_bg_village { return _bg_village; }
+-(BGWater*)get_bg_water { return _bg_water; }
 -(GEventDispatcher*)get_event_dispatcher { return _event_dispatcher; }
 
 -(void)add_delayed_action:(DelayAction *)delayed_action {
@@ -220,10 +221,6 @@
 	
 	[self.get_control_manager clear_proc_swipe];
 	[self.get_control_manager clear_proc_tap];
-}
-
--(float)get_ground_depth {
-	return -10000;
 }
 
 -(void)add_particle:(Particle*)p {

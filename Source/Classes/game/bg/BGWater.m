@@ -16,6 +16,7 @@
 #import "ShaderManager.h"
 #import "BGVillage.h"
 #import "BGReflection.h"
+#import "UnderwaterTreasureSprite.h"
 
 @implementation BGWater {
 	CCSprite *_water_bg;
@@ -26,6 +27,8 @@
 	CCSprite *_underwater_element_1, *_underwater_element_2, *_underwater_element_3;
 	float _offset_underwater_element_1, _offset_underwater_element_2, _offset_underwater_element_3;
 	CCSprite *_top_fade, *_bottom_fade;
+	
+	UnderwaterTreasureSprite *_underwater_temple_treasure;
 	
 	CCRenderTexture *_reflection_texture, *_ripple_texture;
 }
@@ -65,16 +68,21 @@
 	[[g get_anchor] addChild:_bottom_fade z:GameAnchorZ_BGWater_Ground];
 
 	
-	_ground = [CCSprite spriteWithTexture:[Resource get_tex:TEX_BG_SPRITESHEET_1] rect:[FileCache get_cgrect_from_plist:TEX_BG_SPRITESHEET_1 idname:@"bg_lake_ground_1.png"]];
+	_ground = [CCSprite spriteWithTexture:[Resource get_tex:TEX_BG_SPRITESHEET_1] rect:[FileCache get_cgrect_from_plist:TEX_BG_SPRITESHEET_1 idname:@"underwater_temple.png"]];
 	scale_to_fit_screen_x(_ground);
-	[_ground setAnchorPoint:ccp(0,0.85)];
-	[_ground setPosition:ccp(0,0)];
+	_ground.scaleY = _ground.scaleX;
+	[_ground setAnchorPoint:ccp(0,1)];
 	
 	_ground_fill = [CCSprite spriteWithTexture:[Resource get_tex:TEX_BLANK]];
 	[_ground_fill setColor:[CCColor colorWithCcColor3b:ccc3(5, 44, 92)]];
-	[_ground_fill setAnchorPoint:ccp(0,1)];
+	[_ground_fill setAnchorPoint:ccp(0,0)];
 	[[g get_anchor] addChild:_ground_fill z:GameAnchorZ_BGWater_Ground];
 	[[g get_anchor] addChild:_ground z:GameAnchorZ_BGWater_Ground];
+	
+	_underwater_temple_treasure = [UnderwaterTreasureSprite cons];
+	[[g get_anchor] addChild:_underwater_temple_treasure z:GameAnchorZ_UnderwaterForegroundElements];
+	
+	[self set_ground_depth:-9999];
 	
 	[self initialize_reflection_and_ripples:g];
 	
@@ -168,6 +176,16 @@
 	)];
 }
 
+-(void)set_ground_depth:(float)depth {
+	[_ground setPosition:ccp(0, depth+120)];
+	[_bottom_fade setPosition:ccp(0,depth+120-140)];
+	[_ground_fill setPosition:ccp(0, depth+120-140-game_screen().height)];
+	[_ground_fill setTextureRect:CGRectMake(0, 0, game_screen().width, game_screen().height)];
+	[_underwater_temple_treasure setPosition:ccp(game_screen().width*0.5, depth+20)];
+}
+-(CGPoint)get_underwater_treasure_position { return _underwater_temple_treasure.position; }
+-(void)set_underwater_treasure_visible:(BOOL)tar { [_underwater_temple_treasure setVisible:tar]; }
+
 -(void)i_update:(GameEngineScene*)g {
 	[_water_bg setPosition:ccp(0, g.get_current_camera_center_y - game_screen().height / 2)];
 	
@@ -190,10 +208,6 @@
 		[_ground setVisible:YES];
 		[_bottom_fade setVisible:YES];
 		[_ground_fill setVisible:YES];
-		[_ground setPosition:ccp(0, g.get_ground_depth)];
-		[_bottom_fade setPosition:ccp(0,g.get_ground_depth-100)];
-		[_ground_fill setPosition:ccp(0, g.get_ground_depth - _ground.textureRect.size.height * _ground.anchorPoint.y)];
-		[_ground_fill setTextureRect:CGRectMake(0, 0, game_screen().width, game_screen().height)];
 	}
 	
 	if (![g.player is_underwater:g]) {

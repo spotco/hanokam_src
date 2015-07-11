@@ -39,7 +39,7 @@
 	_underwater_params._vel = ccp(_underwater_params._vel.x,MIN(_underwater_params._vel.y+0.2*dt_scale_get(), 30));
 	g.player.position = ccp(g.player.position.x,g.player.position.y + _underwater_params._vel.y * dt_scale_get());
 	
-	float tar_rotation = vec_ang_deg_lim180(vec_cons(g.player.position.x - last_pos.x,g.player.position.y - last_pos.y, 0),90) + 15;
+	float tar_rotation = vec_ang_deg_lim180(vec_cons(g.player.position.x - last_pos.x,g.player.position.y - last_pos.y, 0),0) - 90;
 	g.player.rotation += shortest_angle(g.player.rotation, tar_rotation) * 0.25;
 	if (g.player.position.y > 0) {
 		[g.player pop_state_stack:g];

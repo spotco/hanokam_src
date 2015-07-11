@@ -13,6 +13,7 @@
 #import "FlashEvery.h"
 #import "GameEngineScene.h"
 #import "SwordSlashParticle.h"
+#import "BGWater.h"
 
 #import "WaterEnemyManager.h" 
 #import "PufferBasicWaterEnemy.h"
@@ -43,6 +44,10 @@
     _bubble_every = [FlashEvery cons_time:30];
 	
 	[g.get_event_dispatcher push_event:[GEvent cons_context:g type:GEventType_ModeDiveStart]];
+	
+	[g.get_bg_water set_ground_depth:_underwater_params.get_ground_depth];
+	[g.get_bg_water set_underwater_treasure_visible:YES];
+	
 	return self;
 }
 
@@ -57,7 +62,7 @@
 		BaseWaterEnemy *target = e.target;
 		[g add_particle:[SwordSlashParticle cons_pos:target.position dir:vec_cons_norm(_underwater_params._vel.x, _underwater_params._vel.y, 0)]];
 		[g shake_for:10 distance:5];
-		_underwater_params._dash_ct = MIN(_underwater_params._dash_ct+20,40);
+		_underwater_params._dash_ct = MIN(_underwater_params._dash_ct+13,40);
 		
 	} break;
 	case GEventType_PlayerTouchEnemy: {
@@ -77,18 +82,17 @@
 	g.player.shared_params._reset_to_center = NO;
 	CGPoint last_pos = g.player.position;
 	switch (_underwater_params._current_mode) {
-		case PlayerUnderwaterCombatMode_TransitionIn:;
+		case PlayerUnderwaterCombatMode_TransitionIn:{
 			[g set_zoom:drpt(g.get_zoom,1.1,1/20.0)];
 			[g.player update_accel_x_position:g];
-			g.player.position = ccp(g.player.position.x,clampf(g.player.position.y + _underwater_params._vel.y * dt_scale_get(),g.get_ground_depth,0));
+			g.player.position = ccp(g.player.position.x,clampf(g.player.position.y + _underwater_params._vel.y * dt_scale_get(), _underwater_params.get_ground_depth,0));
 			_underwater_params._camera_offset = cubic_interp(_underwater_params._initial_camera_offset, _underwater_params.DEFAULT_OFFSET, 0, 1, _underwater_params._anim_ct);
 			[g set_camera_height:g.player.position.y + _underwater_params._camera_offset];
 			_underwater_params._anim_ct += 0.025 * dt_scale_get();
 			[g.player read_s_pos:g];
 			if (_underwater_params._anim_ct >= 1) _underwater_params._current_mode = PlayerUnderwaterCombatMode_MainGame;
-            
-		break;
-		case PlayerUnderwaterCombatMode_MainGame:;
+		} break;
+		case PlayerUnderwaterCombatMode_MainGame:{
 			[g set_zoom:drpt(g.get_zoom,1,1/20.0)];
 			
 			if (_underwater_params._dashing) {
@@ -112,7 +116,7 @@
 				_underwater_params._vel = ccp(_underwater_params._vel.x*powf(0.9, dt_scale_get()),_underwater_params._vel.y);
 		
 				if (g.get_control_manager.is_touch_down) {
-					if (g.player.position.y == g.get_ground_depth) {
+					if (g.player.position.y == _underwater_params.get_ground_depth) {
 						_underwater_params._vel = ccp(_underwater_params._vel.x,0);
 					} else {
 						_underwater_params._vel = ccp(_underwater_params._vel.x,MAX(_underwater_params._vel.y-0.2*dt_scale_get(), -5));
@@ -132,7 +136,7 @@
 					}
 					_underwater_params._dashing = YES;
 					_underwater_params._vel = vec_to_cgpoint(vec_scale(swipe_dir, spd));
-					_underwater_params._dash_ct += 20;
+					_underwater_params._dash_ct += 13;
                     [self proc_multiple_bubbles:g];
 				}
 			}
@@ -143,12 +147,7 @@
                 [self proc_bubble:g];
             }
             
-            [g.player.shared_params set_breath:g.player.shared_params.get_current_breath-dt_scale_get()];
-            if (g.player.shared_params.get_current_breath <= 0 || g.player.position.y > g.get_viewbox.y2) {
-                [g.player pop_state_stack:g];
-                [g.player push_state_stack:[DiveReturnPlayerStateStack cons:g waterparams:_underwater_params]];
-                [self proc_multiple_bubbles:g];
-            }
+			
 			
 			if (g.get_control_manager.is_touch_down) {
 				_underwater_params._camera_offset = drpt(_underwater_params._camera_offset, _underwater_params.DEFAULT_OFFSET, 1/15.0);
@@ -164,7 +163,7 @@
 			}
 			[g set_camera_height:MIN(g.player.position.y + _underwater_params._camera_offset, g.get_current_camera_center_y)];
 			
-			g.player.position = ccp(g.player.position.x,clampf(g.player.position.y + _underwater_params._vel.y * dt_scale_get(),g.get_ground_depth,0));
+			g.player.position = ccp(g.player.position.x,clampf(g.player.position.y + _underwater_params._vel.y * dt_scale_get(),_underwater_params.get_ground_depth,0));
 			[g.player read_s_pos:g];
 			g.player.shared_params._s_pos = ccp(
 				g.player.shared_params._s_pos.x+_underwater_params._vel.x*dt_scale_get(),
@@ -173,12 +172,56 @@
 			[g.player update_accel_x_position:g];
 			[g.player apply_s_pos:g];
 			
+			[g.player.shared_params set_breath:g.player.shared_params.get_current_breath-dt_scale_get()];
+            if (g.player.shared_params.get_current_breath <= 0 || g.player.position.y > g.get_viewbox.y2) {
+				[self pop_to_divereturn_mode:g];
+				return;
+			}
+			if (g.player.position.y < _underwater_params.get_ground_depth + 250) {
+				_underwater_params._current_mode = PlayerUnderwaterCombatMode_SwimToUnderwaterTreasure;
+			}
 			
-		break;
+			
+		} break;
+		case PlayerUnderwaterCombatMode_SwimToUnderwaterTreasure:{
+			[g.player play_anim:@"Swim" repeat:YES];
+			[g set_zoom:drpt(g.get_zoom,2.0,1/20.0)];
+			
+			Vec3D delta = cgpoint_to_vec(CGPointSub(g.get_bg_water.get_underwater_treasure_position, g.player.position));
+			Vec3D vel = cgpoint_to_vec(_underwater_params._vel);
+			float vel_len = vec_len(vel);
+			vel_len = drpt(vel_len, 7, 1/20.0);
+			
+			if (vec_len(delta) > vel_len) {
+				Vec3D delta_vel = vec_norm(delta);
+				vec_scale_m(&delta_vel, vel_len);
+				_underwater_params._vel = vec_to_cgpoint(delta_vel);
+				g.player.position = CGPointAdd(g.player.position, CGPointMult(_underwater_params._vel,ccp(dt_scale_get(),dt_scale_get())));
+				
+			} else {
+				[g.get_bg_water set_underwater_treasure_visible:NO];
+				g.player.position = g.get_bg_water.get_underwater_treasure_position;
+				_underwater_params._current_mode = PlayerUnderwaterCombatMode_PickupUnderwaterTreasure;
+			}
+			[g.player read_s_pos:g];
+			[g set_camera_height:g.player.position.y + _underwater_params._camera_offset];
+			
+		}; break;
+		case PlayerUnderwaterCombatMode_PickupUnderwaterTreasure:{
+			_underwater_params._vel = CGPointZero;
+			[self pop_to_divereturn_mode:g];
+		}; break;
 	}
 	
-	float tar_rotation = vec_ang_deg_lim180(vec_cons(low_filter(g.player.position.x - last_pos.x,0.25),low_filter(g.player.position.y - last_pos.y,0.25), 0),90);
+	float tar_rotation = vec_ang_deg_lim180(vec_cons(low_filter(g.player.position.x - last_pos.x,0.25),low_filter(g.player.position.y - last_pos.y,0.25), 0),0)-90;
 	g.player.rotation += shortest_angle(g.player.rotation, tar_rotation) * 0.25;
+}
+
+-(void)pop_to_divereturn_mode:(GameEngineScene*)g {
+	[g.player pop_state_stack:g];
+	[g.player push_state_stack:[DiveReturnPlayerStateStack cons:g waterparams:_underwater_params]];
+	[self proc_multiple_bubbles:g];
+
 }
 
 -(void)proc_multiple_bubbles:(GameEngineScene*)g {

@@ -18,6 +18,7 @@
 -(void)do_remove:(GameEngineScene*)g;
 -(HitRect)get_hit_rect;
 -(void)get_sat_poly:(SATPoly *)in_poly;
+-(BOOL)is_attracted;
 
 +(void)particle_blood_effect:(GameEngineScene *)g pos:(CGPoint)pos ct:(int)ct;
 @end
@@ -28,4 +29,6 @@
 -(NSArray*)get_enemies;
 -(void)add_enemy:(BaseWaterEnemy*)enemy game:(GameEngineScene*)g;
 -(void)remove_all_enemies:(GameEngineScene*)g;
+
+-(int)get_enemies_attracted_count;
 @end

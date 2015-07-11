@@ -11,6 +11,7 @@
 #import "Common.h"
 #import "Player.h"
 #import "FlashCount.h"
+#import "WaterEnemyManager.h"
 
 @implementation DiveUI {
     HealthBar *_breath_bar;
@@ -22,6 +23,9 @@
 	float _breath_bar_anim_t;
 	
 	FlashCount *_low_breath_flash;
+	
+	CCLabelTTF *_depth_text;
+	CCLabelTTF *_enemies_attracted_text;
 }
 +(DiveUI*)cons:(GameEngineScene*)g {
 	return [[DiveUI node] cons:g];
@@ -49,6 +53,15 @@
 	
 	_low_breath_flash = [FlashCount cons];
 	[_low_breath_flash add_flash_at_times:@[@(0.3),@(0.2),@(0.15),@(0.1),@(0.05)]];
+	
+	_depth_text = label_cons(game_screen_anchor_offset(ScreenAnchor_TL, ccp(5,-27)), ccc3(255,255,255), 10, @"Depth: 0m");
+	[_depth_text setAnchorPoint:ccp(0,1)];
+	[self addChild:_depth_text];
+	
+	_enemies_attracted_text = label_cons(game_screen_anchor_offset(ScreenAnchor_TL, ccp(5,-45)), ccc3(255,255,255), 10, @"Enemies: 0");
+	[_enemies_attracted_text setAnchorPoint:ccp(0,1)];
+	[self addChild:_enemies_attracted_text];
+	
     return self;
 }
 
@@ -75,6 +88,9 @@
 -(void)i_update:(GameEngineScene *)g {
 	_current_fill_pct = drpt(_current_fill_pct, g.player.shared_params.get_current_breath/g.player.shared_params.get_max_breath, 1/10.0);
     [self set_breath_pct:_current_fill_pct];
+	
+	[_enemies_attracted_text setString:strf("Enemies: %d",g.get_water_enemy_manager.get_enemies_attracted_count)];
+	[_depth_text setString:strf("Depth: %dm",((int)ABS(g.player.position.y))/50)];
 	
 	if ([_low_breath_flash do_flash_given_time:_current_fill_pct]) {
 		_breath_bar_anim_t = 1;

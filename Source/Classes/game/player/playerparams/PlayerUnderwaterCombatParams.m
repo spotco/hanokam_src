@@ -22,4 +22,7 @@
 -(float)MAX_OFFSET {
 	return -game_screen().height * 0.1;
 }
+-(float)get_ground_depth {
+	return -4000;
+}
 @end

@@ -11,9 +11,6 @@
 
 /*
 --TODO
-underwater blood hit effect
-underwater treasure get (force end with transition anim)
-
 quest + dialogue system stubs + simple quests
 	-quest1 attract certain number of enemies, ui
 	-quest2 reach certain depth (underwater temple)
@@ -32,6 +29,10 @@ fix anims
 
 	
 enemies shoot bullet pause animation
+enemy ideas:
+	-spikes until shoot with arrow
+	-treasure bag enemy
+	
 no arrows popup dialogue
 
 enemy patterns - 4 air enemy patterns
@@ -60,6 +61,15 @@ check leaks
 scale player accel movement based on screen size
 make TGSpriter classes structs instead
 */
+
+@interface SplashScreen : CCScene
+@end
+@implementation SplashScreen
+-(void)setup {
+	CCSprite *img = [CCSprite spriteWithImageNamed:@"Default.png"];
+	[self addChild:img];
+}
+@end
 
 @implementation GameMain
 +(CCScene*)main {

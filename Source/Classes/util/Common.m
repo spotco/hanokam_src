@@ -215,6 +215,9 @@ CGPoint CGPointSub(CGPoint a,CGPoint b) {
 float CGPointDist(CGPoint a,CGPoint b) {
     return sqrtf(powf(a.x-b.x, 2)+powf(a.y-b.y, 2));
 }
+CGPoint CGPointMult(CGPoint a, CGPoint b) {
+	return ccp(a.x*b.x,a.y*b.y);
+}
 CGPoint CGPointMid(CGPoint a,CGPoint b) {
 	CGPoint add = CGPointAdd(a, b);
 	return ccp(add.x/2,add.y/2);

@@ -2,6 +2,8 @@
 #import "GameEngineScene.h"
 #import "PufferBasicWaterEnemy.h"
 #import "RotateFadeOutParticle.h"
+#import "Player.h"
+#import "BasePlayerStateStack.h"
 
 @implementation BaseWaterEnemy
 -(void)i_update:(GameEngineScene*)game{}
@@ -9,6 +11,7 @@
 -(void)do_remove:(GameEngineScene*)g{}
 -(HitRect)get_hit_rect{ return hitrect_cons_xy_widhei(0, 0, 0, 0); }
 -(void)get_sat_poly:(SATPoly *)in_poly { }
+-(BOOL)is_attracted { return NO; }
 
 +(void)particle_blood_effect:(GameEngineScene *)g pos:(CGPoint)pos ct:(int)ct {
 	DO_FOR(ct,
@@ -30,6 +33,7 @@
 
 @implementation WaterEnemyManager {
 	NSMutableArray *_enemies;
+	int _enemies_attracted_last;
 }
 
 +(WaterEnemyManager*)cons:(GameEngineScene*)g {
@@ -55,7 +59,7 @@ static float __last_viewbox_y;
 static float __dist_to_next_spawn;
 -(void)test_spawn_enemies:(GameEngineScene*)g {
 	float viewbox_min = g.get_viewbox.y1;
-	if (viewbox_min > -500) return;
+	if (viewbox_min > -500 || viewbox_min < g.player.get_top_state.cond_get_underwater_combat_params.get_ground_depth + 800) return;
 	
 	__dist_to_next_spawn += (viewbox_min-__last_viewbox_y);
 	if (__dist_to_next_spawn <= 0) {
@@ -77,17 +81,24 @@ static NSMutableArray *do_remove;
 	
 	if ([g get_player_state] == PlayerState_Dive) [self test_spawn_enemies:g];
 	
+	int enemies_attracted_current = 0;
 	for (long i = _enemies.count-1; i >= 0; i--) {
 		BaseWaterEnemy *itr = [_enemies objectAtIndex:i];
 		[itr i_update:g];
+		if (itr.is_attracted) enemies_attracted_current++;
 		if ([itr should_remove]) {
 			[itr do_remove:g];
 			[[g get_anchor] removeChild:itr];
 			[do_remove addObject:itr];
 		}
 	}
+	_enemies_attracted_last = enemies_attracted_current;
 	[_enemies removeObjectsInArray:do_remove];
 	[do_remove removeAllObjects];
+}
+
+-(int)get_enemies_attracted_count {
+	return _enemies_attracted_last;
 }
 
 -(NSArray*)get_enemies {

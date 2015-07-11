@@ -10,7 +10,9 @@
 
 typedef enum _PlayerUnderwaterCombatMode {
 	PlayerUnderwaterCombatMode_TransitionIn,
-	PlayerUnderwaterCombatMode_MainGame
+	PlayerUnderwaterCombatMode_MainGame,
+	PlayerUnderwaterCombatMode_SwimToUnderwaterTreasure,
+	PlayerUnderwaterCombatMode_PickupUnderwaterTreasure
 } PlayerUnderwaterCombatMode;
 
 @interface PlayerUnderwaterCombatParams : NSObject
@@ -23,4 +25,5 @@ typedef enum _PlayerUnderwaterCombatMode {
 
 -(float)DEFAULT_OFFSET;
 -(float)MAX_OFFSET;
+-(float)get_ground_depth;
 @end

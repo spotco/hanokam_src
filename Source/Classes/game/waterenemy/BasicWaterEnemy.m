@@ -111,7 +111,7 @@
 		_pack_ud_theta += _pack_ud_vtheta * dt_scale_get();
 		_pack_lr_theta += _pack_lr_vtheta * dt_scale_get();
 		
-		CGPoint target_pos = CGPointAdd(g.player.position, ccp( _pack_x_var*sinf(_pack_lr_theta), _pack_y_var*cosf(_pack_ud_theta) + _pack_y_var+80 ));
+		CGPoint target_pos = CGPointAdd(g.player.position, ccp( _pack_x_var*sinf(_pack_lr_theta), _pack_y_var*cosf(_pack_ud_theta) + _pack_y_var + 100 ));
 		Vec3D delta = vec_cons_norm(target_pos.x-self.position.x, target_pos.y-self.position.y, 0);
 		_pack_cur_vel = MIN(drpt(_pack_cur_vel, 10*dt_scale_get(), 1/20.0),CGPointDist(target_pos, self.position));
 		vec_scale_m(&delta, _pack_cur_vel);
@@ -159,6 +159,10 @@
 		
 		[BaseWaterEnemy particle_blood_effect:g pos:g.player.get_center ct:6];
 	}
+}
+
+-(BOOL)is_attracted {
+	return self._current_mode == BasicWaterEnemyMode_IdleNoticed || self._current_mode == BasicWaterEnemyMode_InPack || self._current_mode == BasicWaterEnemyMode_Stunned;
 }
 
 -(BOOL)is_active:(GameEngineScene*)g {

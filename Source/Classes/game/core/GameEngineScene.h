@@ -16,6 +16,7 @@
 @class EnemyProjectile;
 @class GEventDispatcher;
 @class WaterEnemyManager;
+@class BGWater;
 
 typedef enum _PlayerState {
 	PlayerState_Dive = 0,
@@ -78,9 +79,6 @@ typedef enum _GameAnchorZ {
 -(TouchTrackingLayer*)get_touch_tracking_layer;
 -(NSArray*)get_player_projectiles;
 
--(void)add_ripple:(CGPoint)pos;
--(float)get_ground_depth;
-
 -(void)set_camera_height:(float)tar;
 -(void)set_zoom:(float)tar;
 -(float)get_zoom;
@@ -94,9 +92,14 @@ typedef enum _GameAnchorZ {
 -(ControlManager*)get_control_manager;
 
 -(NSNumber*)get_tick_mod_pi;
+
+-(void)add_ripple:(CGPoint)pos;
 -(NSArray*)get_ripple_infos;
 -(CCSprite*)get_ripple_proto;
+
 -(BGVillage*)get_bg_village;
+-(BGWater*)get_bg_water;
+
 -(GEventDispatcher*)get_event_dispatcher;
 
 -(void)add_delayed_action:(DelayAction*)delayed_action;
