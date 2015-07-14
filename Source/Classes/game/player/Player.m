@@ -140,7 +140,7 @@
 	BasePlayerStateStack *top_ele = self.get_top_state;
 	if (top_ele.cond_get_inair_combat_params != NULL) {
 		PlayerAirCombatParams *air_params = top_ele.cond_get_inair_combat_params;
-		[_arrow_charged_flash_root setVisible:(air_params._hold_ct >= air_params.ARROW_AIM_TIME)];
+		[_arrow_charged_flash_root setVisible:(air_params._hold_ct >= air_params.ARROW_AIM_TIME && g.get_control_manager.this_touch_can_proc_tap)];
 		[_arrow_charged_flash_root setPosition:ccp(-signum(_img.scaleX)*ABS(_arrow_charged_flash_root.position.x),7)];
 	} else {
 		[_arrow_charged_flash_root setVisible:NO];

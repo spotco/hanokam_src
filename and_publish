@@ -1,0 +1,68 @@
+http://forum.spritebuilder.com/t/tutorial-publish-to-google-play-with-android-plugin/3001
+
+Disclaimer. This tutorial based on my own experience. It's not official documentation or instruction, it just an advice. Whatever you do at your own risk. Also english not my native language, so sometimes it is not good wink
+
+You will need: 
+Xcode with latest Android Plugin ( starter or core )
+JDK installed on your mac ( if you use Android plugin you may already have it )
+zipalign ( it's part of android sdk tools, i dont know where download it standalone, i take it from my friend - android developer. If you need it - i can share. )
+
+Step 1.
+
+Generate keystore file by this command
+
+keytool -genkey -v -keystore my-release-key.keystore -alias alias_name -keyalg RSA -keysize 2048 -validity 10000
+my-release-key.keystore - name of output keystore file, you can set anything.
+
+alias_name - unique key name, set something you dont forget, for example your_company_name.your_project_name.
+
+-validity 10000 - key expiration time, 10000 it's more than 25 years.
+
+keytool will ask you set password, dont forget it, you will need it after, also it will ask you another information, like your name and country, you can set whatever you want, even skip some fields. Then set password for key, dont forget it too, it can be similar to keystore password.
+
+On output you will get .keystore file, save it anywhere.
+WARNING! It's not possible to recover it by any way: if you lose this file you can't update your app in Google Play!
+
+Step 2. 
+Copy it to your project root folder. WARNING! Don't include it to your project bundle! This is private key store file, no one except you should not get access to it! Then go to your project explorer, choose your android target - Build Settings - Android APK field. Set like this:
+
+ANDROID_KEYSTORE - $(SRCROOT)/my-release-key.keystore
+ANDROID_KEYSTORE_PASS - keystore password that you set earlier
+ANDROID_KEY_NAME - alias_name
+d7c50b4da8b04cc0.png1660x782
+Step 3. 
+Go to your AndroidManifest.xml and add two strings to <manifest, just under package=" string.
+
+android:versionCode="1"
+android:versionName="1.0"
+versionCode must be integer, versionName whatever you want.
+Also change android:debuggable to false
+
+4ec17402fbbb6506.png1373x364
+Step 4. 
+Then go to your Android scheme, click right button and choose edit scheme
+
+02c1f2258dd421fa.png806x178
+then set Build Configuration to release and unset Debug executable.
+
+Step 5. 
+I recomend remove all previous build, so you wont take wrong build. To do this press option button on keyboard, on Xcode choose Product - Clean Build Folder. Then just build apk file with your device. You can find your apk on ~/Library/Developer/Xcode/DerivedData/yourproject/Build/Products/Release-sbandroid/yourproject Android-release.apk. Copy it somewhere, for example your home folder.
+
+Step 6. 
+Then validate it, run
+
+jarsigner -verify -verbose -certs 'full path to your .apk'
+You may get some warnings, it's normal, just make sure that all files signed with your sertificate, that you created with keytool.
+
+Step 7. 
+Then you need align you apk, run
+
+zipalign -v 4 'full path to your .apk' 'final.apk'
+This tool will create final.apk on your home folder. This file you can upload to google play for publishing. But I recomend firs upload it like beta and do some testing.
+
+About zipalign. You can put this tool to your home folder, and run it by ./zipalign -v4 ..., or create symbol link like
+
+sudo ln -s 'full path to zipalign' /usr/bin/zipalign
+and you be able use zipalign everywhere on your system. If zipalign says "permission denied' - run
+
+sudo chmod 755 'full path to zipalign'
