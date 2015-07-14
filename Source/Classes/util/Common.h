@@ -200,4 +200,5 @@ CCSprite* flipper_cons_for(CCSprite* obj, float scx, float scy);
 
 float running_avg(float avg, float val, float ct);
 CGPoint point_box_intersection(CGSize box_size, Vec3D dir_vec);
+CGRect scale_rect(CGRect tar, float scf);
 #endif

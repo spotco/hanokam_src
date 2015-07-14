@@ -31,8 +31,11 @@
 
 -(EnemyBulletProjectile*)cons_pos:(CGPoint)pos vel:(Vec3D)vel g:(GameEngineScene*)g {
 	_img = [CCSprite node];
-	[_img runAction:animaction_cons(@[@"bullet_1.png",@"bullet_2.png",@"bullet_3.png"], 0.15, TEX_GAMEPLAY_ELEMENTS)];
+	[_img runAction:animaction_cons(@[@"enemy_bullet_normal_000.png",@"enemy_bullet_normal_001.png",@"enemy_bullet_normal_002.png",@"enemy_bullet_normal_003.png"], 0.075, TEX_EFFECTS_ENEMY)];
 	[self addChild:_img];
+	[_img setScale:0.25];
+	
+	_img.rotation = vec_ang_deg_lim180(vel, 0)-90;
 	
 	_vel = vel;
 	[self setPosition:pos];
@@ -89,11 +92,11 @@
 }
 
 -(HitRect)get_hit_rect {
-	CGRect rect = [FileCache get_cgrect_from_plist:TEX_GAMEPLAY_ELEMENTS idname:@"bullet_1.png"];
+	CGRect rect = scale_rect([FileCache get_cgrect_from_plist:TEX_EFFECTS_ENEMY idname:@"enemy_bullet_normal_000.png"],_img.scale);
 	return satpolyowner_cons_hit_rect(self.position, rect.size.width, rect.size.height,1.5);
 }
 -(void)get_sat_poly:(SATPoly*)in_poly {
-	CGRect rect = [FileCache get_cgrect_from_plist:TEX_GAMEPLAY_ELEMENTS idname:@"bullet_1.png"];
+	CGRect rect = scale_rect([FileCache get_cgrect_from_plist:TEX_EFFECTS_ENEMY idname:@"enemy_bullet_normal_000.png"],_img.scale);
 	return satpolyowner_cons_sat_poly(in_poly, self.position, 0, rect.size.width, rect.size.height, ccp(1,1),0.85);
 }
 

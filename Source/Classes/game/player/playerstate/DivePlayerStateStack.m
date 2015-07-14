@@ -60,7 +60,7 @@
 	switch (e.type) {
 	case GEventType_PlayerHitEnemyDash: {
 		BaseWaterEnemy *target = e.target;
-		[g add_particle:[SwordSlashParticle cons_pos:target.position dir:vec_cons_norm(_underwater_params._vel.x, _underwater_params._vel.y, 0)]];
+		[g add_particle:[[SwordSlashParticle cons_pos:target.position dir:vec_cons_norm(_underwater_params._vel.x, _underwater_params._vel.y, 0)] show_blood]];
 		[g shake_for:10 distance:5];
 		_underwater_params._dash_ct = MIN(_underwater_params._dash_ct+13,40);
 		

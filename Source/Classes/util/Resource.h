@@ -30,6 +30,10 @@
 #define TEX_SPRITER_TEST @"spriter_test"
 
 #define TEX_PARTICLES_SPRITESHEET @"particles_spritesheet"
+
+#define TEX_EFFECTS_ENEMY @"effects_enemy_ss"
+#define TEX_EFFECTS_HANOKA @"effects_hanoka_ss"
+
 #define TEX_RIPPLE @"ripple"
 #define TEX_HUD_SPRITESHEET @"hud_spritesheet"
 #define TEX_GAMEPLAY_ELEMENTS @"gameplay_elements_ss"

@@ -18,6 +18,7 @@
 #import "TouchTrackingLayer.h"
 #import "FlashEvery.h"
 #import "GEventDispatcher.h"
+#import "SPCCTimedSpriteAnimator.h"
 
 @implementation InAirPlayerStateStack {
 	PlayerAirCombatParams *_air_params;
@@ -77,14 +78,36 @@
 		_air_params._sword_out = NO;
 		_air_params._dashing = YES;
 		_air_params._dash_ct += 15;
+		{
+			RotateFadeOutParticle *neu_particle = [RotateFadeOutParticle cons_tex:[Resource get_tex:TEX_EFFECTS_HANOKA] rect:CGRectZero];
+			SPCCTimedSpriteAnimator *neu_particle_animator = [SPCCTimedSpriteAnimator cons_target:neu_particle];
+			[neu_particle_animator add_frame:[FileCache get_cgrect_from_plist:TEX_EFFECTS_HANOKA idname:@"sword_plant_hit_000.png"] at_time:0];
+			[neu_particle_animator add_frame:[FileCache get_cgrect_from_plist:TEX_EFFECTS_HANOKA idname:@"sword_plant_hit_001.png"] at_time:0.2];
+			[neu_particle_animator add_frame:[FileCache get_cgrect_from_plist:TEX_EFFECTS_HANOKA idname:@"sword_plant_hit_002.png"] at_time:0.4];
+			[neu_particle_animator add_frame:[FileCache get_cgrect_from_plist:TEX_EFFECTS_HANOKA idname:@"sword_plant_hit_003.png"] at_time:0.6];
+			[neu_particle_animator add_frame:[FileCache get_cgrect_from_plist:TEX_EFFECTS_HANOKA idname:@"sword_plant_hit_004.png"] at_time:0.8];
+			[neu_particle set_timed_sprite_animator:neu_particle_animator];
+			[neu_particle set_ctmax:15];
+			[neu_particle set_render_ord:GameAnchorZ_PlayerAirEffects];
+			[neu_particle setAnchorPoint:ccp(0.5,0.3)];
+			[neu_particle set_pos:g.player.position];
+			[neu_particle set_scale_min:0.3 max:0.15];
+			[g add_particle:neu_particle];
+		}
+		{
+			RotateFadeOutParticle *neu_particle2 = [RotateFadeOutParticle cons_tex:[Resource get_tex:TEX_EFFECTS_HANOKA] rect:CGRectZero];
+			SPCCTimedSpriteAnimator *neu_particle_animator2 = [SPCCTimedSpriteAnimator cons_target:neu_particle2];
+			[neu_particle_animator2 add_frame:[FileCache get_cgrect_from_plist:TEX_EFFECTS_HANOKA idname:@"stab_000.png"] at_time:0];
+			[neu_particle_animator2 add_frame:[FileCache get_cgrect_from_plist:TEX_EFFECTS_HANOKA idname:@"stab_001.png"] at_time:0.3];
+			[neu_particle_animator2 add_frame:[FileCache get_cgrect_from_plist:TEX_EFFECTS_HANOKA idname:@"stab_002.png"] at_time:0.6];
+			[neu_particle2 set_timed_sprite_animator:neu_particle_animator2];
+			[neu_particle2 set_ctmax:13];
+			[neu_particle2 set_render_ord:GameAnchorZ_PlayerAirEffects];
+			[neu_particle2 set_pos:g.player.position];
+			[neu_particle2 set_scale_min:0.275 max:0.1];
+			[g add_particle:neu_particle2];
+		}
 		
-		RotateFadeOutParticle *neu_particle = [RotateFadeOutParticle cons_tex:[Resource get_tex:TEX_GAMEPLAY_ELEMENTS] rect:[FileCache get_cgrect_from_plist:TEX_GAMEPLAY_ELEMENTS idname:@"vfx_swordplant_hit.png"]];
-		[neu_particle set_ctmax:10];
-		[neu_particle set_render_ord:GameAnchorZ_PlayerAirEffects];
-		[neu_particle setAnchorPoint:ccp(0.5,0.3)];
-		[neu_particle set_pos:g.player.position];
-		[neu_particle set_scale_min:0.6 max:0.3];
-		[g add_particle:neu_particle];
 		[BaseAirEnemy particle_blood_effect:g pos:itr.position ct:10];
 		[g shake_for:10 distance:5];
 	}
@@ -95,7 +118,12 @@
 		_air_params._dashing = YES;
 		_air_params._dash_ct = MIN(_air_params._dash_ct+16,40);
 		_air_params._w_upwards_vel = 2;
-		[g add_particle:[SwordSlashParticle cons_pos:itr.position dir:vec_cons_norm(_air_params._s_vel.x, _air_params._s_vel.y, 0)]];
+		if ([itr isKindOfClass:[BaseAirEnemy class]]) {
+			[g add_particle:[[SwordSlashParticle cons_pos:itr.position dir:vec_cons_norm(_air_params._s_vel.x, _air_params._s_vel.y, 0)] show_blood]];
+		} else {
+			[g add_particle:[SwordSlashParticle cons_pos:itr.position dir:vec_cons_norm(_air_params._s_vel.x, _air_params._s_vel.y, 0)]];
+		}
+		
 		_air_params._invuln_ct = MAX(_air_params._invuln_ct,5);
 		[BaseAirEnemy particle_blood_effect:g pos:itr.position ct:6];
 		[g shake_for:10 distance:5];

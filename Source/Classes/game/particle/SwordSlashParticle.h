@@ -11,5 +11,5 @@
 @interface SwordSlashParticle : Particle
 
 +(SwordSlashParticle*)cons_pos:(CGPoint)pos dir:(Vec3D)dir;
-
+-(SwordSlashParticle*)show_blood;
 @end

@@ -62,6 +62,9 @@ static NSSet* dont_load;
 		TEX_SPRITER_TEST: @"spriter_test.png",
 		TEX_RIPPLE: @"ripple.png",
 		
+		TEX_EFFECTS_ENEMY: @"effects_enemy_ss.png",
+		TEX_EFFECTS_HANOKA: @"effects_hanoka_ss.png",
+		
 		TEX_BG_SPRITESHEET_1: @"bg_spritesheet_1.png",
 		TEX_BG_UNDERWATER_SPRITESHEET: @"underwater_spritesheet.png",
 		TEX_BG_WATER_ELEMENT_FADE: @"bg_water_element_fade.png",

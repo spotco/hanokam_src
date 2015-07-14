@@ -12,6 +12,7 @@
 #import "AirEnemyManager.h"
 #import "RotateFadeOutParticle.h"
 #import "AlphaGradientSprite.h"
+#import "SPCCSpriteAnimator.h"
 
 @implementation ChargedArrow {
 	CCSprite *_sprite;
@@ -27,7 +28,9 @@
 
 -(ChargedArrow*)cons_pos:(CGPoint)pos dir:(Vec3D)dir {
 	[self setPosition:pos];
-	[self setRotation:vec_ang_deg_lim180(dir, 0) + 180];
+	[self setRotation:vec_ang_deg_lim180(dir, 0)+180];
+	
+	/*
 	_sprite = [AlphaGradientSprite cons_tex:[Resource get_tex:TEX_PARTICLES_SPRITESHEET]
 									texrect:[FileCache get_cgrect_from_plist:TEX_PARTICLES_SPRITESHEET idname:@"mega_arrow.png"]
 									   size:[FileCache get_cgrect_from_plist:TEX_PARTICLES_SPRITESHEET idname:@"mega_arrow.png"].size
@@ -39,6 +42,17 @@
 	
 	[self addChild:_sprite];
 	[_sprite setScale:0.7];
+	*/
+	_sprite = [CCSprite spriteWithTexture:[Resource get_tex:TEX_EFFECTS_HANOKA] rect:CGRectZero];
+	SPCCSpriteAnimator *animator = [SPCCSpriteAnimator cons_target:_sprite speed:3];
+	[animator add_frame:[FileCache get_cgrect_from_plist:TEX_EFFECTS_HANOKA idname:@"arrow_charge_shot_000.png"]];
+	[animator add_frame:[FileCache get_cgrect_from_plist:TEX_EFFECTS_HANOKA idname:@"arrow_charge_shot_001.png"]];
+	[animator add_frame:[FileCache get_cgrect_from_plist:TEX_EFFECTS_HANOKA idname:@"arrow_charge_shot_002.png"]];
+	[animator add_frame:[FileCache get_cgrect_from_plist:TEX_EFFECTS_HANOKA idname:@"arrow_charge_shot_003.png"]];
+	[_sprite addChild:animator];
+	[_sprite setScale:0.3];
+	[self addChild:_sprite];
+	
 	_dir = dir;
 	vec_norm_m(&_dir);
 	vec_scale_m(&_dir, 10);

@@ -18,12 +18,14 @@
 
 #import "AlphaGradientSprite.h"
 #import "SPCCSpriteAnimator.h"
+#import "InAirPlayerStateStack.h"
 
 #import "GameUI.h"
 
 @implementation Player {
 	SpriterNode *_img;
 	CCNode *_swordplant_streak_root;
+	CCNode *_arrow_charged_flash_root;
 	NSString *_current_playing;
 	NSString *_on_finish_play_anim;
 	
@@ -53,6 +55,11 @@
 	[self addChild:_img z:1];
 	
 	[self cons_swordplant_streak];
+	_arrow_charged_flash_root = [CCSprite node];
+	[_arrow_charged_flash_root runAction:animaction_cons(@[@"arrow_charge_hold_000.png",@"arrow_charge_hold_001.png",@"arrow_charge_hold_000.png",@"arrow_charge_hold_003.png"], 0.1, TEX_EFFECTS_HANOKA)];
+	[_arrow_charged_flash_root setScale:0.4];
+	[_arrow_charged_flash_root setPosition:ccp(13,7)];
+	[self addChild:_arrow_charged_flash_root];
 	
 	self.position = ccp(game_screen_pct(0.5, 0).x,g.DOCK_HEIGHT);
 	[g set_camera_height:150];
@@ -79,35 +86,36 @@
 -(void)cons_swordplant_streak {
 	_swordplant_streak_root = [CCNode node];
 	[self addChild:_swordplant_streak_root];
-	AlphaGradientSprite *streak_left = [AlphaGradientSprite cons_tex:[Resource get_tex:TEX_GAMEPLAY_ELEMENTS]
-															 texrect:[FileCache get_cgrect_from_plist:TEX_GAMEPLAY_ELEMENTS idname:@"vfx_swordplant_0.png"]
+	AlphaGradientSprite *streak_left = [AlphaGradientSprite cons_tex:[Resource get_tex:TEX_EFFECTS_HANOKA]
+															 texrect:[FileCache get_cgrect_from_plist:TEX_EFFECTS_HANOKA idname:@"sword_plant_energy_000.png"]
 																size:CGSizeMake(21*1.5, 83*1.5)
 														 anchorPoint:ccp(0.5,0)
 															   color:[CCColor whiteColor]
 															  alphaX:CGRangeMake(1, 1)
 															  alphaY:CGRangeMake(0.8, 0)];
 	[streak_left setPosition:ccp(-15,-20)];
+	[streak_left setScaleX:-1];
 	[_swordplant_streak_root addChild:streak_left];
-	SPCCSpriteAnimator *streak_left_animate = [SPCCSpriteAnimator cons_target:streak_left speed:4.12];
-	[streak_left_animate add_frame:[FileCache get_cgrect_from_plist:TEX_GAMEPLAY_ELEMENTS idname:@"vfx_swordplant_0.png"]];
-	[streak_left_animate add_frame:[FileCache get_cgrect_from_plist:TEX_GAMEPLAY_ELEMENTS idname:@"vfx_swordplant_1.png"]];
-	[streak_left_animate add_frame:[FileCache get_cgrect_from_plist:TEX_GAMEPLAY_ELEMENTS idname:@"vfx_swordplant_2.png"]];
+	SPCCSpriteAnimator *streak_left_animate = [SPCCSpriteAnimator cons_target:streak_left speed:2.15];
+	[streak_left_animate add_frame:[FileCache get_cgrect_from_plist:TEX_EFFECTS_HANOKA idname:@"sword_plant_energy_000.png"]];
+	[streak_left_animate add_frame:[FileCache get_cgrect_from_plist:TEX_EFFECTS_HANOKA idname:@"sword_plant_energy_001.png"]];
+	[streak_left_animate add_frame:[FileCache get_cgrect_from_plist:TEX_EFFECTS_HANOKA idname:@"sword_plant_energy_002.png"]];
 	[streak_left addChild:streak_left_animate];
 	
-	AlphaGradientSprite *streak_right = [AlphaGradientSprite cons_tex:[Resource get_tex:TEX_GAMEPLAY_ELEMENTS]
-															 texrect:[FileCache get_cgrect_from_plist:TEX_GAMEPLAY_ELEMENTS idname:@"vfx_swordplant_0.png"]
+	AlphaGradientSprite *streak_right = [AlphaGradientSprite cons_tex:[Resource get_tex:TEX_EFFECTS_HANOKA]
+															 texrect:[FileCache get_cgrect_from_plist:TEX_EFFECTS_HANOKA idname:@"vfx_swordplant_0.png"]
 																size:CGSizeMake(21*1.5, 83*1.5)
 														 anchorPoint:ccp(0.5,0)
 															   color:[CCColor whiteColor]
 															  alphaX:CGRangeMake(1, 1)
 															  alphaY:CGRangeMake(0.8, 0)];
 	[streak_right setPosition:ccp(15,-20)];
-	[streak_right setScaleX:-1];
+	[streak_right setScaleX:1];
 	[_swordplant_streak_root addChild:streak_right];
-	SPCCSpriteAnimator *streak_right_animate = [SPCCSpriteAnimator cons_target:streak_right speed:3.75];
-	[streak_right_animate add_frame:[FileCache get_cgrect_from_plist:TEX_GAMEPLAY_ELEMENTS idname:@"vfx_swordplant_1.png"]];
-	[streak_right_animate add_frame:[FileCache get_cgrect_from_plist:TEX_GAMEPLAY_ELEMENTS idname:@"vfx_swordplant_2.png"]];
-	[streak_right_animate add_frame:[FileCache get_cgrect_from_plist:TEX_GAMEPLAY_ELEMENTS idname:@"vfx_swordplant_0.png"]];
+	SPCCSpriteAnimator *streak_right_animate = [SPCCSpriteAnimator cons_target:streak_right speed:1.75];
+	[streak_right_animate add_frame:[FileCache get_cgrect_from_plist:TEX_EFFECTS_HANOKA idname:@"sword_plant_energy_000.png"]];
+	[streak_right_animate add_frame:[FileCache get_cgrect_from_plist:TEX_EFFECTS_HANOKA idname:@"sword_plant_energy_001.png"]];
+	[streak_right_animate add_frame:[FileCache get_cgrect_from_plist:TEX_EFFECTS_HANOKA idname:@"sword_plant_energy_002.png"]];
 	[streak_right addChild:streak_right_animate];
 	[self swordplant_streak_set_visible:NO];
 }
@@ -128,6 +136,15 @@
 	}
 	
 	[[self get_top_state] i_update:g];
+	
+	BasePlayerStateStack *top_ele = self.get_top_state;
+	if (top_ele.cond_get_inair_combat_params != NULL) {
+		PlayerAirCombatParams *air_params = top_ele.cond_get_inair_combat_params;
+		[_arrow_charged_flash_root setVisible:(air_params._hold_ct >= air_params.ARROW_AIM_TIME)];
+		[_arrow_charged_flash_root setPosition:ccp(-signum(_img.scaleX)*ABS(_arrow_charged_flash_root.position.x),7)];
+	} else {
+		[_arrow_charged_flash_root setVisible:NO];
+	}
 }
 
 -(void)play_anim:(NSString*)anim repeat:(BOOL)repeat {

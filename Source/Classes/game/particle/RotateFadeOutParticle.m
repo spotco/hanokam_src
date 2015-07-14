@@ -1,4 +1,5 @@
 #import "RotateFadeOutParticle.h"
+#import "SPCCTimedSpriteAnimator.h"
 
 @implementation RotateFadeOutParticle {
 	float _ct, _ctmax;
@@ -8,6 +9,7 @@
 	CGRange _alpha;
 	CGPoint _velocity;
 	float _gravity;
+	SPCCTimedSpriteAnimator *_animator;
 }
 
 +(RotateFadeOutParticle*)cons_tex:(CCTexture*)tex rect:(CGRect)rect {
@@ -54,6 +56,10 @@
 	_scmax = scmax;
 	return self;
 }
+-(RotateFadeOutParticle*)set_timed_sprite_animator:(SPCCTimedSpriteAnimator*)animator {
+	_animator = animator;
+	return self;
+}
 -(void)i_update:(id)g {
 	float pct = _ct/_ctmax;
 	_ct -= dt_scale_get();
@@ -62,6 +68,9 @@
 	[self setScale:lerp(_scmin, _scmax, pct)];
 	_velocity.y -= _gravity * dt_scale_get();
 	[self setPosition:ccp(self.position.x+_velocity.x*dt_scale_get(),self.position.y+_velocity.y*dt_scale_get())];
+	if (_animator != NULL) {
+		[_animator show_frame_for_time:1-pct];
+	}
 }
 
 -(BOOL)should_remove {
