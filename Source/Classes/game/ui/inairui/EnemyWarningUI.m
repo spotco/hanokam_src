@@ -14,21 +14,28 @@
 
 @interface EnemyWarningUIIcon : CCSprite
 @end
-@implementation EnemyWarningUIIcon {
-	float _t;
-}
+@implementation EnemyWarningUIIcon
 +(EnemyWarningUIIcon*)cons { return [[EnemyWarningUIIcon node] cons]; }
 -(EnemyWarningUIIcon*)cons {
-	[self setTexture:[Resource get_tex:TEX_HUD_SPRITESHEET]];
-	[self setTextureRect:[FileCache get_cgrect_from_plist:TEX_HUD_SPRITESHEET idname:@"alert_icon.png"]];
-	[self setScale:0.5];
-	[self setOpacity:0.5];
+	[self setTexture:[Resource get_tex:TEX_EFFECTS_ENEMY]];
+	[self setTextureRect:[FileCache get_cgrect_from_plist:TEX_EFFECTS_ENEMY idname:@"Enemy Warning.png"]];
+	[self i_update:0];
 	return self;
 }
--(void)i_update:(GameEngineScene*)g {
-	_t += 0.25 * dt_scale_get();
-	self.opacity = (sin(_t) + 1) / 2.0 * 0.75;
-	self.scale = self.opacity * 0.25 + 0.25;
+-(void)i_update:(float)t {
+	if (t <= 0) {
+		self.scale = 4 * 0.25;
+		self.opacity = 0;
+	} else if (t <= 0.8) {
+		self.scale = drpt(self.scale, 1*0.25, 1/4.0);
+		self.opacity = drpt(self.opacity, 0.7, 1/5.0);
+	} else {
+		self.scale = drpt(self.scale, 2*0.25, 1/4.0);
+		self.opacity = drpt(self.opacity, 0, 1/5.0);
+	}
+}
+-(void)setPosition:(CGPoint)position {
+	[super setPosition:CGPointAdd(position, ccp(float_random(-1, 1),float_random(-1, 1)))];
 }
 @end
 
@@ -55,7 +62,7 @@
 		}
 		EnemyWarningUIIcon *itr_healthbar = _enemy_future_spawns[itr_hash];
 		[itr_healthbar setPosition:itr_enemy.get_screen_pos];
-		[itr_healthbar i_update:g];
+		[itr_healthbar i_update:(1-itr_enemy.get_ct/itr_enemy.get_ctmax)];
 	}
 	
 	for (NSNumber *itr_hash in active_enemy_objhash) {

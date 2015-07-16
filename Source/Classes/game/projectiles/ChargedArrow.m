@@ -13,6 +13,9 @@
 #import "RotateFadeOutParticle.h"
 #import "AlphaGradientSprite.h"
 #import "SPCCSpriteAnimator.h"
+#import "RotateFadeOutParticle.h"
+#import "SPCCTimedSpriteAnimator.h"
+#import "FlashEvery.h"
 
 @implementation ChargedArrow {
 	CCSprite *_sprite;
@@ -20,6 +23,7 @@
 	float _ct;
 	
 	long _id;
+	FlashEvery *_trail_spawn_ct;
 }
 
 +(ChargedArrow*)cons_pos:(CGPoint)pos dir:(Vec3D)dir {
@@ -29,20 +33,6 @@
 -(ChargedArrow*)cons_pos:(CGPoint)pos dir:(Vec3D)dir {
 	[self setPosition:pos];
 	[self setRotation:vec_ang_deg_lim180(dir, 0)+180];
-	
-	/*
-	_sprite = [AlphaGradientSprite cons_tex:[Resource get_tex:TEX_PARTICLES_SPRITESHEET]
-									texrect:[FileCache get_cgrect_from_plist:TEX_PARTICLES_SPRITESHEET idname:@"mega_arrow.png"]
-									   size:[FileCache get_cgrect_from_plist:TEX_PARTICLES_SPRITESHEET idname:@"mega_arrow.png"].size
-								anchorPoint:ccp(0.5, 0.5)
-									  color:[CCColor whiteColor]
-									 alphaX:CGRangeMake(0, 1)
-									 alphaY:CGRangeMake(1, 1)];
-	
-	
-	[self addChild:_sprite];
-	[_sprite setScale:0.7];
-	*/
 	_sprite = [CCSprite spriteWithTexture:[Resource get_tex:TEX_EFFECTS_HANOKA] rect:CGRectZero];
 	SPCCSpriteAnimator *animator = [SPCCSpriteAnimator cons_target:_sprite speed:3];
 	[animator add_frame:[FileCache get_cgrect_from_plist:TEX_EFFECTS_HANOKA idname:@"arrow_charge_shot_000.png"]];
@@ -58,6 +48,9 @@
 	vec_scale_m(&_dir, 10);
 	_ct = 100;
 	_id = PlayerHitParams_idalloc();
+	
+	_trail_spawn_ct = [FlashEvery cons_time:2.2];
+	
 	return self;
 }
 
@@ -76,6 +69,24 @@
 				
 				[BaseAirEnemy particle_blood_effect:game pos:itr.position ct:3];
 			}
+		}
+		
+		[_trail_spawn_ct i_update:dt_scale_get()];
+		if ([_trail_spawn_ct do_flash]) {
+			RotateFadeOutParticle *neu_particle = [RotateFadeOutParticle cons_tex:[Resource get_tex:TEX_EFFECTS_HANOKA] rect:CGRectZero];
+			[neu_particle set_scale_min:1.0 max:0.0];
+			[neu_particle set_ctmax:15];
+			[neu_particle set_alpha_start:0.8 end:0.0];
+			[neu_particle set_pos:self.position];
+			[neu_particle set_rotation:self.rotation];
+			SPCCTimedSpriteAnimator *neu_particle_animator = [SPCCTimedSpriteAnimator cons_target:neu_particle];
+			[neu_particle_animator add_frame:[FileCache get_cgrect_from_plist:TEX_EFFECTS_HANOKA idname:@"Arrow-_fire-trail-1.png"] at_time:0.0];
+			[neu_particle_animator add_frame:[FileCache get_cgrect_from_plist:TEX_EFFECTS_HANOKA idname:@"Arrow-_fire-trail-2.png"] at_time:0.2];
+			[neu_particle_animator add_frame:[FileCache get_cgrect_from_plist:TEX_EFFECTS_HANOKA idname:@"Arrow-_fire-trail-3.png"] at_time:0.4];
+			[neu_particle_animator add_frame:[FileCache get_cgrect_from_plist:TEX_EFFECTS_HANOKA idname:@"Arrow-_fire-trail-4.png"] at_time:0.6];
+			[neu_particle_animator add_frame:[FileCache get_cgrect_from_plist:TEX_EFFECTS_HANOKA idname:@"Arrow-_fire-trail-5.png"] at_time:0.7];
+			[neu_particle set_timed_sprite_animator:neu_particle_animator];
+			[game add_particle:neu_particle];
 		}
 	}
 

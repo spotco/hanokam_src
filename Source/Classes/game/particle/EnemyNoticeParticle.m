@@ -10,9 +10,11 @@
 #import "Resource.h" 
 #import "FileCache.h"
 #import "GameEngineScene.h"
+#import "Player.h"
 
 @implementation EnemyNoticeParticle {
 	CCSprite *_img;
+	CCSprite *_excl_img;
 	float _anim_t;
 	id _target;
 }
@@ -24,8 +26,18 @@
 -(EnemyNoticeParticle*)cons_pos:(CGPoint)pos g:(GameEngineScene*)g target:(id)target {
 	_target = target;
 	[self setPosition:pos];
-	_img = [CCSprite spriteWithTexture:[Resource get_tex:TEX_HUD_SPRITESHEET] rect:[FileCache get_cgrect_from_plist:TEX_HUD_SPRITESHEET idname:@"exclamation_mark.png"]];
+	
+	_img = [CCSprite spriteWithTexture:[Resource get_tex:TEX_EFFECTS_ENEMY] rect:[FileCache get_cgrect_from_plist:TEX_EFFECTS_ENEMY idname:@"enemy Notice Ink.png"]];
+	[_img set_anchor_pt:ccp(0.5,0.5)];
 	[self addChild:_img];
+	
+	if ([_target isKindOfClass:[CCNode class]]) {
+		_img.rotation = vec_ang_deg_lim180(cgpoint_to_vec(CGPointSub(g.player.position,((CCNode*)_target).position)),0);
+	}
+
+	_excl_img = [CCSprite spriteWithTexture:[Resource get_tex:TEX_EFFECTS_ENEMY] rect:[FileCache get_cgrect_from_plist:TEX_EFFECTS_ENEMY idname:@"Enemy Notice !.png"]];
+	[self addChild:_excl_img];
+	
 	_anim_t = 0;
 	[self update_img];
 	[g.get_event_dispatcher add_listener:self];
@@ -39,8 +51,20 @@
 }
 
 -(void)update_img {
-	_img.opacity = bezier_point_for_t(ccp(0,0), ccp(0,1.75), ccp(0.75,0.75), ccp(1,0), _anim_t).y * 0.8;
-	_img.scale = bezier_point_for_t(ccp(0,0), ccp(0,1), ccp(1,0), ccp(1,1), _anim_t).y;
+	if (_anim_t <= 0) {
+		_img.scale = 4 * 0.25;
+		_img.opacity = 0;
+
+	} else if (_anim_t <= 0.8) {
+		_img.scale = drpt(_img.scale, 1*0.25, 1/4.0);
+		_img.opacity = drpt(_img.opacity, 0.7, 1/5.0);
+	} else {
+		_img.scale = drpt(_img.scale, 2*0.25, 1/4.0);
+		_img.opacity = drpt(_img.opacity, 0, 1/5.0);
+	}
+	
+	_excl_img.scale = _img.scale;
+	_excl_img.opacity = _img.opacity;
 }
 
 -(void)i_update:(id)g {

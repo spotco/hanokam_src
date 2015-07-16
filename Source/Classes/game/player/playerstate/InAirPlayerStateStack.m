@@ -154,7 +154,6 @@
 	g.player.rotation += shortest_angle(g.player.rotation, _air_params._target_rotation) * powf(0.75, dt_scale_get());
 	g.player.shared_params._reset_to_center = NO;
 	[g set_zoom:drpt(g.get_zoom,1,1/20.0)];
-	[g.player swordplant_streak_set_visible:NO];
 	
 	switch (_air_params._current_mode) {
 		case PlayerAirCombatMode_InitialJumpOut:;
@@ -202,11 +201,11 @@
 				_air_params._target_rotation = 0;
 				
 			} else if (_air_params._sword_out) {
-				[g.player swordplant_streak_set_visible:YES];
 				_air_params._hold_ct = 0;
 				_air_params._s_vel = ccp(0,-15);
 				_air_params._hold_ct = 0;
 				_air_params._target_rotation = 0;
+				g.player.rotation = 0;
 				[g.player play_anim:@"Sword Plant" repeat:YES];
 
 			} else {
@@ -279,7 +278,7 @@
 				float rad_arrow_variance = ABS(deg_to_rad(arrow_variance_angle));
 				
 				if (arrow_variance_angle <= 0) {
-					[g shake_for:6 distance:3.5];
+					[g shake_for:10 distance:5];
 					[g add_player_projectile:[ChargedArrow cons_pos:g.player.get_center dir:vec_rotate_rad(vec_cons_norm(delta.x, delta.y, 0), float_random(-rad_arrow_variance, rad_arrow_variance) )]];
 				} else {
 					[g add_player_projectile:[Arrow cons_pos:g.player.get_center dir:vec_rotate_rad(vec_cons_norm(delta.x, delta.y, 0), float_random(-rad_arrow_variance, rad_arrow_variance) )]];
@@ -344,7 +343,7 @@
 				_air_params._s_vel = CGPointZero;
 				_air_params._sword_out = NO;
 				_air_params._current_mode = PlayerAirCombatMode_RescueBackToTop;
-				[g.player play_anim:@"in air" repeat:YES];
+				[g.player play_anim:@"In Air Idle" repeat:YES];
 				
 				if (g.player.shared_params.get_current_health > 0) {
 					_rescue_anim = [ChainedMovementParticle cons];
@@ -387,7 +386,6 @@
 				[g.get_air_enemy_manager remove_all_enemies:g];
 				[g.player pop_state_stack:g];
 				[g.player push_state_stack:[AirToGroundTransitionPlayerStateStack cons:g]];
-				[g.player swordplant_streak_set_visible:NO];
 				return;
 			}
 		break;

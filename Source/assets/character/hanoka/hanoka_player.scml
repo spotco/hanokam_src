@@ -1286,7 +1286,7 @@
                     <object folder="0" file="0" x="0.77181" y="-0.34497" pivot_x="0.493789" pivot_y="0.703233" angle="90.707319"/>
                 </key>
                 <key id="8" time="2120" spin="0">
-                    <object folder="0" file="0" x="0.748036" y="-0.344972" pivot_x="0.493789" pivot_y="0.703233" angle="90.707319" scale_x="0.969201"/>
+                    <object folder="0" file="0" x="0.748036" y="-0.344972" pivot_x="0.493789" pivot_y="0.703233" angle="90.707319"/>
                 </key>
             </timeline>
             <timeline id="1" name="Player_hair-4">
@@ -1315,7 +1315,7 @@
                     <object folder="0" file="2" x="3.104047" y="-0.695621" pivot_x="0.491301" pivot_y="0.614082" angle="89.22578"/>
                 </key>
                 <key id="8" time="2120" spin="0">
-                    <object folder="0" file="2" x="3.00058" y="-0.660546" pivot_x="0.491301" pivot_y="0.614082" angle="89.22578" scale_x="0.969201"/>
+                    <object folder="0" file="2" x="3.116308" y="-0.643318" pivot_x="0.491301" pivot_y="0.614082" angle="89.22578"/>
                 </key>
             </timeline>
             <timeline id="2" name="Player_hair-3">
@@ -1344,7 +1344,7 @@
                     <object folder="0" file="3" x="1.34534" y="-0.171389" pivot_x="0.481631" pivot_y="0.706527" angle="90"/>
                 </key>
                 <key id="8" time="2120" spin="0">
-                    <object folder="0" file="3" x="1.303907" y="-0.171385" pivot_x="0.481631" pivot_y="0.706527" angle="90" scale_x="0.969201"/>
+                    <object folder="0" file="3" x="1.303907" y="-0.171385" pivot_x="0.481631" pivot_y="0.706527" angle="90"/>
                 </key>
             </timeline>
             <timeline id="3" name="Player_hair-2">
@@ -1373,7 +1373,7 @@
                     <object folder="0" file="1" x="-0.815414" y="-0.180526" pivot_x="0.490771" pivot_y="0.67715" angle="90"/>
                 </key>
                 <key id="8" time="2120" spin="0">
-                    <object folder="0" file="1" x="-0.83722" y="-0.180524" pivot_x="0.490771" pivot_y="0.67715" angle="90" scale_x="1.026735"/>
+                    <object folder="0" file="1" x="-0.83722" y="-0.180524" pivot_x="0.490771" pivot_y="0.67715" angle="90"/>
                 </key>
             </timeline>
             <timeline id="4" name="Player_hair-1">
@@ -1402,7 +1402,7 @@
                     <object folder="0" file="4" x="1.666689" y="-0.167368" pivot_x="0.490057" pivot_y="0.739471" angle="90"/>
                 </key>
                 <key id="8" time="2120" spin="0">
-                    <object folder="0" file="4" x="1.108823" y="0.00994" pivot_x="0.490057" pivot_y="0.739471" angle="90" scale_x="1.371065"/>
+                    <object folder="0" file="4" x="0.812373" y="0.005408" pivot_x="0.490057" pivot_y="0.739471" angle="90" scale_x="1"/>
                 </key>
             </timeline>
             <timeline id="5" name="Player_arm-upper">
@@ -1982,7 +1982,7 @@
                     <object folder="0" file="23" x="0.125767" y="0.242061" pivot_x="0.430394" pivot_y="0.036894" angle="269.905984"/>
                 </key>
                 <key id="7" time="2120" spin="0">
-                    <object folder="0" file="23" x="0.125767" y="0.242061" pivot_x="0.430394" pivot_y="0.036894" angle="269.905984" scale_x="1.026729"/>
+                    <object folder="0" file="23" x="0.125767" y="0.242061" pivot_x="0.430394" pivot_y="0.036894" angle="269.905984"/>
                 </key>
             </timeline>
             <timeline id="28" name="Player_mouth-neutral">
@@ -2008,7 +2008,7 @@
                     <object folder="0" file="24" x="-0.03121" y="0.403023" pivot_x="0.489051" pivot_y="0.494869" angle="176.132726"/>
                 </key>
                 <key id="7" time="2120" spin="0">
-                    <object folder="0" file="24" x="-0.031142" y="0.404035" pivot_x="0.489051" pivot_y="0.494869" angle="176.132726" scale_x="1.026729"/>
+                    <object folder="0" file="24" x="-0.031142" y="0.404035" pivot_x="0.489051" pivot_y="0.494869" angle="176.132726"/>
                 </key>
             </timeline>
             <timeline id="29" name="Player_eyebrow">
@@ -2092,7 +2092,7 @@
                     <object folder="0" file="26" x="1.034664" y="-1.895619" pivot_x="0.902227" pivot_y="0.706074" angle="98.615028"/>
                 </key>
                 <key id="8" time="2120">
-                    <object folder="0" file="26" x="0.818464" y="-1.129111" pivot_x="0.902227" pivot_y="0.706074" angle="111.905079" scale_x="1.026729"/>
+                    <object folder="0" file="26" x="0.31242" y="0.129391" pivot_x="0.902227" pivot_y="0.706074" angle="111.905079"/>
                 </key>
             </timeline>
             <timeline id="32" obj="0" name="bone_000" object_type="bone">
@@ -2147,7 +2147,7 @@
                     <bone x="27.867262" y="-1.482748" angle="0.094016"/>
                 </key>
                 <key id="8" time="2120" spin="0">
-                    <bone x="28.501877" y="-1.482748" angle="0.094016" scale_x="0.973967"/>
+                    <bone x="28.761708" y="-1.482748" angle="0.094016"/>
                 </key>
             </timeline>
             <timeline id="34" obj="2" name="bone_002" object_type="bone">
@@ -2471,7 +2471,7 @@
                     <bone x="33.652816" y="-2.912835" angle="191.468081"/>
                 </key>
                 <key id="8" time="2120" spin="-1">
-                    <bone x="33.652816" y="-2.912835" angle="187.652589" scale_x="0.748855"/>
+                    <bone x="32.794197" y="-2.911426" angle="187.652589"/>
                 </key>
             </timeline>
             <timeline id="46" obj="15" name="bone_015" object_type="bone">
@@ -2500,7 +2500,7 @@
                     <bone x="24.242052" y="0.015565" angle="357.944404"/>
                 </key>
                 <key id="8" time="2120">
-                    <bone x="32.060247" y="0.189753" angle="358.622751" scale_x="1.335364"/>
+                    <bone x="23.493648" y="0.020941" angle="358.622751"/>
                 </key>
             </timeline>
             <timeline id="47" obj="16" name="bone_016" object_type="bone">
@@ -2529,7 +2529,7 @@
                     <bone x="26.331626" y="0.189757" angle="346.524416"/>
                 </key>
                 <key id="8" time="2120">
-                    <bone x="27.035595" y="0.189753" angle="350.971359" scale_x="1.059362"/>
+                    <bone x="26.444008" y="0.032269" angle="350.971359"/>
                 </key>
             </timeline>
             <timeline id="48" obj="17" name="bone_017" object_type="bone">
@@ -2558,7 +2558,7 @@
                     <bone x="16.885449" y="0.225669" angle="350.950376"/>
                 </key>
                 <key id="8" time="2120">
-                    <bone x="16.367816" y="0.189753" angle="354.192245"/>
+                    <bone x="16.963011" y="0.217398" angle="354.192245"/>
                 </key>
             </timeline>
             <timeline id="49" obj="18" name="bone_018" object_type="bone">
@@ -2587,7 +2587,7 @@
                     <bone x="13.099815" y="-0.211992" angle="358.51846"/>
                 </key>
                 <key id="8" time="2120" spin="0">
-                    <bone x="12.688497" y="-0.176916" angle="358.51846"/>
+                    <bone x="13.148545" y="-0.049206" angle="358.51846"/>
                 </key>
             </timeline>
             <timeline id="50" obj="19" name="bone_020" object_type="bone">
@@ -2889,10 +2889,10 @@
                 </key>
             </timeline>
             <timeline id="64" name="Player_eye-blink_003">
-                <key id="0" time="2120" spin="0">
-                    <object folder="0" file="31" x="-5.604675" y="3.019744" pivot_x="0" pivot_y="1" angle="0" scale_x="1.026729"/>
+                <key id="0" time="2120">
+                    <object folder="0" file="31" x="-5.604675" y="3.019744" pivot_x="0" pivot_y="1" scale_x="1.026729"/>
                 </key>
-                <key id="1" time="2182" spin="0">
+                <key id="1" time="2182">
                     <object folder="0" file="31" x="-5.604675" y="3.019744" pivot_x="0" pivot_y="1" angle="0" scale_x="1.026729"/>
                 </key>
             </timeline>

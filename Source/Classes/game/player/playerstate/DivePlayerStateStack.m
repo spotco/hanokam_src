@@ -192,7 +192,7 @@
 			float vel_len = vec_len(vel);
 			vel_len = drpt(vel_len, 7, 1/20.0);
 			
-			if (vec_len(delta) > vel_len) {
+			if (vec_len(delta) > vel_len*1.5) {
 				Vec3D delta_vel = vec_norm(delta);
 				vec_scale_m(&delta_vel, vel_len);
 				_underwater_params._vel = vec_to_cgpoint(delta_vel);

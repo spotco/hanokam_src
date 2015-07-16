@@ -34,6 +34,8 @@
 #define TEX_EFFECTS_ENEMY @"effects_enemy_ss"
 #define TEX_EFFECTS_HANOKA @"effects_hanoka_ss"
 
+#define TEX_HUD_FONT @"hud_font_ss"
+
 #define TEX_RIPPLE @"ripple"
 #define TEX_HUD_SPRITESHEET @"hud_spritesheet"
 #define TEX_GAMEPLAY_ELEMENTS @"gameplay_elements_ss"

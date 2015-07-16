@@ -11,6 +11,9 @@
 
 /*
 --TODO
+pulse underwater when low air
+resize underwater ui
+
 quest + dialogue system stubs + simple quests
 	-quest1 attract certain number of enemies, ui
 	-quest2 reach certain depth (underwater temple)

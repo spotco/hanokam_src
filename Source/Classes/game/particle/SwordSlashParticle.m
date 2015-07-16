@@ -61,13 +61,13 @@
 	
 	if (_img_blood != NULL) {
 		_img_blood.opacity = clampf(_img.opacity * 4,0,1);
-		_img_blood.scaleX = _img.scaleX * 0.85;
-		_img_blood.scaleY = _img.scaleY * 0.85;
+		_img_blood.scaleX = _img.scaleX * 0.9;
+		_img_blood.scaleY = _img.scaleY * 0.9;
 	}
 }
 
 -(void)i_update:(id)g {
-	_anim_t += 0.075 * dt_scale_get();
+	_anim_t += 0.065 * dt_scale_get();
 	[_sprite_animator show_frame_for_time:_anim_t];
 	if (_img_blood != NULL) {
 		[_blood_animator show_frame_for_time:_anim_t];

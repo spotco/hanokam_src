@@ -14,6 +14,7 @@ typedef enum ArrowMode {
 
 @implementation Arrow {
 	CCSprite *_sprite;
+	CCSprite *_sprite_outline;
 	CCSprite *_trail;
 	Vec3D _dir;
 	float _ct;
@@ -35,17 +36,23 @@ typedef enum ArrowMode {
 	
 	[self setPosition:pos];
 	[self setRotation:vec_ang_deg_lim180(dir, 0) + 180];
-	_sprite = [CCSprite spriteWithTexture:[Resource get_tex:TEX_PARTICLES_SPRITESHEET] rect:[FileCache get_cgrect_from_plist:TEX_PARTICLES_SPRITESHEET idname:@"arrow.png"]];
+	_sprite = [CCSprite spriteWithTexture:[Resource get_tex:TEX_EFFECTS_HANOKA] rect:[FileCache get_cgrect_from_plist:TEX_EFFECTS_HANOKA idname:@"Arrow Normal NoOutline.png"]];
 	[self addChild:_sprite];
+	[_sprite set_anchor_pt:ccp(0.5, 0.5)];
+	[_sprite set_scale:0.2];
 	
-	_trail = [CCSprite spriteWithTexture:[Resource get_tex:TEX_PARTICLES_SPRITESHEET] rect:[FileCache get_cgrect_from_plist:TEX_PARTICLES_SPRITESHEET idname:@"arrow_trail.png"]];
+	_sprite_outline = [CCSprite spriteWithTexture:[Resource get_tex:TEX_EFFECTS_HANOKA] rect:[FileCache get_cgrect_from_plist:TEX_EFFECTS_HANOKA idname:@"Arrow Normal.png"]];
+	[self addChild:_sprite_outline];
+	[_sprite_outline set_anchor_pt:ccp(0.5,0.5)];
+	[_sprite_outline set_scale:0.2];
+	[_sprite_outline setOpacity:0];
+	
+	_trail = [CCSprite spriteWithTexture:[Resource get_tex:TEX_EFFECTS_HANOKA] rect:[FileCache get_cgrect_from_plist:TEX_EFFECTS_HANOKA idname:@"arrow_trail.png"]];
 	[_trail setAnchorPoint:ccp(1,0.5)];
 	[_trail setPosition:pct_of_obj(_sprite, 0, 0.5)];
 	[_trail setOpacity:0];
 	[_sprite addChild:_trail];
 	
-	[_sprite set_anchor_pt:ccp(0.5, 0.5)];
-	[_sprite set_scale:0.2];
 	_dir = dir;
 	vec_norm_m(&_dir);
 	vec_scale_m(&_dir, 10);
@@ -59,6 +66,7 @@ typedef enum ArrowMode {
 -(void)i_update:(id)g {
 	switch (_current_mode) {
 	case ArrowMode_Flying:;
+		[_sprite_outline setOpacity:drpt(_sprite_outline.opacity, 1, 1/10.0)];
 		if ([[g class] isSubclassOfClass:[GameEngineScene class]]) {
 			GameEngineScene *game = (GameEngineScene*)g;
 			for (BaseAirEnemy *itr in game.get_air_enemy_manager.get_enemies) {
@@ -104,6 +112,7 @@ typedef enum ArrowMode {
 	
 	break;
 	case ArrowMode_Stuck:;
+		[_sprite_outline setOpacity:drpt(_sprite_outline.opacity, 0, 1/10.0)];
 		[_trail setOpacity:0];
 		[self setPosition:CGPointAdd([_stuck_target position], _stuck_offset)];
 		
@@ -117,6 +126,7 @@ typedef enum ArrowMode {
 	
 	break;
 	case ArrowMode_Floating:;
+		[_sprite_outline setOpacity:drpt(_sprite_outline.opacity, 0, 1/10.0)];
 		[_trail setOpacity:0];
 		if (_dir.x > 0) {
 			[self setRotation:drpt(self.rotation, 0, 1/50.0)];
@@ -131,6 +141,7 @@ typedef enum ArrowMode {
 		//SPTODO
 	break;
 	case ArrowMode_Falling:;
+		[_sprite_outline setOpacity:drpt(_sprite_outline.opacity, 0, 1/10.0)];
 		[_trail setOpacity:0];
 		self.rotation += shortest_angle(self.rotation, 90) * powf(0.5, dt_scale_get());
 		_falling_vel.y -= 0.2 * dt_scale_get();

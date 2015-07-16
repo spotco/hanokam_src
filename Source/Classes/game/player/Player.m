@@ -26,6 +26,7 @@
 	SpriterNode *_img;
 	CCNode *_swordplant_streak_root;
 	CCNode *_arrow_charged_flash_root;
+	CCSprite *_swordplant_behind_trail;
 	NSString *_current_playing;
 	NSString *_on_finish_play_anim;
 	
@@ -117,10 +118,14 @@
 	[streak_right_animate add_frame:[FileCache get_cgrect_from_plist:TEX_EFFECTS_HANOKA idname:@"sword_plant_energy_001.png"]];
 	[streak_right_animate add_frame:[FileCache get_cgrect_from_plist:TEX_EFFECTS_HANOKA idname:@"sword_plant_energy_002.png"]];
 	[streak_right addChild:streak_right_animate];
-	[self swordplant_streak_set_visible:NO];
+	[_swordplant_streak_root setVisible:NO];
+	
+	_swordplant_behind_trail = [CCSprite spriteWithTexture:[Resource get_tex:TEX_EFFECTS_HANOKA] rect:[FileCache get_cgrect_from_plist:TEX_EFFECTS_HANOKA idname:@"sword_stab-fall-air.png"]];
+	[_swordplant_behind_trail set_anchor_pt:ccp(0.5,0)];
+	[_swordplant_behind_trail setScale:0.3];
+	[_swordplant_behind_trail setOpacity:0.0];
+	[self addChild:_swordplant_behind_trail];
 }
-
--(void)swordplant_streak_set_visible:(BOOL)tar { _swordplant_streak_root.visible = tar; }
 
 -(void)i_update:(GameEngineScene*)g {
 	if (self.get_player_state == PlayerState_OnGround && [g.player.get_top_state on_land:g]) {
@@ -138,12 +143,29 @@
 	[[self get_top_state] i_update:g];
 	
 	BasePlayerStateStack *top_ele = self.get_top_state;
+	
+	[_swordplant_streak_root setVisible:NO];
+	[_arrow_charged_flash_root setVisible:NO];
+	
 	if (top_ele.cond_get_inair_combat_params != NULL) {
 		PlayerAirCombatParams *air_params = top_ele.cond_get_inair_combat_params;
-		[_arrow_charged_flash_root setVisible:(air_params._hold_ct >= air_params.ARROW_AIM_TIME && g.get_control_manager.this_touch_can_proc_tap)];
-		[_arrow_charged_flash_root setPosition:ccp(-signum(_img.scaleX)*ABS(_arrow_charged_flash_root.position.x),7)];
+		if (air_params._hold_ct >= air_params.ARROW_AIM_TIME && g.get_control_manager.this_touch_can_proc_tap) {
+			[_arrow_charged_flash_root setVisible:YES];
+			[_arrow_charged_flash_root setPosition:ccp(-signum(_img.scaleX)*ABS(_arrow_charged_flash_root.position.x),7)];
+		}
+		if (air_params._sword_out) {
+			_swordplant_behind_trail.opacity = drpt(_swordplant_behind_trail.opacity, 0.7, 1/7.0);
+			_swordplant_behind_trail.rotation = 0;
+			[_swordplant_streak_root setVisible:YES];
+			[_swordplant_behind_trail setVisible:YES];
+		} else {
+			_swordplant_behind_trail.opacity = 0;
+		}
+		
+		
 	} else {
-		[_arrow_charged_flash_root setVisible:NO];
+		
+		_swordplant_behind_trail.opacity = 0;
 	}
 }
 

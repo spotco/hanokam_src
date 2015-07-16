@@ -178,6 +178,6 @@
 }
 -(float)get_stunned_anim_ct { return _stunned_anim_ct; }
 -(CGPoint)notice_anim_offset {
-	return ccp(0,40);
+	return ccp(0,30);
 }
 @end
