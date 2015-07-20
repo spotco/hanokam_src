@@ -23,11 +23,14 @@
 	
 	
 	SpriterData *data = [SpriterData cons_data_from_spritesheetreaders:@[
-		[SpriterJSONParser cons_texture:[Resource get_tex:TEX_SPRITER_CHAR_VILLAGER_FISHWOMAN] file:@"villager_fishwoman.json"]
-	] scml:@"villager_fishwoman.scml"];
+		[SpriterJSONParser cons_texture:[Resource get_tex:TEX_SPRITER_CHAR_FISHGIRL] file:@"Fishgirl.json"]
+	] scml:@"Fishgirl.scml"];
 	_img = [SpriterNode nodeFromData:data render_size:ccp(150,300)];
 	[_img playAnim:@"Idle" repeat:YES];
 	[_img set_render_placement:ccp(0.5,0.1)];
+	
+	[self setScale:0.8];
+	
 	[self addChild:_img];
 	
 	return self;

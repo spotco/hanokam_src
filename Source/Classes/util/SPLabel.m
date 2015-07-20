@@ -21,6 +21,8 @@
 	
 	NSMutableDictionary *_char_tsizei;
 	NSMutableDictionary *_char_offset;
+	
+	BOOL _right_aligned;
 }
 +(SPLabel*)cons_texkey:(NSString*)texkey {
 	return [[SPLabel node] cons_texkey:texkey];
@@ -31,6 +33,7 @@
 	_unused_pool = [NSMutableArray array];
 	_char_tsizei = [NSMutableDictionary dictionary];
 	_char_offset = [NSMutableDictionary dictionary];
+	_right_aligned = NO;
 	return self;
 }
 
@@ -47,7 +50,7 @@
 	
 	CCBMFontConfiguration *bmfont_cfg = FNTConfigLoadFile([NSString stringWithFormat:@"%@.fnt",_texkey]);
 	float layout_x = 0;
-	for(NSUInteger i = 0; i<string.length; i++) {
+	for(long i = _right_aligned?string.length-1:0; _right_aligned?i>=0:i<string.length; _right_aligned?i--:i++) {
 		unichar c = [string characterAtIndex:i];
 		tCCFontDefHashElement *element = NULL;
 		NSUInteger key = (NSUInteger)c;
@@ -62,18 +65,27 @@
 		CGPoint size_increase = ((NSValue*)_char_tsizei[char_key]).CGPointValue;
 		CGPoint offset = ((NSValue*)_char_offset[char_key]).CGPointValue;
 		
-		
 		CCSprite *neu_digit_spr = [self get_char_from_pool];
 		[neu_digit_spr setTexture:[Resource get_tex:_texkey]];
 		[neu_digit_spr setTextureRect:bounds];
-		[neu_digit_spr setPosition:ccp(layout_x + offset.x,offset.y)];
 		[neu_digit_spr setShader:[ShaderManager get_shader:SHADER_STROKE_FILL_TEXT]];
 		neu_digit_spr.shaderUniforms[@"fill_color"] = [NSValue valueWithGLKVector4:_fillcolor];
 		neu_digit_spr.shaderUniforms[@"stroke_color"] = [NSValue valueWithGLKVector4:_strokecolor];
 		[self addChild:neu_digit_spr];
 		
-		layout_x += bounds.size.width + size_increase.x;
+		if (_right_aligned) {
+			[neu_digit_spr setPosition:ccp(layout_x + offset.x - (bounds.size.width + size_increase.x),offset.y)];
+			layout_x -= bounds.size.width + size_increase.x;
+		} else {
+			[neu_digit_spr setPosition:ccp(layout_x + offset.x,offset.y)];
+			layout_x += bounds.size.width + size_increase.x;
+		}
 	}
+	return self;
+}
+
+-(SPLabel*)set_right_aligned {
+	_right_aligned = YES;
 	return self;
 }
 

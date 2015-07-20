@@ -2,6 +2,26 @@
 
 {
   "frames": {
+    "Player_Ahoge.png": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 1,
+        "h": 1
+      }
+    },
     "Player_arm-lower.png": {
       "frame": {
         "x": 106,

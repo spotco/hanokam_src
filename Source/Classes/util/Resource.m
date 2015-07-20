@@ -52,6 +52,7 @@ static NSSet* dont_load;
 		
 		TEX_SPRITER_CHAR_OLDMAN: @"oldman_ss.png",
 		TEX_SPRITER_CHAR_VILLAGER_FISHWOMAN: @"villager_fishwoman.png",
+		TEX_SPRITER_CHAR_FISHGIRL: @"Fishgirl.png",
 		
 		TEX_SPRITER_CHAR_HANOKA_PLAYER: @"hanoka_player.png",
 		TEX_SPRITER_CHAR_HANOKA_PLAYER_REDGARB: @"hanoka_player_redgarb.png",

@@ -11,7 +11,9 @@
 
 /*
 --TODO
+healthbar new ui implement
 pulse underwater when low air
+dive return transition emphasize depth and enemies attracted
 resize underwater ui
 
 quest + dialogue system stubs + simple quests
@@ -23,6 +25,7 @@ air and underwater mode powerup/gold drops
 
 fix anims
 	-player hitbox fix
+	-player run or walk on land
 	-inair pick back up, revert to idle animation and 0 rotation
 	-arrow shoot spawn location
 	-air hurt anim play

@@ -47,7 +47,7 @@
 		[SpriterJSONParser cons_texture:[Resource get_tex:TEX_SPRITER_CHAR_HANOKA_SWORD] file:@"hanoka_sword.json"],
 	] scml:@"hanoka_player.scml"];
 	
-	[data replace_atlas_index:0 with:[SpriterJSONParser cons_texture:[Resource get_tex:TEX_SPRITER_CHAR_HANOKA_PLAYER_REDGARB] file:@"hanoka_player_redgarb.json"]];
+	//[data replace_atlas_index:0 with:[SpriterJSONParser cons_texture:[Resource get_tex:TEX_SPRITER_CHAR_HANOKA_PLAYER_REDGARB] file:@"hanoka_player_redgarb.json"]];
 	
 	_img = [SpriterNode nodeFromData:data render_size:ccp(180,320)];
 	[_img set_render_placement:ccp(0.5,0.3)];

@@ -20,6 +20,7 @@
 
 #define TEX_SPRITER_CHAR_OLDMAN @"oldman_ss"
 #define TEX_SPRITER_CHAR_VILLAGER_FISHWOMAN @"villager_fishwoman"
+#define TEX_SPRITER_CHAR_FISHGIRL @"Fishgirl"
 
 #define TEX_SPRITER_CHAR_HANOKA_PLAYER @"hanoka_player"
 #define TEX_SPRITER_CHAR_HANOKA_PLAYER_REDGARB @"hanoka_player_redgarb"

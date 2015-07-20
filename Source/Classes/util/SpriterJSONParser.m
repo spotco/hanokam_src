@@ -57,7 +57,17 @@
 	NSDictionary *frames = root[@"frames"];
 	for (NSString* key in frames) {
 		NSDictionary *frame = frames[key][@"frame"];
-		CGRect rect = CGRectMake(((NSNumber*)frame[@"x"]).intValue, ((NSNumber*)frame[@"y"]).intValue, ((NSNumber*)frame[@"w"]).intValue, ((NSNumber*)frame[@"h"]).intValue);
+		NSDictionary *sprite_source_size = frames[key][@"spriteSourceSize"];
+		NSDictionary *source_size = frames[key][@"sourceSize"];
+		
+		//hack in TexturePacker trim model, this won't actually work if it clips another spritesheet image
+		#define dict_val(_dict,_dictkey) (((NSNumber*)_dict[_dictkey]).intValue)
+		CGRect rect = CGRectMake(
+			dict_val(frame, @"x") - dict_val(sprite_source_size, @"x"),
+			dict_val(frame, @"y") - dict_val(sprite_source_size, @"y"),
+			dict_val(source_size, @"w"),
+			dict_val(source_size, @"h"));
+		#undef dict_val
 		_frames[key] = [SpriterJSONFrame fromCGRect:rect];
 	}
 	return self;

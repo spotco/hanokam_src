@@ -185,6 +185,15 @@
 		7E9A58611B23098C008EC348 /* FlashCount.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E9A58601B23098C008EC348 /* FlashCount.m */; };
 		7E9A58621B23098C008EC348 /* FlashCount.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E9A58601B23098C008EC348 /* FlashCount.m */; };
 		7E9A58631B23098C008EC348 /* FlashCount.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E9A58601B23098C008EC348 /* FlashCount.m */; };
+		7EA863371B5CF63400FE8163 /* Fishgirl.json in Resources */ = {isa = PBXBuildFile; fileRef = 7EA863341B5CF63400FE8163 /* Fishgirl.json */; };
+		7EA863381B5CF63400FE8163 /* Fishgirl.json in Resources */ = {isa = PBXBuildFile; fileRef = 7EA863341B5CF63400FE8163 /* Fishgirl.json */; };
+		7EA863391B5CF63400FE8163 /* Fishgirl.json in Resources */ = {isa = PBXBuildFile; fileRef = 7EA863341B5CF63400FE8163 /* Fishgirl.json */; };
+		7EA8633A1B5CF63400FE8163 /* Fishgirl.png in Resources */ = {isa = PBXBuildFile; fileRef = 7EA863351B5CF63400FE8163 /* Fishgirl.png */; };
+		7EA8633B1B5CF63400FE8163 /* Fishgirl.png in Resources */ = {isa = PBXBuildFile; fileRef = 7EA863351B5CF63400FE8163 /* Fishgirl.png */; };
+		7EA8633C1B5CF63400FE8163 /* Fishgirl.png in Resources */ = {isa = PBXBuildFile; fileRef = 7EA863351B5CF63400FE8163 /* Fishgirl.png */; };
+		7EA8633D1B5CF63400FE8163 /* Fishgirl.scml in Resources */ = {isa = PBXBuildFile; fileRef = 7EA863361B5CF63400FE8163 /* Fishgirl.scml */; };
+		7EA8633E1B5CF63400FE8163 /* Fishgirl.scml in Resources */ = {isa = PBXBuildFile; fileRef = 7EA863361B5CF63400FE8163 /* Fishgirl.scml */; };
+		7EA8633F1B5CF63400FE8163 /* Fishgirl.scml in Resources */ = {isa = PBXBuildFile; fileRef = 7EA863361B5CF63400FE8163 /* Fishgirl.scml */; };
 		7EB78B241B57A05500FB9892 /* SPLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EB78B231B57A05500FB9892 /* SPLabel.m */; };
 		7EB78B251B57A05500FB9892 /* SPLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EB78B231B57A05500FB9892 /* SPLabel.m */; };
 		7EB78B261B57A05500FB9892 /* SPLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EB78B231B57A05500FB9892 /* SPLabel.m */; };
@@ -711,6 +720,9 @@
 		7E9A58511B22EFA3008EC348 /* AlphaGradientSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlphaGradientSprite.m; sourceTree = "<group>"; };
 		7E9A585F1B23098C008EC348 /* FlashCount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlashCount.h; sourceTree = "<group>"; };
 		7E9A58601B23098C008EC348 /* FlashCount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlashCount.m; sourceTree = "<group>"; };
+		7EA863341B5CF63400FE8163 /* Fishgirl.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Fishgirl.json; sourceTree = "<group>"; };
+		7EA863351B5CF63400FE8163 /* Fishgirl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Fishgirl.png; sourceTree = "<group>"; };
+		7EA863361B5CF63400FE8163 /* Fishgirl.scml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Fishgirl.scml; sourceTree = "<group>"; };
 		7EB78B221B57A05500FB9892 /* SPLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPLabel.h; sourceTree = "<group>"; };
 		7EB78B231B57A05500FB9892 /* SPLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPLabel.m; sourceTree = "<group>"; };
 		7EB78B271B57A89800FB9892 /* stroke_fill_text.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = stroke_fill_text.fsh; sourceTree = "<group>"; };
@@ -1249,6 +1261,16 @@
 			path = test;
 			sourceTree = "<group>";
 		};
+		7EA863331B5CF63400FE8163 /* Fishgirl */ = {
+			isa = PBXGroup;
+			children = (
+				7EA863341B5CF63400FE8163 /* Fishgirl.json */,
+				7EA863351B5CF63400FE8163 /* Fishgirl.png */,
+				7EA863361B5CF63400FE8163 /* Fishgirl.scml */,
+			);
+			path = Fishgirl;
+			sourceTree = "<group>";
+		};
 		7EBC2AE61B1C4EDF00AC47F1 /* misc */ = {
 			isa = PBXGroup;
 			children = (
@@ -1536,6 +1558,7 @@
 		7ED823331B13D2A6001BB249 /* character */ = {
 			isa = PBXGroup;
 			children = (
+				7EA863331B5CF63400FE8163 /* Fishgirl */,
 				7ED823341B13D2A6001BB249 /* hanokav2.json */,
 				7ED823351B13D2A6001BB249 /* hanokav2.plist */,
 				7ED823361B13D2A6001BB249 /* hanokav2.png */,
@@ -1989,6 +2012,7 @@
 				7ED823831B13D2A6001BB249 /* underwater_spritesheet.plist in Resources */,
 				7EBC2AEB1B1C4EDF00AC47F1 /* gameplay_elements_ss.plist in Resources */,
 				7ED823B91B13D2A6001BB249 /* ripple.png in Resources */,
+				7EA8633C1B5CF63400FE8163 /* Fishgirl.png in Resources */,
 				7ED823E01B13D2A6001BB249 /* ripple_effect.fsh in Resources */,
 				7ED823DD1B13D2A6001BB249 /* reflection_am_down.vsh in Resources */,
 				7ED823A71B13D2A6001BB249 /* villager_fishwoman.json in Resources */,
@@ -1996,6 +2020,7 @@
 				7A4036F819DE401F007B6E8F /* iPad-old@2x.png in Resources */,
 				7EBC2AEE1B1C4EDF00AC47F1 /* gameplay_elements_ss.png in Resources */,
 				7E7C0D481B55077300407DCB /* effects_hanoka_ss.png in Resources */,
+				7EA8633F1B5CF63400FE8163 /* Fishgirl.scml in Resources */,
 				7A4036F919DE401F007B6E8F /* iPad.png in Resources */,
 				7ED823801B13D2A6001BB249 /* sky_spritesheet.png in Resources */,
 				7A4036FA19DE401F007B6E8F /* iPad@2x.png in Resources */,
@@ -2039,6 +2064,7 @@
 				7ED823681B13D2A6001BB249 /* bg_spritesheet_1.plist in Resources */,
 				7ED823C21B13D2A6001BB249 /* hud_spritesheet.png in Resources */,
 				7ED823BF1B13D2A6001BB249 /* hud_spritesheet.plist in Resources */,
+				7EA863391B5CF63400FE8163 /* Fishgirl.json in Resources */,
 				7ED823A41B13D2A6001BB249 /* oldman_ss.png in Resources */,
 				7E45BEDE1B51173500D93D78 /* korean_calligraphy.fnt in Resources */,
 				7A40370119DE401F007B6E8F /* Default-568h@2x.png in Resources */,
@@ -2070,6 +2096,7 @@
 				7ED823DC1B13D2A6001BB249 /* reflection_am_down.vsh in Resources */,
 				7EBC2AEA1B1C4EDF00AC47F1 /* gameplay_elements_ss.plist in Resources */,
 				7ED823CD1B13D2A6001BB249 /* abovewater_am_up.fsh in Resources */,
+				7EA863381B5CF63400FE8163 /* Fishgirl.json in Resources */,
 				7EB78B291B57A89800FB9892 /* stroke_fill_text.fsh in Resources */,
 				7E8CF0AC1B3E8BBB00FA6277 /* hanoka_bow.png in Resources */,
 				927F61AD196C771E000F43EF /* Settings.png in Resources */,
@@ -2080,6 +2107,7 @@
 				7E8CF0B51B3E8BBB00FA6277 /* hanoka_player.scml in Resources */,
 				7ED823761B13D2A6001BB249 /* bg_water_element_fade.png in Resources */,
 				7ED823B21B13D2A6001BB249 /* particles_spritesheet.plist in Resources */,
+				7EA8633E1B5CF63400FE8163 /* Fishgirl.scml in Resources */,
 				7ED8236D1B13D2A6001BB249 /* bg_test_tile_sky.png in Resources */,
 				7ED8236A1B13D2A6001BB249 /* bg_spritesheet_1.png in Resources */,
 				7ED823671B13D2A6001BB249 /* bg_spritesheet_1.plist in Resources */,
@@ -2140,6 +2168,7 @@
 				7EFEE7A01B1F070F0055C989 /* charge_circle.fsh in Resources */,
 				927F61BB196C771E000F43EF /* iPad-old.png in Resources */,
 				7ED823D91B13D2A6001BB249 /* reflection_am_down.fsh in Resources */,
+				7EA8633B1B5CF63400FE8163 /* Fishgirl.png in Resources */,
 				7E7C0D471B55077300407DCB /* effects_hanoka_ss.png in Resources */,
 				7E4F09AC1B252E60000945B8 /* alpha_gradient_sprite.vsh in Resources */,
 				7E4F09A81B252DE4000945B8 /* alpha_gradient_sprite.fsh in Resources */,
@@ -2158,6 +2187,7 @@
 				7ED823DB1B13D2A6001BB249 /* reflection_am_down.vsh in Resources */,
 				7EBC2AE91B1C4EDF00AC47F1 /* gameplay_elements_ss.plist in Resources */,
 				7ED823CC1B13D2A6001BB249 /* abovewater_am_up.fsh in Resources */,
+				7EA863371B5CF63400FE8163 /* Fishgirl.json in Resources */,
 				7EB78B281B57A89800FB9892 /* stroke_fill_text.fsh in Resources */,
 				7E8CF0AB1B3E8BBB00FA6277 /* hanoka_bow.png in Resources */,
 				B71F5919188484E7003F4D28 /* Settings.png in Resources */,
@@ -2168,6 +2198,7 @@
 				7E8CF0B41B3E8BBB00FA6277 /* hanoka_player.scml in Resources */,
 				7ED823751B13D2A6001BB249 /* bg_water_element_fade.png in Resources */,
 				7ED823B11B13D2A6001BB249 /* particles_spritesheet.plist in Resources */,
+				7EA8633D1B5CF63400FE8163 /* Fishgirl.scml in Resources */,
 				7ED8236C1B13D2A6001BB249 /* bg_test_tile_sky.png in Resources */,
 				7ED823691B13D2A6001BB249 /* bg_spritesheet_1.png in Resources */,
 				7ED823661B13D2A6001BB249 /* bg_spritesheet_1.plist in Resources */,
@@ -2228,6 +2259,7 @@
 				B71F5911188484E7003F4D28 /* iPad-old.png in Resources */,
 				7EE566451B411F3C00D63556 /* hanoka_player_redgarb.json in Resources */,
 				7ED823D81B13D2A6001BB249 /* reflection_am_down.fsh in Resources */,
+				7EA8633A1B5CF63400FE8163 /* Fishgirl.png in Resources */,
 				7E7C0D461B55077300407DCB /* effects_hanoka_ss.png in Resources */,
 				7E4F09AB1B252E60000945B8 /* alpha_gradient_sprite.vsh in Resources */,
 				7E4F09A71B252DE4000945B8 /* alpha_gradient_sprite.fsh in Resources */,

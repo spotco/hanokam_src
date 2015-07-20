@@ -68,7 +68,7 @@
 					_land_params._move_hold_ct += dt_scale_get();
 					if (_land_params._move_hold_ct > _land_params.MOVE_HOLD_TIME) {
 						[g.player update_accel_x_position:g];
-						[g.player play_anim:@"Run" repeat:YES];
+						[g.player play_anim:@"Walk" repeat:YES];
 						if (vx > 0) {
 							g.player.img.scaleX = -ABS(g.player.img.scaleX);
 						} else {
