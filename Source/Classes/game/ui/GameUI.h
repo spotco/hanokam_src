@@ -14,5 +14,7 @@
 -(BOOL)is_faded_out;
 -(BOOL)is_faded_in;
 
+-(void)flash_red;
+
 -(void)add_particle:(Particle*)tar;
 @end

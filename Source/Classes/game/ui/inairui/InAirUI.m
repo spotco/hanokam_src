@@ -35,9 +35,8 @@
 	_enemy_warning_ui = [EnemyWarningUI cons:g];
 	[self addChild:_enemy_warning_ui];
 	
-	CGRect heart_size = [FileCache get_cgrect_from_plist:TEX_HUD_SPRITESHEET idname:@"heart_fill.png"];
 	_player_health_ui = [PlayerUIHealthIndicator cons:g];
-	[_player_health_ui setPosition:game_screen_anchor_offset(ScreenAnchor_TL, ccp((heart_size.size.width*0.5 + 3),-(heart_size.size.height*0.5 + 3)))];
+	[_player_health_ui setPosition:game_screen_anchor_offset(ScreenAnchor_TL, CGPointZero)];
 	[self addChild:_player_health_ui];
 	
 	_player_arrows_indicator = [PlayerUIArrowsIndicator cons:g];

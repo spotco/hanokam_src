@@ -28,6 +28,8 @@ typedef enum _PlayerState {
 } PlayerState;
 
 typedef enum _GameAnchorZ {
+	GameAnchorZ_UI = 5000,
+	GameAnchorZ_BlurTex = 4500,
 	GameAnchorZ_DebugDraw = 999,
 	GameAnchorZ_BGSky_SurfaceReflection = 100,
     GameAnchorZ_UnderwaterForegroundElements = 83,
@@ -106,6 +108,8 @@ typedef enum _GameAnchorZ {
 
 -(void)add_player_projectile:(PlayerProjectile*)tar;
 -(void)add_enemy_projectile:(EnemyProjectile*)tar;
+
+-(void)blur_and_pulse;
 @end
 
 @interface BGElement : NSObject

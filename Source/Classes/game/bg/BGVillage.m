@@ -119,11 +119,11 @@
 	[_surface_gradient setScaleY:1];
 	
 	int reflection_height = 600;
-	_water_surface_ripples = [CCRenderTexture renderTextureWithWidth:game_screen().width height:reflection_height];
+	_water_surface_ripples = [CCRenderTexture renderTextureWithWidth:game_screen().width height:reflection_height pixelFormat:CCTexturePixelFormat_RGBA4444];
 	[_above_water_belowreflection setPosition:ccp(game_screen().width / 2, reflection_height/2)];
 	[_water_surface_ripples clear:0 g:0 b:0 a:0];
 	
-	_above_water_belowreflection = [CCRenderTexture renderTextureWithWidth:game_screen().width height:reflection_height];
+	_above_water_belowreflection = [CCRenderTexture renderTextureWithWidth:game_screen().width height:reflection_height pixelFormat:CCTexturePixelFormat_RGBA4444];
 	[_above_water_belowreflection setPosition:ccp(game_screen().width / 2, reflection_height/2)];
 	[_below_water_elements addObject:_above_water_belowreflection];
 	[[g get_anchor] addChild:_above_water_belowreflection z:GameAnchorZ_BGSky_SurfaceReflection];

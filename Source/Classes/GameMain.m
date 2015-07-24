@@ -11,15 +11,13 @@
 
 /*
 --TODO
-healthbar new ui implement
-pulse underwater when low air
-dive return transition emphasize depth and enemies attracted
-resize underwater ui
+new dive end animation
 
 quest + dialogue system stubs + simple quests
 	-quest1 attract certain number of enemies, ui
 	-quest2 reach certain depth (underwater temple)
 	
+dive return transition emphasize depth and enemies attracted
 perf run, village and etc hiding
 air and underwater mode powerup/gold drops
 

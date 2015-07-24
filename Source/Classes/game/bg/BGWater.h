@@ -15,4 +15,5 @@
 -(void)set_ground_depth:(float)depth;
 -(CGPoint)get_underwater_treasure_position;
 -(void)set_underwater_treasure_visible:(BOOL)tar;
+
 @end

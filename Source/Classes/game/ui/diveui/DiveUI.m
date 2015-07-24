@@ -80,7 +80,7 @@
 	[g.get_event_dispatcher add_listener:self];
 	
 	_low_breath_flash = [FlashCount cons];
-	[_low_breath_flash add_flash_at_times:@[@(0.3),@(0.2),@(0.15),@(0.1),@(0.05)]];
+	[_low_breath_flash add_flash_at_times:@[@(400),@(300),@(200),@(140),@(100),@(66),@(33)]];
 	
 	//
 	CCNode *depth_root = [CCNode node];
@@ -169,8 +169,9 @@
 	[_depth_text set_string:strf("%dm",((int)ABS(g.player.position.y))/50)];
 	
 	
-	if ([_low_breath_flash do_flash_given_time:_current_fill_pct]) {
+	if ([_low_breath_flash do_flash_given_time:g.player.shared_params.get_current_breath]) {
 		_breath_bar_anim_t = 1;
+		[g blur_and_pulse];
 	}
 	
 	_breath_bar_anim_t = MAX(_breath_bar_anim_t-=dt_scale_get()*0.035,0);

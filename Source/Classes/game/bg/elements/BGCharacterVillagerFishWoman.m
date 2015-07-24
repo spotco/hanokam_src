@@ -26,7 +26,7 @@
 		[SpriterJSONParser cons_texture:[Resource get_tex:TEX_SPRITER_CHAR_FISHGIRL] file:@"Fishgirl.json"]
 	] scml:@"Fishgirl.scml"];
 	_img = [SpriterNode nodeFromData:data render_size:ccp(150,300)];
-	[_img playAnim:@"Idle" repeat:YES];
+	[_img playAnim:@"Idle Talk" repeat:YES];
 	[_img set_render_placement:ccp(0.5,0.1)];
 	
 	[self setScale:0.8];

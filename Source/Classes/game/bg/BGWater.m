@@ -124,13 +124,13 @@
 }
 
 -(void)initialize_reflection_and_ripples:(GameEngineScene*)game {
-	_reflection_texture = [CCRenderTexture renderTextureWithWidth:game_screen().width height:game.REFLECTION_HEIGHT];
+	_reflection_texture = [CCRenderTexture renderTextureWithWidth:game_screen().width height:game.REFLECTION_HEIGHT pixelFormat:CCTexturePixelFormat_RGBA4444];
 	[_reflection_texture setPosition:ccp(game_screen().width / 2, 0)];
 	_reflection_texture.scaleY = -1;
 	[[game get_anchor] addChild:_reflection_texture z:GameAnchorZ_BGWater_Reflection];
 	_reflection_texture.sprite.blendMode = [CCBlendMode alphaMode];
 	_reflection_texture.sprite.shader = [ShaderManager get_shader:SHADER_REFLECTION_AM_DOWN];
-	_ripple_texture = [CCRenderTexture renderTextureWithWidth:game_screen().width height:game.REFLECTION_HEIGHT];
+	_ripple_texture = [CCRenderTexture renderTextureWithWidth:game_screen().width height:game.REFLECTION_HEIGHT pixelFormat:CCTexturePixelFormat_RGBA4444];
 	[_ripple_texture clear:0 g:0 b:0 a:0];
 	_reflection_texture.sprite.shaderUniforms[@"rippleTexture"] = _ripple_texture.sprite.texture;
 	

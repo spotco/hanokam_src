@@ -64,11 +64,15 @@
 	return self;
 }
 
+-(void)flash_red {
+	[_red_flash_overlay setOpacity:0.5];
+}
+
 -(void)dispatch_event:(GEvent *)e {
 	GameEngineScene *g = e.context;
 	switch (e.type) {
 	case GEventType_PlayerTakeDamage: {
-		[_red_flash_overlay setOpacity:0.5];
+		[self flash_red];
 	}
 	break;
 	case GEventType_PlayerChargePct : {
@@ -113,6 +117,7 @@
 	for (GameUISubView *itr in _gameui_subviews) {
 		[itr setVisible:NO];
 	}
+	[_in_air_ui setVisible:YES];
 	
 	[[self ui_for_playerstate:game.get_player_state] setVisible:YES];
 	[[self ui_for_playerstate:game.get_player_state] i_update:game];

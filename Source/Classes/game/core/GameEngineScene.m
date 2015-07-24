@@ -66,6 +66,9 @@
 	TouchTrackingLayer *_touch_tracking;
 	CCDrawNode *_debug_draw;
 	
+	CCRenderTexture *_blur_frame_tex;
+	float _blur_ct;
+	
 }
 
 -(Player*)player { return _player; }
@@ -129,12 +132,16 @@
 	_water_enemy_manager = [WaterEnemyManager cons:self];
 	
 	_ui = [GameUI cons:self];
-	[super addChild:_ui z:2];
+	[super addChild:_ui z:GameAnchorZ_UI];
 	
 	_debug_draw = [CCDrawNode node];
 	[[self get_anchor] addChild:_debug_draw z:GameAnchorZ_DebugDraw];
 	
 	[self update:0];
+	
+	_blur_frame_tex = [CCRenderTexture renderTextureWithWidth:game_screen().width height:game_screen().height pixelFormat:CCTexturePixelFormat_RGB565];
+	[super addChild:_blur_frame_tex z:GameAnchorZ_BlurTex];
+	[_blur_frame_tex.sprite setPosition:CGPointAdd(game_screen_pct(0.5,0.5),ccp(0,0))];
 	
 	return self;
 }
@@ -221,6 +228,27 @@
 	
 	[self.get_control_manager clear_proc_swipe];
 	[self.get_control_manager clear_proc_tap];
+	
+	if (_blur_ct > 0) {
+		_blur_ct -= 0.03 * dt_scale_get();
+		[_blur_frame_tex.sprite setOpacity:bezier_point_for_t(ccp(0,0.85), ccp(0,0), ccp(0.5,0), ccp(1,0),1-_blur_ct).y];
+		[_blur_frame_tex setVisible:YES];
+	} else {
+		[_blur_frame_tex setVisible:NO];
+	}
+}
+
+-(void)blur_and_pulse {
+	_blur_ct = 1.0;
+	[self update_camera];
+	[_blur_frame_tex begin];
+	[_ui setVisible:NO];
+	[_blur_frame_tex.sprite setVisible:NO];
+	[self visit];
+	[_ui setVisible:YES];
+	[_blur_frame_tex.sprite setVisible:YES];
+	[_blur_frame_tex end];
+	
 }
 
 -(void)add_particle:(Particle*)p {
@@ -249,6 +277,10 @@
 		 halfScreenSize.x - pt.x,
 		 halfScreenSize.y - pt.y
 	))];
+}
+
+-(float)get_offset_current_zoom {
+	return _current_zoom + ((_blur_ct <= 0) ? 0 :bezier_point_for_t(ccp(0,0), ccp(0.0,0.1), ccp(0.1,0), ccp(1.0,0), 1-_blur_ct).y);
 }
 
 -(void)touchBegan:(CCTouch *)touch withEvent:(CCTouchEvent *)event {
@@ -280,11 +312,11 @@
 -(CGPoint)get_zoom_node_pos {
 	CGPoint center = game_screen_pct(.5, .5);
 	CGSize screen = game_screen();
-	screen.width *= _current_zoom;
-	screen.height *= _current_zoom;
+	screen.width *= [self get_offset_current_zoom];
+	screen.height *= [self get_offset_current_zoom];
 	CGPoint delta_max = ccp(
-		(screen.width - game_screen().width)/2/_current_zoom,
-		(screen.height - game_screen().height)/2/_current_zoom
+		(screen.width - game_screen().width)/2/[self get_offset_current_zoom],
+		(screen.height - game_screen().height)/2/[self get_offset_current_zoom]
 	);
 	HitRect view = [self get_viewbox];
 	CGPoint screen_center = CGPointMid(ccp(view.x1,view.y1), ccp(view.x2,view.y2));
@@ -301,7 +333,7 @@
 	
 	//rtv.y - game_screen().height*-(-ANCHORPOINT.x)*(_current_zoom-1)
 	CGPoint rtv = ccp(
-		x_rel_y_final_pt.x - game_screen().width*-(-ppt.x+0.5)*(_current_zoom-1),
+		x_rel_y_final_pt.x - game_screen().width*-(-ppt.x+0.5)*([self get_offset_current_zoom]-1),
 		x_rel_y_final_pt.y
 	);
 	
@@ -312,15 +344,15 @@
 	linear regression {{1,159},{1.3,111.2},{1.6,63.32},{2.1,-17}}
 	R: 319.148-160.012x
 	*/
-	float xmin = 160.179*_current_zoom-1.01;
-	float xmax = 319.148-160.012*_current_zoom;
+	float xmin = 160.179*[self get_offset_current_zoom]-1.01;
+	float xmax = 319.148-160.012*[self get_offset_current_zoom];
 	rtv.x = clampf(rtv.x, xmin, xmax);
 	return rtv;
 	
 }
 
 -(void)update_camera {
-	[self imm_set_zoom:_current_zoom];
+	[self imm_set_zoom:[self get_offset_current_zoom]];
 	[self imm_set_camera_hei:_current_camera_center_y];
 	
 	[_zoom_node setPosition:[self get_zoom_node_pos]];
