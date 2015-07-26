@@ -23,9 +23,10 @@
 
 +(PlayerSharedParams*)cons { return [[[PlayerSharedParams alloc] init] cons]; }
 -(PlayerSharedParams*)cons {
-    _max_health = 9;
-    _current_health = _max_health;
-    
+    _max_health = 3;
+    //_current_health = _max_health;
+	_current_health = 0.5;
+	
     _max_breath = 600;
     _current_breath = _max_breath;
     return self;

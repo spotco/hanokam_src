@@ -51,6 +51,7 @@
 	} break;
 	default:break;
 	}
+	
 	[_img setColor4f:_tar_color];
 	_tar_color.b = drpt(_tar_color.b, 1.0, 1/8.0);
 	_tar_color.g = drpt(_tar_color.g, 1.0, 1/8.0);

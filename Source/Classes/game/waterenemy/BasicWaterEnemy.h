@@ -15,8 +15,15 @@ typedef enum {
 	BasicWaterEnemyMode_Stunned
 } BasicWaterEnemyMode;
 
+typedef enum {
+	BasicWaterEnemyDiveReturnMode_Normal,
+	BasicWaterEnemyDiveReturnMode_Hit
+} BasicWaterEnemyDiveReturnMode;
+
 @interface BasicWaterEnemy : BaseWaterEnemy
 @property(readwrite,assign) BasicWaterEnemyMode _current_mode;
+@property(readwrite,assign) BasicWaterEnemyDiveReturnMode _current_divereturn_mode;
+
 -(BasicWaterEnemy*)cons_g:(GameEngineScene*)g pt1:(CGPoint)pt1 pt2:(CGPoint)pt2;
 -(CGPoint)notice_anim_offset;
 -(float)get_stunned_anim_ct;

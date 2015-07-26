@@ -21,14 +21,12 @@
 -(BGCharacterOldMan*)cons_pos:(CGPoint)pos {
 	[self setPosition:pos];
 	
-	[self setScaleX:self.scale*-1];
-	
 	SpriterData *data = [SpriterData cons_data_from_spritesheetreaders:@[
-		[SpriterJSONParser cons_texture:[Resource get_tex:TEX_SPRITER_CHAR_OLDMAN] file:@"oldman_ss.json"]
-	] scml:@"oldman.scml"];
+		[SpriterJSONParser cons_texture:[Resource get_tex:TEX_SPRITER_CHAR_OLDMAN] file:@"Oldman.json"]
+	] scml:@"Oldman.scml"];
 	_img = [SpriterNode nodeFromData:data render_size:ccp(300,300)];
 	[_img set_render_placement:ccp(0.5,0.1)];
-	[_img playAnim:@"idle" repeat:YES];
+	[_img playAnim:@"Sleeping" repeat:YES];
 	[self addChild:_img];
 	
 	/*

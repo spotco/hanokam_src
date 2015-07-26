@@ -24,6 +24,8 @@
 	PlayerAirCombatParams *_air_params;
 	ChainedMovementParticle *_rescue_anim;
 	FlashEvery *_arrow_restore_tick;
+	
+	float _initial_s_pos_y;
 }
 +(InAirPlayerStateStack*)cons:(GameEngineScene*)g {
 	return [[[InAirPlayerStateStack alloc] init] cons:g];
@@ -41,6 +43,7 @@
 	_air_params._invuln_ct = 0;
 	_air_params._target_rotation = 0;
 	_arrow_restore_tick = [FlashEvery cons_time:3];
+	_initial_s_pos_y = g.player.shared_params._s_pos.y;
     [g.player.shared_params set_health:g.player.shared_params.get_max_health];
 	
 	[g.get_event_dispatcher add_listener:self];
@@ -160,7 +163,8 @@
 			_air_params._anim_ct = clampf(_air_params._anim_ct + 0.025 * dt_scale_get(), 0, 1);
 			g.player.shared_params._s_pos = ccp(
 				g.player.shared_params._s_pos.x,
-				lerp(g.player.shared_params._s_pos.y, _air_params.DEFAULT_HEIGHT, _air_params._anim_ct)
+				lerp(_initial_s_pos_y, _air_params.DEFAULT_HEIGHT,
+					bezier_point_for_t(ccp(0,0), ccp(0,0.5), ccp(0.5,1), ccp(1,1), _air_params._anim_ct).y )
 			);
 			if (_air_params._anim_ct >= 1) {
 				_air_params._current_mode = PlayerAirCombatMode_Combat;
@@ -393,6 +397,7 @@
 	
 	if (g.player.shared_params.get_current_health <= 0 && _air_params._current_mode != PlayerAirCombatMode_FallToGround) {
 		_air_params._current_mode = PlayerAirCombatMode_FallToGround;
+		[g blur_and_pulse];
 	}
 	
 	[g.player update_accel_x_position:g];

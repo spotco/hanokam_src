@@ -18,7 +18,7 @@
 
 #define TEX_SPRITER_CHAR_HANOKA_V2 @"hanokav2"
 
-#define TEX_SPRITER_CHAR_OLDMAN @"oldman_ss"
+#define TEX_SPRITER_CHAR_OLDMAN @"Oldman"
 #define TEX_SPRITER_CHAR_VILLAGER_FISHWOMAN @"villager_fishwoman"
 #define TEX_SPRITER_CHAR_FISHGIRL @"Fishgirl"
 

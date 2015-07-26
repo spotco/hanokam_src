@@ -25,6 +25,7 @@
 @implementation Player {
 	SpriterNode *_img;
 	CCNode *_swordplant_streak_root;
+	CCSprite *_divereturn_behind_trail;
 	CCNode *_arrow_charged_flash_root;
 	CCSprite *_swordplant_behind_trail;
 	NSString *_current_playing;
@@ -57,8 +58,10 @@
 	
 	[self cons_swordplant_streak];
 	_arrow_charged_flash_root = [CCSprite node];
-	[_arrow_charged_flash_root runAction:animaction_cons(@[@"arrow_charge_hold_000.png",@"arrow_charge_hold_001.png",@"arrow_charge_hold_000.png",@"arrow_charge_hold_003.png"], 0.1, TEX_EFFECTS_HANOKA)];
+	
+	[_arrow_charged_flash_root runAction:animaction_cons(string_dofor_format(6, ^(int i){return strf("arrow_charge_start_%d.png",i);}), 0.05, TEX_EFFECTS_HANOKA)];
 	[_arrow_charged_flash_root setScale:0.4];
+	[_arrow_charged_flash_root setOpacity:0.8];
 	[_arrow_charged_flash_root setPosition:ccp(13,7)];
 	[self addChild:_arrow_charged_flash_root];
 	
@@ -125,6 +128,13 @@
 	[_swordplant_behind_trail setScale:0.3];
 	[_swordplant_behind_trail setOpacity:0.0];
 	[self addChild:_swordplant_behind_trail];
+	
+	_divereturn_behind_trail = [CCSprite spriteWithTexture:[Resource get_tex:TEX_EFFECTS_HANOKA] rect:[FileCache get_cgrect_from_plist:TEX_EFFECTS_HANOKA idname:@"sword_stab-fall-air.png"]];
+	[_divereturn_behind_trail set_anchor_pt:ccp(0.5,0)];
+	[_divereturn_behind_trail setScale:0.3];
+	[_divereturn_behind_trail setOpacity:0.0];
+	[_divereturn_behind_trail setRotation:180];
+	[self addChild:_divereturn_behind_trail];
 }
 
 -(void)i_update:(GameEngineScene*)g {
@@ -161,12 +171,18 @@
 		} else {
 			_swordplant_behind_trail.opacity = 0;
 		}
-		
-		
 	} else {
 		
 		_swordplant_behind_trail.opacity = 0;
 	}
+	
+	float tar_divereturn_behind_trail_opacity = 0;
+	if (top_ele.cond_get_underwater_combat_params != NULL) {
+		if (top_ele.cond_get_underwater_combat_params._vel.y >= 10) {
+			tar_divereturn_behind_trail_opacity = 0.7;
+		}
+	}
+	_divereturn_behind_trail.opacity = drpt(_divereturn_behind_trail.opacity, tar_divereturn_behind_trail_opacity, 1/7.0);
 }
 
 -(void)play_anim:(NSString*)anim repeat:(BOOL)repeat {
@@ -243,7 +259,8 @@ float accel_x_move_val(GameEngineScene *g, float from_val) {
 -(SpriterNode*)img { return _img; }
 
 -(BOOL)is_underwater:(GameEngineScene *)g {
-	return self.position.y < 0 && self.get_player_state != PlayerState_InAir;
+	return (self.get_player_state == PlayerState_DiveReturn && g.get_current_camera_center_y < 0) ||
+	(self.position.y < 0 && self.get_player_state != PlayerState_InAir);
 }
 
 -(CGPoint)get_size { return ccp(40,130); }

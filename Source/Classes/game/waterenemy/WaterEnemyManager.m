@@ -118,4 +118,19 @@ static NSMutableArray *do_remove;
 	[_enemies removeAllObjects];
 }
 
+static NSMutableArray *unattracted_doremove;
+-(void)remove_all_unattracted_enemies:(GameEngineScene*)g {
+	if (unattracted_doremove == NULL) unattracted_doremove = [NSMutableArray array];
+	[unattracted_doremove removeAllObjects];
+	for (BaseWaterEnemy *itr in _enemies) {
+		if (!itr.is_attracted) {
+			[itr do_remove:g];
+			[[g get_anchor] removeChild:itr];
+			[unattracted_doremove addObject:itr];
+		}
+	}
+	[_enemies removeObjectsInArray:unattracted_doremove];
+	[unattracted_doremove removeAllObjects];
+}
+
 @end

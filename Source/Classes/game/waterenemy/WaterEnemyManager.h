@@ -29,6 +29,7 @@
 -(NSArray*)get_enemies;
 -(void)add_enemy:(BaseWaterEnemy*)enemy game:(GameEngineScene*)g;
 -(void)remove_all_enemies:(GameEngineScene*)g;
+-(void)remove_all_unattracted_enemies:(GameEngineScene*)g;
 
 -(int)get_enemies_attracted_count;
 @end

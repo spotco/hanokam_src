@@ -12,6 +12,8 @@
 /*
 --TODO
 new dive end animation
+dive in spin anim
+targeting reticule in air fade in
 
 quest + dialogue system stubs + simple quests
 	-quest1 attract certain number of enemies, ui

@@ -36,6 +36,8 @@
 }
 -(BasicWaterEnemy*)cons_g:(GameEngineScene *)g pt1:(CGPoint)pt1 pt2:(CGPoint)pt2 {
 	self._current_mode = BasicWaterEnemyMode_IdleMove;
+	self._current_divereturn_mode = BasicWaterEnemyDiveReturnMode_Normal;
+	
 	_pt1 = pt1;
 	_pt2 = pt2;
 	_last_pos = CGPointZero;
@@ -45,7 +47,7 @@
 	_pack_ud_theta = float_random(-3.14, 3.14);
 	_pack_lr_vtheta = float_random(0.045, 0.065);
 	_pack_ud_vtheta = float_random(0.03, 0.04);
-	_pack_x_var = float_random(70, 200);
+	_pack_x_var = float_random(70, game_screen().width/2);
 	_pack_y_var = float_random(70, 150);
 	return self;
 }
@@ -97,7 +99,7 @@
 				+ lerp(30, 5, 1-_stunned_anim_ct/_stunned_anim_ct_max)
 				* sin(_anim_theta * lerp(1,7,1-_stunned_anim_ct/_stunned_anim_ct_max));
 		
-		self.position = CGPointAdd(self.position, _stun_vel);
+		self.position = CGPointAdd(self.position, ccp(_stun_vel.x*dt_scale_get(),_stun_vel.y*dt_scale_get()));
 		_stun_vel = ccp(drpt(_stun_vel.x, 0, 1/10.0),drpt(_stun_vel.y, 0, 1/10.0));
 		
 		if (_stunned_anim_ct <= 0) {
@@ -125,16 +127,44 @@
 }
 
 -(void)i_update_divereturn:(GameEngineScene*)g {
-	_pack_ud_theta += _pack_ud_vtheta * dt_scale_get();
-	_pack_lr_theta += _pack_lr_vtheta * dt_scale_get();
-	CGPoint target_pos = CGPointAdd(g.player.get_center, ccp( _pack_x_var*sinf(_pack_lr_theta), _pack_y_var*cosf(_pack_ud_theta)));
-	
-	Vec3D delta = vec_cons_norm(target_pos.x-self.position.x, target_pos.y-self.position.y, 0);
-	_pack_cur_vel = MIN(drpt(_pack_cur_vel, 3*dt_scale_get(), 1/20.0),CGPointDist(target_pos, self.position));
-	vec_scale_m(&delta, _pack_cur_vel);
-	self.position = CGPointAdd(self.position, vec_to_cgpoint(delta));
-	self.rotation = drpt(self.rotation,vec_ang_deg_lim180(cgpoint_to_vec(CGPointSub(self.position, _last_pos)),0)-90,1/4.0);
+	switch (self._current_divereturn_mode) {
+		case BasicWaterEnemyDiveReturnMode_Normal:{
+			_pack_ud_theta += _pack_ud_vtheta * dt_scale_get();
+			_pack_lr_theta += _pack_lr_vtheta * dt_scale_get();
+			CGPoint target_pos = CGPointAdd(g.player.position, ccp( _pack_x_var*sinf(_pack_lr_theta), _pack_y_var*cosf(_pack_ud_theta) + _pack_y_var + 100 ));
+			Vec3D delta = vec_cons_norm(target_pos.x-self.position.x, target_pos.y-self.position.y, 0);
+			_pack_cur_vel = MIN(drpt(_pack_cur_vel, 3*dt_scale_get(), 1/20.0),CGPointDist(target_pos, self.position));
+			vec_scale_m(&delta, _pack_cur_vel);
+			self.position = CGPointAdd(self.position, vec_to_cgpoint(delta));
+			self.rotation = drpt(self.rotation,vec_ang_deg_lim180(cgpoint_to_vec(CGPointSub(self.position, _last_pos)),0)-90,1/4.0);
+			
+		} break;
+		case BasicWaterEnemyDiveReturnMode_Hit: {
+			self.position = CGPointAdd(self.position, ccp(_stun_vel.x*dt_scale_get(),_stun_vel.y*dt_scale_get()));
+			_stun_vel = ccp(drpt(_stun_vel.x, 0, 1/8.0),drpt(_stun_vel.y, 0, 1/8.0));
+			_stunned_anim_ct -= dt_scale_get();
+			_anim_theta = fmodf(_anim_theta + dt_scale_get() / (3.14 * 2),3.14*2);
+			self.rotation =
+				_last_move_rotation
+					+ lerp(30, 5, 1-_stunned_anim_ct/_stunned_anim_ct_max)
+					* sin(_anim_theta * lerp(1,7,1-_stunned_anim_ct/_stunned_anim_ct_max));
+			if (_stunned_anim_ct <= 0) {
+				self._current_divereturn_mode = BasicWaterEnemyDiveReturnMode_Normal;
+			}
+		}break;
+	}
+
+	if (CGPointDist(g.player.get_center, self.position) < 45) {
+		self._current_divereturn_mode = BasicWaterEnemyDiveReturnMode_Hit;
+		Vec3D dir_vec = vec_norm(cgpoint_to_vec(CGPointSub(self.position, g.player.get_center)));
+		dir_vec.y *= 0.75;
+		vec_scale_m(&dir_vec, 9);
+		_stun_vel = vec_to_cgpoint(dir_vec);
+		_stunned_anim_ct = _stunned_anim_ct_max = 50;
+	}
+
 	_last_move_rotation = self.rotation;
+	_last_pos = self.position;
 }
 
 -(void)check_hit:(GameEngineScene*)g {
