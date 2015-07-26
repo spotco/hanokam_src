@@ -191,6 +191,12 @@
 		7EA4A6441B64405300BE09CD /* Oldman.png in Resources */ = {isa = PBXBuildFile; fileRef = 7EA4A63F1B64405300BE09CD /* Oldman.png */; };
 		7EA4A6451B64405300BE09CD /* Oldman.scml in Resources */ = {isa = PBXBuildFile; fileRef = 7EA4A6401B64405300BE09CD /* Oldman.scml */; };
 		7EA4A6461B64405300BE09CD /* Oldman.scml in Resources */ = {isa = PBXBuildFile; fileRef = 7EA4A6401B64405300BE09CD /* Oldman.scml */; };
+		7EA4A64B1B646A6500BE09CD /* bg_water_top_belowline.png in Resources */ = {isa = PBXBuildFile; fileRef = 7EA4A6481B646A6500BE09CD /* bg_water_top_belowline.png */; };
+		7EA4A64C1B646A6500BE09CD /* bg_water_top_belowline.png in Resources */ = {isa = PBXBuildFile; fileRef = 7EA4A6481B646A6500BE09CD /* bg_water_top_belowline.png */; };
+		7EA4A64D1B646A6500BE09CD /* bg_water_top_waterline.png in Resources */ = {isa = PBXBuildFile; fileRef = 7EA4A6491B646A6500BE09CD /* bg_water_top_waterline.png */; };
+		7EA4A64E1B646A6500BE09CD /* bg_water_top_waterline.png in Resources */ = {isa = PBXBuildFile; fileRef = 7EA4A6491B646A6500BE09CD /* bg_water_top_waterline.png */; };
+		7EA4A64F1B646A6500BE09CD /* bg_water_top_waterlinegrad.png in Resources */ = {isa = PBXBuildFile; fileRef = 7EA4A64A1B646A6500BE09CD /* bg_water_top_waterlinegrad.png */; };
+		7EA4A6501B646A6500BE09CD /* bg_water_top_waterlinegrad.png in Resources */ = {isa = PBXBuildFile; fileRef = 7EA4A64A1B646A6500BE09CD /* bg_water_top_waterlinegrad.png */; };
 		7EA863371B5CF63400FE8163 /* Fishgirl.json in Resources */ = {isa = PBXBuildFile; fileRef = 7EA863341B5CF63400FE8163 /* Fishgirl.json */; };
 		7EA863381B5CF63400FE8163 /* Fishgirl.json in Resources */ = {isa = PBXBuildFile; fileRef = 7EA863341B5CF63400FE8163 /* Fishgirl.json */; };
 		7EA863391B5CF63400FE8163 /* Fishgirl.json in Resources */ = {isa = PBXBuildFile; fileRef = 7EA863341B5CF63400FE8163 /* Fishgirl.json */; };
@@ -720,6 +726,9 @@
 		7EA4A63E1B64405300BE09CD /* Oldman.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Oldman.json; sourceTree = "<group>"; };
 		7EA4A63F1B64405300BE09CD /* Oldman.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Oldman.png; sourceTree = "<group>"; };
 		7EA4A6401B64405300BE09CD /* Oldman.scml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Oldman.scml; sourceTree = "<group>"; };
+		7EA4A6481B646A6500BE09CD /* bg_water_top_belowline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_water_top_belowline.png; sourceTree = "<group>"; };
+		7EA4A6491B646A6500BE09CD /* bg_water_top_waterline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_water_top_waterline.png; sourceTree = "<group>"; };
+		7EA4A64A1B646A6500BE09CD /* bg_water_top_waterlinegrad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_water_top_waterlinegrad.png; sourceTree = "<group>"; };
 		7EA863341B5CF63400FE8163 /* Fishgirl.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Fishgirl.json; sourceTree = "<group>"; };
 		7EA863351B5CF63400FE8163 /* Fishgirl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Fishgirl.png; sourceTree = "<group>"; };
 		7EA863361B5CF63400FE8163 /* Fishgirl.scml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Fishgirl.scml; sourceTree = "<group>"; };
@@ -1258,6 +1267,16 @@
 			path = test;
 			sourceTree = "<group>";
 		};
+		7EA4A6471B646A6500BE09CD /* tex */ = {
+			isa = PBXGroup;
+			children = (
+				7EA4A6481B646A6500BE09CD /* bg_water_top_belowline.png */,
+				7EA4A6491B646A6500BE09CD /* bg_water_top_waterline.png */,
+				7EA4A64A1B646A6500BE09CD /* bg_water_top_waterlinegrad.png */,
+			);
+			path = tex;
+			sourceTree = "<group>";
+		};
 		7EA863331B5CF63400FE8163 /* Fishgirl */ = {
 			isa = PBXGroup;
 			children = (
@@ -1538,6 +1557,7 @@
 		7ED823271B13D2A6001BB249 /* background */ = {
 			isa = PBXGroup;
 			children = (
+				7EA4A6471B646A6500BE09CD /* tex */,
 				7ED823281B13D2A6001BB249 /* bg_spritesheet_1.plist */,
 				7ED823291B13D2A6001BB249 /* bg_spritesheet_1.png */,
 				7ED8232A1B13D2A6001BB249 /* bg_test_tile_sky.png */,
@@ -2115,6 +2135,7 @@
 				7ED823F41B13D2A6001BB249 /* spriter_test.scml in Resources */,
 				7EE566491B411F3C00D63556 /* hanoka_player_redgarb.png in Resources */,
 				7ED823AC1B13D2A6001BB249 /* villager_fishwoman.scml in Resources */,
+				7EA4A64C1B646A6500BE09CD /* bg_water_top_belowline.png in Resources */,
 				7ED823DF1B13D2A6001BB249 /* ripple_effect.fsh in Resources */,
 				7EB78B351B57AD2D00FB9892 /* hud_font_ss.png in Resources */,
 				7ED823D01B13D2A6001BB249 /* abovewater_am_up.vsh in Resources */,
@@ -2130,6 +2151,7 @@
 				927F61B5196C771E000F43EF /* Default-Landscape~ipad.png in Resources */,
 				7ED8237C1B13D2A6001BB249 /* sky_spritesheet.plist in Resources */,
 				B78A0B10198AF87200C63841 /* Published-Android in Resources */,
+				7EA4A64E1B646A6500BE09CD /* bg_water_top_waterline.png in Resources */,
 				7ED823971B13D2A6001BB249 /* hanoka v0.01.png in Resources */,
 				7ED823BE1B13D2A6001BB249 /* hud_spritesheet.plist in Resources */,
 				927F61B6196C771E000F43EF /* iPhone-old.png in Resources */,
@@ -2151,6 +2173,7 @@
 				7E7C0D441B55077300407DCB /* effects_hanoka_ss.plist in Resources */,
 				7ED823701B13D2A6001BB249 /* bg_test_tile_water.png in Resources */,
 				7ED823911B13D2A6001BB249 /* hanokav2.scml in Resources */,
+				7EA4A6501B646A6500BE09CD /* bg_water_top_waterlinegrad.png in Resources */,
 				7E45BEDF1B51173900D93D78 /* korean_calligraphy.png in Resources */,
 				927F61B9196C771E000F43EF /* iPhone@2x.png in Resources */,
 				927F61BA196C771E000F43EF /* Default.png in Resources */,
@@ -2206,6 +2229,7 @@
 				7ED823F31B13D2A6001BB249 /* spriter_test.scml in Resources */,
 				7ED823AB1B13D2A6001BB249 /* villager_fishwoman.scml in Resources */,
 				7E9A44C11B1DA2AC00111C35 /* charge_circle.vsh in Resources */,
+				7EA4A64B1B646A6500BE09CD /* bg_water_top_belowline.png in Resources */,
 				BB1E153C1B2EA5C000461495 /* korean_calligraphy.fnt in Resources */,
 				7EB78B341B57AD2D00FB9892 /* hud_font_ss.png in Resources */,
 				7ED823DE1B13D2A6001BB249 /* ripple_effect.fsh in Resources */,
@@ -2221,6 +2245,7 @@
 				7ED823991B13D2A6001BB249 /* hanoka v0.01.scml in Resources */,
 				B71F591A188484E7003F4D28 /* Settings@2x.png in Resources */,
 				7ED8237B1B13D2A6001BB249 /* sky_spritesheet.plist in Resources */,
+				7EA4A64D1B646A6500BE09CD /* bg_water_top_waterline.png in Resources */,
 				7E9A44BF1B1DA29C00111C35 /* charge_circle.fsh in Resources */,
 				B7378976180762440076A88C /* Default-Landscape~ipad.png in Resources */,
 				7ED823961B13D2A6001BB249 /* hanoka v0.01.png in Resources */,
@@ -2242,6 +2267,7 @@
 				7E7C0D431B55077300407DCB /* effects_hanoka_ss.plist in Resources */,
 				7ED8236F1B13D2A6001BB249 /* bg_test_tile_water.png in Resources */,
 				7ED823901B13D2A6001BB249 /* hanokav2.scml in Resources */,
+				7EA4A64F1B646A6500BE09CD /* bg_water_top_waterlinegrad.png in Resources */,
 				B71F5918188484E7003F4D28 /* iPhone@2x.png in Resources */,
 				7E8CF0A81B3E8BBB00FA6277 /* hanoka_bow.json in Resources */,
 				B7378977180762440076A88C /* Default.png in Resources */,

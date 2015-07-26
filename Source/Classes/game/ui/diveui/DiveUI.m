@@ -37,7 +37,6 @@
 }
 
 -(DiveUI*)cons:(GameEngineScene*)g {
-
 	CCNode *breath_bar_root = [CCNode node];
 	[breath_bar_root setPosition:game_screen_anchor_offset(ScreenAnchor_TL, ccp(0,0))];
 	[self addChild:breath_bar_root];

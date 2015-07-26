@@ -28,6 +28,7 @@
 }
 
 -(DivePlayerStateStack*)cons:(GameEngineScene*)g {
+	[g blur_and_pulse];
 	[g.get_event_dispatcher add_listener:self];
 
 	_underwater_params = [[PlayerUnderwaterCombatParams alloc] init];

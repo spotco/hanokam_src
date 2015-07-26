@@ -11,15 +11,15 @@
 
 /*
 --TODO
-new dive end animation
-dive in spin anim
-targeting reticule in air fade in
+new water surface effects
 
 quest + dialogue system stubs + simple quests
 	-quest1 attract certain number of enemies, ui
 	-quest2 reach certain depth (underwater temple)
 	
-dive return transition emphasize depth and enemies attracted
+dive in spin anim
+targeting reticule in air fade in
+dive return transition UI emphasize depth and enemies attracted
 perf run, village and etc hiding
 air and underwater mode powerup/gold drops
 

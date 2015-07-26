@@ -47,6 +47,8 @@
     [g.player.shared_params set_health:g.player.shared_params.get_max_health];
 	
 	[g.get_event_dispatcher add_listener:self];
+	[g blur_and_pulse];
+	[g shake_for:10 distance:5];
 	return self;
 }
 

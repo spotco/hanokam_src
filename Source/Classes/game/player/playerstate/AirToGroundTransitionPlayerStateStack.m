@@ -45,10 +45,10 @@
 			g.player.position = CGPointAdd(g.player.position, ccp(0,_land_params._vel.y*dt_scale_get()));
 			[g set_camera_height:drpt(g.get_current_camera_center_y,0,1/20.0)];
 			if (g.player.position.y < 0) {
-			
 				_land_params._current_mode = PlayerLandMode_AirToGround_WaterDiveUp;
 				[g add_ripple:ccp(g.player.position.x,0)];
 				[g shake_slow_for:100 distance:10];
+				[g blur_and_pulse];
 			}
 			
 		break;
@@ -59,6 +59,7 @@
 			if (g.player.position.y > 0) {
 				[g add_ripple:ccp(g.player.position.x,0)];
 				_land_params._current_mode = PlayerLandMode_AirToGround_FlipToDock;
+				[g blur_and_pulse];
 			}
 			[g set_camera_height:drpt(g.get_current_camera_center_y,-50,1/20.0)];
 			float tar_rotation = vec_ang_deg_lim180(vec_cons(g.player.position.x - last_pos.x,g.player.position.y - last_pos.y, 0),90);

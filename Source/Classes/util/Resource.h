@@ -12,6 +12,10 @@
 #define TEX_BG_SKY_SPRITESHEET @"sky_spritesheet"
 #define TEX_BG_WATER_ELEMENT_FADE @"bg_water_element_fade"
 
+#define TEX_BG_WATER_TOP_BELOWLINE @"bg_water_top_belowline"
+#define TEX_BG_WATER_TOP_WATERLINE @"bg_water_top_waterline"
+#define TEX_BG_WATER_TOP_WATERLINEGRAD @"bg_water_top_waterlinegrad"
+
 #define TEX_TEST_BG_TILE_SKY @"bg_test_tile_sky"
 #define TEX_TEST_BG_TILE_WATER @"bg_test_tile_water"
 #define TEX_TEST_BG_UNDERWATER_SURFACE_GRADIENT @"bg_underwater_surface_gradient"
