@@ -15,6 +15,7 @@
 #define TEX_BG_WATER_TOP_BELOWLINE @"bg_water_top_belowline"
 #define TEX_BG_WATER_TOP_WATERLINE @"bg_water_top_waterline"
 #define TEX_BG_WATER_TOP_WATERLINEGRAD @"bg_water_top_waterlinegrad"
+#define TEX_BG_WATER_BOTTOM_SURFACEGRAD @"bg_water_bottom_surfacegrad"
 
 #define TEX_TEST_BG_TILE_SKY @"bg_test_tile_sky"
 #define TEX_TEST_BG_TILE_WATER @"bg_test_tile_water"

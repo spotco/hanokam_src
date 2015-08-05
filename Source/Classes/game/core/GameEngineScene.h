@@ -31,11 +31,15 @@ typedef enum _GameAnchorZ {
 	GameAnchorZ_UI = 5000,
 	GameAnchorZ_BlurTex = 4500,
 	GameAnchorZ_DebugDraw = 999,
+	
+	GameAnchorZ_BGWater_WaterLineBelow = 101,
 	GameAnchorZ_BGSky_SurfaceReflection = 100,
+	
     GameAnchorZ_UnderwaterForegroundElements = 83,
 	GameAnchorZ_PlayerAirEffects = 82,
 	GameAnchorZ_Enemies_Air = 81,
 	GameAnchorZ_PlayerProjectiles = 80,
+	
 	GameAnchorZ_BGSky_SurfaceGradient = 80,
 	GameAnchorZ_Player_Out = 79,
 	GameAnchorZ_BGSky_Docks_Pillars_Front = 52,
@@ -53,7 +57,8 @@ typedef enum _GameAnchorZ {
 	GameAnchorZ_BGSky_Sky_Islands = 4,
 	GameAnchorZ_BGSky_Sky_Arcs = 3,
 	
-	GameAnchorZ_BGSky_RepeatBG = -10,
+	GameAnchorZ_BGWater_WaterLineAbove = 8,
+	GameAnchorZ_BGSky_RepeatBG = -9,
 	GameAnchorZ_BGWater_Ground = -11,
 	GameAnchorZ_BGWater_Elements = -12,
 	GameAnchorZ_BGWater_RepeatBG = -13

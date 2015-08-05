@@ -17,6 +17,8 @@
 #import "BGVillage.h"
 #import "BGReflection.h"
 #import "UnderwaterTreasureSprite.h"
+#import "BGWaterLineAbove.h"
+#import "BGWaterLineBelow.h"
 
 @implementation BGWater {
 	CCSprite *_water_bg;
@@ -31,6 +33,9 @@
 	UnderwaterTreasureSprite *_underwater_temple_treasure;
 	
 	CCRenderTexture *_reflection_texture, *_ripple_texture;
+	
+	BGWaterLineAbove *_waterlineabove;
+	BGWaterLineBelow *_waterlinebelow;
 }
 +(BGWater*)cons:(GameEngineScene *)g {
 	return (BGWater*)[[[BGWater alloc] init] cons:g];
@@ -106,6 +111,14 @@
 	[_top_cliff setScaleY:_top_cliff.scaleX];
 	[_top_cliff setAnchorPoint:ccp(0,1)];
 	[[g get_anchor] addChild:_top_cliff z:GameAnchorZ_BGWater_I1];
+	
+	_waterlineabove = [BGWaterLineAbove cons];
+	[_waterlineabove setPosition:ccp(0,-80)];
+	[[g get_anchor] addChild:_waterlineabove z:GameAnchorZ_BGWater_WaterLineAbove];
+	
+	_waterlinebelow = [BGWaterLineBelow cons];
+	[_waterlinebelow setPosition:ccp(0,0)];
+	[[g get_anchor] addChild:_waterlinebelow z:GameAnchorZ_BGWater_WaterLineBelow];
 	
 	return self;
 }
@@ -220,6 +233,19 @@
 	} else {
 		[_reflection_texture setVisible:NO];
 	}
+	
+	if ([g.player is_underwater:g]) {
+		[_waterlineabove setVisible:NO];
+		
+		[_waterlinebelow setVisible:YES];
+		[_waterlinebelow i_update:g];
+	} else {
+		[_waterlineabove setVisible:YES];
+		[_waterlineabove i_update:g];
+		
+		[_waterlinebelow setVisible:NO];
+	}
+	
 }
 
 @end

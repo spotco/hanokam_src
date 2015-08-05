@@ -92,8 +92,8 @@ typedef enum {
 		_anim_t += 0.05 * dt_scale_get();
 		if (_anim_t >= 1) {
 			g.player.rotation = 0;
-			_current_mode = DiveReturnPlayerStateStackMode_BreakThrough;
-			[g shake_for:20 distance:5];
+			//_current_mode = DiveReturnPlayerStateStackMode_BreakThrough;
+			//[g shake_for:20 distance:5];
 		}
 		
 	}; break;

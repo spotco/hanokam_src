@@ -50,6 +50,15 @@
 		7A97910819E62F84001FFC4D /* libcocos2dAndroid.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A97910019E62E40001FFC4D /* libcocos2dAndroid.a */; };
 		7A97911719E631C6001FFC4D /* libcocos2d-mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A97910419E62E40001FFC4D /* libcocos2d-mac.a */; };
 		7A97911819E631CD001FFC4D /* libcocos2d.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A9790FE19E62E40001FFC4D /* libcocos2d.a */; };
+		7E0D32E61B7296B8004398E7 /* BGWaterLineAbove.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E0D32E51B7296B8004398E7 /* BGWaterLineAbove.m */; };
+		7E0D32E71B7296B8004398E7 /* BGWaterLineAbove.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E0D32E51B7296B8004398E7 /* BGWaterLineAbove.m */; };
+		7E0D32E81B7296B8004398E7 /* BGWaterLineAbove.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E0D32E51B7296B8004398E7 /* BGWaterLineAbove.m */; };
+		7E0D32EE1B72A24D004398E7 /* BGWaterLineBelow.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E0D32ED1B72A24D004398E7 /* BGWaterLineBelow.m */; };
+		7E0D32EF1B72A24D004398E7 /* BGWaterLineBelow.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E0D32ED1B72A24D004398E7 /* BGWaterLineBelow.m */; };
+		7E0D32F01B72A24D004398E7 /* BGWaterLineBelow.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E0D32ED1B72A24D004398E7 /* BGWaterLineBelow.m */; };
+		7E0D32F21B72A64D004398E7 /* bg_water_bottom_surfacegrad.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E0D32F11B72A64D004398E7 /* bg_water_bottom_surfacegrad.png */; };
+		7E0D32F31B72A64D004398E7 /* bg_water_bottom_surfacegrad.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E0D32F11B72A64D004398E7 /* bg_water_bottom_surfacegrad.png */; };
+		7E0D32F41B72A64D004398E7 /* bg_water_bottom_surfacegrad.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E0D32F11B72A64D004398E7 /* bg_water_bottom_surfacegrad.png */; };
 		7E0D6D3B1B43C51B00F2023F /* WaterEnemyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E0D6D3A1B43C51B00F2023F /* WaterEnemyManager.m */; };
 		7E0D6D3C1B43C51B00F2023F /* WaterEnemyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E0D6D3A1B43C51B00F2023F /* WaterEnemyManager.m */; };
 		7E0D6D3D1B43C51B00F2023F /* WaterEnemyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E0D6D3A1B43C51B00F2023F /* WaterEnemyManager.m */; };
@@ -651,6 +660,11 @@
 		7AFCD5DB19E9BD9F00BCCCDA /* cocos2d.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = cocos2d.h; path = "Source/libs/cocos2d-iphone/cocos2d/cocos2d.h"; sourceTree = "<group>"; };
 		7AFCD5DD19E9BDC200BCCCDA /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Bridging-Header.h"; path = "Source/Bridging-Header.h"; sourceTree = "<group>"; };
 		7BF6AF9F1A425F9800FFF9BA /* JavaFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaFoundation.framework; path = "../../../../../../../Library/SBAndroid/Application Support/Developer/Shared/Xcode/Platforms/Android.platform/Developer/SDKs/SBAndroid.sdk/System/Library/Frameworks/JavaFoundation.framework"; sourceTree = "<group>"; };
+		7E0D32E41B7296B8004398E7 /* BGWaterLineAbove.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGWaterLineAbove.h; sourceTree = "<group>"; };
+		7E0D32E51B7296B8004398E7 /* BGWaterLineAbove.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGWaterLineAbove.m; sourceTree = "<group>"; };
+		7E0D32EC1B72A24D004398E7 /* BGWaterLineBelow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGWaterLineBelow.h; sourceTree = "<group>"; };
+		7E0D32ED1B72A24D004398E7 /* BGWaterLineBelow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGWaterLineBelow.m; sourceTree = "<group>"; };
+		7E0D32F11B72A64D004398E7 /* bg_water_bottom_surfacegrad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_water_bottom_surfacegrad.png; sourceTree = "<group>"; };
 		7E0D6D391B43C51B00F2023F /* WaterEnemyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaterEnemyManager.h; sourceTree = "<group>"; };
 		7E0D6D3A1B43C51B00F2023F /* WaterEnemyManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaterEnemyManager.m; sourceTree = "<group>"; };
 		7E0D6D3E1B43C9B400F2023F /* BasicWaterEnemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicWaterEnemy.h; sourceTree = "<group>"; };
@@ -1270,6 +1284,7 @@
 		7EA4A6471B646A6500BE09CD /* tex */ = {
 			isa = PBXGroup;
 			children = (
+				7E0D32F11B72A64D004398E7 /* bg_water_bottom_surfacegrad.png */,
 				7EA4A6481B646A6500BE09CD /* bg_water_top_belowline.png */,
 				7EA4A6491B646A6500BE09CD /* bg_water_top_waterline.png */,
 				7EA4A64A1B646A6500BE09CD /* bg_water_top_waterlinegrad.png */,
@@ -1367,6 +1382,10 @@
 				20E087D51B43660200AD486A /* RippleInfo.m */,
 				7E45BECF1B50F97F00D93D78 /* UnderwaterTreasureSprite.h */,
 				7E45BED01B50F97F00D93D78 /* UnderwaterTreasureSprite.m */,
+				7E0D32E41B7296B8004398E7 /* BGWaterLineAbove.h */,
+				7E0D32E51B7296B8004398E7 /* BGWaterLineAbove.m */,
+				7E0D32EC1B72A24D004398E7 /* BGWaterLineBelow.h */,
+				7E0D32ED1B72A24D004398E7 /* BGWaterLineBelow.m */,
 			);
 			path = bg;
 			sourceTree = "<group>";
@@ -2052,6 +2071,7 @@
 				7ED823D11B13D2A6001BB249 /* abovewater_am_up.vsh in Resources */,
 				7ED823711B13D2A6001BB249 /* bg_test_tile_water.png in Resources */,
 				7A4036FC19DE401F007B6E8F /* iPhone-old@2x.png in Resources */,
+				7E0D32F41B72A64D004398E7 /* bg_water_bottom_surfacegrad.png in Resources */,
 				7E8CF0B01B3E8BBB00FA6277 /* hanoka_player.json in Resources */,
 				7ED823771B13D2A6001BB249 /* bg_water_element_fade.png in Resources */,
 				7A4036FD19DE401F007B6E8F /* iPhone.png in Resources */,
@@ -2174,6 +2194,7 @@
 				7ED823701B13D2A6001BB249 /* bg_test_tile_water.png in Resources */,
 				7ED823911B13D2A6001BB249 /* hanokav2.scml in Resources */,
 				7EA4A6501B646A6500BE09CD /* bg_water_top_waterlinegrad.png in Resources */,
+				7E0D32F31B72A64D004398E7 /* bg_water_bottom_surfacegrad.png in Resources */,
 				7E45BEDF1B51173900D93D78 /* korean_calligraphy.png in Resources */,
 				927F61B9196C771E000F43EF /* iPhone@2x.png in Resources */,
 				927F61BA196C771E000F43EF /* Default.png in Resources */,
@@ -2268,6 +2289,7 @@
 				7ED8236F1B13D2A6001BB249 /* bg_test_tile_water.png in Resources */,
 				7ED823901B13D2A6001BB249 /* hanokav2.scml in Resources */,
 				7EA4A64F1B646A6500BE09CD /* bg_water_top_waterlinegrad.png in Resources */,
+				7E0D32F21B72A64D004398E7 /* bg_water_bottom_surfacegrad.png in Resources */,
 				B71F5918188484E7003F4D28 /* iPhone@2x.png in Resources */,
 				7E8CF0A81B3E8BBB00FA6277 /* hanoka_bow.json in Resources */,
 				B7378977180762440076A88C /* Default.png in Resources */,
@@ -2405,6 +2427,7 @@
 				7ED823201B13D258001BB249 /* WebRequest.m in Sources */,
 				7ED822F31B13D258001BB249 /* DataStore.m in Sources */,
 				7E0D6D471B43CA6800F2023F /* PufferBasicWaterEnemy.m in Sources */,
+				7E0D32E81B7296B8004398E7 /* BGWaterLineAbove.m in Sources */,
 				7ED822F61B13D258001BB249 /* FileCache.m in Sources */,
 				7E386D481B23A95B00DDEFF6 /* InAirPlayerStateStack.m in Sources */,
 				7ED822BD1B13D258001BB249 /* UIBossIntroParticle.m in Sources */,
@@ -2412,6 +2435,7 @@
 				7E0D6D3D1B43C51B00F2023F /* WaterEnemyManager.m in Sources */,
 				7ED823081B13D258001BB249 /* SpriterJSONParser.m in Sources */,
 				7ED8228D1B13D258001BB249 /* BGSky.m in Sources */,
+				7E0D32F01B72A24D004398E7 /* BGWaterLineBelow.m in Sources */,
 				7ED822FF1B13D258001BB249 /* Resource.m in Sources */,
 				7E386D391B23A0BE00DDEFF6 /* PlayerSharedParams.m in Sources */,
 				7ECCC66B1B3D2894006A70B9 /* EnemyBulletProjectile.m in Sources */,
@@ -2503,6 +2527,7 @@
 				7ED8231C1B13D258001BB249 /* Vec3D.m in Sources */,
 				7ED8228F1B13D258001BB249 /* BGVillage.m in Sources */,
 				7ED823071B13D258001BB249 /* SpriterJSONParser.m in Sources */,
+				7E0D32E71B7296B8004398E7 /* BGWaterLineAbove.m in Sources */,
 				7E386D471B23A95B00DDEFF6 /* InAirPlayerStateStack.m in Sources */,
 				7E386D2D1B23A0AC00DDEFF6 /* PlayerAirCombatParams.m in Sources */,
 				7EF557681B42A59E00992001 /* PlayerUIAimReticule.m in Sources */,
@@ -2510,6 +2535,7 @@
 				7E386D4E1B23F6DB00DDEFF6 /* BGCharacterBase.m in Sources */,
 				7ED822801B13D258001BB249 /* BasicAirEnemy.m in Sources */,
 				7E9A58531B22EFA3008EC348 /* AlphaGradientSprite.m in Sources */,
+				7E0D32EF1B72A24D004398E7 /* BGWaterLineBelow.m in Sources */,
 				7ED822DA1B13D258001BB249 /* MainMenuScene.m in Sources */,
 				7ED822921B13D258001BB249 /* BGWater.m in Sources */,
 				7EF5575C1B42A59E00992001 /* DiveUI.m in Sources */,
@@ -2535,9 +2561,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E0D32E61B7296B8004398E7 /* BGWaterLineAbove.m in Sources */,
 				7E386D411B23A75F00DDEFF6 /* DiveReturnPlayerStateStack.m in Sources */,
 				7E386D3C1B23A59A00DDEFF6 /* DivePlayerStateStack.m in Sources */,
 				7ED823151B13D258001BB249 /* SpriterXMLParser.m in Sources */,
+				7E0D32EE1B72A24D004398E7 /* BGWaterLineBelow.m in Sources */,
 				20E087D61B43660200AD486A /* RippleInfo.m in Sources */,
 				7EF5575E1B42A59E00992001 /* EnemyUIHealthIndicators.m in Sources */,
 				7ED822821B13D258001BB249 /* PufferBasicAirEnemy.m in Sources */,

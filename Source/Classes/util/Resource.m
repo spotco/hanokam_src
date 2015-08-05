@@ -51,6 +51,7 @@ static NSSet* dont_load;
 		TEX_BG_WATER_TOP_BELOWLINE : @"bg_water_top_belowline.png",
 		TEX_BG_WATER_TOP_WATERLINE : @"bg_water_top_waterline.png",
 		TEX_BG_WATER_TOP_WATERLINEGRAD : @"bg_water_top_waterlinegrad.png",
+		TEX_BG_WATER_BOTTOM_SURFACEGRAD : @"bg_water_bottom_surfacegrad.png",
 		
 		TEX_SPRITER_CHAR_HANOKA_V2: @"hanokav2.png",
 		
