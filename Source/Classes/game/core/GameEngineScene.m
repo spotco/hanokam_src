@@ -21,6 +21,8 @@
 #import "SPDeviceAccelerometer.h"
 #import "GEventDispatcher.h"
 
+#import "SplashParticle.h"
+
 @implementation GameEngineScene {
 	// UTILS
 	float _tick;

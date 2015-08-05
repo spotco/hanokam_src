@@ -35,6 +35,9 @@ typedef enum _GameAnchorZ {
 	GameAnchorZ_BGWater_WaterLineBelow = 101,
 	GameAnchorZ_BGSky_SurfaceReflection = 100,
 	
+	GameAnchorZ_BGWater_SplashBaseEffect = 85,
+	GameAnchorZ_BGWater_SplashBubbleEffect = 84,
+	
     GameAnchorZ_UnderwaterForegroundElements = 83,
 	GameAnchorZ_PlayerAirEffects = 82,
 	GameAnchorZ_Enemies_Air = 81,

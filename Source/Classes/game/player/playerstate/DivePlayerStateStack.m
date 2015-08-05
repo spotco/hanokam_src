@@ -18,6 +18,8 @@
 #import "WaterEnemyManager.h" 
 #import "PufferBasicWaterEnemy.h"
 
+#import "SplashParticle.h"
+
 @implementation DivePlayerStateStack {
 	PlayerUnderwaterCombatParams *_underwater_params;
     FlashEvery *_bubble_every;
@@ -29,7 +31,11 @@
 
 -(DivePlayerStateStack*)cons:(GameEngineScene*)g {
 	[g blur_and_pulse];
+	[g add_delayed_action:[DelayAction cons_in:1.0 action:^(){ [g blur_and_pulse]; }]];
+	[g add_delayed_action:[DelayAction cons_in:3.0 action:^(){ [g blur_and_pulse]; }]];
 	[g.get_event_dispatcher add_listener:self];
+	
+	[g add_particle:[SplashParticle cons_pos:ccp(g.player.position.x,40) angle:180]];
 
 	_underwater_params = [[PlayerUnderwaterCombatParams alloc] init];
 	

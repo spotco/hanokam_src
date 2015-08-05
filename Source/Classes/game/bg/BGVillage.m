@@ -29,11 +29,7 @@
 	BGCharacterVillagerFishWoman *_fish_woman;
 	BGCharacterTest *_test_character;
 	
-	CCSprite *_surface_gradient;
-	
 	NSMutableArray *_above_water_elements, *_below_water_elements;
-	CCRenderTexture *_above_water_belowreflection;
-	CCRenderTexture *_water_surface_ripples;
 }
 +(BGVillage*)cons:(GameEngineScene *)g {
 	return [[[BGVillage alloc] init] cons:g];
@@ -109,30 +105,6 @@
 	[docks_front set_pos:ccp(0,0)];
 	[docks_front set_anchor_pt:ccp(0,0)];
 	
-	_surface_gradient = [CCSprite spriteWithTexture:[Resource get_tex:TEX_TEST_BG_UNDERWATER_SURFACE_GRADIENT]];
-	[[g get_anchor] addChild:_surface_gradient z:GameAnchorZ_BGSky_SurfaceGradient];
-	[_below_water_elements addObject:_surface_gradient];
-	[_surface_gradient setOpacity:1];
-	[_surface_gradient setTextureRect:CGRectMake(0, 0, game_screen().width, _surface_gradient.texture.pixelHeight)];
-	[_surface_gradient setAnchorPoint:ccp(0,0)];
-	[_surface_gradient setPosition:ccp(0,0)];
-	[_surface_gradient setScaleY:1];
-	
-	int reflection_height = 600;
-	_water_surface_ripples = [CCRenderTexture renderTextureWithWidth:game_screen().width height:reflection_height pixelFormat:CCTexturePixelFormat_RGBA4444];
-	[_above_water_belowreflection setPosition:ccp(game_screen().width / 2, reflection_height/2)];
-	[_water_surface_ripples clear:0 g:0 b:0 a:0];
-	
-	_above_water_belowreflection = [CCRenderTexture renderTextureWithWidth:game_screen().width height:reflection_height pixelFormat:CCTexturePixelFormat_RGBA4444];
-	[_above_water_belowreflection setPosition:ccp(game_screen().width / 2, reflection_height/2)];
-	[_below_water_elements addObject:_above_water_belowreflection];
-	[[g get_anchor] addChild:_above_water_belowreflection z:GameAnchorZ_BGSky_SurfaceReflection];
-	_above_water_belowreflection.sprite.shader = [CCShader shaderNamed:SHADER_ABOVEWATER_AM_UP];
-	_above_water_belowreflection.sprite.shaderUniforms[@"testTime"] = [g get_tick_mod_pi];
-	_above_water_belowreflection.sprite.shaderUniforms[@"rippleTexture"] = _water_surface_ripples.sprite.texture;
-	
-	_above_water_belowreflection.sprite.blendMode = [CCBlendMode alphaMode];
-	
 	return self;
 }
 
@@ -155,6 +127,18 @@
 	[BGReflection reflection_render:_docks offset:ccp(0,game.HORIZON_HEIGHT/2 - offset.y) g:game];
 }
 
+-(void)render_underwater_reflection {
+	[self above_water_root_set_visible:YES];
+	[BGReflection above_water_below_render:_sky_bg];
+	[BGReflection above_water_below_render:_bldg_4];
+	[BGReflection above_water_below_render:_bldg_3];
+	[BGReflection above_water_below_render:_bldg_2];
+	[BGReflection above_water_below_render:_bldg_1];
+	[BGReflection above_water_below_render:_docks];
+	[self above_water_root_set_visible:NO];
+	[self below_water_root_set_visible:YES];
+}
+
 -(void)set_bgobj_positions:(GameEngineScene*)game {
 	float camera_y = game.get_current_camera_center_y;
 	_bldg_1.position = ccp(_bldg_1.position.x,clampf(camera_y*.1, 0, game.HORIZON_HEIGHT));
@@ -170,41 +154,6 @@
 
 -(void)i_update:(GameEngineScene*)g {	
 	if ([g.player is_underwater:g] && g.get_current_camera_center_y > -game_screen().height) {
-		[_water_surface_ripples clear:0 g:0 b:0 a:0];
-		[_water_surface_ripples begin];
-		CCSprite *proto = g.get_ripple_proto;
-		for (RippleInfo *itr in g.get_ripple_infos) {
-			[itr render_default:proto offset:ccp(0,65) scymult:0.35];
-		}
-		[_water_surface_ripples end];
-		
-		[self above_water_root_set_visible:YES];
-		[_above_water_belowreflection beginWithClear:0 g:0 b:0 a:0];
-		[BGReflection above_water_below_render:_sky_bg];
-		[BGReflection above_water_below_render:_bldg_4];
-		[BGReflection above_water_below_render:_bldg_3];
-		[BGReflection above_water_below_render:_bldg_2];
-		[BGReflection above_water_below_render:_bldg_1];
-		[BGReflection above_water_below_render:_docks];
-		
-		{
-			CGPoint player_pre = g.player.position;
-			float player_scale_pre = g.player.scaleY;
-			g.player.position = ccp(player_pre.x,-player_pre.y);
-			g.player.scaleY = -player_scale_pre;
-			[g.player visit];
-			g.player.position = player_pre;
-			g.player.scaleY = player_scale_pre;
-		}
-		
-		[_above_water_belowreflection end];
-		_above_water_belowreflection.sprite.shaderUniforms[@"testTime"] = [g get_tick_mod_pi];
-		
-		float view_top = g.get_viewbox.y2;
-		if (view_top > 0) {
-			_surface_gradient.scaleY = view_top/_surface_gradient.texture.pixelHeight + 0.1;
-		}
-		
 		[self above_water_root_set_visible:NO];
 		[self below_water_root_set_visible:YES];
 		

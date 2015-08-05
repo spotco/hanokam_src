@@ -41,12 +41,12 @@
 	[_watergrad setPosition:ccp(0,0)];
 	[self addChild:_watergrad z:0];
 	
-	_belowline_lightrays = [CCSprite spriteWithTexture:[Resource get_tex:TEX_BG_SPRITESHEET_1] rect:[FileCache get_cgrect_from_plist:TEX_BG_SPRITESHEET_1 idname:@"bg_water_top_beams.png"]];
+	_belowline_lightrays = [CCSprite spriteWithTexture:[Resource get_tex:TEX_BG_SPRITESHEET_1] rect:[FileCache get_cgrect_from_plist:TEX_BG_SPRITESHEET_1 idname:@"bg_water_bottom_beams.png"]];
 	scale_to_fit_screen_x(_belowline_lightrays);
 	_belowline_lightrays.scaleX *= 0.9;
-	_belowline_lightrays.scaleY = _belowline_lightrays.scaleX * 2.5;
+	_belowline_lightrays.scaleY = _belowline_lightrays.scaleX;
 	[_belowline_lightrays setAnchorPoint:ccp(0.5,0.5)];
-	[_belowline_lightrays setPosition:ccp(game_screen().width/2,75)];
+	[_belowline_lightrays setPosition:ccp(game_screen().width/2,90)];
 	[_belowline_lightrays setOpacity:0.1];
 	[self addChild:_belowline_lightrays z:2];
 	
@@ -60,7 +60,7 @@
 		_waterline.textureRect.size.width,
 		_waterline.textureRect.size.height
 	)];
-	_belowline_lightrays_anim_theta += 0.025 * dt_scale_get();
+	_belowline_lightrays_anim_theta += 0.075 * dt_scale_get();
 	[_belowline_lightrays setOpacity:(cosf(_belowline_lightrays_anim_theta)+1)/2 * 0.5 + 0.4];
 }
 @end

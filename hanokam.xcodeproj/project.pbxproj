@@ -59,6 +59,9 @@
 		7E0D32F21B72A64D004398E7 /* bg_water_bottom_surfacegrad.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E0D32F11B72A64D004398E7 /* bg_water_bottom_surfacegrad.png */; };
 		7E0D32F31B72A64D004398E7 /* bg_water_bottom_surfacegrad.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E0D32F11B72A64D004398E7 /* bg_water_bottom_surfacegrad.png */; };
 		7E0D32F41B72A64D004398E7 /* bg_water_bottom_surfacegrad.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E0D32F11B72A64D004398E7 /* bg_water_bottom_surfacegrad.png */; };
+		7E0D32F71B72BB8D004398E7 /* SplashParticle.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E0D32F61B72BB8D004398E7 /* SplashParticle.m */; };
+		7E0D32F81B72BB8D004398E7 /* SplashParticle.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E0D32F61B72BB8D004398E7 /* SplashParticle.m */; };
+		7E0D32F91B72BB8D004398E7 /* SplashParticle.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E0D32F61B72BB8D004398E7 /* SplashParticle.m */; };
 		7E0D6D3B1B43C51B00F2023F /* WaterEnemyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E0D6D3A1B43C51B00F2023F /* WaterEnemyManager.m */; };
 		7E0D6D3C1B43C51B00F2023F /* WaterEnemyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E0D6D3A1B43C51B00F2023F /* WaterEnemyManager.m */; };
 		7E0D6D3D1B43C51B00F2023F /* WaterEnemyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E0D6D3A1B43C51B00F2023F /* WaterEnemyManager.m */; };
@@ -665,6 +668,8 @@
 		7E0D32EC1B72A24D004398E7 /* BGWaterLineBelow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGWaterLineBelow.h; sourceTree = "<group>"; };
 		7E0D32ED1B72A24D004398E7 /* BGWaterLineBelow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGWaterLineBelow.m; sourceTree = "<group>"; };
 		7E0D32F11B72A64D004398E7 /* bg_water_bottom_surfacegrad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_water_bottom_surfacegrad.png; sourceTree = "<group>"; };
+		7E0D32F51B72BB8D004398E7 /* SplashParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashParticle.h; sourceTree = "<group>"; };
+		7E0D32F61B72BB8D004398E7 /* SplashParticle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashParticle.m; sourceTree = "<group>"; };
 		7E0D6D391B43C51B00F2023F /* WaterEnemyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaterEnemyManager.h; sourceTree = "<group>"; };
 		7E0D6D3A1B43C51B00F2023F /* WaterEnemyManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaterEnemyManager.m; sourceTree = "<group>"; };
 		7E0D6D3E1B43C9B400F2023F /* BasicWaterEnemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicWaterEnemy.h; sourceTree = "<group>"; };
@@ -1433,6 +1438,8 @@
 				20E087C91B43607A00AD486A /* UnderwaterBubbleParticle.m */,
 				7E0D6D4E1B43DCB600F2023F /* EnemyNoticeParticle.h */,
 				7E0D6D4F1B43DCB600F2023F /* EnemyNoticeParticle.m */,
+				7E0D32F51B72BB8D004398E7 /* SplashParticle.h */,
+				7E0D32F61B72BB8D004398E7 /* SplashParticle.m */,
 			);
 			path = particle;
 			sourceTree = "<group>";
@@ -2429,6 +2436,7 @@
 				7E0D6D471B43CA6800F2023F /* PufferBasicWaterEnemy.m in Sources */,
 				7E0D32E81B7296B8004398E7 /* BGWaterLineAbove.m in Sources */,
 				7ED822F61B13D258001BB249 /* FileCache.m in Sources */,
+				7E0D32F91B72BB8D004398E7 /* SplashParticle.m in Sources */,
 				7E386D481B23A95B00DDEFF6 /* InAirPlayerStateStack.m in Sources */,
 				7ED822BD1B13D258001BB249 /* UIBossIntroParticle.m in Sources */,
 				7E9A58541B22EFA3008EC348 /* AlphaGradientSprite.m in Sources */,
@@ -2529,6 +2537,7 @@
 				7ED823071B13D258001BB249 /* SpriterJSONParser.m in Sources */,
 				7E0D32E71B7296B8004398E7 /* BGWaterLineAbove.m in Sources */,
 				7E386D471B23A95B00DDEFF6 /* InAirPlayerStateStack.m in Sources */,
+				7E0D32F81B72BB8D004398E7 /* SplashParticle.m in Sources */,
 				7E386D2D1B23A0AC00DDEFF6 /* PlayerAirCombatParams.m in Sources */,
 				7EF557681B42A59E00992001 /* PlayerUIAimReticule.m in Sources */,
 				7ED822CB1B13D258001BB249 /* PlayerProjectile.m in Sources */,
@@ -2577,6 +2586,7 @@
 				7E0D6D401B43C9B400F2023F /* BasicWaterEnemy.m in Sources */,
 				B73789871807631A0076A88C /* main.m in Sources */,
 				7E386D1D1B239EDE00DDEFF6 /* BasePlayerStateStack.m in Sources */,
+				7E0D32F71B72BB8D004398E7 /* SplashParticle.m in Sources */,
 				7ED822EE1B13D258001BB249 /* Common.m in Sources */,
 				7E386D371B23A0BE00DDEFF6 /* PlayerSharedParams.m in Sources */,
 				7E386D2C1B23A0AC00DDEFF6 /* PlayerAirCombatParams.m in Sources */,

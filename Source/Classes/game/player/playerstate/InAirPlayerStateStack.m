@@ -19,6 +19,7 @@
 #import "FlashEvery.h"
 #import "GEventDispatcher.h"
 #import "SPCCTimedSpriteAnimator.h"
+#import "SplashParticle.h"
 
 @implementation InAirPlayerStateStack {
 	PlayerAirCombatParams *_air_params;
@@ -48,7 +49,12 @@
 	
 	[g.get_event_dispatcher add_listener:self];
 	[g blur_and_pulse];
-	[g shake_for:10 distance:5];
+	[g add_delayed_action:[DelayAction cons_in:1.0 action:^(){ [g blur_and_pulse]; }]];
+	[g add_delayed_action:[DelayAction cons_in:3.0 action:^(){ [g blur_and_pulse]; }]];
+	[g shake_for:20 distance:5];
+	
+	[g add_particle:[SplashParticle cons_pos:ccp(g.player.position.x,-40) angle:0]];
+	
 	return self;
 }
 

@@ -36,6 +36,10 @@
 	
 	BGWaterLineAbove *_waterlineabove;
 	BGWaterLineBelow *_waterlinebelow;
+	
+	CCSprite *_surface_gradient;
+	CCRenderTexture *_above_water_belowreflection;
+	CCRenderTexture *_water_surface_ripples;
 }
 +(BGWater*)cons:(GameEngineScene *)g {
 	return (BGWater*)[[[BGWater alloc] init] cons:g];
@@ -120,7 +124,33 @@
 	[_waterlinebelow setPosition:ccp(0,0)];
 	[[g get_anchor] addChild:_waterlinebelow z:GameAnchorZ_BGWater_WaterLineBelow];
 	
+	[self cons_surface_reflection:g];
+	
 	return self;
+}
+
+-(void)cons_surface_reflection:(GameEngineScene*)g {
+	_surface_gradient = [CCSprite spriteWithTexture:[Resource get_tex:TEX_TEST_BG_UNDERWATER_SURFACE_GRADIENT]];
+	[[g get_anchor] addChild:_surface_gradient z:GameAnchorZ_BGSky_SurfaceGradient];
+	[_surface_gradient setOpacity:1];
+	[_surface_gradient setTextureRect:CGRectMake(0, 0, game_screen().width, _surface_gradient.texture.pixelHeight)];
+	[_surface_gradient setAnchorPoint:ccp(0,0)];
+	[_surface_gradient setPosition:ccp(0,0)];
+	[_surface_gradient setVisible:NO];
+	
+	int reflection_height = 600;
+	_water_surface_ripples = [CCRenderTexture renderTextureWithWidth:game_screen().width height:reflection_height pixelFormat:CCTexturePixelFormat_RGBA4444];
+	[_above_water_belowreflection setPosition:ccp(game_screen().width / 2, reflection_height/2)];
+	[_water_surface_ripples clear:0 g:0 b:0 a:0];
+	
+	_above_water_belowreflection = [CCRenderTexture renderTextureWithWidth:game_screen().width height:reflection_height pixelFormat:CCTexturePixelFormat_RGBA4444];
+	[_above_water_belowreflection setPosition:ccp(game_screen().width / 2, reflection_height/2)];
+	[[g get_anchor] addChild:_above_water_belowreflection z:GameAnchorZ_BGSky_SurfaceReflection];
+	_above_water_belowreflection.sprite.shader = [CCShader shaderNamed:SHADER_ABOVEWATER_AM_UP];
+	_above_water_belowreflection.sprite.shaderUniforms[@"testTime"] = [g get_tick_mod_pi];
+	_above_water_belowreflection.sprite.shaderUniforms[@"rippleTexture"] = _water_surface_ripples.sprite.texture;
+	
+	_above_water_belowreflection.sprite.blendMode = [CCBlendMode alphaMode];
 }
 
 -(CCSprite*)cons_underwater_element:(GameEngineScene*)g rect:(NSString*)rect  {
@@ -199,7 +229,54 @@
 -(CGPoint)get_underwater_treasure_position { return _underwater_temple_treasure.position; }
 -(void)set_underwater_treasure_visible:(BOOL)tar { [_underwater_temple_treasure setVisible:tar]; }
 
+-(void)update_surface_reflection:(GameEngineScene*)g {
+	if ([g.player is_underwater:g] && g.get_current_camera_center_y > -game_screen().height) {
+		[_water_surface_ripples clear:0 g:0 b:0 a:0];
+		[_water_surface_ripples begin];
+		CCSprite *proto = g.get_ripple_proto;
+		for (RippleInfo *itr in g.get_ripple_infos) {
+			[itr render_default:proto offset:ccp(0,65) scymult:0.35];
+		}
+		[_water_surface_ripples end];
+		
+		
+		[_above_water_belowreflection beginWithClear:0 g:0 b:0 a:0];
+		
+		[g.get_bg_village render_underwater_reflection];
+		[_surface_gradient setVisible:YES];
+		[_surface_gradient setOpacity:0.65];
+		[_surface_gradient visit];
+		[_surface_gradient setOpacity:1.0];
+		[_surface_gradient setVisible:NO];
+		
+		{
+			CGPoint player_pre = g.player.position;
+			float player_scale_pre = g.player.scaleY;
+			g.player.position = ccp(player_pre.x,-player_pre.y);
+			g.player.scaleY = -player_scale_pre;
+			[g.player visit];
+			g.player.position = player_pre;
+			g.player.scaleY = player_scale_pre;
+		}
+		
+		[_above_water_belowreflection end];
+		_above_water_belowreflection.sprite.shaderUniforms[@"testTime"] = [g get_tick_mod_pi];
+		
+		float view_top = g.get_viewbox.y2;
+		if (view_top > 0) {
+			_surface_gradient.scaleY = view_top/_surface_gradient.texture.pixelHeight + 0.1;
+		}
+		[_surface_gradient setVisible:YES];
+		[_above_water_belowreflection setVisible:YES];
+		
+	} else {
+		[_surface_gradient setVisible:NO];
+		[_above_water_belowreflection setVisible:NO];
+	}
+}
+
 -(void)i_update:(GameEngineScene*)g {
+	[self update_surface_reflection:g];
 	[_water_bg setPosition:ccp(0, g.get_current_camera_center_y - game_screen().height / 2)];
 	
 	_bg_2_ground.position = ccp(_bg_2_ground.position.x,clampf(g.get_current_camera_center_y * .2 + 5, 20,200));

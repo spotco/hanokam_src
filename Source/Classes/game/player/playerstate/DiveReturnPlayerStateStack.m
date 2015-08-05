@@ -92,8 +92,8 @@ typedef enum {
 		_anim_t += 0.05 * dt_scale_get();
 		if (_anim_t >= 1) {
 			g.player.rotation = 0;
-			//_current_mode = DiveReturnPlayerStateStackMode_BreakThrough;
-			//[g shake_for:20 distance:5];
+			_current_mode = DiveReturnPlayerStateStackMode_BreakThrough;
+			[g shake_for:20 distance:5];
 		}
 		
 	}; break;
@@ -102,7 +102,7 @@ typedef enum {
 		_underwater_params._vel = ccp(0,15);
 		g.player.position = ccp(g.player.position.x,g.player.position.y + _underwater_params._vel.y * dt_scale_get());
 		[g.player read_s_pos:g];
-		if (g.player.shared_params._s_pos.y > game_screen().height * 0.75) {
+		if (g.player.shared_params._s_pos.y > game_screen().height * 0.75 || g.player.position.y > 0) {
 			_current_mode = DiveReturnPlayerStateStackMode_FollowUp;
 			_camera_drpt_speed = 20;
 		}
