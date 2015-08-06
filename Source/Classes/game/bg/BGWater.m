@@ -326,11 +326,12 @@
 }
 
 -(void)set_waterline_above_position:(GameEngineScene*)g {
+	float zoom = g.get_zoom;
 	[_waterlineabove setPosition:ccp(
 		_waterlineabove.position.x,
 		clampf(
-			y_for_point_of_2pt_line(ccp(150,-80), ccp(0,0), g.get_current_camera_center_y),
-			-1000,-20)
+			y_for_point_of_2pt_line(ccp(150+(zoom-1)*(-150),-80), ccp(0+(zoom-1)*(-150),0), g.get_current_camera_center_y),
+			-1000,-30)
 		)
 	];
 }
