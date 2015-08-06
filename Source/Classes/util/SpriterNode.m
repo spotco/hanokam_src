@@ -67,7 +67,7 @@
 	_root_bone_holder = [CCNode node];
 	
 	_render_placement = ccp(0.5,0.5);
-	_render_target = [CCRenderTexture renderTextureWithWidth:pt.x height:pt.y pixelFormat:CCTexturePixelFormat_RGBA4444];
+	_render_target = [CCRenderTexture renderTextureWithWidth:pt.x height:pt.y];
 	[self addChild:_render_target];
 	[self setScale:0.5];
 	

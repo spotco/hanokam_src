@@ -52,7 +52,6 @@
 	[g add_delayed_action:[DelayAction cons_in:1.0 action:^(){ [g blur_and_pulse]; }]];
 	[g add_delayed_action:[DelayAction cons_in:3.0 action:^(){ [g blur_and_pulse]; }]];
 	[g shake_for:20 distance:5];
-	
 	[g add_particle:[SplashParticle cons_pos:ccp(g.player.position.x,-40) angle:0]];
 	
 	return self;

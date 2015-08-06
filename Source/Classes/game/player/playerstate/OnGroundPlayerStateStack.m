@@ -88,7 +88,10 @@
 		break;
 		case PlayerLandMode_LandToWater:;
 			[g set_zoom:drpt(g.get_zoom,1.25,1/20.0)];
-			[g set_camera_height:drpt(g.get_current_camera_center_y,150,1/20.0)];
+			[g set_camera_height:drpt(g.get_current_camera_center_y,g.player.position.y,1/10.0)];
+			
+			[g.player read_s_pos:g];
+			
 			CGPoint last_s_pos = g.player.shared_params._s_pos;
 			[g.player update_accel_x_position:g];
 			_land_params._vel = ccp(0,_land_params._vel.y - 0.4 * dt_scale_get() * dt_scale_get());
@@ -98,6 +101,7 @@
 			g.player.rotation += shortest_angle(g.player.rotation, tar_rotation) * 0.25;
 			
 			[g.player apply_s_pos:g];
+			
 			[g.player play_anim:@"Dive" repeat:YES];
 			if (g.player.position.y < 0) {
 				[g.player pop_state_stack:g];

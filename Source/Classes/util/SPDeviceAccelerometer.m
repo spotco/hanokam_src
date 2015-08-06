@@ -39,7 +39,7 @@
 	_listener = [AndroidSensorEventListener listener];
 	_listener.onSensorChangedHandler = ^(AndroidSensorEvent* event) {
 		JavaFloatArray *vals = event.values;
-		float x = -[vals valueAtIndex:0] * 0.175;
+		float x = -[vals valueAtIndex:0] * 0.1;
 		if (ABS(_last_x-x)<0.1) {
 			x = _last_x;
 		}

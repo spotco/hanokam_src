@@ -9,6 +9,7 @@
 #import "AirToGroundTransitionPlayerStateStack.h"
 #import "PlayerLandParams.h"
 #import "OnGroundPlayerStateStack.h"
+#import "SplashParticle.h"
 
 @implementation AirToGroundTransitionPlayerStateStack {
 	PlayerLandParams *_land_params;
@@ -43,12 +44,14 @@
 			[g.player play_anim:@"Fall" repeat:YES];
 			_land_params._vel = ccp(_land_params._vel.x,_land_params._vel.y - 0.3 * dt_scale_get());
 			g.player.position = CGPointAdd(g.player.position, ccp(0,_land_params._vel.y*dt_scale_get()));
-			[g set_camera_height:drpt(g.get_current_camera_center_y,0,1/20.0)];
+			//[g set_camera_height:drpt(g.get_current_camera_center_y,0,1/20.0)];
+			[g set_camera_height:drpt(g.get_current_camera_center_y,g.player.position.y,1/20.0)];
 			if (g.player.position.y < 0) {
 				_land_params._current_mode = PlayerLandMode_AirToGround_WaterDiveUp;
 				[g add_ripple:ccp(g.player.position.x,0)];
 				[g shake_slow_for:100 distance:10];
 				[g blur_and_pulse];
+				[g add_particle:[SplashParticle cons_pos:ccp(g.player.position.x,40) angle:180]];
 			}
 			
 		break;
@@ -60,23 +63,23 @@
 				[g add_ripple:ccp(g.player.position.x,0)];
 				_land_params._current_mode = PlayerLandMode_AirToGround_FlipToDock;
 				[g blur_and_pulse];
+				[g add_particle:[SplashParticle cons_pos:ccp(g.player.position.x,-40) angle:0]];
 			}
-			[g set_camera_height:drpt(g.get_current_camera_center_y,-50,1/20.0)];
+			[g set_camera_height:drpt(g.get_current_camera_center_y,-60,1/20.0)];
 			float tar_rotation = vec_ang_deg_lim180(vec_cons(g.player.position.x - last_pos.x,g.player.position.y - last_pos.y, 0),90);
 			g.player.rotation += shortest_angle(g.player.rotation, tar_rotation) * 0.25;
 		
 		break;
 		case PlayerLandMode_AirToGround_FlipToDock:;
 			[g.player play_anim:@"Spin" repeat:YES];
-			_land_params._vel = ccp(_land_params._vel.x,_land_params._vel.y - 0.4 * dt_scale_get());
+			_land_params._vel = ccp(_land_params._vel.x,_land_params._vel.y - 0.35 * dt_scale_get());
 			g.player.position = CGPointAdd(g.player.position, ccp(0,_land_params._vel.y*dt_scale_get()));
 			if (_land_params._vel.y < 0 && g.player.position.y < g.DOCK_HEIGHT) {
 				[g.player pop_state_stack:g];
 				[g.player push_state_stack:[OnGroundPlayerStateStack cons:g]];
 				return;
 			}
-			[g set_camera_height:drpt(g.get_current_camera_center_y,30,1/20.0)];
-			
+			[g set_camera_height:drpt(g.get_current_camera_center_y,60,1/20.0)];
 		break;
 		default:;
 	}

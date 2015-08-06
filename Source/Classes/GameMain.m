@@ -11,8 +11,8 @@
 
 /*
 --TODO
-new water surface effects
 fade in arrow aim ui
+underwater air pulse at 25% instead
 
 quest + dialogue system stubs + simple quests
 	-quest1 attract certain number of enemies, ui

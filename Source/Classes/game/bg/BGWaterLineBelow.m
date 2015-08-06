@@ -60,7 +60,7 @@
 		_waterline.textureRect.size.width,
 		_waterline.textureRect.size.height
 	)];
-	_belowline_lightrays_anim_theta += 0.075 * dt_scale_get();
+	_belowline_lightrays_anim_theta += 0.095 * dt_scale_get();
 	[_belowline_lightrays setOpacity:(cosf(_belowline_lightrays_anim_theta)+1)/2 * 0.5 + 0.4];
 }
 @end

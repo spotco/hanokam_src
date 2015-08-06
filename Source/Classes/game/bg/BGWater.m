@@ -322,7 +322,17 @@
 		
 		[_waterlinebelow setVisible:NO];
 	}
-	
+	[self set_waterline_above_position:g];
+}
+
+-(void)set_waterline_above_position:(GameEngineScene*)g {
+	[_waterlineabove setPosition:ccp(
+		_waterlineabove.position.x,
+		clampf(
+			y_for_point_of_2pt_line(ccp(150,-80), ccp(0,0), g.get_current_camera_center_y),
+			-1000,-20)
+		)
+	];
 }
 
 @end

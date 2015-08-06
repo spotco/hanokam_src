@@ -203,4 +203,7 @@ CGPoint point_box_intersection(CGSize box_size, Vec3D dir_vec);
 CGRect scale_rect(CGRect tar, float scf);
 
 NSArray* string_dofor_format(int ct, NSString* (^callback)(int i));
+
+float y_for_point_of_2pt_line(CGPoint pt1, CGPoint pt2, float x);
+
 #endif

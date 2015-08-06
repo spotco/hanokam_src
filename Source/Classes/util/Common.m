@@ -585,3 +585,11 @@ NSArray* string_dofor_format(int ct, NSString* (^callback)(int i)) {
 	);
 	return rtv;
 }
+
+float y_for_point_of_2pt_line(CGPoint pt1, CGPoint pt2, float x) {
+	//(y - y1)/(x - x1) = m
+	float m = (pt1.y - pt2.y) / (pt1.x - pt2.x);
+	//y - mx = b
+	float b = pt1.y - m * pt1.x;
+	return m * x + b;
+}
