@@ -9,145 +9,46 @@
 #import "DialogUI.h"
 #import "GameEngineScene.h"
 #import "Player.h"
+#import "FileCache.h"
 #import "Resource.h"
 #import "FileCache.h"
-#import "AlphaGradientSprite.h"
-#import "ControlManager.h"
-#import "SPAnimatedText.h"
-#import "SPAnimatedTextCharacter.h"
-
-static CGFloat BG_HORIZONTAL_INSET = 10;
-static CGFloat BG_VERTICAL_INSET = 10;
-static CGFloat BG_SCREEN_HEIGHT_PERCENT = 0.33f;
-
-@interface DialogUI()
-@property (nonatomic, readwrite) DialogState state;
-@end
+#import "Common.h"
 
 @implementation DialogUI {
-    AlphaGradientSprite *_bgBox;
-    SPAnimatedText *_animatedTextLabel;
-    CGFloat t;
 }
-
-#pragma mark - Constructors
 
 +(DialogUI*)cons:(GameEngineScene *)game {
-    return [DialogUI node];
+    return [[DialogUI node] cons:game];
 }
-
--(DialogUI*)start:(GameEngineScene*)game withText:(NSString *)text {
+-(DialogUI*)cons:(GameEngineScene*)game {
+	CCSprite *dialog_bubble_back = [CCSprite spriteWithTexture:[Resource get_tex:TEX_UI_DIALOGUE_SPRITESHEET]
+	rect:[FileCache get_cgrect_from_plist:TEX_UI_DIALOGUE_SPRITESHEET idname:@"dialogue_bubble_back.png"]];
+	[dialog_bubble_back setAnchorPoint:ccp(0.5,0)];
+	[dialog_bubble_back setPosition:CGPointAdd(game_screen_pct(0.5, 0),ccp(0,5))];
+	scale_to_fit_screen_x(dialog_bubble_back);
+	dialog_bubble_back.scaleX = (dialog_bubble_back.scaleX * 0.95);
+	dialog_bubble_back.scaleY = dialog_bubble_back.scaleX;
 	
-	//TODO--let's make everything more reusable than this!!
-	[self removeAllChildrenWithCleanup:YES];
+	[self addChild:dialog_bubble_back];
 	
-    [self setAnchorPoint:ccp(0,0)];
-    
-    // Create background box for dialog
-    CGSize boxSize = CGSizeMake(game_screen().width-2*BG_HORIZONTAL_INSET, game_screen().height*BG_SCREEN_HEIGHT_PERCENT);
-    _bgBox = [AlphaGradientSprite cons_tex:[Resource get_tex:TEX_BLANK]
-                                   texrect:cctexture_default_rect([Resource get_tex:TEX_BLANK])
-                                      size:boxSize
-                               anchorPoint:ccp(0,0)
-                                     color:[CCColor blackColor]
-                                    alphaX:CGRangeMake(1, 1)
-                                    alphaY:CGRangeMake(0.1, 0.4)];
-    [_bgBox setPosition:ccp(game_screen().width/2,BG_VERTICAL_INSET)];
-    [_bgBox setOpacity:0];
-    [_bgBox setScale:0];
-    [self addChild:_bgBox];
-    
-    // Create animated text label
-    _animatedTextLabel = [SPAnimatedText cons:game withText:text];
-    [_bgBox addChild:_animatedTextLabel];
-    
-    // Initialize time variables
-    t = 0;
-	self.state = DialogState_Entering;
-    
-    return self;
+	CCSprite *dialog_bubble_title = [CCSprite spriteWithTexture:[Resource get_tex:TEX_UI_DIALOGUE_SPRITESHEET]
+	rect:[FileCache get_cgrect_from_plist:TEX_UI_DIALOGUE_SPRITESHEET idname:@"dialogue_character_title.png"]];
+	[dialog_bubble_title setPosition:pct_of_obj(dialog_bubble_back, -0.015, 0.975)];
+	[dialog_bubble_title setAnchorPoint:ccp(0,0.5)];
+	[dialog_bubble_back addChild:dialog_bubble_title];
+	
+	return self;
 }
-
-#pragma mark - State Machine
-
 -(void)i_update:(GameEngineScene *)game {
-    switch (self.state) {
-        case DialogState_Entering:;
-            t += 0.1*dt_scale_get();
-            if (t < 1) {
-                // Animate in dialog box
-                CGFloat xPos = BG_HORIZONTAL_INSET+(1-t)*(game_screen().width/2-BG_HORIZONTAL_INSET);
-                [_bgBox setPosition:ccp(xPos,BG_VERTICAL_INSET)];
-                [_bgBox setOpacity:t];
-                [_bgBox setScale:t];
-            } else {
-                // Once max is reached, start animating in text, proceed to SHOWING_TEXT state
-                [_bgBox setPosition:ccp(BG_HORIZONTAL_INSET,BG_VERTICAL_INSET)];
-                [_bgBox setOpacity:1];
-                [_bgBox setScale:1];
-                t = 0;
-                [_animatedTextLabel beginEntering];
-                [_animatedTextLabel i_update:game];
-                self.state = DialogState_ShowingText;
-            }
-            
-            // If player taps dialog, proceed directly to SHOW_COMPLETE state
-            if (game.get_control_manager.is_proc_tap) {
-                [_bgBox setPosition:ccp(BG_HORIZONTAL_INSET,BG_VERTICAL_INSET)];
-                [_bgBox setOpacity:1];
-                [_bgBox setScale:1];
-                self.state = DialogState_ShowComplete;
-                
-                // Force animated text to proceed directly to SHOWING state
-                [_animatedTextLabel forceShowing];
-                [_animatedTextLabel i_update:game];
-            }
-            break;
-        case DialogState_ShowingText:
-            // Animate text
-            [_animatedTextLabel i_update:game];
-            
-            // Once text is finished animating in, proceed to SHOW_COMPLETE
-            if (_animatedTextLabel.state == AnimatedTextState_Showing) {
-                self.state = DialogState_ShowComplete;
-            }
-            
-            // If player taps dialog, proceed directly to SHOW_COMPLETE state
-            if (game.get_control_manager.is_proc_tap) {
-                self.state = DialogState_ShowComplete;
-                
-                // Force animated text to proceed directly to SHOWING state
-                [_animatedTextLabel forceShowing];
-            }
-            break;
-        case DialogState_ShowComplete:
-            // Animate text
-            [_animatedTextLabel i_update:game];
-            
-            // If player taps, begin fading out
-            if (game.get_control_manager.is_proc_tap) {
-                self.state = DialogState_Exiting;
-            }
-            break;
-        case DialogState_Exiting:
-            // Decrement opacity and scale. If min is reached, proceed to CAN_REMOVE state
-            t += 0.1*dt_scale_get();
-            if (t > 1) {
-                t = 1;
-                self.state = DialogState_CanRemove;
-            }
-            
-            // Animate out dialog box
-            CGFloat xPos = BG_HORIZONTAL_INSET+t*(game_screen().width/2-BG_HORIZONTAL_INSET);
-            [_bgBox setPosition:ccp(xPos,_bgBox.position.y)];
-            [_bgBox setOpacity:(1-t)];
-            [_bgBox setScale:(1-t)];
-            break;
-        case DialogState_CanRemove:
-            // Wait here to be removed
-            break;
-        default:
-            break;
-    }
+}
+
+-(void)show_message:(NSString*)message from_character:(BGCharacterBase*)character g:(GameEngineScene*)g {
+
+}
+-(void)fast_forward_message_to_end {
+
+}
+-(BOOL)is_ready_for_next_message {
+	return NO;
 }
 @end

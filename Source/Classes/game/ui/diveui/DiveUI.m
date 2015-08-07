@@ -79,7 +79,7 @@
 	[g.get_event_dispatcher add_listener:self];
 	
 	_low_breath_flash = [FlashCount cons];
-	[_low_breath_flash add_flash_at_times:@[@(320),@(200),@(160),@(90),@(60),@(25)]];
+	[_low_breath_flash add_flash_at_times:@[@(160),@(90),@(60),@(25)]];
 	
 	//
 	CCNode *depth_root = [CCNode node];

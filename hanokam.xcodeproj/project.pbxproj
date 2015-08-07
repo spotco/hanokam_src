@@ -245,6 +245,18 @@
 		7ECCC6691B3D2894006A70B9 /* EnemyBulletProjectile.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ECCC6681B3D2894006A70B9 /* EnemyBulletProjectile.m */; };
 		7ECCC66A1B3D2894006A70B9 /* EnemyBulletProjectile.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ECCC6681B3D2894006A70B9 /* EnemyBulletProjectile.m */; };
 		7ECCC66B1B3D2894006A70B9 /* EnemyBulletProjectile.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ECCC6681B3D2894006A70B9 /* EnemyBulletProjectile.m */; };
+		7ECDAA6B1B75609900B23419 /* 1hoonwhayang.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 7ECDAA691B75609900B23419 /* 1hoonwhayang.fnt */; };
+		7ECDAA6C1B75609900B23419 /* 1hoonwhayang.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 7ECDAA691B75609900B23419 /* 1hoonwhayang.fnt */; };
+		7ECDAA6D1B75609900B23419 /* 1hoonwhayang.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 7ECDAA691B75609900B23419 /* 1hoonwhayang.fnt */; };
+		7ECDAA6E1B75609900B23419 /* 1hoonwhayang.png in Resources */ = {isa = PBXBuildFile; fileRef = 7ECDAA6A1B75609900B23419 /* 1hoonwhayang.png */; };
+		7ECDAA6F1B75609900B23419 /* 1hoonwhayang.png in Resources */ = {isa = PBXBuildFile; fileRef = 7ECDAA6A1B75609900B23419 /* 1hoonwhayang.png */; };
+		7ECDAA701B75609900B23419 /* 1hoonwhayang.png in Resources */ = {isa = PBXBuildFile; fileRef = 7ECDAA6A1B75609900B23419 /* 1hoonwhayang.png */; };
+		7ECDAA761B75632800B23419 /* dialog_ui_ss.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7ECDAA741B75632800B23419 /* dialog_ui_ss.plist */; };
+		7ECDAA771B75632800B23419 /* dialog_ui_ss.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7ECDAA741B75632800B23419 /* dialog_ui_ss.plist */; };
+		7ECDAA781B75632800B23419 /* dialog_ui_ss.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7ECDAA741B75632800B23419 /* dialog_ui_ss.plist */; };
+		7ECDAA791B75632800B23419 /* dialog_ui_ss.png in Resources */ = {isa = PBXBuildFile; fileRef = 7ECDAA751B75632800B23419 /* dialog_ui_ss.png */; };
+		7ECDAA7A1B75632800B23419 /* dialog_ui_ss.png in Resources */ = {isa = PBXBuildFile; fileRef = 7ECDAA751B75632800B23419 /* dialog_ui_ss.png */; };
+		7ECDAA7B1B75632800B23419 /* dialog_ui_ss.png in Resources */ = {isa = PBXBuildFile; fileRef = 7ECDAA751B75632800B23419 /* dialog_ui_ss.png */; };
 		7ED8227C1B13D258001BB249 /* AirEnemyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED822051B13D258001BB249 /* AirEnemyManager.m */; };
 		7ED8227D1B13D258001BB249 /* AirEnemyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED822051B13D258001BB249 /* AirEnemyManager.m */; };
 		7ED8227E1B13D258001BB249 /* AirEnemyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED822051B13D258001BB249 /* AirEnemyManager.m */; };
@@ -763,6 +775,10 @@
 		7ECCC6631B3D27F0006A70B9 /* EnemyProjectile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnemyProjectile.m; sourceTree = "<group>"; };
 		7ECCC6671B3D2894006A70B9 /* EnemyBulletProjectile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnemyBulletProjectile.h; sourceTree = "<group>"; };
 		7ECCC6681B3D2894006A70B9 /* EnemyBulletProjectile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnemyBulletProjectile.m; sourceTree = "<group>"; };
+		7ECDAA691B75609900B23419 /* 1hoonwhayang.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 1hoonwhayang.fnt; sourceTree = "<group>"; };
+		7ECDAA6A1B75609900B23419 /* 1hoonwhayang.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1hoonwhayang.png; sourceTree = "<group>"; };
+		7ECDAA741B75632800B23419 /* dialog_ui_ss.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = dialog_ui_ss.plist; sourceTree = "<group>"; };
+		7ECDAA751B75632800B23419 /* dialog_ui_ss.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dialog_ui_ss.png; sourceTree = "<group>"; };
 		7ED822041B13D258001BB249 /* AirEnemyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AirEnemyManager.h; sourceTree = "<group>"; };
 		7ED822051B13D258001BB249 /* AirEnemyManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AirEnemyManager.m; sourceTree = "<group>"; };
 		7ED822061B13D258001BB249 /* BasicAirEnemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicAirEnemy.h; sourceTree = "<group>"; };
@@ -1327,6 +1343,15 @@
 			path = enemyprojectile;
 			sourceTree = "<group>";
 		};
+		7ECDAA731B75632800B23419 /* dialog */ = {
+			isa = PBXGroup;
+			children = (
+				7ECDAA741B75632800B23419 /* dialog_ui_ss.plist */,
+				7ECDAA751B75632800B23419 /* dialog_ui_ss.png */,
+			);
+			path = dialog;
+			sourceTree = "<group>";
+		};
 		7ED822011B13D258001BB249 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -1566,6 +1591,7 @@
 		7ED823251B13D2A6001BB249 /* assets */ = {
 			isa = PBXGroup;
 			children = (
+				7ECDAA731B75632800B23419 /* dialog */,
 				BB1E15371B2EA5C000461495 /* fonts */,
 				7EBC2AE61B1C4EDF00AC47F1 /* misc */,
 				7ED823271B13D2A6001BB249 /* background */,
@@ -1888,6 +1914,8 @@
 		BB1E15371B2EA5C000461495 /* fonts */ = {
 			isa = PBXGroup;
 			children = (
+				7ECDAA691B75609900B23419 /* 1hoonwhayang.fnt */,
+				7ECDAA6A1B75609900B23419 /* 1hoonwhayang.png */,
 				7EB78B2F1B57AD2D00FB9892 /* hud_font_ss.fnt */,
 				7EB78B301B57AD2D00FB9892 /* hud_font_ss.png */,
 				BB1E15381B2EA5C000461495 /* 5ceta_mono.ttf */,
@@ -2072,11 +2100,13 @@
 				7E45BEDC1B5116BA00D93D78 /* 5ceta_mono.ttf in Resources */,
 				7ED8236B1B13D2A6001BB249 /* bg_spritesheet_1.png in Resources */,
 				7ED8238C1B13D2A6001BB249 /* hanokav2.plist in Resources */,
+				7ECDAA781B75632800B23419 /* dialog_ui_ss.plist in Resources */,
 				7A4036FB19DE401F007B6E8F /* iPhone-old.png in Resources */,
 				7ED823891B13D2A6001BB249 /* hanokav2.json in Resources */,
 				7E8CF0AD1B3E8BBB00FA6277 /* hanoka_bow.png in Resources */,
 				7ED823D11B13D2A6001BB249 /* abovewater_am_up.vsh in Resources */,
 				7ED823711B13D2A6001BB249 /* bg_test_tile_water.png in Resources */,
+				7ECDAA7B1B75632800B23419 /* dialog_ui_ss.png in Resources */,
 				7A4036FC19DE401F007B6E8F /* iPhone-old@2x.png in Resources */,
 				7E0D32F41B72A64D004398E7 /* bg_water_bottom_surfacegrad.png in Resources */,
 				7E8CF0B01B3E8BBB00FA6277 /* hanoka_player.json in Resources */,
@@ -2084,6 +2114,7 @@
 				7A4036FD19DE401F007B6E8F /* iPhone.png in Resources */,
 				7ED823B61B13D2A6001BB249 /* particles_spritesheet.png in Resources */,
 				7E8CF0BC1B3E8BBB00FA6277 /* hanoka_sword.png in Resources */,
+				7ECDAA701B75609900B23419 /* 1hoonwhayang.png in Resources */,
 				7A59498B19E38E4A00F65F90 /* MainMenu.xib in Resources */,
 				7ED823CB1B13D2A6001BB249 /* puffer_enemy_ss.png in Resources */,
 				7ED823AD1B13D2A6001BB249 /* villager_fishwoman.scml in Resources */,
@@ -2098,6 +2129,7 @@
 				7ED823B31B13D2A6001BB249 /* particles_spritesheet.plist in Resources */,
 				7ED823F21B13D2A6001BB249 /* spriter_test.png in Resources */,
 				7ED823CE1B13D2A6001BB249 /* abovewater_am_up.fsh in Resources */,
+				7ECDAA6D1B75609900B23419 /* 1hoonwhayang.fnt in Resources */,
 				7A40370019DE401F007B6E8F /* Settings@2x.png in Resources */,
 				7E7C0D421B55077300407DCB /* effects_enemy_ss.png in Resources */,
 				7ED823981B13D2A6001BB249 /* hanoka v0.01.png in Resources */,
@@ -2146,6 +2178,7 @@
 				7E8CF0AF1B3E8BBB00FA6277 /* hanoka_player.json in Resources */,
 				7E8CF0B51B3E8BBB00FA6277 /* hanoka_player.scml in Resources */,
 				7ED823761B13D2A6001BB249 /* bg_water_element_fade.png in Resources */,
+				7ECDAA771B75632800B23419 /* dialog_ui_ss.plist in Resources */,
 				7ED823B21B13D2A6001BB249 /* particles_spritesheet.plist in Resources */,
 				7EA8633E1B5CF63400FE8163 /* Fishgirl.scml in Resources */,
 				7ED8236D1B13D2A6001BB249 /* bg_test_tile_sky.png in Resources */,
@@ -2163,8 +2196,10 @@
 				7EE566491B411F3C00D63556 /* hanoka_player_redgarb.png in Resources */,
 				7ED823AC1B13D2A6001BB249 /* villager_fishwoman.scml in Resources */,
 				7EA4A64C1B646A6500BE09CD /* bg_water_top_belowline.png in Resources */,
+				7ECDAA6C1B75609900B23419 /* 1hoonwhayang.fnt in Resources */,
 				7ED823DF1B13D2A6001BB249 /* ripple_effect.fsh in Resources */,
 				7EB78B351B57AD2D00FB9892 /* hud_font_ss.png in Resources */,
+				7ECDAA7A1B75632800B23419 /* dialog_ui_ss.png in Resources */,
 				7ED823D01B13D2A6001BB249 /* abovewater_am_up.vsh in Resources */,
 				7EA4A6421B64405300BE09CD /* Oldman.json in Resources */,
 				7ED8238E1B13D2A6001BB249 /* hanokav2.png in Resources */,
@@ -2216,6 +2251,7 @@
 				7E7C0D471B55077300407DCB /* effects_hanoka_ss.png in Resources */,
 				7EA4A6441B64405300BE09CD /* Oldman.png in Resources */,
 				7E4F09AC1B252E60000945B8 /* alpha_gradient_sprite.vsh in Resources */,
+				7ECDAA6F1B75609900B23419 /* 1hoonwhayang.png in Resources */,
 				7E4F09A81B252DE4000945B8 /* alpha_gradient_sprite.fsh in Resources */,
 				7ED823F11B13D2A6001BB249 /* spriter_test.png in Resources */,
 			);
@@ -2241,6 +2277,7 @@
 				7E8CF0AE1B3E8BBB00FA6277 /* hanoka_player.json in Resources */,
 				7E8CF0B41B3E8BBB00FA6277 /* hanoka_player.scml in Resources */,
 				7ED823751B13D2A6001BB249 /* bg_water_element_fade.png in Resources */,
+				7ECDAA761B75632800B23419 /* dialog_ui_ss.plist in Resources */,
 				7ED823B11B13D2A6001BB249 /* particles_spritesheet.plist in Resources */,
 				7EA8633D1B5CF63400FE8163 /* Fishgirl.scml in Resources */,
 				7ED8236C1B13D2A6001BB249 /* bg_test_tile_sky.png in Resources */,
@@ -2258,8 +2295,10 @@
 				7ED823AB1B13D2A6001BB249 /* villager_fishwoman.scml in Resources */,
 				7E9A44C11B1DA2AC00111C35 /* charge_circle.vsh in Resources */,
 				7EA4A64B1B646A6500BE09CD /* bg_water_top_belowline.png in Resources */,
+				7ECDAA6B1B75609900B23419 /* 1hoonwhayang.fnt in Resources */,
 				BB1E153C1B2EA5C000461495 /* korean_calligraphy.fnt in Resources */,
 				7EB78B341B57AD2D00FB9892 /* hud_font_ss.png in Resources */,
+				7ECDAA791B75632800B23419 /* dialog_ui_ss.png in Resources */,
 				7ED823DE1B13D2A6001BB249 /* ripple_effect.fsh in Resources */,
 				7EA4A6411B64405300BE09CD /* Oldman.json in Resources */,
 				7ED823CF1B13D2A6001BB249 /* abovewater_am_up.vsh in Resources */,
@@ -2311,6 +2350,7 @@
 				7E7C0D461B55077300407DCB /* effects_hanoka_ss.png in Resources */,
 				7EA4A6431B64405300BE09CD /* Oldman.png in Resources */,
 				7E4F09AB1B252E60000945B8 /* alpha_gradient_sprite.vsh in Resources */,
+				7ECDAA6E1B75609900B23419 /* 1hoonwhayang.png in Resources */,
 				7E4F09A71B252DE4000945B8 /* alpha_gradient_sprite.fsh in Resources */,
 				7ED823F01B13D2A6001BB249 /* spriter_test.png in Resources */,
 			);

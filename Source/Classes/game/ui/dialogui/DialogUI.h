@@ -7,35 +7,17 @@
 //
 
 #import "GameUI.h"
-
+@class BGCharacterBase;
 @class GameEngineScene;
 
-// Dialog states
-typedef enum {
-    DialogState_Entering,
-    DialogState_ShowingText,
-    DialogState_ShowComplete,
-    DialogState_Exiting,
-    DialogState_CanRemove
-} DialogState;
-
-/**
- *  @class  DialogUI
- *
- *  Manages the display of conversation dialogs
- */
 @interface DialogUI : GameUISubView
 
-@property (nonatomic, readonly) DialogState state;
-
-/**
- *  Returns an instance of DialogUI
- *
- *  @param  game        an object containing information about the current game state
- *  @param  text        the text to display
- */
 +(DialogUI*)cons:(GameEngineScene *)game;
--(DialogUI*)start:(GameEngineScene*)game withText:(NSString *)text;
+
+
+-(void)show_message:(NSString*)message from_character:(BGCharacterBase*)character g:(GameEngineScene*)g;
+-(void)fast_forward_message_to_end;
+-(BOOL)is_ready_for_next_message;
 
 
 @end

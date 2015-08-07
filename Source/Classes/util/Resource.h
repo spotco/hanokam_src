@@ -41,6 +41,9 @@
 #define TEX_EFFECTS_HANOKA @"effects_hanoka_ss"
 
 #define TEX_HUD_FONT @"hud_font_ss"
+#define TEX_DIALOGUE_FONT @"1hoonwhayang"
+
+#define TEX_UI_DIALOGUE_SPRITESHEET @"dialog_ui_ss"
 
 #define TEX_RIPPLE @"ripple"
 #define TEX_HUD_SPRITESHEET @"hud_spritesheet"

@@ -117,6 +117,7 @@
 	for (GameUISubView *itr in _gameui_subviews) {
 		[itr setVisible:NO];
 	}
+	[_dialogUI setVisible:YES];
 	//[_in_air_ui setVisible:YES];
 	
 	[[self ui_for_playerstate:game.get_player_state] setVisible:YES];
