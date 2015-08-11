@@ -65,7 +65,7 @@
 	
 	_air_text = [SPLabel cons_texkey:TEX_HUD_FONT];
 	[_air_text setPosition:ccp(65,-19)];
-	[_air_text set_fillcolor:ccc4f(62/255.0, 56/255.0, 64/255.0, 1.0) strokecolor:ccc4f(189/255.0, 247/255.0, 255/255.0, 1.0)];
+	[_air_text set_fill:ccc4f(62/255.0, 56/255.0, 64/255.0, 1.0) stroke:ccc4f(189/255.0, 247/255.0, 255/255.0, 1.0) shadow:ccc4f(0, 0, 0, 0)];
 	[_air_text set_string:@"100%"];
 	[_air_text setScale:0.45];
 	[breath_bar_root addChild:_air_text];
@@ -102,8 +102,7 @@
 	
 	_depth_text = [SPLabel cons_texkey:TEX_HUD_FONT];
 	[_depth_text setPosition:ccp(9,-13)];
-	[_depth_text set_fillcolor:ccc4f(239/255.0, 213/255.0, 241/255.0, 1.0) strokecolor:ccc4f(62/255.0, 48/255.0, 33/255.0, 1.0)];
-	[_depth_text add_char_offset:'m' size_increase:ccp(0,0) offset:ccp(10,-16)];
+	[_depth_text set_fill:ccc4f(239/255.0, 213/255.0, 241/255.0, 1.0) stroke:ccc4f(62/255.0, 48/255.0, 33/255.0, 1.0) shadow:ccc4f(0, 0, 0, 0)];
 	[_depth_text setScale:0.5];
 	[_depth_text set_string:@"0m"];
 	[depth_root addChild:_depth_text];
@@ -129,9 +128,9 @@
 	
 	_enemies_attracted_text = [SPLabel cons_texkey:TEX_HUD_FONT];
 	[_enemies_attracted_text setPosition:ccp(-24,-17)];
-	[_enemies_attracted_text set_fillcolor:ccc4f(146/255.0, 221/255.0, 117/255.0, 1.0) strokecolor:ccc4f(62/255.0, 48/255.0, 33/255.0, 1.0)];
+	[_enemies_attracted_text set_fill:ccc4f(146/255.0, 221/255.0, 117/255.0, 1.0) stroke:ccc4f(62/255.0, 48/255.0, 33/255.0, 1.0) shadow:ccc4f(0,0,0,0)];
 	[_enemies_attracted_text setScale:0.55];
-	[_enemies_attracted_text set_right_aligned];
+	[_enemies_attracted_text setAnchorPoint:ccp(1.0,0.5)];
 	[enemies_attracted_root addChild:_enemies_attracted_text];
 	[_enemies_attracted_text set_string:@"0"];
     return self;

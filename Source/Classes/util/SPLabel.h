@@ -11,9 +11,9 @@
 @interface SPLabel : CCNode
 
 +(SPLabel*)cons_texkey:(NSString*)texkey;
--(SPLabel*)set_fillcolor:(ccColor4F)fillcolor strokecolor:(ccColor4F)strokecolor;
+-(SPLabel*)set_fill:(ccColor4F)fillcolor stroke:(ccColor4F)strokecolor shadow:(ccColor4F)shadowcolor;
 -(SPLabel*)set_string:(NSString*)string;
--(SPLabel*)set_right_aligned;
--(SPLabel*)add_char_offset:(unichar)tchar size_increase:(CGPoint)tsizei offset:(CGPoint)toffset;
+
+-(void)markup_string:(NSString*)markup_string out_display_string:(NSString**)out_display_string out_style_map:(NSDictionary**)out_style_map;
 
 @end
