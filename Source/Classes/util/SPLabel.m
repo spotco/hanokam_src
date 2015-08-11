@@ -14,36 +14,52 @@
 #import "ShaderManager.h"
 #import "ObjectPool.h"
 
+@implementation SPLabelStyle
++(SPLabelStyle*)cons {
+	return [[[SPLabelStyle alloc] init] cons];
+}
+-(SPLabelStyle*)cons {
+	self._stroke = GLKVector4Make(0, 0, 0, 0);
+	self._fill = GLKVector4Make(0, 0, 0, 1);
+	self._shadow = GLKVector4Make(0, 0, 0, 0);
+	self._amplitude = 0;
+	self._time_incr = 0.5;
+	return self;
+}
+-(SPLabelStyle*)set_fill:(ccColor4F)fillcolor stroke:(ccColor4F)strokecolor shadow:(ccColor4F)shadowcolor {
+	self._fill = GLKVector4Make(fillcolor.r, fillcolor.g, fillcolor.b, fillcolor.a);
+	self._stroke = GLKVector4Make(strokecolor.r, strokecolor.g, strokecolor.b, strokecolor.a);
+	self._shadow = GLKVector4Make(shadowcolor.r, shadowcolor.g, shadowcolor.b, shadowcolor.a);
+	return self;
+}
+@end
+
 @interface SPLabelCharacter : CCSprite
 -(SPLabelCharacter*)cons_tex:(CCTexture*)tex rect:(CGRect)rect;
--(void)set_fill:(GLKVector4)fill stroke:(GLKVector4)stroke shadow:(GLKVector4)shadow;
+-(void)set_style:(SPLabelStyle*)style;
 -(void)i_update:(float)time;
 -(float)get_time_incr;
 @end
 
 @implementation SPLabelCharacter {
 	CGPoint _start_position;
-	float _amplitude, _time_incr;
+	float _amplitude;
+	float _time_incr;
 }
 
 -(SPLabelCharacter*)cons_tex:(CCTexture*)tex rect:(CGRect)rect {
 	[self setTexture:tex];
 	[self setTextureRect:rect];
 	_start_position = CGPointZero;
-	_amplitude = 0;
-	_time_incr = 0;
 	return self;
 }
 
--(void)set_fill:(GLKVector4)fill stroke:(GLKVector4)stroke shadow:(GLKVector4)shadow {
-	self.shaderUniforms[@"fill_color"] = [NSValue valueWithGLKVector4:fill];
-	self.shaderUniforms[@"stroke_color"] = [NSValue valueWithGLKVector4:stroke];
-	self.shaderUniforms[@"shadow_color"] = [NSValue valueWithGLKVector4:shadow];
-}
-
--(void)set_anim_amplitude:(float)amplitude time_incr:(float)time_incr {
-	_amplitude = amplitude;
-	_time_incr = time_incr;
+-(void)set_style:(SPLabelStyle *)style {
+	self.shaderUniforms[@"fill_color"] = [NSValue valueWithGLKVector4:style._fill];
+	self.shaderUniforms[@"stroke_color"] = [NSValue valueWithGLKVector4:style._stroke];
+	self.shaderUniforms[@"shadow_color"] = [NSValue valueWithGLKVector4:style._shadow];
+	_amplitude = style._amplitude;
+	_time_incr = style._time_incr;
 }
 
 -(void)i_update:(float)time {
@@ -69,6 +85,9 @@
 	
 	NSString *_cached_string;
 	
+	SPLabelStyle *_default_style;
+	NSMutableDictionary *_name_to_styles;
+	
 	CCBMFontConfiguration *_bmfont_cfg;
 	float _time;
 }
@@ -80,14 +99,23 @@
 	_characters = [NSMutableArray array];
 	_bmfont_cfg = FNTConfigLoadFile([NSString stringWithFormat:@"%@.fnt",_texkey]);
 	_cached_string = @"";
+	_default_style = [SPLabelStyle cons];
+	_name_to_styles = [NSMutableDictionary dictionary];
 	return self;
 }
 
--(SPLabel*)set_fill:(ccColor4F)fillcolor stroke:(ccColor4F)strokecolor shadow:(ccColor4F)shadowcolor {
-	_fillcolor = GLKVector4Make(fillcolor.r, fillcolor.g, fillcolor.b, fillcolor.a);
-	_strokecolor = GLKVector4Make(strokecolor.r, strokecolor.g, strokecolor.b, strokecolor.a);
-	_shadowcolor = GLKVector4Make(shadowcolor.r, shadowcolor.g, shadowcolor.b, shadowcolor.a);
+-(SPLabel*)set_default_fill:(ccColor4F)fillcolor stroke:(ccColor4F)strokecolor shadow:(ccColor4F)shadowcolor {
+	[_default_style set_fill:fillcolor stroke:strokecolor shadow:shadowcolor];
+	[self set_string:_cached_string];
 	return self;
+}
+
+-(void)set_default_style:(SPLabelStyle*)style {
+	_default_style = style;
+}
+
+-(void)add_style:(SPLabelStyle*)style name:(NSString*)name {
+	_name_to_styles[name] = style;
 }
 
 -(void)update:(CCTime)delta {
@@ -138,13 +166,21 @@
 	*out_style_map = rtv_style_map;
 }
 
--(SPLabel*)set_string:(NSString *)string {
+-(SPLabel*)set_string:(NSString *)markup_string {
 	for (SPLabelCharacter *itr in _characters) {
 		[self removeChild:itr];
 		[ObjectPool repool:itr class:[SPLabelCharacter class]];
 	}
 	[_characters removeAllObjects];
-	_cached_string = string;
+	_cached_string = markup_string;
+	
+	NSString *display_string;
+	NSDictionary *style_map;
+	if ([markup_string containsString:@"["]) {
+		[self markup_string:markup_string out_display_string:&display_string out_style_map:&style_map];
+	} else {
+		display_string = markup_string;
+	}
 	
 	//SEE: CCLabelBMFont.m
 	NSInteger nextFontPositionX = 0;
@@ -159,11 +195,11 @@
 	
 	NSCharacterSet *charSet	= _bmfont_cfg.characterSet;
     
-	NSUInteger stringLen = [string length];
+	NSUInteger stringLen = [display_string length];
 	if (stringLen == 0) return self;
 	
 	for(NSUInteger i=0; i < stringLen-1;i++) {
-		unichar c = [string characterAtIndex:i];
+		unichar c = [display_string characterAtIndex:i];
 		if([[NSCharacterSet newlineCharacterSet] characterIsMember:c])
 			quantityOfLines++;
 	}
@@ -176,7 +212,7 @@
 	CGFloat contentScale = 1.0/[Resource get_tex:_texkey].contentScale;
 	
 	for(NSUInteger i = 0; i<stringLen; i++) {
-		unichar c = [string characterAtIndex:i];
+		unichar c = [display_string characterAtIndex:i];
         
         if ([[NSCharacterSet newlineCharacterSet] characterIsMember:c]) {
 			nextFontPositionX = 0;
@@ -206,7 +242,15 @@
 		SPLabelCharacter *neu_digit_spr = [ObjectPool depool:[SPLabelCharacter class]];
 		[neu_digit_spr cons_tex:[Resource get_tex:_texkey] rect:rect];
 		[neu_digit_spr setShader:[ShaderManager get_shader:SHADER_STROKE_FILL_TEXT]];
-		[neu_digit_spr set_fill:_fillcolor stroke:_strokecolor shadow:_shadowcolor];
+		
+		SPLabelStyle *itr_style;
+		if (style_map != NULL) itr_style = [_name_to_styles objectForKey:[style_map objectForKey:@(i)]];
+		if (itr_style != NULL) {
+			[neu_digit_spr set_style:itr_style];
+		} else {
+			[neu_digit_spr set_style:_default_style];
+		}
+		
 		[self addChild:neu_digit_spr];
 		[_characters addObject:neu_digit_spr];
 		

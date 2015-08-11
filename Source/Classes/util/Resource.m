@@ -76,7 +76,6 @@ static NSSet* dont_load;
 		TEX_BG_WATER_ELEMENT_FADE: @"bg_water_element_fade.png",
 		TEX_BG_SKY_SPRITESHEET: @"sky_spritesheet.png",
 		
-		TEX_HUD_FONT: @"hud_font_ss.png",
 		TEX_DIALOGUE_FONT : @"1hoonwhayang.png",
 
 		TEX_UI_DIALOGUE_SPRITESHEET : @"dialog_ui_ss.png",

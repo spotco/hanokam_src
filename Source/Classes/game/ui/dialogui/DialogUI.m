@@ -14,8 +14,7 @@
 #import "FileCache.h"
 #import "Common.h"
 #import "SPLabel.h"
-
-#import "CCLabelBMFont.h"
+#import "GameColors.h"
 
 @implementation DialogUI {
 	SPLabel *_primary_text;
@@ -42,9 +41,21 @@
 	[dialog_bubble_back addChild:dialog_bubble_title];
 	
 	_primary_text = [SPLabel cons_texkey:TEX_DIALOGUE_FONT];
-	[_primary_text set_fill:ccc4f(0.83,0.89,0.9,1.0) stroke:ccc4f(0.33,0.32,0.29,1.0) shadow:ccc4f(0.0,0.0,0.0,1.0)];
+	
+	SPLabelStyle *primary_text_default_style = [SPLabelStyle cons];
+	[primary_text_default_style set_fill:GCOLOR_DIALOGUI_PRIMARY_DEFAULT_FILL stroke:GCOLOR_DIALOGUI_PRIMARY_DEFAULT_STROKE shadow:GCOLOR_BLACK];
+	primary_text_default_style._amplitude = 1.5;
+	primary_text_default_style._time_incr = 0.15;
+	[_primary_text set_default_style:primary_text_default_style];
+	
+	SPLabelStyle *primary_text_emph_style = [SPLabelStyle cons];
+	[primary_text_emph_style set_fill:GCOLOR_DIALOGUI_PRIMARY_EMPH_FILL stroke:GCOLOR_DIALOGUI_PRIMARY_EMPH_STROKE shadow:GCOLOR_BLACK];
+	primary_text_emph_style._amplitude = 7;
+	primary_text_emph_style._time_incr = 0.75;
+	[_primary_text add_style:primary_text_emph_style name:@"emph"];
+	
 	[_primary_text set_scale:0.35];
-	[_primary_text set_string:@"TOP KEK m8!!!\nu thingken u cna \nhandle this?"];
+	[_primary_text set_string:@"[emph]TOP KEK m8!!!@\nu [emph]thingken@ u cna \nhandle this?"];
 	[_primary_text setPosition:pct_of_obj(dialog_bubble_back, 0.5, 0.5)];
 	[_primary_text setAnchorPoint:ccp(0.5,0.5)];
 	

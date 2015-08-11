@@ -113,17 +113,7 @@
 		7E45BED11B50F97F00D93D78 /* UnderwaterTreasureSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E45BED01B50F97F00D93D78 /* UnderwaterTreasureSprite.m */; };
 		7E45BED21B50F97F00D93D78 /* UnderwaterTreasureSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E45BED01B50F97F00D93D78 /* UnderwaterTreasureSprite.m */; };
 		7E45BED31B50F97F00D93D78 /* UnderwaterTreasureSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E45BED01B50F97F00D93D78 /* UnderwaterTreasureSprite.m */; };
-		7E45BED61B51154700D93D78 /* SPAnimatedText.m in Sources */ = {isa = PBXBuildFile; fileRef = BB6AE7AD1B3E7BD300E8F6E8 /* SPAnimatedText.m */; };
-		7E45BED71B51154800D93D78 /* SPAnimatedText.m in Sources */ = {isa = PBXBuildFile; fileRef = BB6AE7AD1B3E7BD300E8F6E8 /* SPAnimatedText.m */; };
-		7E45BED81B51154B00D93D78 /* SPAnimatedTextCharacter.m in Sources */ = {isa = PBXBuildFile; fileRef = BB7A71171B37BEBF00B0EF3C /* SPAnimatedTextCharacter.m */; };
-		7E45BED91B51154B00D93D78 /* SPAnimatedTextCharacter.m in Sources */ = {isa = PBXBuildFile; fileRef = BB7A71171B37BEBF00B0EF3C /* SPAnimatedTextCharacter.m */; };
 		7E45BEDA1B51155100D93D78 /* ObjectPool.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EF34CF71B395FF400111963 /* ObjectPool.m */; };
-		7E45BEDB1B5116BA00D93D78 /* 5ceta_mono.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BB1E15381B2EA5C000461495 /* 5ceta_mono.ttf */; };
-		7E45BEDC1B5116BA00D93D78 /* 5ceta_mono.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BB1E15381B2EA5C000461495 /* 5ceta_mono.ttf */; };
-		7E45BEDD1B51173400D93D78 /* korean_calligraphy.fnt in Resources */ = {isa = PBXBuildFile; fileRef = BB1E15391B2EA5C000461495 /* korean_calligraphy.fnt */; };
-		7E45BEDE1B51173500D93D78 /* korean_calligraphy.fnt in Resources */ = {isa = PBXBuildFile; fileRef = BB1E15391B2EA5C000461495 /* korean_calligraphy.fnt */; };
-		7E45BEDF1B51173900D93D78 /* korean_calligraphy.png in Resources */ = {isa = PBXBuildFile; fileRef = BB1E153A1B2EA5C000461495 /* korean_calligraphy.png */; };
-		7E45BEE01B51173900D93D78 /* korean_calligraphy.png in Resources */ = {isa = PBXBuildFile; fileRef = BB1E153A1B2EA5C000461495 /* korean_calligraphy.png */; };
 		7E4F09941B24FC6B000945B8 /* SwordSlashParticle.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E4F09931B24FC6B000945B8 /* SwordSlashParticle.m */; };
 		7E4F09951B24FC6B000945B8 /* SwordSlashParticle.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E4F09931B24FC6B000945B8 /* SwordSlashParticle.m */; };
 		7E4F09961B24FC6B000945B8 /* SwordSlashParticle.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E4F09931B24FC6B000945B8 /* SwordSlashParticle.m */; };
@@ -227,12 +217,6 @@
 		7EB78B2C1B57A8A400FB9892 /* stroke_fill_text.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 7EB78B2B1B57A8A400FB9892 /* stroke_fill_text.vsh */; };
 		7EB78B2D1B57A8A400FB9892 /* stroke_fill_text.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 7EB78B2B1B57A8A400FB9892 /* stroke_fill_text.vsh */; };
 		7EB78B2E1B57A8A400FB9892 /* stroke_fill_text.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 7EB78B2B1B57A8A400FB9892 /* stroke_fill_text.vsh */; };
-		7EB78B311B57AD2D00FB9892 /* hud_font_ss.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 7EB78B2F1B57AD2D00FB9892 /* hud_font_ss.fnt */; };
-		7EB78B321B57AD2D00FB9892 /* hud_font_ss.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 7EB78B2F1B57AD2D00FB9892 /* hud_font_ss.fnt */; };
-		7EB78B331B57AD2D00FB9892 /* hud_font_ss.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 7EB78B2F1B57AD2D00FB9892 /* hud_font_ss.fnt */; };
-		7EB78B341B57AD2D00FB9892 /* hud_font_ss.png in Resources */ = {isa = PBXBuildFile; fileRef = 7EB78B301B57AD2D00FB9892 /* hud_font_ss.png */; };
-		7EB78B351B57AD2D00FB9892 /* hud_font_ss.png in Resources */ = {isa = PBXBuildFile; fileRef = 7EB78B301B57AD2D00FB9892 /* hud_font_ss.png */; };
-		7EB78B361B57AD2D00FB9892 /* hud_font_ss.png in Resources */ = {isa = PBXBuildFile; fileRef = 7EB78B301B57AD2D00FB9892 /* hud_font_ss.png */; };
 		7EBC2AE91B1C4EDF00AC47F1 /* gameplay_elements_ss.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7EBC2AE71B1C4EDF00AC47F1 /* gameplay_elements_ss.plist */; };
 		7EBC2AEA1B1C4EDF00AC47F1 /* gameplay_elements_ss.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7EBC2AE71B1C4EDF00AC47F1 /* gameplay_elements_ss.plist */; };
 		7EBC2AEB1B1C4EDF00AC47F1 /* gameplay_elements_ss.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7EBC2AE71B1C4EDF00AC47F1 /* gameplay_elements_ss.plist */; };
@@ -578,15 +562,10 @@
 		B77F1B4017B978D7009739AE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B77F1B3F17B978D7009739AE /* CoreGraphics.framework */; };
 		B77F1B4217B978D7009739AE /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B77F1B4117B978D7009739AE /* CoreText.framework */; };
 		B78A0B10198AF87200C63841 /* Published-Android in Resources */ = {isa = PBXBuildFile; fileRef = B78A0B0F198AF87200C63841 /* Published-Android */; };
-		BB1E153B1B2EA5C000461495 /* 5ceta_mono.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BB1E15381B2EA5C000461495 /* 5ceta_mono.ttf */; };
-		BB1E153C1B2EA5C000461495 /* korean_calligraphy.fnt in Resources */ = {isa = PBXBuildFile; fileRef = BB1E15391B2EA5C000461495 /* korean_calligraphy.fnt */; };
-		BB1E153D1B2EA5C000461495 /* korean_calligraphy.png in Resources */ = {isa = PBXBuildFile; fileRef = BB1E153A1B2EA5C000461495 /* korean_calligraphy.png */; };
-		BB6AE7AE1B3E7BD300E8F6E8 /* SPAnimatedText.m in Sources */ = {isa = PBXBuildFile; fileRef = BB6AE7AD1B3E7BD300E8F6E8 /* SPAnimatedText.m */; };
 		BB771AF31B22C910002BA595 /* BGCharacterBase.m in Sources */ = {isa = PBXBuildFile; fileRef = BB771AF21B22C910002BA595 /* BGCharacterBase.m */; };
 		BB771B101B23D0A8002BA595 /* InDialoguePlayerStateStack.m in Sources */ = {isa = PBXBuildFile; fileRef = BB771B0F1B23D0A8002BA595 /* InDialoguePlayerStateStack.m */; };
 		BB771B1C1B23F763002BA595 /* InDialoguePlayerStateStack.m in Sources */ = {isa = PBXBuildFile; fileRef = BB771B0F1B23D0A8002BA595 /* InDialoguePlayerStateStack.m */; };
 		BB771B1F1B23F764002BA595 /* InDialoguePlayerStateStack.m in Sources */ = {isa = PBXBuildFile; fileRef = BB771B0F1B23D0A8002BA595 /* InDialoguePlayerStateStack.m */; };
-		BB7A71181B37BEBF00B0EF3C /* SPAnimatedTextCharacter.m in Sources */ = {isa = PBXBuildFile; fileRef = BB7A71171B37BEBF00B0EF3C /* SPAnimatedTextCharacter.m */; };
 		BC5399D81A44DCC90063F482 /* AndroidKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC5399D31A44DCC90063F482 /* AndroidKit.framework */; };
 		BC5399D91A44DCC90063F482 /* CoreJava.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC5399D41A44DCC90063F482 /* CoreJava.framework */; };
 		BC5399DA1A44DCC90063F482 /* GLActivityKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC5399D51A44DCC90063F482 /* GLActivityKit.framework */; };
@@ -712,6 +691,7 @@
 		7E386D451B23A95B00DDEFF6 /* InAirPlayerStateStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InAirPlayerStateStack.m; sourceTree = "<group>"; };
 		7E386D491B23AB9900DDEFF6 /* AirToGroundTransitionPlayerStateStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AirToGroundTransitionPlayerStateStack.h; sourceTree = "<group>"; };
 		7E386D4A1B23AB9900DDEFF6 /* AirToGroundTransitionPlayerStateStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AirToGroundTransitionPlayerStateStack.m; sourceTree = "<group>"; };
+		7E3BDEB71B7A033400D93B98 /* GameColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameColors.h; sourceTree = "<group>"; };
 		7E45BECF1B50F97F00D93D78 /* UnderwaterTreasureSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UnderwaterTreasureSprite.h; path = misc/UnderwaterTreasureSprite.h; sourceTree = "<group>"; };
 		7E45BED01B50F97F00D93D78 /* UnderwaterTreasureSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UnderwaterTreasureSprite.m; path = misc/UnderwaterTreasureSprite.m; sourceTree = "<group>"; };
 		7E45BEE51B511DFE00D93D78 /* SplashScreen.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = SplashScreen.java; sourceTree = "<group>"; };
@@ -767,8 +747,6 @@
 		7EB78B231B57A05500FB9892 /* SPLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPLabel.m; sourceTree = "<group>"; };
 		7EB78B271B57A89800FB9892 /* stroke_fill_text.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = stroke_fill_text.fsh; sourceTree = "<group>"; };
 		7EB78B2B1B57A8A400FB9892 /* stroke_fill_text.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = stroke_fill_text.vsh; sourceTree = "<group>"; };
-		7EB78B2F1B57AD2D00FB9892 /* hud_font_ss.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hud_font_ss.fnt; sourceTree = "<group>"; };
-		7EB78B301B57AD2D00FB9892 /* hud_font_ss.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hud_font_ss.png; sourceTree = "<group>"; };
 		7EBC2AE71B1C4EDF00AC47F1 /* gameplay_elements_ss.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = gameplay_elements_ss.plist; sourceTree = "<group>"; };
 		7EBC2AE81B1C4EDF00AC47F1 /* gameplay_elements_ss.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gameplay_elements_ss.png; sourceTree = "<group>"; };
 		7ECCC6621B3D27F0006A70B9 /* EnemyProjectile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnemyProjectile.h; sourceTree = "<group>"; };
@@ -956,18 +934,11 @@
 		B77F1B4117B978D7009739AE /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		B78A0B0F198AF87200C63841 /* Published-Android */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Published-Android"; sourceTree = "<group>"; };
 		B7B3713D180358F1007369CC /* libObjectiveChipmunk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libObjectiveChipmunk.a; path = "../libs/cocos2d-iphone/external/Chipmunk/xcode/build/Debug-iphoneos/libObjectiveChipmunk.a"; sourceTree = "<group>"; };
-		BB1E15381B2EA5C000461495 /* 5ceta_mono.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = 5ceta_mono.ttf; sourceTree = "<group>"; };
-		BB1E15391B2EA5C000461495 /* korean_calligraphy.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = korean_calligraphy.fnt; sourceTree = "<group>"; };
-		BB1E153A1B2EA5C000461495 /* korean_calligraphy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = korean_calligraphy.png; sourceTree = "<group>"; };
-		BB6AE7AC1B3E7BD300E8F6E8 /* SPAnimatedText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPAnimatedText.h; sourceTree = "<group>"; };
-		BB6AE7AD1B3E7BD300E8F6E8 /* SPAnimatedText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPAnimatedText.m; sourceTree = "<group>"; };
 		BB771AF11B22C910002BA595 /* BGCharacterBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGCharacterBase.h; sourceTree = "<group>"; };
 		BB771AF21B22C910002BA595 /* BGCharacterBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGCharacterBase.m; sourceTree = "<group>"; };
 		BB771B001B22F602002BA595 /* DialogueBubble.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DialogueBubble.m; path = /Users/spotco/Documents/procque/hanokam.spritebuilder/Source/Classes/game/ui/DialogueBubble.m; sourceTree = "<absolute>"; };
 		BB771B0E1B23D0A8002BA595 /* InDialoguePlayerStateStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InDialoguePlayerStateStack.h; sourceTree = "<group>"; };
 		BB771B0F1B23D0A8002BA595 /* InDialoguePlayerStateStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InDialoguePlayerStateStack.m; sourceTree = "<group>"; };
-		BB7A71161B37BEBF00B0EF3C /* SPAnimatedTextCharacter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPAnimatedTextCharacter.h; sourceTree = "<group>"; };
-		BB7A71171B37BEBF00B0EF3C /* SPAnimatedTextCharacter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPAnimatedTextCharacter.m; sourceTree = "<group>"; };
 		BC5399D31A44DCC90063F482 /* AndroidKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AndroidKit.framework; path = "../../../../Library/Application Support/Developer/Shared/Xcode/Platforms/Android.platform/Developer/SDKs/SBAndroid.sdk/System/Library/Frameworks/AndroidKit.framework"; sourceTree = "<group>"; };
 		BC5399D41A44DCC90063F482 /* CoreJava.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreJava.framework; path = "../../../../Library/Application Support/Developer/Shared/Xcode/Platforms/Android.platform/Developer/SDKs/SBAndroid.sdk/System/Library/Frameworks/CoreJava.framework"; sourceTree = "<group>"; };
 		BC5399D51A44DCC90063F482 /* GLActivityKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLActivityKit.framework; path = "../../../../Library/Application Support/Developer/Shared/Xcode/Platforms/Android.platform/Developer/SDKs/SBAndroid.sdk/System/Library/Frameworks/GLActivityKit.framework"; sourceTree = "<group>"; };
@@ -1564,10 +1535,6 @@
 				7E8377661B14619900EFC0D9 /* SPDeviceAccelerometer.m */,
 				7E9A44B91B1D85E100111C35 /* SPRadialFillSprite.h */,
 				7E9A44BA1B1D85E100111C35 /* SPRadialFillSprite.m */,
-				BB6AE7AC1B3E7BD300E8F6E8 /* SPAnimatedText.h */,
-				BB6AE7AD1B3E7BD300E8F6E8 /* SPAnimatedText.m */,
-				BB7A71161B37BEBF00B0EF3C /* SPAnimatedTextCharacter.h */,
-				BB7A71171B37BEBF00B0EF3C /* SPAnimatedTextCharacter.m */,
 				7E9A58501B22EFA3008EC348 /* AlphaGradientSprite.h */,
 				7E9A58511B22EFA3008EC348 /* AlphaGradientSprite.m */,
 				7E9A585F1B23098C008EC348 /* FlashCount.h */,
@@ -1584,6 +1551,7 @@
 				7E7C0D4C1B550C7F00407DCB /* SPCCTimedSpriteAnimator.m */,
 				7EB78B221B57A05500FB9892 /* SPLabel.h */,
 				7EB78B231B57A05500FB9892 /* SPLabel.m */,
+				7E3BDEB71B7A033400D93B98 /* GameColors.h */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -1916,11 +1884,6 @@
 			children = (
 				7ECDAA691B75609900B23419 /* 1hoonwhayang.fnt */,
 				7ECDAA6A1B75609900B23419 /* 1hoonwhayang.png */,
-				7EB78B2F1B57AD2D00FB9892 /* hud_font_ss.fnt */,
-				7EB78B301B57AD2D00FB9892 /* hud_font_ss.png */,
-				BB1E15381B2EA5C000461495 /* 5ceta_mono.ttf */,
-				BB1E15391B2EA5C000461495 /* korean_calligraphy.fnt */,
-				BB1E153A1B2EA5C000461495 /* korean_calligraphy.png */,
 			);
 			name = fonts;
 			path = Source/assets/fonts;
@@ -2077,7 +2040,6 @@
 				7ED8238F1B13D2A6001BB249 /* hanokav2.png in Resources */,
 				7ED8236E1B13D2A6001BB249 /* bg_test_tile_sky.png in Resources */,
 				7ED823921B13D2A6001BB249 /* hanokav2.scml in Resources */,
-				7EB78B361B57AD2D00FB9892 /* hud_font_ss.png in Resources */,
 				7EE5664A1B411F3C00D63556 /* hanoka_player_redgarb.png in Resources */,
 				7ED823831B13D2A6001BB249 /* underwater_spritesheet.plist in Resources */,
 				7EBC2AEB1B1C4EDF00AC47F1 /* gameplay_elements_ss.plist in Resources */,
@@ -2097,7 +2059,6 @@
 				7E8CF0B31B3E8BBB00FA6277 /* hanoka_player.png in Resources */,
 				7E7C0D3F1B55077300407DCB /* effects_enemy_ss.plist in Resources */,
 				7EE566471B411F3C00D63556 /* hanoka_player_redgarb.json in Resources */,
-				7E45BEDC1B5116BA00D93D78 /* 5ceta_mono.ttf in Resources */,
 				7ED8236B1B13D2A6001BB249 /* bg_spritesheet_1.png in Resources */,
 				7ED8238C1B13D2A6001BB249 /* hanokav2.plist in Resources */,
 				7ECDAA781B75632800B23419 /* dialog_ui_ss.plist in Resources */,
@@ -2124,7 +2085,6 @@
 				7A4036FE19DE401F007B6E8F /* iPhone@2x.png in Resources */,
 				7ED823B01B13D2A6001BB249 /* blank.png in Resources */,
 				7ED823DA1B13D2A6001BB249 /* reflection_am_down.fsh in Resources */,
-				7EB78B331B57AD2D00FB9892 /* hud_font_ss.fnt in Resources */,
 				7A4036FF19DE401F007B6E8F /* Settings.png in Resources */,
 				7ED823B31B13D2A6001BB249 /* particles_spritesheet.plist in Resources */,
 				7ED823F21B13D2A6001BB249 /* spriter_test.png in Resources */,
@@ -2139,11 +2099,9 @@
 				7ED823C21B13D2A6001BB249 /* hud_spritesheet.png in Resources */,
 				7ED823BF1B13D2A6001BB249 /* hud_spritesheet.plist in Resources */,
 				7EA863391B5CF63400FE8163 /* Fishgirl.json in Resources */,
-				7E45BEDE1B51173500D93D78 /* korean_calligraphy.fnt in Resources */,
 				7A40370119DE401F007B6E8F /* Default-568h@2x.png in Resources */,
 				7ED823E31B13D2A6001BB249 /* ripple_effect.vsh in Resources */,
 				7ED823EF1B13D2A6001BB249 /* spriter_test.json in Resources */,
-				7E45BEE01B51173900D93D78 /* korean_calligraphy.png in Resources */,
 				7EB78B2A1B57A89800FB9892 /* stroke_fill_text.fsh in Resources */,
 				7A40370219DE401F007B6E8F /* Default-Landscape~ipad.png in Resources */,
 				7E7C0D451B55077300407DCB /* effects_hanoka_ss.plist in Resources */,
@@ -2173,7 +2131,6 @@
 				7E8CF0AC1B3E8BBB00FA6277 /* hanoka_bow.png in Resources */,
 				927F61AD196C771E000F43EF /* Settings.png in Resources */,
 				7ED823C11B13D2A6001BB249 /* hud_spritesheet.png in Resources */,
-				7E45BEDD1B51173400D93D78 /* korean_calligraphy.fnt in Resources */,
 				7EBC2AED1B1C4EDF00AC47F1 /* gameplay_elements_ss.png in Resources */,
 				7E8CF0AF1B3E8BBB00FA6277 /* hanoka_player.json in Resources */,
 				7E8CF0B51B3E8BBB00FA6277 /* hanoka_player.scml in Resources */,
@@ -2198,14 +2155,12 @@
 				7EA4A64C1B646A6500BE09CD /* bg_water_top_belowline.png in Resources */,
 				7ECDAA6C1B75609900B23419 /* 1hoonwhayang.fnt in Resources */,
 				7ED823DF1B13D2A6001BB249 /* ripple_effect.fsh in Resources */,
-				7EB78B351B57AD2D00FB9892 /* hud_font_ss.png in Resources */,
 				7ECDAA7A1B75632800B23419 /* dialog_ui_ss.png in Resources */,
 				7ED823D01B13D2A6001BB249 /* abovewater_am_up.vsh in Resources */,
 				7EA4A6421B64405300BE09CD /* Oldman.json in Resources */,
 				7ED8238E1B13D2A6001BB249 /* hanokav2.png in Resources */,
 				7E7C0D3E1B55077300407DCB /* effects_enemy_ss.plist in Resources */,
 				927F61B1196C771E000F43EF /* iPad-old@2x.png in Resources */,
-				7EB78B321B57AD2D00FB9892 /* hud_font_ss.fnt in Resources */,
 				7ED8238B1B13D2A6001BB249 /* hanokav2.plist in Resources */,
 				927F61B2196C771E000F43EF /* iPhone-old@2x.png in Resources */,
 				927F61B4196C771E000F43EF /* Settings@2x.png in Resources */,
@@ -2227,7 +2182,6 @@
 				7ED823851B13D2A6001BB249 /* underwater_spritesheet.png in Resources */,
 				7EB78B2D1B57A8A400FB9892 /* stroke_fill_text.vsh in Resources */,
 				7ED823A91B13D2A6001BB249 /* villager_fishwoman.png in Resources */,
-				7E45BEDB1B5116BA00D93D78 /* 5ceta_mono.ttf in Resources */,
 				927F61B8196C771E000F43EF /* Default-568h@2x.png in Resources */,
 				7EE566461B411F3C00D63556 /* hanoka_player_redgarb.json in Resources */,
 				7E8CF0B21B3E8BBB00FA6277 /* hanoka_player.png in Resources */,
@@ -2237,7 +2191,6 @@
 				7ED823911B13D2A6001BB249 /* hanokav2.scml in Resources */,
 				7EA4A6501B646A6500BE09CD /* bg_water_top_waterlinegrad.png in Resources */,
 				7E0D32F31B72A64D004398E7 /* bg_water_bottom_surfacegrad.png in Resources */,
-				7E45BEDF1B51173900D93D78 /* korean_calligraphy.png in Resources */,
 				927F61B9196C771E000F43EF /* iPhone@2x.png in Resources */,
 				927F61BA196C771E000F43EF /* Default.png in Resources */,
 				7E8CF0A91B3E8BBB00FA6277 /* hanoka_bow.json in Resources */,
@@ -2272,7 +2225,6 @@
 				7E8CF0AB1B3E8BBB00FA6277 /* hanoka_bow.png in Resources */,
 				B71F5919188484E7003F4D28 /* Settings.png in Resources */,
 				7ED823C01B13D2A6001BB249 /* hud_spritesheet.png in Resources */,
-				BB1E153B1B2EA5C000461495 /* 5ceta_mono.ttf in Resources */,
 				7EBC2AEC1B1C4EDF00AC47F1 /* gameplay_elements_ss.png in Resources */,
 				7E8CF0AE1B3E8BBB00FA6277 /* hanoka_player.json in Resources */,
 				7E8CF0B41B3E8BBB00FA6277 /* hanoka_player.scml in Resources */,
@@ -2296,15 +2248,12 @@
 				7E9A44C11B1DA2AC00111C35 /* charge_circle.vsh in Resources */,
 				7EA4A64B1B646A6500BE09CD /* bg_water_top_belowline.png in Resources */,
 				7ECDAA6B1B75609900B23419 /* 1hoonwhayang.fnt in Resources */,
-				BB1E153C1B2EA5C000461495 /* korean_calligraphy.fnt in Resources */,
-				7EB78B341B57AD2D00FB9892 /* hud_font_ss.png in Resources */,
 				7ECDAA791B75632800B23419 /* dialog_ui_ss.png in Resources */,
 				7ED823DE1B13D2A6001BB249 /* ripple_effect.fsh in Resources */,
 				7EA4A6411B64405300BE09CD /* Oldman.json in Resources */,
 				7ED823CF1B13D2A6001BB249 /* abovewater_am_up.vsh in Resources */,
 				7E7C0D3D1B55077300407DCB /* effects_enemy_ss.plist in Resources */,
 				7ED8238D1B13D2A6001BB249 /* hanokav2.png in Resources */,
-				7EB78B311B57AD2D00FB9892 /* hud_font_ss.fnt in Resources */,
 				B71F5912188484E7003F4D28 /* iPad-old@2x.png in Resources */,
 				7ED8238A1B13D2A6001BB249 /* hanokav2.plist in Resources */,
 				B71F5916188484E7003F4D28 /* iPhone-old@2x.png in Resources */,
@@ -2329,7 +2278,6 @@
 				7ED823A81B13D2A6001BB249 /* villager_fishwoman.png in Resources */,
 				7E8CF0B11B3E8BBB00FA6277 /* hanoka_player.png in Resources */,
 				B7378975180762440076A88C /* Default-568h@2x.png in Resources */,
-				BB1E153D1B2EA5C000461495 /* korean_calligraphy.png in Resources */,
 				7ED823871B13D2A6001BB249 /* hanokav2.json in Resources */,
 				7E7C0D431B55077300407DCB /* effects_hanoka_ss.plist in Resources */,
 				7ED8236F1B13D2A6001BB249 /* bg_test_tile_water.png in Resources */,
@@ -2443,7 +2391,6 @@
 				7E45BEDA1B51155100D93D78 /* ObjectPool.m in Sources */,
 				7ED822991B13D258001BB249 /* BGCharacterTest.m in Sources */,
 				7ED8228A1B13D258001BB249 /* BGReflection.m in Sources */,
-				7E45BED71B51154800D93D78 /* SPAnimatedText.m in Sources */,
 				7E386D2E1B23A0AC00DDEFF6 /* PlayerAirCombatParams.m in Sources */,
 				7ED822CF1B13D258001BB249 /* GameUI.m in Sources */,
 				7ED822DE1B13D258001BB249 /* TouchButton.m in Sources */,
@@ -2455,7 +2402,6 @@
 				7ED822CC1B13D258001BB249 /* PlayerProjectile.m in Sources */,
 				BB771B1F1B23F764002BA595 /* InDialoguePlayerStateStack.m in Sources */,
 				7EF557691B42A59E00992001 /* PlayerUIAimReticule.m in Sources */,
-				7E45BED91B51154B00D93D78 /* SPAnimatedTextCharacter.m in Sources */,
 				7EF557661B42A59E00992001 /* InAirUI.m in Sources */,
 				7E386D1F1B239EDE00DDEFF6 /* BasePlayerStateStack.m in Sources */,
 				7ED8231A1B13D258001BB249 /* TouchTrackingLayer.m in Sources */,
@@ -2517,7 +2463,6 @@
 				7ED8227D1B13D258001BB249 /* AirEnemyManager.m in Sources */,
 				7EB78B251B57A05500FB9892 /* SPLabel.m in Sources */,
 				7E386D331B23A0AC00DDEFF6 /* PlayerUnderwaterCombatParams.m in Sources */,
-				7E45BED61B51154700D93D78 /* SPAnimatedText.m in Sources */,
 				7EF557651B42A59E00992001 /* InAirUI.m in Sources */,
 				7E4F09951B24FC6B000945B8 /* SwordSlashParticle.m in Sources */,
 				7EFEE79B1B1F06860055C989 /* PlayerChargeIndicator.m in Sources */,
@@ -2591,7 +2536,6 @@
 				7E4F09B11B258C9A000945B8 /* ChargedArrow.m in Sources */,
 				20E087D21B4362A800AD486A /* DelayAction.m in Sources */,
 				7E0D6D461B43CA6800F2023F /* PufferBasicWaterEnemy.m in Sources */,
-				7E45BED81B51154B00D93D78 /* SPAnimatedTextCharacter.m in Sources */,
 				7EF557591B42A59E00992001 /* DialogUI.m in Sources */,
 				7ED822F21B13D258001BB249 /* DataStore.m in Sources */,
 				7ED822981B13D258001BB249 /* BGCharacterTest.m in Sources */,
@@ -2632,14 +2576,12 @@
 				7E386D2C1B23A0AC00DDEFF6 /* PlayerAirCombatParams.m in Sources */,
 				7E9A44BB1B1D85E100111C35 /* SPRadialFillSprite.m in Sources */,
 				7E0D6D501B43DCB600F2023F /* EnemyNoticeParticle.m in Sources */,
-				BB7A71181B37BEBF00B0EF3C /* SPAnimatedTextCharacter.m in Sources */,
 				7ED822A91B13D258001BB249 /* ChainedMovementParticle.m in Sources */,
 				7ED8227C1B13D258001BB249 /* AirEnemyManager.m in Sources */,
 				7E4F09A31B2523AE000945B8 /* SPCCSpriteAnimator.m in Sources */,
 				7EF557641B42A59E00992001 /* InAirUI.m in Sources */,
 				7EF5575B1B42A59E00992001 /* DiveUI.m in Sources */,
 				7ED822F71B13D258001BB249 /* GEventDispatcher.m in Sources */,
-				BB6AE7AE1B3E7BD300E8F6E8 /* SPAnimatedText.m in Sources */,
 				7ED8229D1B13D258001BB249 /* ControlManager.m in Sources */,
 				7E0D6D4B1B43CE5100F2023F /* PufferEnemySprite.m in Sources */,
 				7EF557611B42A59E00992001 /* EnemyWarningUI.m in Sources */,

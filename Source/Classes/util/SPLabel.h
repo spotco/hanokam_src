@@ -8,12 +8,20 @@
 
 #import "CCNode.h"
 
+@interface SPLabelStyle : NSObject
+@property(readwrite,assign) GLKVector4 _stroke, _fill, _shadow;
+@property(readwrite,assign) float _amplitude, _time_incr;
++(SPLabelStyle*)cons;
+-(SPLabelStyle*)set_fill:(ccColor4F)fillcolor stroke:(ccColor4F)strokecolor shadow:(ccColor4F)shadowcolor;
+@end
+
 @interface SPLabel : CCNode
 
 +(SPLabel*)cons_texkey:(NSString*)texkey;
--(SPLabel*)set_fill:(ccColor4F)fillcolor stroke:(ccColor4F)strokecolor shadow:(ccColor4F)shadowcolor;
--(SPLabel*)set_string:(NSString*)string;
-
--(void)markup_string:(NSString*)markup_string out_display_string:(NSString**)out_display_string out_style_map:(NSDictionary**)out_style_map;
+-(SPLabel*)set_default_fill:(ccColor4F)fillcolor stroke:(ccColor4F)strokecolor shadow:(ccColor4F)shadowcolor;
+-(void)set_default_style:(SPLabelStyle*)style;
+-(void)add_style:(SPLabelStyle*)style name:(NSString*)name;
+-(SPLabel*)set_string:(NSString*)markup_string;
 
 @end
+

@@ -15,6 +15,7 @@
 #import "Resource.h"
 #import "FileCache.h"
 #import "SPLabel.h"
+#import "GameColors.h"
 
 @implementation DiveUI {
 	float _current_fill_pct;
@@ -29,8 +30,6 @@
 	
 	SPLabel *_depth_text;
 	SPLabel *_enemies_attracted_text;
-	//CCLabelTTF *_depth_text;
-	//CCLabelTTF *_enemies_attracted_text;
 }
 +(DiveUI*)cons:(GameEngineScene*)g {
 	return [[DiveUI node] cons:g];
@@ -59,13 +58,18 @@
 	
 	[self set_breath_pct:1.0];
 	
-	[breath_bar_root addChild:[[[[CCSprite spriteWithTexture:[Resource get_tex:TEX_HUD_SPRITESHEET] rect:[FileCache get_cgrect_from_plist:TEX_HUD_SPRITESHEET idname:@"UI_Air-icon.png"]]
-		set_anchor_pt:ccp(0,1)]
-		set_pos:ccp(2,-2)] set_scale:0.25]];
+	SPLabel *breath_bar_icon = [SPLabel cons_texkey:TEX_DIALOGUE_FONT];
+	[breath_bar_icon set_string:@"AIR"];
+	[breath_bar_icon set_anchor_pt:ccp(0,1)];
+	[breath_bar_icon set_pos:ccp(2,7)];
+	[breath_bar_icon set_default_fill:GCOLOR_DIVEUI_AIRTEXT_FILL stroke:GCOLOR_DIVEUI_AIRTEXT_STROKE shadow:GCOLOR_INVISIBLE];
+	[breath_bar_icon setScale:0.6];
+	[breath_bar_root addChild:breath_bar_icon];
 	
-	_air_text = [SPLabel cons_texkey:TEX_HUD_FONT];
-	[_air_text setPosition:ccp(65,-19)];
-	[_air_text set_fill:ccc4f(62/255.0, 56/255.0, 64/255.0, 1.0) stroke:ccc4f(189/255.0, 247/255.0, 255/255.0, 1.0) shadow:ccc4f(0, 0, 0, 0)];
+	_air_text = [SPLabel cons_texkey:TEX_DIALOGUE_FONT];
+	[_air_text setPosition:ccp(breath_bar_icon.boundingBox.size.width,-19)];
+	[_air_text setAnchorPoint:ccp(0,0.5)];
+	[_air_text set_default_fill:GCOLOR_DIVEUI_AIRTEXT_FILL stroke:GCOLOR_DIVEUI_AIRTEXT_STROKE shadow:GCOLOR_INVISIBLE];
 	[_air_text set_string:@"100%"];
 	[_air_text setScale:0.45];
 	[breath_bar_root addChild:_air_text];
@@ -93,20 +97,21 @@
 	[depth_text_back setOpacity:0.8];
 	[depth_root addChild:depth_text_back];
 	
-	CCSprite *depth_text_icon = [CCSprite spriteWithTexture:[Resource get_tex:TEX_HUD_SPRITESHEET] rect:[FileCache get_cgrect_from_plist:TEX_HUD_SPRITESHEET idname:@"UI_Depth-icon.png"]];
-	[depth_text_icon setScale:0.2];
+	SPLabel *depth_text_icon = [SPLabel cons_texkey:TEX_DIALOGUE_FONT];
+	[depth_text_icon set_string:@"DEPTH"];
 	[depth_text_icon set_anchor_pt:ccp(1,1)];
 	[depth_text_icon set_pos:ccp(0,-5)];
+	[depth_text_icon set_default_fill:GCOLOR_DIVEUI_DEPTHTEXT_FILL stroke:GCOLOR_DIVEUI_DEPTHTEXT_STROKE shadow:GCOLOR_INVISIBLE];
+	[depth_text_icon setScale:0.2];
 	[depth_root addChild:depth_text_icon];
 	
-	
-	_depth_text = [SPLabel cons_texkey:TEX_HUD_FONT];
-	[_depth_text setPosition:ccp(9,-13)];
-	[_depth_text set_fill:ccc4f(239/255.0, 213/255.0, 241/255.0, 1.0) stroke:ccc4f(62/255.0, 48/255.0, 33/255.0, 1.0) shadow:ccc4f(0, 0, 0, 0)];
+	_depth_text = [SPLabel cons_texkey:TEX_DIALOGUE_FONT];
+	[_depth_text setPosition:ccp(4,-13)];
+	[_depth_text setAnchorPoint:ccp(0,0.5)];
+	[_depth_text set_default_fill:GCOLOR_DIVEUI_DEPTHTEXT_FILL stroke:GCOLOR_DIVEUI_DEPTHTEXT_STROKE shadow:GCOLOR_INVISIBLE];
 	[_depth_text setScale:0.5];
 	[_depth_text set_string:@"0m"];
 	[depth_root addChild:_depth_text];
-	
 	
 	//
 	CCNode *enemies_attracted_root = [CCNode node];
@@ -126,9 +131,9 @@
 	[enemies_attracted_text_icon set_pos:ccp(-1,0)];
 	[enemies_attracted_root addChild:enemies_attracted_text_icon];
 	
-	_enemies_attracted_text = [SPLabel cons_texkey:TEX_HUD_FONT];
-	[_enemies_attracted_text setPosition:ccp(-24,-17)];
-	[_enemies_attracted_text set_fill:ccc4f(146/255.0, 221/255.0, 117/255.0, 1.0) stroke:ccc4f(62/255.0, 48/255.0, 33/255.0, 1.0) shadow:ccc4f(0,0,0,0)];
+	_enemies_attracted_text = [SPLabel cons_texkey:TEX_DIALOGUE_FONT];
+	[_enemies_attracted_text setPosition:ccp(-29,-19)];
+	[_enemies_attracted_text set_default_fill:GCOLOR_DIVEUI_ENEMIESATTRTEXT_FILL stroke:GCOLOR_DIVEUI_ENEMIESATTRTEXT_STROKE shadow:GCOLOR_INVISIBLE];
 	[_enemies_attracted_text setScale:0.55];
 	[_enemies_attracted_text setAnchorPoint:ccp(1.0,0.5)];
 	[enemies_attracted_root addChild:_enemies_attracted_text];

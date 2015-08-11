@@ -117,6 +117,7 @@
 	for (GameUISubView *itr in _gameui_subviews) {
 		[itr setVisible:NO];
 	}
+	//[_dive_ui setVisible:YES];
 	[_dialogUI setVisible:YES];
 	//[_in_air_ui setVisible:YES];
 	
