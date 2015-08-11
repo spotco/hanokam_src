@@ -55,9 +55,11 @@
 	[_primary_text add_style:primary_text_emph_style name:@"emph"];
 	
 	[_primary_text set_scale:0.35];
-	[_primary_text set_string:@"[emph]TOP KEK m8!!!@\nu [emph]thingken@ u cna \nhandle this?"];
+	[_primary_text set_string:@"[emph]TOP@ KEK U EVEN\n[emph]TRYING@ w this shit\ncuz [emph]SERIOUSLY@ i cant tell"];
 	[_primary_text setPosition:pct_of_obj(dialog_bubble_back, 0.5, 0.5)];
 	[_primary_text setAnchorPoint:ccp(0.5,0.5)];
+	
+	[_primary_text animate_text_in_speed:14];
 	
 	[dialog_bubble_back addChild:_primary_text z:9999];
 	

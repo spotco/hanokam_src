@@ -38,6 +38,7 @@
 -(SPLabelCharacter*)cons_tex:(CCTexture*)tex rect:(CGRect)rect;
 -(void)set_style:(SPLabelStyle*)style;
 -(void)i_update:(float)time;
+-(void)animate_text_in:(float)t;
 -(float)get_time_incr;
 @end
 
@@ -45,12 +46,15 @@
 	CGPoint _start_position;
 	float _amplitude;
 	float _time_incr;
+	CGPoint _animate_offset;
 }
 
 -(SPLabelCharacter*)cons_tex:(CCTexture*)tex rect:(CGRect)rect {
 	[self setTexture:tex];
 	[self setTextureRect:rect];
 	_start_position = CGPointZero;
+	[self setBlendMode:[CCBlendMode alphaMode]];
+	_animate_offset = CGPointZero;
 	return self;
 }
 
@@ -62,9 +66,16 @@
 	_time_incr = style._time_incr;
 }
 
+-(void)animate_text_in:(float)t {
+	[self setOpacity:t];
+	[self setScale:lerp(1.1, 1, t)];
+	[self setVisible:(t > 0)];
+	_animate_offset = ccp(0,lerp(15, 0, t));
+}
+
 -(void)i_update:(float)time {
 	CGPoint offset = ccp(0,_amplitude*sinf(time));
-	[super setPosition:CGPointAdd(_start_position, offset)];
+	[super setPosition:CGPointAdd(CGPointAdd(_start_position, offset),_animate_offset)];
 }
 
 -(float)get_time_incr {
@@ -90,6 +101,10 @@
 	
 	CCBMFontConfiguration *_bmfont_cfg;
 	float _time;
+	
+	float _animate_text_in_ct;
+	float _animate_text_in_speed;
+	BOOL _do_animate_text_in;
 }
 +(SPLabel*)cons_texkey:(NSString*)texkey {
 	return [[SPLabel node] cons_texkey:texkey];
@@ -101,6 +116,9 @@
 	_cached_string = @"";
 	_default_style = [SPLabelStyle cons];
 	_name_to_styles = [NSMutableDictionary dictionary];
+	
+	
+	
 	return self;
 }
 
@@ -126,6 +144,29 @@
 		[itr i_update:itr_time];
 		itr_time += [itr get_time_incr];
 	}
+	
+	if (_do_animate_text_in) [self animate_in_update:delta];
+}
+
+-(void)animate_in_update:(CCTime)delta {
+	for (int i = 0; i < _characters.count; i++) {
+		SPLabelCharacter *itr = _characters[i];
+		[itr animate_text_in:clampf(_animate_text_in_ct-i,0,1)];
+	}
+	_animate_text_in_ct += delta * _animate_text_in_speed;
+}
+
+-(void)animate_text_in_speed:(float)speed {
+	_do_animate_text_in = YES;
+	_animate_text_in_speed = speed;
+	_animate_text_in_ct = 0.5;
+	[self animate_in_update:0];
+}
+-(void)animate_text_in_force_finish {
+	_animate_text_in_ct = _characters.count;
+}
+-(BOOL)animate_text_in_is_finished {
+	return _animate_text_in_ct >= _characters.count;
 }
 
 -(void)markup_string:(NSString*)markup_string out_display_string:(NSString**)out_display_string out_style_map:(NSDictionary**)out_style_map {

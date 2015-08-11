@@ -118,7 +118,7 @@
 		[itr setVisible:NO];
 	}
 	//[_dive_ui setVisible:YES];
-	[_dialogUI setVisible:YES];
+	//[_dialogUI setVisible:YES];
 	//[_in_air_ui setVisible:YES];
 	
 	[[self ui_for_playerstate:game.get_player_state] setVisible:YES];

@@ -23,5 +23,9 @@
 -(void)add_style:(SPLabelStyle*)style name:(NSString*)name;
 -(SPLabel*)set_string:(NSString*)markup_string;
 
+-(void)animate_text_in_speed:(float)speed;
+-(void)animate_text_in_force_finish;
+-(BOOL)animate_text_in_is_finished;
+
 @end
 
