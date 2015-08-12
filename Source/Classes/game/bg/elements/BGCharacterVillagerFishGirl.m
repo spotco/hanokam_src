@@ -22,12 +22,12 @@
 	SpriterData *data = [SpriterData cons_data_from_spritesheetreaders:@[
 		[SpriterJSONParser cons_texture:[Resource get_tex:TEX_SPRITER_CHAR_FISHGIRL] file:@"Fishgirl.json"]
 	] scml:@"Fishgirl.scml"];
-	_img = [SpriterNode nodeFromData:data render_size:ccp(300,300)];
+	_img = [SpriterNode nodeFromData:data render_size:ccp(150,400)];
 	[_img set_render_placement:ccp(0.5,0.5)];
 	[_img p_play_anim:@"Idle Talk" repeat:YES];
 	[self addChild:_img];
 	
-	[self setScale:0.5];
+	[self setScale:0.4];
 	
 	return self;
 }

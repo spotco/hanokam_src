@@ -24,6 +24,8 @@
 	float _title_icon_anim_theta;
 	
 	SPLabel *_primary_text;
+	
+	CCSprite *_continue_icon;
 }
 
 +(DialogUI*)cons:(GameEngineScene *)game {
@@ -80,11 +82,24 @@
 	[_primary_text setAnchorPoint:ccp(0.5,0.5)];
 	[dialog_bubble_back addChild:_primary_text z:9999];
 	
+	_continue_icon = [CCSprite spriteWithTexture:[Resource get_tex:TEX_EFFECTS_ENEMY] rect:[FileCache get_cgrect_from_plist:TEX_EFFECTS_ENEMY idname:@"Enemy Warning.png"]];
+	[_continue_icon setPosition:CGPointAdd(pct_of_obj(dialog_bubble_back, 1, 0),ccp(-14,14))];
+	[_continue_icon setScale:0.25];
+	[dialog_bubble_back addChild:_continue_icon z:9999];
+	
 	return self;
 }
 -(void)i_update:(GameEngineScene *)game {
-	_title_icon_anim_theta += dt_scale_get() * 0.1;
+	_title_icon_anim_theta += dt_scale_get() * 0.075;
 	[_title_icon setRotation:7.5*sinf(_title_icon_anim_theta)];
+	
+	if ([self is_ready_for_next_message]) {
+		[_continue_icon setVisible:YES];
+		[_continue_icon setOpacity:0.5*(sinf(_title_icon_anim_theta)+1)];
+	} else {
+		[_continue_icon setVisible:NO];
+	}
+	
 }
 
 -(void)show_message:(NSString*)message from_character:(BGCharacterBase*)character g:(GameEngineScene*)g {
@@ -92,9 +107,9 @@
 	[_primary_text animate_text_in_speed:14];
 }
 -(void)fast_forward_message_to_end {
-
+	[_primary_text animate_text_in_force_finish];
 }
 -(BOOL)is_ready_for_next_message {
-	return NO;
+	return [_primary_text animate_text_in_is_finished];
 }
 @end

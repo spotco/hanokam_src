@@ -22,7 +22,7 @@
 	SpriterData *data = [SpriterData cons_data_from_spritesheetreaders:@[
 		[SpriterJSONParser cons_texture:[Resource get_tex:TEX_SPRITER_CHAR_OLDMAN] file:@"Oldman.json"]
 	] scml:@"Oldman.scml"];
-	_img = [SpriterNode nodeFromData:data render_size:ccp(300,300)];
+	_img = [SpriterNode nodeFromData:data render_size:ccp(300,350)];
 	[_img set_render_placement:ccp(0.5,0.5)];
 	[_img p_play_anim:@"Sleeping" repeat:YES];
 	[self addChild:_img];

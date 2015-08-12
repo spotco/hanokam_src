@@ -22,7 +22,6 @@ typedef enum {
 
 @implementation DialogueBubble {
     CCSprite *_sprite;
-    CCLabelTTF *_label;
     DialogueBubbleState _state;
 }
 
@@ -31,18 +30,11 @@ typedef enum {
 }
 
 -(DialogueBubble*)cons {
-    // Initialize sprite
     _sprite = [CCSprite spriteWithTexture:[Resource get_tex:TEX_HUD_SPRITESHEET] rect:[FileCache get_cgrect_from_plist:TEX_HUD_SPRITESHEET idname:@"thought_cloud_0.png"]];
     [_sprite runAction:animaction_cons(@[@"thought_cloud_0.png",@"thought_cloud_1.png"], 0.5, TEX_HUD_SPRITESHEET)];
     [_sprite setScale:0];
     [_sprite setOpacity:0];
-    
-    // Initialize text label and add as child of sprite
-    _label = label_cons(ccp(175,100), ccc3(0, 0, 0), 20, @". . .");
-    [_label setOpacity:0];
-    [_sprite addChild:_label];
-    
-    // Add sprite as child of self
+	
     [self addChild:_sprite];
     
     return self;
@@ -70,7 +62,6 @@ typedef enum {
                 _state = DialogueBubbleState_Showing;
             }
             [_sprite setOpacity:newOpacity];
-            [_label setOpacity:newOpacity];
             [_sprite setScale:newOpacity/5.];
             break;
         case DialogueBubbleState_Showing:
@@ -91,7 +82,6 @@ typedef enum {
                 _state = DialogueBubbleState_Hidden;
             }
             [_sprite setOpacity:newOpacity];
-            [_label setOpacity:newOpacity];
             [_sprite setScale:newOpacity/5.];
             break;
         default:

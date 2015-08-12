@@ -13,7 +13,10 @@
 
 @implementation InDialoguePlayerStateStack {
     BGCharacterBase* _with_character;
-    DialogUI *_dialogUI;
+    DialogUI *_dialog_ui;
+	
+	NSArray *_dialog_events;
+	int _i_dialog_events;
 }
 
 +(InDialoguePlayerStateStack*)cons:(GameEngineScene *)g with_character:(BGCharacterBase *)character {
@@ -27,28 +30,43 @@
     
     _with_character = character;
 	
-    _dialogUI = (DialogUI*)[g.get_ui ui_for_playerstate:PlayerState_InDialogue];
+    _dialog_ui = (DialogUI*)[g.get_ui ui_for_playerstate:PlayerState_InDialogue];
 	
-	//TODO -- fix
-	DialogEvent *evt = [_with_character.get_dialog_list objectAtIndex:0];
-	[_dialogUI show_message:evt.get_text from_character:_with_character g:g];
-	
+	_dialog_events = [_with_character get_dialog_list];
+	_i_dialog_events = 0;
+	[self run_current_dialog_event:g];
     return self;
+}
+
+-(void)run_current_dialog_event:(GameEngineScene*)g {
+	DialogEvent *evt = [_dialog_events objectAtIndex:_i_dialog_events];
+	[_dialog_ui show_message:evt.get_text from_character:_with_character g:g];
 }
 
 -(void)i_update:(GameEngineScene *)g {
     [g set_zoom:drpt(g.get_zoom,2.5,1/20.0)];
     [g set_camera_height:drpt(g.get_current_camera_center_y,g.player.position.y,1/20.0)];
-	/*
-    if (_dialogUI.state == DialogState_CanRemove) {
-        [g.player pop_state_stack:g];
-    }
-	*/
+	if (g.get_control_manager.is_proc_tap) {
+		if ([_dialog_ui is_ready_for_next_message]) {
+			_i_dialog_events++;
+			if (_i_dialog_events < _dialog_events.count) {
+				[self run_current_dialog_event:g];
+				
+			} else {
+				[g.player pop_state_stack:g];
+			}
+			
+		} else {
+			[_dialog_ui fast_forward_message_to_end];
+		}
+	}
+
 }
 
 -(void)on_state_end:(GameEngineScene *)game {
-    //[_with_character doneSpeaking];
-	_dialogUI = NULL;
+	_dialog_ui = NULL;
+	_with_character = NULL;
+	_dialog_events = NULL;
 }
 
 -(PlayerState)get_state {

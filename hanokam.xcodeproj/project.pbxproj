@@ -196,6 +196,12 @@
 		7EA474071B7ACF7900B7837A /* BGCharacterVillagerFishGirl.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA474061B7ACF7900B7837A /* BGCharacterVillagerFishGirl.m */; };
 		7EA474081B7ACF7900B7837A /* BGCharacterVillagerFishGirl.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA474061B7ACF7900B7837A /* BGCharacterVillagerFishGirl.m */; };
 		7EA474091B7ACF7900B7837A /* BGCharacterVillagerFishGirl.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA474061B7ACF7900B7837A /* BGCharacterVillagerFishGirl.m */; };
+		7EA4740C1B7B4C7B00B7837A /* headicons_ss.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7EA4740A1B7B4C7B00B7837A /* headicons_ss.plist */; };
+		7EA4740D1B7B4C7B00B7837A /* headicons_ss.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7EA4740A1B7B4C7B00B7837A /* headicons_ss.plist */; };
+		7EA4740E1B7B4C7B00B7837A /* headicons_ss.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7EA4740A1B7B4C7B00B7837A /* headicons_ss.plist */; };
+		7EA4740F1B7B4C7B00B7837A /* headicons_ss.png in Resources */ = {isa = PBXBuildFile; fileRef = 7EA4740B1B7B4C7B00B7837A /* headicons_ss.png */; };
+		7EA474101B7B4C7B00B7837A /* headicons_ss.png in Resources */ = {isa = PBXBuildFile; fileRef = 7EA4740B1B7B4C7B00B7837A /* headicons_ss.png */; };
+		7EA474111B7B4C7B00B7837A /* headicons_ss.png in Resources */ = {isa = PBXBuildFile; fileRef = 7EA4740B1B7B4C7B00B7837A /* headicons_ss.png */; };
 		7EA4A6411B64405300BE09CD /* Oldman.json in Resources */ = {isa = PBXBuildFile; fileRef = 7EA4A63E1B64405300BE09CD /* Oldman.json */; };
 		7EA4A6421B64405300BE09CD /* Oldman.json in Resources */ = {isa = PBXBuildFile; fileRef = 7EA4A63E1B64405300BE09CD /* Oldman.json */; };
 		7EA4A6431B64405300BE09CD /* Oldman.png in Resources */ = {isa = PBXBuildFile; fileRef = 7EA4A63F1B64405300BE09CD /* Oldman.png */; };
@@ -748,6 +754,8 @@
 		7EA473FF1B7ACA3E00B7837A /* 5ceta_mono.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = 5ceta_mono.ttf; sourceTree = "<group>"; };
 		7EA474051B7ACF7900B7837A /* BGCharacterVillagerFishGirl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGCharacterVillagerFishGirl.h; sourceTree = "<group>"; };
 		7EA474061B7ACF7900B7837A /* BGCharacterVillagerFishGirl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGCharacterVillagerFishGirl.m; sourceTree = "<group>"; };
+		7EA4740A1B7B4C7B00B7837A /* headicons_ss.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = headicons_ss.plist; sourceTree = "<group>"; };
+		7EA4740B1B7B4C7B00B7837A /* headicons_ss.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = headicons_ss.png; sourceTree = "<group>"; };
 		7EA4A63E1B64405300BE09CD /* Oldman.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Oldman.json; sourceTree = "<group>"; };
 		7EA4A63F1B64405300BE09CD /* Oldman.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Oldman.png; sourceTree = "<group>"; };
 		7EA4A6401B64405300BE09CD /* Oldman.scml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Oldman.scml; sourceTree = "<group>"; };
@@ -1331,6 +1339,8 @@
 		7ECDAA731B75632800B23419 /* dialog */ = {
 			isa = PBXGroup;
 			children = (
+				7EA4740A1B7B4C7B00B7837A /* headicons_ss.plist */,
+				7EA4740B1B7B4C7B00B7837A /* headicons_ss.png */,
 				7ECDAA741B75632800B23419 /* dialog_ui_ss.plist */,
 				7ECDAA751B75632800B23419 /* dialog_ui_ss.png */,
 			);
@@ -2080,6 +2090,7 @@
 				7EE566471B411F3C00D63556 /* hanoka_player_redgarb.json in Resources */,
 				7ED8236B1B13D2A6001BB249 /* bg_spritesheet_1.png in Resources */,
 				7ED8238C1B13D2A6001BB249 /* hanokav2.plist in Resources */,
+				7EA474111B7B4C7B00B7837A /* headicons_ss.png in Resources */,
 				7ECDAA781B75632800B23419 /* dialog_ui_ss.plist in Resources */,
 				7A4036FB19DE401F007B6E8F /* iPhone-old.png in Resources */,
 				7ED823891B13D2A6001BB249 /* hanokav2.json in Resources */,
@@ -2111,6 +2122,7 @@
 				7ED823CE1B13D2A6001BB249 /* abovewater_am_up.fsh in Resources */,
 				7ECDAA6D1B75609900B23419 /* 1hoonwhayang.fnt in Resources */,
 				7A40370019DE401F007B6E8F /* Settings@2x.png in Resources */,
+				7EA4740E1B7B4C7B00B7837A /* headicons_ss.plist in Resources */,
 				7E7C0D421B55077300407DCB /* effects_enemy_ss.png in Resources */,
 				7ED823981B13D2A6001BB249 /* hanoka v0.01.png in Resources */,
 				7ED823741B13D2A6001BB249 /* bg_underwater_surface_gradient.png in Resources */,
@@ -2150,6 +2162,7 @@
 				7EA863381B5CF63400FE8163 /* Fishgirl.json in Resources */,
 				7EB78B291B57A89800FB9892 /* stroke_fill_text.fsh in Resources */,
 				7E8CF0AC1B3E8BBB00FA6277 /* hanoka_bow.png in Resources */,
+				7EA474101B7B4C7B00B7837A /* headicons_ss.png in Resources */,
 				927F61AD196C771E000F43EF /* Settings.png in Resources */,
 				7ED823C11B13D2A6001BB249 /* hud_spritesheet.png in Resources */,
 				7EBC2AED1B1C4EDF00AC47F1 /* gameplay_elements_ss.png in Resources */,
@@ -2194,6 +2207,7 @@
 				7ED823BE1B13D2A6001BB249 /* hud_spritesheet.plist in Resources */,
 				927F61B6196C771E000F43EF /* iPhone-old.png in Resources */,
 				7ED823AF1B13D2A6001BB249 /* blank.png in Resources */,
+				7EA4740D1B7B4C7B00B7837A /* headicons_ss.plist in Resources */,
 				927F61B7196C771E000F43EF /* iPhone.png in Resources */,
 				7EFEE7A11B1F07120055C989 /* charge_circle.vsh in Resources */,
 				7E8CF0B81B3E8BBB00FA6277 /* hanoka_sword.json in Resources */,
@@ -2245,6 +2259,7 @@
 				7EA863371B5CF63400FE8163 /* Fishgirl.json in Resources */,
 				7EB78B281B57A89800FB9892 /* stroke_fill_text.fsh in Resources */,
 				7E8CF0AB1B3E8BBB00FA6277 /* hanoka_bow.png in Resources */,
+				7EA4740F1B7B4C7B00B7837A /* headicons_ss.png in Resources */,
 				B71F5919188484E7003F4D28 /* Settings.png in Resources */,
 				7ED823C01B13D2A6001BB249 /* hud_spritesheet.png in Resources */,
 				7EBC2AEC1B1C4EDF00AC47F1 /* gameplay_elements_ss.png in Resources */,
@@ -2289,6 +2304,7 @@
 				7ED823961B13D2A6001BB249 /* hanoka v0.01.png in Resources */,
 				7ED823BD1B13D2A6001BB249 /* hud_spritesheet.plist in Resources */,
 				B71F5915188484E7003F4D28 /* iPhone-old.png in Resources */,
+				7EA4740C1B7B4C7B00B7837A /* headicons_ss.plist in Resources */,
 				7ED823AE1B13D2A6001BB249 /* blank.png in Resources */,
 				7E8CF0B71B3E8BBB00FA6277 /* hanoka_sword.json in Resources */,
 				B71F5917188484E7003F4D28 /* iPhone.png in Resources */,

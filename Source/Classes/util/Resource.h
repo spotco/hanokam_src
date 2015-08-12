@@ -43,6 +43,7 @@
 #define TEX_DIALOGUE_FONT @"1hoonwhayang"
 
 #define TEX_UI_DIALOGUE_SPRITESHEET @"dialog_ui_ss"
+#define TEX_UI_DIALOGUE_HEADICONS @"headicons_ss"
 
 #define TEX_RIPPLE @"ripple"
 #define TEX_HUD_SPRITESHEET @"hud_spritesheet"
