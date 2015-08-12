@@ -29,7 +29,7 @@
     
     // Initialize DialogueBubbles for each villager currently in the village
     _bgCharacterDialogueBubbles = [NSMutableDictionary dictionary];
-    for (BGCharacterBase *itrChar in game.get_bg_village.getVillagers) {
+    for (BGCharacterBase *itrChar in game.get_bg_village.get_villagers) {
         NSNumber *itr_hash = @([itrChar hash]);
         _bgCharacterDialogueBubbles[itr_hash] = [DialogueBubble cons];
         [self addChild:_bgCharacterDialogueBubbles[itr_hash]];
@@ -52,22 +52,17 @@
 }
 
 -(void)updateBgCharacterDialogueBubbles:(GameEngineScene *)game {
-    for (BGCharacterBase *itrChar in game.get_bg_village.getVillagers) {
+    for (BGCharacterBase *itrChar in game.get_bg_village.get_villagers) {
         NSNumber *itr_hash = @([itrChar hash]);
         DialogueBubble *itrBubble = _bgCharacterDialogueBubbles[itr_hash];
         
         // Update dialogue bubble positions to keep them with their corresponding villagers
-		CGPoint offset = itrChar.dialogueOffset;
+		CGPoint offset = itrChar.get_dialog_icon_offset;
 		offset.x *= game.get_zoom;
 		offset.y *= game.get_zoom;
         [itrBubble setPosition:CGPointAdd([itrChar convertToWorldSpace:CGPointZero],offset)];
-        
-        // Fade dialogue bubbles in and out where appropriate
-        if (itrChar.state == BGCharacter_CanSpeak) {
-            [itrBubble i_update:game shouldShow:YES];
-        } else {
-            [itrBubble i_update:game shouldShow:NO];
-        }
+		
+		[itrBubble i_update:game shouldShow:YES];
     }  
 }
 

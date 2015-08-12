@@ -9,26 +9,30 @@
 #import "InDialoguePlayerStateStack.h"
 #import "BGCharacterBase.h"
 #import "DialogUI.h"
+#import "DialogEvent.h"
 
 @implementation InDialoguePlayerStateStack {
     BGCharacterBase* _with_character;
     DialogUI *_dialogUI;
 }
 
-+(InDialoguePlayerStateStack*)cons:(GameEngineScene *)g withCharacter:(BGCharacterBase *)character {
-    return [[[InDialoguePlayerStateStack alloc] init] cons:g withCharacter:character];
++(InDialoguePlayerStateStack*)cons:(GameEngineScene *)g with_character:(BGCharacterBase *)character {
+    return [[[InDialoguePlayerStateStack alloc] init] cons:g with_character:character];
 }
 
--(InDialoguePlayerStateStack*)cons:(GameEngineScene*)g withCharacter:(BGCharacterBase *)character {
+-(InDialoguePlayerStateStack*)cons:(GameEngineScene*)g with_character:(BGCharacterBase *)character {
     g.player.rotation = 0;
     [g.player read_s_pos:g];
     [g.player play_anim:@"Idle" repeat:YES];
     
     _with_character = character;
-    
-    //_dialogUI = (DialogUI*)[g.get_ui ui_for_playerstate:PlayerState_InDialogue];
-	//[_dialogUI start:g withText:character.dialogueText];
-    
+	
+    _dialogUI = (DialogUI*)[g.get_ui ui_for_playerstate:PlayerState_InDialogue];
+	
+	//TODO -- fix
+	DialogEvent *evt = [_with_character.get_dialog_list objectAtIndex:0];
+	[_dialogUI show_message:evt.get_text from_character:_with_character g:g];
+	
     return self;
 }
 
@@ -43,7 +47,7 @@
 }
 
 -(void)on_state_end:(GameEngineScene *)game {
-    [_with_character doneSpeaking];
+    //[_with_character doneSpeaking];
 	_dialogUI = NULL;
 }
 

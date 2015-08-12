@@ -47,6 +47,7 @@ typedef enum _GameAnchorZ {
 	GameAnchorZ_Player_Out = 79,
 	GameAnchorZ_BGSky_Docks_Pillars_Front = 52,
 	GameAnchorZ_Player = 51,
+	GameAnchorZ_BGVillage_Character = 50,
 	
 	GameAnchorZ_BGSky_Sky_SideCliffs = 40,
 	

@@ -7,43 +7,23 @@
 //
 
 #import "CCSprite.h"
+#import "Common.h"
 
 @class GameEngineScene;
 @class SpriterNode;
 
-// States for background characters
-typedef enum {
-    BGCharacter_Idle,
-    BGCharacter_CanSpeak,
-    BGCharacter_Speaking
-} BGCharacterState;
-
-/**
- *  @class  BGCharacterBase
- *
- *  Base CCSprite for background characters. Should never be instantiated
- */
 @interface BGCharacterBase : CCSprite
 
-// States for background characters
-@property (nonatomic, readonly) BGCharacterState state;
+-(NSArray*)get_dialog_list;
+-(CGPoint)get_dialog_icon_offset;
+-(NSString*)get_dialog_title;
 
-// Offset position for dialogue bubble
--(CGPoint)dialogueOffset;
+-(void)set_anchor_object:(CCNode*)anchor;
+-(void)set_anchor_relative_position:(CGPoint)anchor_rel_pos g:(GameEngineScene*)g;
+-(CGPoint)get_anchor_relative_position;
 
-// Dialog text
--(NSString*)dialogueText;
-
-/**
- *  Update state, handles interactions with other elements in the game
- *
- *  @param  g       an object containing information about the current game state
- */
 -(void)i_update:(GameEngineScene*)g;
 
-/**
- *  Signal to character to exit from SPEAKING state
- */
--(void)doneSpeaking;
+-(HitRect)get_hit_rect:(GameEngineScene*)g;
 
 @end

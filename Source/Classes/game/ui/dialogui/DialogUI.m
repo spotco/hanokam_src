@@ -15,8 +15,14 @@
 #import "Common.h"
 #import "SPLabel.h"
 #import "GameColors.h"
+#import "BGCharacterBase.h"
 
 @implementation DialogUI {
+	SPLabel *_title_text;
+	
+	CCSprite *_title_icon;
+	float _title_icon_anim_theta;
+	
 	SPLabel *_primary_text;
 }
 
@@ -40,6 +46,21 @@
 	[dialog_bubble_title setPosition:pct_of_obj(dialog_bubble_back, -0.0175, 0.975)];
 	[dialog_bubble_back addChild:dialog_bubble_title];
 	
+	_title_icon = [CCSprite spriteWithTexture:[Resource get_tex:TEX_UI_DIALOGUE_SPRITESHEET] rect:[FileCache get_cgrect_from_plist:TEX_UI_DIALOGUE_SPRITESHEET idname:@"headicon_hanoka.png"]];
+	[_title_icon setAnchorPoint:ccp(0.5,0.5)];
+	[_title_icon setPosition:CGPointAdd(pct_of_obj(dialog_bubble_title, 0, 0.5),ccp(_title_icon.boundingBox.size.width/4,0))];
+	[_title_icon setScale:0.5];
+	[dialog_bubble_title addChild:_title_icon];
+	
+	_title_text = [SPLabel cons_texkey:TEX_DIALOGUE_FONT];
+	[_title_text set_default_fill:GCOLOR_DIALOGUI_TITLE_FILL stroke:GCOLOR_DIALOGUI_TITLE_STROKE shadow:GCOLOR_BLACK];
+	[_title_text setAnchorPoint:ccp(0,0.5)];
+	[_title_text setPosition:CGPointAdd(_title_icon.position, ccp(_title_icon.boundingBox.size.width/2,4))];
+	[_title_text setScale:0.25];
+	[_title_text set_string:@"Hanoka"];
+	[dialog_bubble_title addChild:_title_text];
+	
+	//main dialogue styles
 	_primary_text = [SPLabel cons_texkey:TEX_DIALOGUE_FONT];
 	
 	SPLabelStyle *primary_text_default_style = [SPLabelStyle cons];
@@ -55,21 +76,20 @@
 	[_primary_text add_style:primary_text_emph_style name:@"emph"];
 	
 	[_primary_text set_scale:0.35];
-	[_primary_text set_string:@"[emph]TOP@ KEK U EVEN\n[emph]TRYING@ w this shit\ncuz [emph]SERIOUSLY@ i cant tell"];
 	[_primary_text setPosition:pct_of_obj(dialog_bubble_back, 0.5, 0.5)];
 	[_primary_text setAnchorPoint:ccp(0.5,0.5)];
-	
-	[_primary_text animate_text_in_speed:14];
-	
 	[dialog_bubble_back addChild:_primary_text z:9999];
 	
 	return self;
 }
 -(void)i_update:(GameEngineScene *)game {
+	_title_icon_anim_theta += dt_scale_get() * 0.1;
+	[_title_icon setRotation:7.5*sinf(_title_icon_anim_theta)];
 }
 
 -(void)show_message:(NSString*)message from_character:(BGCharacterBase*)character g:(GameEngineScene*)g {
-
+	[_primary_text set_string:message];
+	[_primary_text animate_text_in_speed:14];
 }
 -(void)fast_forward_message_to_end {
 

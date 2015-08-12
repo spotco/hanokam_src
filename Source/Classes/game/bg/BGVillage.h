@@ -15,6 +15,6 @@
 -(void)render_reflection:(GameEngineScene*)game offset:(CGPoint)offset;
 -(void)render_underwater_reflection;
 
--(NSArray*)getVillagers;
+-(NSArray*)get_villagers;
 
 @end

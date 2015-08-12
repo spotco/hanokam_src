@@ -20,8 +20,7 @@
 #import "SpriterNodeCache.h"
 #import "SPDeviceAccelerometer.h"
 #import "GEventDispatcher.h"
-
-#import "SplashParticle.h"
+#import "BGCharacterBase.h"
 
 @implementation GameEngineScene {
 	// UTILS
@@ -419,6 +418,10 @@
 		[self draw_hit_rect:itr.get_hit_rect color:enemy_projectile_color];
 		[itr get_sat_poly:&itr_poly];
 		[self draw_sat_poly:&itr_poly color:enemy_projectile_sat_color];
+	}
+	
+	for (BGCharacterBase *itr in _bg_village.get_villagers) {
+		[self draw_hit_rect:[itr get_hit_rect:self] color:enemy_color];
 	}
 }
 

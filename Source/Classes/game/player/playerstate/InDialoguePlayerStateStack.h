@@ -24,6 +24,6 @@
  *  @param  g           an object containing information about the current game state
  *  @param  character   character with whom we are currently speaking to
  */
-+(InDialoguePlayerStateStack*)cons:(GameEngineScene*)g withCharacter:(BGCharacterBase*)character;
++(InDialoguePlayerStateStack*)cons:(GameEngineScene*)g with_character:(BGCharacterBase*)character;
 
 @end

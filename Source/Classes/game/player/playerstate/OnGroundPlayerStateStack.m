@@ -11,6 +11,9 @@
 #import "DivePlayerStateStack.h"
 #import "GameMain.h"
 #import "GEventDispatcher.h"
+#import "BGVillage.h"
+#import "BGCharacterBase.h"
+#import "InDialoguePlayerStateStack.h"
 
 @implementation OnGroundPlayerStateStack {
 	PlayerLandParams *_land_params;
@@ -45,9 +48,18 @@
 					_land_params._current_mode = PlayerLandMode_LandToWater;
 					_land_params._vel = ccp(0,10 * dt_scale_get());
 				}
-#if TARGET_IPHONE_SIMULATOR
             } else if (g.get_control_manager.is_proc_tap) {
-                CGPoint tapPos = g.get_control_manager.get_proc_tap;
+				CGPoint tapPos = g.get_control_manager.get_proc_tap;
+				CGPoint world_tap_pos = [g.get_anchor convertToNodeSpace:tapPos];
+				for (BGCharacterBase *itr in g.get_bg_village.get_villagers) {
+					if (hitrect_contains_point([itr get_hit_rect:g], world_tap_pos)) {
+						[g.get_control_manager clear_proc_tap]; //consume tap
+                        [g.player push_state_stack:[InDialoguePlayerStateStack cons:g with_character:itr]];
+						return;
+					}
+				}
+			
+#if TARGET_IPHONE_SIMULATOR
                 CGFloat newXPos;
                 if (tapPos.x > g.player.position.x) {
                     newXPos = g.player.position.x + 10;

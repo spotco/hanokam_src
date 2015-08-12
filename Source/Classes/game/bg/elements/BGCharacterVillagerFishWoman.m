@@ -36,9 +36,7 @@
 	return self;
 }
 
--(CGPoint)dialogueOffset { return ccp(-50,50); }
-
--(NSString*)dialogueText { return @"   "; }
+-(CGPoint)get_dialog_icon_offset { return ccp(-50,50); }
 
 -(void)play_anim:(NSString*)anim repeat:(BOOL)repeat {
 	_on_finish_play_anim = NULL;
