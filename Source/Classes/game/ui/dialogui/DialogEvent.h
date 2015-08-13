@@ -8,10 +8,12 @@
 
 #import <Foundation/Foundation.h>
 @class GameEngineScene;
+@class BGCharacterBase;
 
 @interface DialogEvent : NSObject
-+(DialogEvent*)cons_text:(NSString*)text;
++(DialogEvent*)cons_text:(NSString*)text speaker:(BGCharacterBase*)speaker;
 -(NSString*)get_text;
+-(BGCharacterBase*)get_speaker;
 -(void)i_update:(GameEngineScene*)g;
 -(BOOL)is_animation_finished;
 @end

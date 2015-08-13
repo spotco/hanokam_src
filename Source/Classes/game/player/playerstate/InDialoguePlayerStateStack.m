@@ -32,15 +32,14 @@
 	
     _dialog_ui = (DialogUI*)[g.get_ui ui_for_playerstate:PlayerState_InDialogue];
 	
-	_dialog_events = [_with_character get_dialog_list];
+	_dialog_events = [_with_character get_dialog_list:g];
 	_i_dialog_events = 0;
 	[self run_current_dialog_event:g];
     return self;
 }
 
 -(void)run_current_dialog_event:(GameEngineScene*)g {
-	DialogEvent *evt = [_dialog_events objectAtIndex:_i_dialog_events];
-	[_dialog_ui show_message:evt.get_text from_character:_with_character g:g];
+	[_dialog_ui show_message:[_dialog_events objectAtIndex:_i_dialog_events] g:g];
 }
 
 -(void)i_update:(GameEngineScene *)g {

@@ -11,6 +11,8 @@
 
 /*
 --TODO
+
+bug -- in dialogue z index above bg-fg posts
 quest + dialogue system stubs + simple quests
 	-quest1 attract certain number of enemies, ui
 	-quest2 reach certain depth (underwater temple)

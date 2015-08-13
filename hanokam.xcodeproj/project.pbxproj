@@ -107,8 +107,6 @@
 		7E386D4B1B23AB9900DDEFF6 /* AirToGroundTransitionPlayerStateStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E386D4A1B23AB9900DDEFF6 /* AirToGroundTransitionPlayerStateStack.m */; };
 		7E386D4C1B23AB9900DDEFF6 /* AirToGroundTransitionPlayerStateStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E386D4A1B23AB9900DDEFF6 /* AirToGroundTransitionPlayerStateStack.m */; };
 		7E386D4D1B23AB9900DDEFF6 /* AirToGroundTransitionPlayerStateStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E386D4A1B23AB9900DDEFF6 /* AirToGroundTransitionPlayerStateStack.m */; };
-		7E386D4E1B23F6DB00DDEFF6 /* BGCharacterBase.m in Sources */ = {isa = PBXBuildFile; fileRef = BB771AF21B22C910002BA595 /* BGCharacterBase.m */; };
-		7E386D4F1B23F6DC00DDEFF6 /* BGCharacterBase.m in Sources */ = {isa = PBXBuildFile; fileRef = BB771AF21B22C910002BA595 /* BGCharacterBase.m */; };
 		7E386D531B23F6FB00DDEFF6 /* DialogueBubble.m in Sources */ = {isa = PBXBuildFile; fileRef = BB771B001B22F602002BA595 /* DialogueBubble.m */; };
 		7E3BDEBA1B7AAC8F00D93B98 /* DialogEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E3BDEB91B7AAC8F00D93B98 /* DialogEvent.m */; };
 		7E3BDEBB1B7AAC9200D93B98 /* DialogEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E3BDEB91B7AAC8F00D93B98 /* DialogEvent.m */; };
@@ -193,15 +191,30 @@
 		7EA474001B7ACA3E00B7837A /* 5ceta_mono.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7EA473FF1B7ACA3E00B7837A /* 5ceta_mono.ttf */; };
 		7EA474011B7ACA3E00B7837A /* 5ceta_mono.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7EA473FF1B7ACA3E00B7837A /* 5ceta_mono.ttf */; };
 		7EA474021B7ACA3E00B7837A /* 5ceta_mono.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7EA473FF1B7ACA3E00B7837A /* 5ceta_mono.ttf */; };
-		7EA474071B7ACF7900B7837A /* BGCharacterVillagerFishGirl.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA474061B7ACF7900B7837A /* BGCharacterVillagerFishGirl.m */; };
-		7EA474081B7ACF7900B7837A /* BGCharacterVillagerFishGirl.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA474061B7ACF7900B7837A /* BGCharacterVillagerFishGirl.m */; };
-		7EA474091B7ACF7900B7837A /* BGCharacterVillagerFishGirl.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA474061B7ACF7900B7837A /* BGCharacterVillagerFishGirl.m */; };
 		7EA4740C1B7B4C7B00B7837A /* headicons_ss.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7EA4740A1B7B4C7B00B7837A /* headicons_ss.plist */; };
 		7EA4740D1B7B4C7B00B7837A /* headicons_ss.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7EA4740A1B7B4C7B00B7837A /* headicons_ss.plist */; };
 		7EA4740E1B7B4C7B00B7837A /* headicons_ss.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7EA4740A1B7B4C7B00B7837A /* headicons_ss.plist */; };
 		7EA4740F1B7B4C7B00B7837A /* headicons_ss.png in Resources */ = {isa = PBXBuildFile; fileRef = 7EA4740B1B7B4C7B00B7837A /* headicons_ss.png */; };
 		7EA474101B7B4C7B00B7837A /* headicons_ss.png in Resources */ = {isa = PBXBuildFile; fileRef = 7EA4740B1B7B4C7B00B7837A /* headicons_ss.png */; };
 		7EA474111B7B4C7B00B7837A /* headicons_ss.png in Resources */ = {isa = PBXBuildFile; fileRef = 7EA4740B1B7B4C7B00B7837A /* headicons_ss.png */; };
+		7EA4741D1B7B4F9700B7837A /* BGCharacterBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA474141B7B4F9700B7837A /* BGCharacterBase.m */; };
+		7EA4741E1B7B4F9700B7837A /* BGCharacterBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA474141B7B4F9700B7837A /* BGCharacterBase.m */; };
+		7EA4741F1B7B4F9700B7837A /* BGCharacterBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA474141B7B4F9700B7837A /* BGCharacterBase.m */; };
+		7EA474201B7B4F9700B7837A /* BGCharacterOldMan.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA474161B7B4F9700B7837A /* BGCharacterOldMan.m */; };
+		7EA474211B7B4F9700B7837A /* BGCharacterOldMan.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA474161B7B4F9700B7837A /* BGCharacterOldMan.m */; };
+		7EA474221B7B4F9700B7837A /* BGCharacterOldMan.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA474161B7B4F9700B7837A /* BGCharacterOldMan.m */; };
+		7EA474231B7B4F9700B7837A /* BGCharacterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA474181B7B4F9700B7837A /* BGCharacterTest.m */; };
+		7EA474241B7B4F9700B7837A /* BGCharacterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA474181B7B4F9700B7837A /* BGCharacterTest.m */; };
+		7EA474251B7B4F9700B7837A /* BGCharacterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA474181B7B4F9700B7837A /* BGCharacterTest.m */; };
+		7EA474261B7B4F9700B7837A /* BGCharacterVillagerFishGirl.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA4741A1B7B4F9700B7837A /* BGCharacterVillagerFishGirl.m */; };
+		7EA474271B7B4F9700B7837A /* BGCharacterVillagerFishGirl.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA4741A1B7B4F9700B7837A /* BGCharacterVillagerFishGirl.m */; };
+		7EA474281B7B4F9700B7837A /* BGCharacterVillagerFishGirl.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA4741A1B7B4F9700B7837A /* BGCharacterVillagerFishGirl.m */; };
+		7EA474291B7B4F9700B7837A /* BGCharacterVillagerFishWoman.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA4741C1B7B4F9700B7837A /* BGCharacterVillagerFishWoman.m */; };
+		7EA4742A1B7B4F9700B7837A /* BGCharacterVillagerFishWoman.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA4741C1B7B4F9700B7837A /* BGCharacterVillagerFishWoman.m */; };
+		7EA4742B1B7B4F9700B7837A /* BGCharacterVillagerFishWoman.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA4741C1B7B4F9700B7837A /* BGCharacterVillagerFishWoman.m */; };
+		7EA4742E1B7B4FA900B7837A /* BGCharacterPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA4742D1B7B4FA900B7837A /* BGCharacterPlayer.m */; };
+		7EA4742F1B7B4FA900B7837A /* BGCharacterPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA4742D1B7B4FA900B7837A /* BGCharacterPlayer.m */; };
+		7EA474301B7B4FA900B7837A /* BGCharacterPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA4742D1B7B4FA900B7837A /* BGCharacterPlayer.m */; };
 		7EA4A6411B64405300BE09CD /* Oldman.json in Resources */ = {isa = PBXBuildFile; fileRef = 7EA4A63E1B64405300BE09CD /* Oldman.json */; };
 		7EA4A6421B64405300BE09CD /* Oldman.json in Resources */ = {isa = PBXBuildFile; fileRef = 7EA4A63E1B64405300BE09CD /* Oldman.json */; };
 		7EA4A6431B64405300BE09CD /* Oldman.png in Resources */ = {isa = PBXBuildFile; fileRef = 7EA4A63F1B64405300BE09CD /* Oldman.png */; };
@@ -277,15 +290,6 @@
 		7ED822911B13D258001BB249 /* BGWater.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED822141B13D258001BB249 /* BGWater.m */; };
 		7ED822921B13D258001BB249 /* BGWater.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED822141B13D258001BB249 /* BGWater.m */; };
 		7ED822931B13D258001BB249 /* BGWater.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED822141B13D258001BB249 /* BGWater.m */; };
-		7ED822941B13D258001BB249 /* BGCharacterOldMan.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED822171B13D258001BB249 /* BGCharacterOldMan.m */; };
-		7ED822951B13D258001BB249 /* BGCharacterOldMan.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED822171B13D258001BB249 /* BGCharacterOldMan.m */; };
-		7ED822961B13D258001BB249 /* BGCharacterOldMan.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED822171B13D258001BB249 /* BGCharacterOldMan.m */; };
-		7ED822971B13D258001BB249 /* BGCharacterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED822191B13D258001BB249 /* BGCharacterTest.m */; };
-		7ED822981B13D258001BB249 /* BGCharacterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED822191B13D258001BB249 /* BGCharacterTest.m */; };
-		7ED822991B13D258001BB249 /* BGCharacterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED822191B13D258001BB249 /* BGCharacterTest.m */; };
-		7ED8229A1B13D258001BB249 /* BGCharacterVillagerFishWoman.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED8221B1B13D258001BB249 /* BGCharacterVillagerFishWoman.m */; };
-		7ED8229B1B13D258001BB249 /* BGCharacterVillagerFishWoman.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED8221B1B13D258001BB249 /* BGCharacterVillagerFishWoman.m */; };
-		7ED8229C1B13D258001BB249 /* BGCharacterVillagerFishWoman.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED8221B1B13D258001BB249 /* BGCharacterVillagerFishWoman.m */; };
 		7ED8229D1B13D258001BB249 /* ControlManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED8221E1B13D258001BB249 /* ControlManager.m */; };
 		7ED8229E1B13D258001BB249 /* ControlManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED8221E1B13D258001BB249 /* ControlManager.m */; };
 		7ED8229F1B13D258001BB249 /* ControlManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED8221E1B13D258001BB249 /* ControlManager.m */; };
@@ -406,27 +410,6 @@
 		7ED823841B13D2A6001BB249 /* underwater_spritesheet.png in Resources */ = {isa = PBXBuildFile; fileRef = 7ED823321B13D2A6001BB249 /* underwater_spritesheet.png */; };
 		7ED823851B13D2A6001BB249 /* underwater_spritesheet.png in Resources */ = {isa = PBXBuildFile; fileRef = 7ED823321B13D2A6001BB249 /* underwater_spritesheet.png */; };
 		7ED823861B13D2A6001BB249 /* underwater_spritesheet.png in Resources */ = {isa = PBXBuildFile; fileRef = 7ED823321B13D2A6001BB249 /* underwater_spritesheet.png */; };
-		7ED823871B13D2A6001BB249 /* hanokav2.json in Resources */ = {isa = PBXBuildFile; fileRef = 7ED823341B13D2A6001BB249 /* hanokav2.json */; };
-		7ED823881B13D2A6001BB249 /* hanokav2.json in Resources */ = {isa = PBXBuildFile; fileRef = 7ED823341B13D2A6001BB249 /* hanokav2.json */; };
-		7ED823891B13D2A6001BB249 /* hanokav2.json in Resources */ = {isa = PBXBuildFile; fileRef = 7ED823341B13D2A6001BB249 /* hanokav2.json */; };
-		7ED8238A1B13D2A6001BB249 /* hanokav2.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7ED823351B13D2A6001BB249 /* hanokav2.plist */; };
-		7ED8238B1B13D2A6001BB249 /* hanokav2.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7ED823351B13D2A6001BB249 /* hanokav2.plist */; };
-		7ED8238C1B13D2A6001BB249 /* hanokav2.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7ED823351B13D2A6001BB249 /* hanokav2.plist */; };
-		7ED8238D1B13D2A6001BB249 /* hanokav2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7ED823361B13D2A6001BB249 /* hanokav2.png */; };
-		7ED8238E1B13D2A6001BB249 /* hanokav2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7ED823361B13D2A6001BB249 /* hanokav2.png */; };
-		7ED8238F1B13D2A6001BB249 /* hanokav2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7ED823361B13D2A6001BB249 /* hanokav2.png */; };
-		7ED823901B13D2A6001BB249 /* hanokav2.scml in Resources */ = {isa = PBXBuildFile; fileRef = 7ED823371B13D2A6001BB249 /* hanokav2.scml */; };
-		7ED823911B13D2A6001BB249 /* hanokav2.scml in Resources */ = {isa = PBXBuildFile; fileRef = 7ED823371B13D2A6001BB249 /* hanokav2.scml */; };
-		7ED823921B13D2A6001BB249 /* hanokav2.scml in Resources */ = {isa = PBXBuildFile; fileRef = 7ED823371B13D2A6001BB249 /* hanokav2.scml */; };
-		7ED823931B13D2A6001BB249 /* hanoka v0.01.json in Resources */ = {isa = PBXBuildFile; fileRef = 7ED823391B13D2A6001BB249 /* hanoka v0.01.json */; };
-		7ED823941B13D2A6001BB249 /* hanoka v0.01.json in Resources */ = {isa = PBXBuildFile; fileRef = 7ED823391B13D2A6001BB249 /* hanoka v0.01.json */; };
-		7ED823951B13D2A6001BB249 /* hanoka v0.01.json in Resources */ = {isa = PBXBuildFile; fileRef = 7ED823391B13D2A6001BB249 /* hanoka v0.01.json */; };
-		7ED823961B13D2A6001BB249 /* hanoka v0.01.png in Resources */ = {isa = PBXBuildFile; fileRef = 7ED8233A1B13D2A6001BB249 /* hanoka v0.01.png */; };
-		7ED823971B13D2A6001BB249 /* hanoka v0.01.png in Resources */ = {isa = PBXBuildFile; fileRef = 7ED8233A1B13D2A6001BB249 /* hanoka v0.01.png */; };
-		7ED823981B13D2A6001BB249 /* hanoka v0.01.png in Resources */ = {isa = PBXBuildFile; fileRef = 7ED8233A1B13D2A6001BB249 /* hanoka v0.01.png */; };
-		7ED823991B13D2A6001BB249 /* hanoka v0.01.scml in Resources */ = {isa = PBXBuildFile; fileRef = 7ED8233B1B13D2A6001BB249 /* hanoka v0.01.scml */; };
-		7ED8239A1B13D2A6001BB249 /* hanoka v0.01.scml in Resources */ = {isa = PBXBuildFile; fileRef = 7ED8233B1B13D2A6001BB249 /* hanoka v0.01.scml */; };
-		7ED8239B1B13D2A6001BB249 /* hanoka v0.01.scml in Resources */ = {isa = PBXBuildFile; fileRef = 7ED8233B1B13D2A6001BB249 /* hanoka v0.01.scml */; };
 		7ED823A51B13D2A6001BB249 /* villager_fishwoman.json in Resources */ = {isa = PBXBuildFile; fileRef = 7ED823411B13D2A6001BB249 /* villager_fishwoman.json */; };
 		7ED823A61B13D2A6001BB249 /* villager_fishwoman.json in Resources */ = {isa = PBXBuildFile; fileRef = 7ED823411B13D2A6001BB249 /* villager_fishwoman.json */; };
 		7ED823A71B13D2A6001BB249 /* villager_fishwoman.json in Resources */ = {isa = PBXBuildFile; fileRef = 7ED823411B13D2A6001BB249 /* villager_fishwoman.json */; };
@@ -577,7 +560,6 @@
 		B77F1B4017B978D7009739AE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B77F1B3F17B978D7009739AE /* CoreGraphics.framework */; };
 		B77F1B4217B978D7009739AE /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B77F1B4117B978D7009739AE /* CoreText.framework */; };
 		B78A0B10198AF87200C63841 /* Published-Android in Resources */ = {isa = PBXBuildFile; fileRef = B78A0B0F198AF87200C63841 /* Published-Android */; };
-		BB771AF31B22C910002BA595 /* BGCharacterBase.m in Sources */ = {isa = PBXBuildFile; fileRef = BB771AF21B22C910002BA595 /* BGCharacterBase.m */; };
 		BB771B101B23D0A8002BA595 /* InDialoguePlayerStateStack.m in Sources */ = {isa = PBXBuildFile; fileRef = BB771B0F1B23D0A8002BA595 /* InDialoguePlayerStateStack.m */; };
 		BB771B1C1B23F763002BA595 /* InDialoguePlayerStateStack.m in Sources */ = {isa = PBXBuildFile; fileRef = BB771B0F1B23D0A8002BA595 /* InDialoguePlayerStateStack.m */; };
 		BB771B1F1B23F764002BA595 /* InDialoguePlayerStateStack.m in Sources */ = {isa = PBXBuildFile; fileRef = BB771B0F1B23D0A8002BA595 /* InDialoguePlayerStateStack.m */; };
@@ -752,10 +734,20 @@
 		7E9A585F1B23098C008EC348 /* FlashCount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlashCount.h; sourceTree = "<group>"; };
 		7E9A58601B23098C008EC348 /* FlashCount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlashCount.m; sourceTree = "<group>"; };
 		7EA473FF1B7ACA3E00B7837A /* 5ceta_mono.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = 5ceta_mono.ttf; sourceTree = "<group>"; };
-		7EA474051B7ACF7900B7837A /* BGCharacterVillagerFishGirl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGCharacterVillagerFishGirl.h; sourceTree = "<group>"; };
-		7EA474061B7ACF7900B7837A /* BGCharacterVillagerFishGirl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGCharacterVillagerFishGirl.m; sourceTree = "<group>"; };
 		7EA4740A1B7B4C7B00B7837A /* headicons_ss.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = headicons_ss.plist; sourceTree = "<group>"; };
 		7EA4740B1B7B4C7B00B7837A /* headicons_ss.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = headicons_ss.png; sourceTree = "<group>"; };
+		7EA474131B7B4F9700B7837A /* BGCharacterBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGCharacterBase.h; sourceTree = "<group>"; };
+		7EA474141B7B4F9700B7837A /* BGCharacterBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGCharacterBase.m; sourceTree = "<group>"; };
+		7EA474151B7B4F9700B7837A /* BGCharacterOldMan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGCharacterOldMan.h; sourceTree = "<group>"; };
+		7EA474161B7B4F9700B7837A /* BGCharacterOldMan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGCharacterOldMan.m; sourceTree = "<group>"; };
+		7EA474171B7B4F9700B7837A /* BGCharacterTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGCharacterTest.h; sourceTree = "<group>"; };
+		7EA474181B7B4F9700B7837A /* BGCharacterTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGCharacterTest.m; sourceTree = "<group>"; };
+		7EA474191B7B4F9700B7837A /* BGCharacterVillagerFishGirl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGCharacterVillagerFishGirl.h; sourceTree = "<group>"; };
+		7EA4741A1B7B4F9700B7837A /* BGCharacterVillagerFishGirl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGCharacterVillagerFishGirl.m; sourceTree = "<group>"; };
+		7EA4741B1B7B4F9700B7837A /* BGCharacterVillagerFishWoman.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGCharacterVillagerFishWoman.h; sourceTree = "<group>"; };
+		7EA4741C1B7B4F9700B7837A /* BGCharacterVillagerFishWoman.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGCharacterVillagerFishWoman.m; sourceTree = "<group>"; };
+		7EA4742C1B7B4FA900B7837A /* BGCharacterPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGCharacterPlayer.h; sourceTree = "<group>"; };
+		7EA4742D1B7B4FA900B7837A /* BGCharacterPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGCharacterPlayer.m; sourceTree = "<group>"; };
 		7EA4A63E1B64405300BE09CD /* Oldman.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Oldman.json; sourceTree = "<group>"; };
 		7EA4A63F1B64405300BE09CD /* Oldman.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Oldman.png; sourceTree = "<group>"; };
 		7EA4A6401B64405300BE09CD /* Oldman.scml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Oldman.scml; sourceTree = "<group>"; };
@@ -793,12 +785,6 @@
 		7ED822121B13D258001BB249 /* BGVillage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGVillage.m; sourceTree = "<group>"; };
 		7ED822131B13D258001BB249 /* BGWater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGWater.h; sourceTree = "<group>"; };
 		7ED822141B13D258001BB249 /* BGWater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGWater.m; sourceTree = "<group>"; };
-		7ED822161B13D258001BB249 /* BGCharacterOldMan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGCharacterOldMan.h; sourceTree = "<group>"; };
-		7ED822171B13D258001BB249 /* BGCharacterOldMan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGCharacterOldMan.m; sourceTree = "<group>"; };
-		7ED822181B13D258001BB249 /* BGCharacterTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGCharacterTest.h; sourceTree = "<group>"; };
-		7ED822191B13D258001BB249 /* BGCharacterTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGCharacterTest.m; sourceTree = "<group>"; };
-		7ED8221A1B13D258001BB249 /* BGCharacterVillagerFishWoman.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGCharacterVillagerFishWoman.h; sourceTree = "<group>"; };
-		7ED8221B1B13D258001BB249 /* BGCharacterVillagerFishWoman.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGCharacterVillagerFishWoman.m; sourceTree = "<group>"; };
 		7ED8221D1B13D258001BB249 /* ControlManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlManager.h; sourceTree = "<group>"; };
 		7ED8221E1B13D258001BB249 /* ControlManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ControlManager.m; sourceTree = "<group>"; };
 		7ED8221F1B13D258001BB249 /* GameEngineScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameEngineScene.h; sourceTree = "<group>"; };
@@ -869,13 +855,6 @@
 		7ED823301B13D2A6001BB249 /* sky_spritesheet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sky_spritesheet.png; sourceTree = "<group>"; };
 		7ED823311B13D2A6001BB249 /* underwater_spritesheet.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = underwater_spritesheet.plist; sourceTree = "<group>"; };
 		7ED823321B13D2A6001BB249 /* underwater_spritesheet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = underwater_spritesheet.png; sourceTree = "<group>"; };
-		7ED823341B13D2A6001BB249 /* hanokav2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = hanokav2.json; sourceTree = "<group>"; };
-		7ED823351B13D2A6001BB249 /* hanokav2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = hanokav2.plist; sourceTree = "<group>"; };
-		7ED823361B13D2A6001BB249 /* hanokav2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hanokav2.png; sourceTree = "<group>"; };
-		7ED823371B13D2A6001BB249 /* hanokav2.scml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = hanokav2.scml; sourceTree = "<group>"; };
-		7ED823391B13D2A6001BB249 /* hanoka v0.01.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "hanoka v0.01.json"; sourceTree = "<group>"; };
-		7ED8233A1B13D2A6001BB249 /* hanoka v0.01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hanoka v0.01.png"; sourceTree = "<group>"; };
-		7ED8233B1B13D2A6001BB249 /* hanoka v0.01.scml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "hanoka v0.01.scml"; sourceTree = "<group>"; };
 		7ED823411B13D2A6001BB249 /* villager_fishwoman.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = villager_fishwoman.json; sourceTree = "<group>"; };
 		7ED823421B13D2A6001BB249 /* villager_fishwoman.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = villager_fishwoman.png; sourceTree = "<group>"; };
 		7ED823431B13D2A6001BB249 /* villager_fishwoman.scml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = villager_fishwoman.scml; sourceTree = "<group>"; };
@@ -956,8 +935,6 @@
 		B77F1B4117B978D7009739AE /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		B78A0B0F198AF87200C63841 /* Published-Android */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Published-Android"; sourceTree = "<group>"; };
 		B7B3713D180358F1007369CC /* libObjectiveChipmunk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libObjectiveChipmunk.a; path = "../libs/cocos2d-iphone/external/Chipmunk/xcode/build/Debug-iphoneos/libObjectiveChipmunk.a"; sourceTree = "<group>"; };
-		BB771AF11B22C910002BA595 /* BGCharacterBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGCharacterBase.h; sourceTree = "<group>"; };
-		BB771AF21B22C910002BA595 /* BGCharacterBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGCharacterBase.m; sourceTree = "<group>"; };
 		BB771B001B22F602002BA595 /* DialogueBubble.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DialogueBubble.m; path = /Users/spotco/Documents/procque/hanokam.spritebuilder/Source/Classes/game/ui/DialogueBubble.m; sourceTree = "<absolute>"; };
 		BB771B0E1B23D0A8002BA595 /* InDialoguePlayerStateStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InDialoguePlayerStateStack.h; sourceTree = "<group>"; };
 		BB771B0F1B23D0A8002BA595 /* InDialoguePlayerStateStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InDialoguePlayerStateStack.m; sourceTree = "<group>"; };
@@ -1295,6 +1272,25 @@
 			path = test;
 			sourceTree = "<group>";
 		};
+		7EA474121B7B4F9700B7837A /* bgcharacters */ = {
+			isa = PBXGroup;
+			children = (
+				7EA474131B7B4F9700B7837A /* BGCharacterBase.h */,
+				7EA474141B7B4F9700B7837A /* BGCharacterBase.m */,
+				7EA474151B7B4F9700B7837A /* BGCharacterOldMan.h */,
+				7EA474161B7B4F9700B7837A /* BGCharacterOldMan.m */,
+				7EA474171B7B4F9700B7837A /* BGCharacterTest.h */,
+				7EA474181B7B4F9700B7837A /* BGCharacterTest.m */,
+				7EA474191B7B4F9700B7837A /* BGCharacterVillagerFishGirl.h */,
+				7EA4741A1B7B4F9700B7837A /* BGCharacterVillagerFishGirl.m */,
+				7EA4741B1B7B4F9700B7837A /* BGCharacterVillagerFishWoman.h */,
+				7EA4741C1B7B4F9700B7837A /* BGCharacterVillagerFishWoman.m */,
+				7EA4742C1B7B4FA900B7837A /* BGCharacterPlayer.h */,
+				7EA4742D1B7B4FA900B7837A /* BGCharacterPlayer.m */,
+			);
+			path = bgcharacters;
+			sourceTree = "<group>";
+		};
 		7EA4A6471B646A6500BE09CD /* tex */ = {
 			isa = PBXGroup;
 			children = (
@@ -1394,6 +1390,7 @@
 		7ED8220A1B13D258001BB249 /* bg */ = {
 			isa = PBXGroup;
 			children = (
+				7EA474121B7B4F9700B7837A /* bgcharacters */,
 				7ED8220D1B13D258001BB249 /* BGReflection.h */,
 				7ED8220E1B13D258001BB249 /* BGReflection.m */,
 				7ED8220F1B13D258001BB249 /* BGSky.h */,
@@ -1402,7 +1399,6 @@
 				7ED822121B13D258001BB249 /* BGVillage.m */,
 				7ED822131B13D258001BB249 /* BGWater.h */,
 				7ED822141B13D258001BB249 /* BGWater.m */,
-				7ED822151B13D258001BB249 /* elements */,
 				20E087D41B43660200AD486A /* RippleInfo.h */,
 				20E087D51B43660200AD486A /* RippleInfo.m */,
 				7E45BECF1B50F97F00D93D78 /* UnderwaterTreasureSprite.h */,
@@ -1413,23 +1409,6 @@
 				7E0D32ED1B72A24D004398E7 /* BGWaterLineBelow.m */,
 			);
 			path = bg;
-			sourceTree = "<group>";
-		};
-		7ED822151B13D258001BB249 /* elements */ = {
-			isa = PBXGroup;
-			children = (
-				7ED822161B13D258001BB249 /* BGCharacterOldMan.h */,
-				7ED822171B13D258001BB249 /* BGCharacterOldMan.m */,
-				7ED822181B13D258001BB249 /* BGCharacterTest.h */,
-				7ED822191B13D258001BB249 /* BGCharacterTest.m */,
-				7ED8221A1B13D258001BB249 /* BGCharacterVillagerFishWoman.h */,
-				7ED8221B1B13D258001BB249 /* BGCharacterVillagerFishWoman.m */,
-				BB771AF11B22C910002BA595 /* BGCharacterBase.h */,
-				BB771AF21B22C910002BA595 /* BGCharacterBase.m */,
-				7EA474051B7ACF7900B7837A /* BGCharacterVillagerFishGirl.h */,
-				7EA474061B7ACF7900B7837A /* BGCharacterVillagerFishGirl.m */,
-			);
-			path = elements;
 			sourceTree = "<group>";
 		};
 		7ED8221C1B13D258001BB249 /* core */ = {
@@ -1622,26 +1601,11 @@
 			isa = PBXGroup;
 			children = (
 				7EA863331B5CF63400FE8163 /* Fishgirl */,
-				7ED823341B13D2A6001BB249 /* hanokav2.json */,
-				7ED823351B13D2A6001BB249 /* hanokav2.plist */,
-				7ED823361B13D2A6001BB249 /* hanokav2.png */,
-				7ED823371B13D2A6001BB249 /* hanokav2.scml */,
 				7E8CF0A01B3E8BBB00FA6277 /* hanoka */,
-				7ED823381B13D2A6001BB249 /* old */,
 				7ED8233C1B13D2A6001BB249 /* oldman */,
 				7ED823401B13D2A6001BB249 /* villager_fishwoman */,
 			);
 			path = character;
-			sourceTree = "<group>";
-		};
-		7ED823381B13D2A6001BB249 /* old */ = {
-			isa = PBXGroup;
-			children = (
-				7ED823391B13D2A6001BB249 /* hanoka v0.01.json */,
-				7ED8233A1B13D2A6001BB249 /* hanoka v0.01.png */,
-				7ED8233B1B13D2A6001BB249 /* hanoka v0.01.scml */,
-			);
-			path = old;
 			sourceTree = "<group>";
 		};
 		7ED8233C1B13D2A6001BB249 /* oldman */ = {
@@ -2066,9 +2030,7 @@
 				7A4036F719DE401F007B6E8F /* iPad-old.png in Resources */,
 				7ED823AA1B13D2A6001BB249 /* villager_fishwoman.png in Resources */,
 				7E4F09A91B252DE4000945B8 /* alpha_gradient_sprite.fsh in Resources */,
-				7ED8238F1B13D2A6001BB249 /* hanokav2.png in Resources */,
 				7ED8236E1B13D2A6001BB249 /* bg_test_tile_sky.png in Resources */,
-				7ED823921B13D2A6001BB249 /* hanokav2.scml in Resources */,
 				7EE5664A1B411F3C00D63556 /* hanoka_player_redgarb.png in Resources */,
 				7ED823831B13D2A6001BB249 /* underwater_spritesheet.plist in Resources */,
 				7EBC2AEB1B1C4EDF00AC47F1 /* gameplay_elements_ss.plist in Resources */,
@@ -2089,11 +2051,9 @@
 				7E7C0D3F1B55077300407DCB /* effects_enemy_ss.plist in Resources */,
 				7EE566471B411F3C00D63556 /* hanoka_player_redgarb.json in Resources */,
 				7ED8236B1B13D2A6001BB249 /* bg_spritesheet_1.png in Resources */,
-				7ED8238C1B13D2A6001BB249 /* hanokav2.plist in Resources */,
 				7EA474111B7B4C7B00B7837A /* headicons_ss.png in Resources */,
 				7ECDAA781B75632800B23419 /* dialog_ui_ss.plist in Resources */,
 				7A4036FB19DE401F007B6E8F /* iPhone-old.png in Resources */,
-				7ED823891B13D2A6001BB249 /* hanokav2.json in Resources */,
 				7E8CF0AD1B3E8BBB00FA6277 /* hanoka_bow.png in Resources */,
 				7ED823D11B13D2A6001BB249 /* abovewater_am_up.vsh in Resources */,
 				7ED823711B13D2A6001BB249 /* bg_test_tile_water.png in Resources */,
@@ -2110,7 +2070,6 @@
 				7A59498B19E38E4A00F65F90 /* MainMenu.xib in Resources */,
 				7ED823CB1B13D2A6001BB249 /* puffer_enemy_ss.png in Resources */,
 				7ED823AD1B13D2A6001BB249 /* villager_fishwoman.scml in Resources */,
-				7ED823951B13D2A6001BB249 /* hanoka v0.01.json in Resources */,
 				7ED823C81B13D2A6001BB249 /* puffer_enemy_ss.plist in Resources */,
 				7E8CF0B91B3E8BBB00FA6277 /* hanoka_sword.json in Resources */,
 				7A4036FE19DE401F007B6E8F /* iPhone@2x.png in Resources */,
@@ -2124,9 +2083,7 @@
 				7A40370019DE401F007B6E8F /* Settings@2x.png in Resources */,
 				7EA4740E1B7B4C7B00B7837A /* headicons_ss.plist in Resources */,
 				7E7C0D421B55077300407DCB /* effects_enemy_ss.png in Resources */,
-				7ED823981B13D2A6001BB249 /* hanoka v0.01.png in Resources */,
 				7ED823741B13D2A6001BB249 /* bg_underwater_surface_gradient.png in Resources */,
-				7ED8239B1B13D2A6001BB249 /* hanoka v0.01.scml in Resources */,
 				7ED823681B13D2A6001BB249 /* bg_spritesheet_1.plist in Resources */,
 				7ED823C21B13D2A6001BB249 /* hud_spritesheet.png in Resources */,
 				7ED823BF1B13D2A6001BB249 /* hud_spritesheet.plist in Resources */,
@@ -2152,7 +2109,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7ED823941B13D2A6001BB249 /* hanoka v0.01.json in Resources */,
 				7ED8237F1B13D2A6001BB249 /* sky_spritesheet.png in Resources */,
 				7E8CF0BB1B3E8BBB00FA6277 /* hanoka_sword.png in Resources */,
 				7ED823DC1B13D2A6001BB249 /* reflection_am_down.vsh in Resources */,
@@ -2192,18 +2148,14 @@
 				7ECDAA7A1B75632800B23419 /* dialog_ui_ss.png in Resources */,
 				7ED823D01B13D2A6001BB249 /* abovewater_am_up.vsh in Resources */,
 				7EA4A6421B64405300BE09CD /* Oldman.json in Resources */,
-				7ED8238E1B13D2A6001BB249 /* hanokav2.png in Resources */,
 				7E7C0D3E1B55077300407DCB /* effects_enemy_ss.plist in Resources */,
 				927F61B1196C771E000F43EF /* iPad-old@2x.png in Resources */,
-				7ED8238B1B13D2A6001BB249 /* hanokav2.plist in Resources */,
 				927F61B2196C771E000F43EF /* iPhone-old@2x.png in Resources */,
 				927F61B4196C771E000F43EF /* Settings@2x.png in Resources */,
-				7ED8239A1B13D2A6001BB249 /* hanoka v0.01.scml in Resources */,
 				927F61B5196C771E000F43EF /* Default-Landscape~ipad.png in Resources */,
 				7ED8237C1B13D2A6001BB249 /* sky_spritesheet.plist in Resources */,
 				B78A0B10198AF87200C63841 /* Published-Android in Resources */,
 				7EA4A64E1B646A6500BE09CD /* bg_water_top_waterline.png in Resources */,
-				7ED823971B13D2A6001BB249 /* hanoka v0.01.png in Resources */,
 				7ED823BE1B13D2A6001BB249 /* hud_spritesheet.plist in Resources */,
 				927F61B6196C771E000F43EF /* iPhone-old.png in Resources */,
 				7ED823AF1B13D2A6001BB249 /* blank.png in Resources */,
@@ -2220,10 +2172,8 @@
 				927F61B8196C771E000F43EF /* Default-568h@2x.png in Resources */,
 				7EE566461B411F3C00D63556 /* hanoka_player_redgarb.json in Resources */,
 				7E8CF0B21B3E8BBB00FA6277 /* hanoka_player.png in Resources */,
-				7ED823881B13D2A6001BB249 /* hanokav2.json in Resources */,
 				7E7C0D441B55077300407DCB /* effects_hanoka_ss.plist in Resources */,
 				7ED823701B13D2A6001BB249 /* bg_test_tile_water.png in Resources */,
-				7ED823911B13D2A6001BB249 /* hanokav2.scml in Resources */,
 				7EA4A6501B646A6500BE09CD /* bg_water_top_waterlinegrad.png in Resources */,
 				7E0D32F31B72A64D004398E7 /* bg_water_bottom_surfacegrad.png in Resources */,
 				927F61B9196C771E000F43EF /* iPhone@2x.png in Resources */,
@@ -2249,7 +2199,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7ED823931B13D2A6001BB249 /* hanoka v0.01.json in Resources */,
 				7ED8237E1B13D2A6001BB249 /* sky_spritesheet.png in Resources */,
 				7E8CF0BA1B3E8BBB00FA6277 /* hanoka_sword.png in Resources */,
 				7ED823DB1B13D2A6001BB249 /* reflection_am_down.vsh in Resources */,
@@ -2290,18 +2239,14 @@
 				7EA4A6411B64405300BE09CD /* Oldman.json in Resources */,
 				7ED823CF1B13D2A6001BB249 /* abovewater_am_up.vsh in Resources */,
 				7E7C0D3D1B55077300407DCB /* effects_enemy_ss.plist in Resources */,
-				7ED8238D1B13D2A6001BB249 /* hanokav2.png in Resources */,
 				B71F5912188484E7003F4D28 /* iPad-old@2x.png in Resources */,
-				7ED8238A1B13D2A6001BB249 /* hanokav2.plist in Resources */,
 				B71F5916188484E7003F4D28 /* iPhone-old@2x.png in Resources */,
 				B737893B180761570076A88C /* Published-iOS in Resources */,
-				7ED823991B13D2A6001BB249 /* hanoka v0.01.scml in Resources */,
 				B71F591A188484E7003F4D28 /* Settings@2x.png in Resources */,
 				7ED8237B1B13D2A6001BB249 /* sky_spritesheet.plist in Resources */,
 				7EA4A64D1B646A6500BE09CD /* bg_water_top_waterline.png in Resources */,
 				7E9A44BF1B1DA29C00111C35 /* charge_circle.fsh in Resources */,
 				B7378976180762440076A88C /* Default-Landscape~ipad.png in Resources */,
-				7ED823961B13D2A6001BB249 /* hanoka v0.01.png in Resources */,
 				7ED823BD1B13D2A6001BB249 /* hud_spritesheet.plist in Resources */,
 				B71F5915188484E7003F4D28 /* iPhone-old.png in Resources */,
 				7EA4740C1B7B4C7B00B7837A /* headicons_ss.plist in Resources */,
@@ -2316,10 +2261,8 @@
 				7ED823A81B13D2A6001BB249 /* villager_fishwoman.png in Resources */,
 				7E8CF0B11B3E8BBB00FA6277 /* hanoka_player.png in Resources */,
 				B7378975180762440076A88C /* Default-568h@2x.png in Resources */,
-				7ED823871B13D2A6001BB249 /* hanokav2.json in Resources */,
 				7E7C0D431B55077300407DCB /* effects_hanoka_ss.plist in Resources */,
 				7ED8236F1B13D2A6001BB249 /* bg_test_tile_water.png in Resources */,
-				7ED823901B13D2A6001BB249 /* hanokav2.scml in Resources */,
 				7EA4A64F1B646A6500BE09CD /* bg_water_top_waterlinegrad.png in Resources */,
 				7E0D32F21B72A64D004398E7 /* bg_water_bottom_surfacegrad.png in Resources */,
 				B71F5918188484E7003F4D28 /* iPhone@2x.png in Resources */,
@@ -2401,6 +2344,7 @@
 				7ED822841B13D258001BB249 /* PufferBasicAirEnemy.m in Sources */,
 				7EFEE79E1B1F06880055C989 /* PlayerChargeIndicator.m in Sources */,
 				7EB78B261B57A05500FB9892 /* SPLabel.m in Sources */,
+				7EA4742B1B7B4F9700B7837A /* BGCharacterVillagerFishWoman.m in Sources */,
 				7ED822931B13D258001BB249 /* BGWater.m in Sources */,
 				7E4F09961B24FC6B000945B8 /* SwordSlashParticle.m in Sources */,
 				7E386D241B239FE600DDEFF6 /* OnGroundPlayerStateStack.m in Sources */,
@@ -2408,7 +2352,6 @@
 				7ED8230B1B13D258001BB249 /* SpriterNode.m in Sources */,
 				7ED822811B13D258001BB249 /* BasicAirEnemy.m in Sources */,
 				7E0D6D421B43C9B400F2023F /* BasicWaterEnemy.m in Sources */,
-				7E386D4F1B23F6DC00DDEFF6 /* BGCharacterBase.m in Sources */,
 				7E4F09A51B2523AE000945B8 /* SPCCSpriteAnimator.m in Sources */,
 				7EF5576C1B42A59E00992001 /* PlayerUIArrowsIndicator.m in Sources */,
 				7ED822F01B13D258001BB249 /* Common.m in Sources */,
@@ -2417,23 +2360,24 @@
 				7ED8227E1B13D258001BB249 /* AirEnemyManager.m in Sources */,
 				7ED822F91B13D258001BB249 /* GEventDispatcher.m in Sources */,
 				7E8CF0C21B3E8E0400FA6277 /* TestScene.m in Sources */,
+				7EA474251B7B4F9700B7837A /* BGCharacterTest.m in Sources */,
 				7ED8229F1B13D258001BB249 /* ControlManager.m in Sources */,
 				7A40360419DDEE84007B6E8F /* main.m in Sources */,
 				7ED823111B13D258001BB249 /* SpriterTypes.m in Sources */,
 				7E386D311B23A0AC00DDEFF6 /* PlayerLandParams.m in Sources */,
 				7ED8231D1B13D258001BB249 /* Vec3D.m in Sources */,
-				7EA474091B7ACF7900B7837A /* BGCharacterVillagerFishGirl.m in Sources */,
 				7E4F099B1B250E06000945B8 /* FlashEvery.m in Sources */,
 				7EF557601B42A59E00992001 /* EnemyUIHealthIndicators.m in Sources */,
 				7ED822901B13D258001BB249 /* BGVillage.m in Sources */,
 				7ED822DB1B13D258001BB249 /* MainMenuScene.m in Sources */,
 				7E45BEDA1B51155100D93D78 /* ObjectPool.m in Sources */,
-				7ED822991B13D258001BB249 /* BGCharacterTest.m in Sources */,
 				7ED8228A1B13D258001BB249 /* BGReflection.m in Sources */,
+				7EA474301B7B4FA900B7837A /* BGCharacterPlayer.m in Sources */,
 				7E386D2E1B23A0AC00DDEFF6 /* PlayerAirCombatParams.m in Sources */,
 				7ED822CF1B13D258001BB249 /* GameUI.m in Sources */,
 				7ED822DE1B13D258001BB249 /* TouchButton.m in Sources */,
 				7E3BDEBC1B7AAC9200D93B98 /* DialogEvent.m in Sources */,
+				7EA474221B7B4F9700B7837A /* BGCharacterOldMan.m in Sources */,
 				7ED8230E1B13D258001BB249 /* SpriterNodeCache.m in Sources */,
 				7E386D3E1B23A59A00DDEFF6 /* DivePlayerStateStack.m in Sources */,
 				7ED822A21B13D258001BB249 /* GameEngineScene.m in Sources */,
@@ -2449,12 +2393,12 @@
 				7ED822AE1B13D258001BB249 /* Particle.m in Sources */,
 				7E9A58631B23098C008EC348 /* FlashCount.m in Sources */,
 				7E386D531B23F6FB00DDEFF6 /* DialogueBubble.m in Sources */,
-				7ED8229C1B13D258001BB249 /* BGCharacterVillagerFishWoman.m in Sources */,
 				7ED823021B13D258001BB249 /* ShaderManager.m in Sources */,
 				7ED822C01B13D258001BB249 /* Player.m in Sources */,
 				7EF557571B42A59E00992001 /* DialogueBubble.m in Sources */,
 				7ED823FF1B13DD59001BB249 /* md5.c in Sources */,
 				7ED823141B13D258001BB249 /* SpriterUtil.m in Sources */,
+				7EA474281B7B4F9700B7837A /* BGCharacterVillagerFishGirl.m in Sources */,
 				7ED822FC1B13D258001BB249 /* PolyLib.m in Sources */,
 				7EF5575A1B42A59E00992001 /* DialogUI.m in Sources */,
 				7ED823201B13D258001BB249 /* WebRequest.m in Sources */,
@@ -2477,6 +2421,7 @@
 				7E45BED31B50F97F00D93D78 /* UnderwaterTreasureSprite.m in Sources */,
 				7A59498E19E3941300F65F90 /* AppDelegate.m in Sources */,
 				7ED822D81B13D258001BB249 /* GameMain.m in Sources */,
+				7EA4741F1B7B4F9700B7837A /* BGCharacterBase.m in Sources */,
 				7EF5575D1B42A59E00992001 /* DiveUI.m in Sources */,
 				7E4F09B71B258CA2000945B8 /* Arrow.m in Sources */,
 				7E0D6D4D1B43CE5100F2023F /* PufferEnemySprite.m in Sources */,
@@ -2484,7 +2429,6 @@
 				7ECCC6661B3D27F0006A70B9 /* EnemyProjectile.m in Sources */,
 				7ED822BA1B13D258001BB249 /* RotateFadeOutParticle.m in Sources */,
 				7ED823051B13D258001BB249 /* SpriterData.m in Sources */,
-				7ED822961B13D258001BB249 /* BGCharacterOldMan.m in Sources */,
 				7E386D4D1B23AB9900DDEFF6 /* AirToGroundTransitionPlayerStateStack.m in Sources */,
 				7EF557631B42A59E00992001 /* EnemyWarningUI.m in Sources */,
 				7E386D431B23A75F00DDEFF6 /* DiveReturnPlayerStateStack.m in Sources */,
@@ -2502,6 +2446,7 @@
 				7ED822D71B13D258001BB249 /* GameMain.m in Sources */,
 				7ED8227D1B13D258001BB249 /* AirEnemyManager.m in Sources */,
 				7EB78B251B57A05500FB9892 /* SPLabel.m in Sources */,
+				7EA4742A1B7B4F9700B7837A /* BGCharacterVillagerFishWoman.m in Sources */,
 				7E386D331B23A0AC00DDEFF6 /* PlayerUnderwaterCombatParams.m in Sources */,
 				7EF557651B42A59E00992001 /* InAirUI.m in Sources */,
 				7E4F09951B24FC6B000945B8 /* SwordSlashParticle.m in Sources */,
@@ -2511,19 +2456,17 @@
 				7E0D6D411B43C9B400F2023F /* BasicWaterEnemy.m in Sources */,
 				7ED822831B13D258001BB249 /* PufferBasicAirEnemy.m in Sources */,
 				7ED822AA1B13D258001BB249 /* ChainedMovementParticle.m in Sources */,
-				7ED822951B13D258001BB249 /* BGCharacterOldMan.m in Sources */,
 				20E087CB1B43607A00AD486A /* UnderwaterBubbleParticle.m in Sources */,
 				7E4F09A41B2523AE000945B8 /* SPCCSpriteAnimator.m in Sources */,
 				7ED822CE1B13D258001BB249 /* GameUI.m in Sources */,
 				7EFEE79F1B1F06970055C989 /* SPRadialFillSprite.m in Sources */,
 				7E0D6D4C1B43CE5100F2023F /* PufferEnemySprite.m in Sources */,
 				7ED823161B13D258001BB249 /* SpriterXMLParser.m in Sources */,
+				7EA474241B7B4F9700B7837A /* BGCharacterTest.m in Sources */,
 				7ED822D11B13D258001BB249 /* HealthBar.m in Sources */,
 				7EF5575F1B42A59E00992001 /* EnemyUIHealthIndicators.m in Sources */,
-				7ED8229B1B13D258001BB249 /* BGCharacterVillagerFishWoman.m in Sources */,
 				7ED822F51B13D258001BB249 /* FileCache.m in Sources */,
 				7E386D1E1B239EDE00DDEFF6 /* BasePlayerStateStack.m in Sources */,
-				7EA474081B7ACF7900B7837A /* BGCharacterVillagerFishGirl.m in Sources */,
 				7ED822AD1B13D258001BB249 /* Particle.m in Sources */,
 				BB771B1C1B23F763002BA595 /* InDialoguePlayerStateStack.m in Sources */,
 				7E0D6D3C1B43C51B00F2023F /* WaterEnemyManager.m in Sources */,
@@ -2531,10 +2474,12 @@
 				7ED8231F1B13D258001BB249 /* WebRequest.m in Sources */,
 				7EF557561B42A59E00992001 /* DialogueBubble.m in Sources */,
 				7E4F099A1B250E06000945B8 /* FlashEvery.m in Sources */,
+				7EA4742F1B7B4FA900B7837A /* BGCharacterPlayer.m in Sources */,
 				7EF557621B42A59E00992001 /* EnemyWarningUI.m in Sources */,
 				7E8CF0C11B3E8E0400FA6277 /* TestScene.m in Sources */,
 				7E386D231B239FE600DDEFF6 /* OnGroundPlayerStateStack.m in Sources */,
 				7E3BDEBB1B7AAC9200D93B98 /* DialogEvent.m in Sources */,
+				7EA474211B7B4F9700B7837A /* BGCharacterOldMan.m in Sources */,
 				7ED8228C1B13D258001BB249 /* BGSky.m in Sources */,
 				7ED822F81B13D258001BB249 /* GEventDispatcher.m in Sources */,
 				7E0D6D511B43DCB600F2023F /* EnemyNoticeParticle.m in Sources */,
@@ -2555,6 +2500,7 @@
 				7ED823041B13D258001BB249 /* SpriterData.m in Sources */,
 				7ED8230A1B13D258001BB249 /* SpriterNode.m in Sources */,
 				7ED823101B13D258001BB249 /* SpriterTypes.m in Sources */,
+				7EA474271B7B4F9700B7837A /* BGCharacterVillagerFishGirl.m in Sources */,
 				7E386D3D1B23A59A00DDEFF6 /* DivePlayerStateStack.m in Sources */,
 				7ED822FE1B13D258001BB249 /* Resource.m in Sources */,
 				7ED822DD1B13D258001BB249 /* TouchButton.m in Sources */,
@@ -2568,7 +2514,6 @@
 				7E386D2D1B23A0AC00DDEFF6 /* PlayerAirCombatParams.m in Sources */,
 				7EF557681B42A59E00992001 /* PlayerUIAimReticule.m in Sources */,
 				7ED822CB1B13D258001BB249 /* PlayerProjectile.m in Sources */,
-				7E386D4E1B23F6DB00DDEFF6 /* BGCharacterBase.m in Sources */,
 				7ED822801B13D258001BB249 /* BasicAirEnemy.m in Sources */,
 				7E9A58531B22EFA3008EC348 /* AlphaGradientSprite.m in Sources */,
 				7E0D32EF1B72A24D004398E7 /* BGWaterLineBelow.m in Sources */,
@@ -2578,9 +2523,9 @@
 				7E4F09B11B258C9A000945B8 /* ChargedArrow.m in Sources */,
 				20E087D21B4362A800AD486A /* DelayAction.m in Sources */,
 				7E0D6D461B43CA6800F2023F /* PufferBasicWaterEnemy.m in Sources */,
+				7EA4741E1B7B4F9700B7837A /* BGCharacterBase.m in Sources */,
 				7EF557591B42A59E00992001 /* DialogUI.m in Sources */,
 				7ED822F21B13D258001BB249 /* DataStore.m in Sources */,
-				7ED822981B13D258001BB249 /* BGCharacterTest.m in Sources */,
 				7E4F09B61B258CA2000945B8 /* Arrow.m in Sources */,
 				7ED822BC1B13D258001BB249 /* UIBossIntroParticle.m in Sources */,
 				7E386D381B23A0BE00DDEFF6 /* PlayerSharedParams.m in Sources */,
@@ -2599,7 +2544,6 @@
 				7E0D32E61B7296B8004398E7 /* BGWaterLineAbove.m in Sources */,
 				7E386D411B23A75F00DDEFF6 /* DiveReturnPlayerStateStack.m in Sources */,
 				7E386D3C1B23A59A00DDEFF6 /* DivePlayerStateStack.m in Sources */,
-				7EA474071B7ACF7900B7837A /* BGCharacterVillagerFishGirl.m in Sources */,
 				7ED823151B13D258001BB249 /* SpriterXMLParser.m in Sources */,
 				7E0D32EE1B72A24D004398E7 /* BGWaterLineBelow.m in Sources */,
 				20E087D61B43660200AD486A /* RippleInfo.m in Sources */,
@@ -2625,6 +2569,7 @@
 				7EF557641B42A59E00992001 /* InAirUI.m in Sources */,
 				7EF5575B1B42A59E00992001 /* DiveUI.m in Sources */,
 				7ED822F71B13D258001BB249 /* GEventDispatcher.m in Sources */,
+				7EA474261B7B4F9700B7837A /* BGCharacterVillagerFishGirl.m in Sources */,
 				7ED8229D1B13D258001BB249 /* ControlManager.m in Sources */,
 				7E0D6D4B1B43CE5100F2023F /* PufferEnemySprite.m in Sources */,
 				7EF557611B42A59E00992001 /* EnemyWarningUI.m in Sources */,
@@ -2640,7 +2585,6 @@
 				7EF557551B42A59E00992001 /* DialogueBubble.m in Sources */,
 				7E386D461B23A95B00DDEFF6 /* InAirPlayerStateStack.m in Sources */,
 				7ED822D91B13D258001BB249 /* MainMenuScene.m in Sources */,
-				7ED822971B13D258001BB249 /* BGCharacterTest.m in Sources */,
 				BB771B101B23D0A8002BA595 /* InDialoguePlayerStateStack.m in Sources */,
 				7ECCC6691B3D2894006A70B9 /* EnemyBulletProjectile.m in Sources */,
 				7ED822881B13D258001BB249 /* BGReflection.m in Sources */,
@@ -2649,6 +2593,7 @@
 				7ED822CD1B13D258001BB249 /* GameUI.m in Sources */,
 				7ED822DC1B13D258001BB249 /* TouchButton.m in Sources */,
 				7ED8230C1B13D258001BB249 /* SpriterNodeCache.m in Sources */,
+				7EA4741D1B7B4F9700B7837A /* BGCharacterBase.m in Sources */,
 				7E4F09B01B258C9A000945B8 /* ChargedArrow.m in Sources */,
 				7ED822A01B13D258001BB249 /* GameEngineScene.m in Sources */,
 				7ED822CA1B13D258001BB249 /* PlayerProjectile.m in Sources */,
@@ -2656,8 +2601,6 @@
 				7ECCC6641B3D27F0006A70B9 /* EnemyProjectile.m in Sources */,
 				7ED822D01B13D258001BB249 /* HealthBar.m in Sources */,
 				7ED822AC1B13D258001BB249 /* Particle.m in Sources */,
-				BB771AF31B22C910002BA595 /* BGCharacterBase.m in Sources */,
-				7ED8229A1B13D258001BB249 /* BGCharacterVillagerFishWoman.m in Sources */,
 				7E9A44C41B1DADBA00111C35 /* PlayerChargeIndicator.m in Sources */,
 				7E8CF0C01B3E8E0400FA6277 /* TestScene.m in Sources */,
 				7EF5576D1B42A59E00992001 /* PlayerUIHealthIndicator.m in Sources */,
@@ -2666,17 +2609,20 @@
 				20E087CA1B43607A00AD486A /* UnderwaterBubbleParticle.m in Sources */,
 				7ED822BE1B13D258001BB249 /* Player.m in Sources */,
 				7E0D6D3B1B43C51B00F2023F /* WaterEnemyManager.m in Sources */,
+				7EA474201B7B4F9700B7837A /* BGCharacterOldMan.m in Sources */,
 				7ED823FD1B13DD59001BB249 /* md5.c in Sources */,
 				7E4F09991B250E06000945B8 /* FlashEvery.m in Sources */,
 				7ED823121B13D258001BB249 /* SpriterUtil.m in Sources */,
 				7E386D4B1B23AB9900DDEFF6 /* AirToGroundTransitionPlayerStateStack.m in Sources */,
 				7ED822FA1B13D258001BB249 /* PolyLib.m in Sources */,
 				20E087D11B4362A800AD486A /* DelayAction.m in Sources */,
+				7EA474291B7B4F9700B7837A /* BGCharacterVillagerFishWoman.m in Sources */,
 				7ED8231E1B13D258001BB249 /* WebRequest.m in Sources */,
 				7ED822F11B13D258001BB249 /* DataStore.m in Sources */,
 				7ED822F41B13D258001BB249 /* FileCache.m in Sources */,
 				7ED822BB1B13D258001BB249 /* UIBossIntroParticle.m in Sources */,
 				7EF557701B42A59E00992001 /* VillageUI.m in Sources */,
+				7EA4742E1B7B4FA900B7837A /* BGCharacterPlayer.m in Sources */,
 				7E8377671B14619900EFC0D9 /* SPDeviceAccelerometer.m in Sources */,
 				7E45BED11B50F97F00D93D78 /* UnderwaterTreasureSprite.m in Sources */,
 				7EF557581B42A59E00992001 /* DialogUI.m in Sources */,
@@ -2689,8 +2635,8 @@
 				7ED822D61B13D258001BB249 /* GameMain.m in Sources */,
 				7ED822B81B13D258001BB249 /* RotateFadeOutParticle.m in Sources */,
 				7ED823031B13D258001BB249 /* SpriterData.m in Sources */,
+				7EA474231B7B4F9700B7837A /* BGCharacterTest.m in Sources */,
 				7E4F09B51B258CA2000945B8 /* Arrow.m in Sources */,
-				7ED822941B13D258001BB249 /* BGCharacterOldMan.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

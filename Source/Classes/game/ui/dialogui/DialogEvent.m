@@ -7,20 +7,26 @@
 //
 
 #import "DialogEvent.h"
+#import "BGCharacterBase.h"
 
 @implementation DialogEvent {
-	NSString* _text;
+	NSString *_text;
+	BGCharacterBase *_speaker;
 }
 
-+(DialogEvent*)cons_text:(NSString*)text {
-	return [[[DialogEvent alloc] init] cons_text:text];
++(DialogEvent*)cons_text:(NSString*)text speaker:(BGCharacterBase*)speaker {
+	return [[[DialogEvent alloc] init] cons_text:text speaker:speaker];
 }
--(DialogEvent*)cons_text:(NSString*)text {
+-(DialogEvent*)cons_text:(NSString*)text speaker:(BGCharacterBase*)speaker {
 	_text = text;
+	_speaker = speaker;
 	return self;
 }
 -(NSString*)get_text {
 	return _text;
+}
+-(BGCharacterBase*)get_speaker {
+	return _speaker;
 }
 -(void)i_update:(GameEngineScene*)g {}
 -(BOOL)is_animation_finished {

@@ -42,6 +42,8 @@
 	-(NSMutableSet*)keySet;
 @end
 
+
+
 @interface CallBack : NSObject
 	@property(readwrite,assign) SEL selector;
 	@property(readwrite,strong) NSObject *target;
@@ -114,6 +116,7 @@ CGRect cctexture_default_rect(CCTexture *tex);
 #define float_random(smallNumber, bigNumber) ((((float) (arc4random() % ((unsigned)RAND_MAX + 1)) / RAND_MAX) * (bigNumber - smallNumber)) + smallNumber)
 #define int_random(s,l) arc4random()%l+s
 #define streq(a,b) [a isEqualToString:b]
+#define strcontains(_a,_b) ([_a rangeOfString:_b].location != NSNotFound)
 #define DO_FOR(cts,a) for(int i = 0; i < cts; i++) { a; }
 float drpt(float a, float b, float fric);
 float lerp(float a, float b, float t);

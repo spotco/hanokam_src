@@ -9,13 +9,14 @@
 #import "GameUI.h"
 @class BGCharacterBase;
 @class GameEngineScene;
+@class DialogEvent;
 
 @interface DialogUI : GameUISubView
 
 +(DialogUI*)cons:(GameEngineScene *)game;
 
 
--(void)show_message:(NSString*)message from_character:(BGCharacterBase*)character g:(GameEngineScene*)g;
+-(void)show_message:(DialogEvent*)dialog_event g:(GameEngineScene*)g;
 -(void)fast_forward_message_to_end;
 -(BOOL)is_ready_for_next_message;
 

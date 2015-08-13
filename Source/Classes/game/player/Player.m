@@ -20,6 +20,8 @@
 #import "SPCCSpriteAnimator.h"
 #import "InAirPlayerStateStack.h"
 
+#import "BGCharacterPlayer.h"
+
 #import "GameUI.h"
 
 @implementation Player {
@@ -33,6 +35,8 @@
 	
 	PlayerSharedParams *_player_shared_params;
 	NSMutableArray *_player_state_stack;
+	
+	BGCharacterPlayer *_dialogue_character;
 }
 
 +(Player*)cons_g:(GameEngineScene*)g {
@@ -73,7 +77,13 @@
 	_player_shared_params._calc_accel_x_pos = game_screen().width/2;
 	_player_shared_params._reset_to_center = YES;
 	
+	_dialogue_character = [BGCharacterPlayer cons:g];
+	
 	return self;
+}
+
+-(BGCharacterBase*)get_player_dialogue_character {
+	return _dialogue_character;
 }
 
 -(void)pop_state_stack:(GameEngineScene*)g {

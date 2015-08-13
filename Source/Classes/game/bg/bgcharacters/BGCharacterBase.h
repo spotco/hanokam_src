@@ -8,13 +8,15 @@
 
 #import "CCSprite.h"
 #import "Common.h"
+#import "SPLabel.h"
+#import "GameColors.h"
 
 @class GameEngineScene;
 @class SpriterNode;
 
 @interface BGCharacterBase : CCSprite
 
--(NSArray*)get_dialog_list;
+-(NSArray*)get_dialog_list:(GameEngineScene*)g;
 -(CGPoint)get_dialog_icon_offset;
 -(NSString*)get_dialog_title;
 
@@ -25,5 +27,10 @@
 -(void)i_update:(GameEngineScene*)g;
 
 -(HitRect)get_hit_rect:(GameEngineScene*)g;
+
+//dialog ui stuff
+-(TexRect*)get_head_icon;
+-(SPLabelStyle*)get_dialog_default_style;
+-(SPLabelStyle*)get_dialog_emph_style;
 
 @end

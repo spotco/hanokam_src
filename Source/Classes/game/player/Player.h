@@ -8,6 +8,7 @@
 #import "PlayerSharedParams.h"
 @class SpriterNode;
 @class BasePlayerStateStack;
+@class BGCharacterBase;
 
 @interface Player : CCSprite <SATPolyHitOwner>
 
@@ -35,5 +36,7 @@
 
 -(void)pop_state_stack:(GameEngineScene*)g;
 -(void)push_state_stack:(BasePlayerStateStack*)item;
+
+-(BGCharacterBase*)get_player_dialogue_character;
 
 @end

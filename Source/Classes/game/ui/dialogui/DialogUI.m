@@ -16,6 +16,9 @@
 #import "SPLabel.h"
 #import "GameColors.h"
 #import "BGCharacterBase.h"
+#import "DialogEvent.h"
+
+#define DIALOGTEXT_EMPH @"emph"
 
 @implementation DialogUI {
 	SPLabel *_title_text;
@@ -59,23 +62,14 @@
 	[_title_text setAnchorPoint:ccp(0,0.5)];
 	[_title_text setPosition:CGPointAdd(_title_icon.position, ccp(_title_icon.boundingBox.size.width/2,4))];
 	[_title_text setScale:0.25];
-	[_title_text set_string:@"Hanoka"];
+	[_title_text set_string:@""];
 	[dialog_bubble_title addChild:_title_text];
 	
 	//main dialogue styles
 	_primary_text = [SPLabel cons_texkey:TEX_DIALOGUE_FONT];
 	
-	SPLabelStyle *primary_text_default_style = [SPLabelStyle cons];
-	[primary_text_default_style set_fill:GCOLOR_DIALOGUI_PRIMARY_DEFAULT_FILL stroke:GCOLOR_DIALOGUI_PRIMARY_DEFAULT_STROKE shadow:GCOLOR_BLACK];
-	primary_text_default_style._amplitude = 1.5;
-	primary_text_default_style._time_incr = 0.15;
-	[_primary_text set_default_style:primary_text_default_style];
-	
-	SPLabelStyle *primary_text_emph_style = [SPLabelStyle cons];
-	[primary_text_emph_style set_fill:GCOLOR_DIALOGUI_PRIMARY_EMPH_FILL stroke:GCOLOR_DIALOGUI_PRIMARY_EMPH_STROKE shadow:GCOLOR_BLACK];
-	primary_text_emph_style._amplitude = 7;
-	primary_text_emph_style._time_incr = 0.75;
-	[_primary_text add_style:primary_text_emph_style name:@"emph"];
+	[_primary_text set_default_style:game.player.get_player_dialogue_character.get_dialog_default_style];
+	[_primary_text add_style:game.player.get_player_dialogue_character.get_dialog_emph_style name:DIALOGTEXT_EMPH];
 	
 	[_primary_text set_scale:0.35];
 	[_primary_text setPosition:pct_of_obj(dialog_bubble_back, 0.5, 0.5)];
@@ -102,10 +96,18 @@
 	
 }
 
--(void)show_message:(NSString*)message from_character:(BGCharacterBase*)character g:(GameEngineScene*)g {
-	[_primary_text set_string:message];
+-(void)show_message:(DialogEvent*)dialog_event g:(GameEngineScene*)g {
+	[_primary_text set_default_style:dialog_event.get_speaker.get_dialog_default_style];
+	[_primary_text add_style:dialog_event.get_speaker.get_dialog_emph_style name:DIALOGTEXT_EMPH];
+	[_primary_text set_string:dialog_event.get_text];
+	[_title_text set_string:dialog_event.get_speaker.get_dialog_title];
+	TexRect *dialog_tr = dialog_event.get_speaker.get_head_icon;
+	[_title_icon setTexture:dialog_tr.tex];
+	[_title_icon setTextureRect:dialog_tr.rect];
+	[_title_text setPosition:CGPointAdd(_title_icon.position, ccp(_title_icon.boundingBox.size.width/2,4))];
 	[_primary_text animate_text_in_speed:14];
 }
+
 -(void)fast_forward_message_to_end {
 	[_primary_text animate_text_in_force_finish];
 }

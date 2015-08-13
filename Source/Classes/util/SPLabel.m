@@ -217,7 +217,7 @@
 	
 	NSString *display_string;
 	NSDictionary *style_map;
-	if ([markup_string containsString:@"["]) {
+	if (strcontains(markup_string, @"[")) {
 		[self markup_string:markup_string out_display_string:&display_string out_style_map:&style_map];
 	} else {
 		display_string = markup_string;
