@@ -10,6 +10,8 @@
 @class GameEngineScene;
 @class BGCharacterBase;
 
+#define DIALOGTEXT_EMPH @"emph"
+
 @interface DialogEvent : NSObject
 +(DialogEvent*)cons_text:(NSString*)text speaker:(BGCharacterBase*)speaker;
 -(NSString*)get_text;

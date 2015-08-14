@@ -12,8 +12,10 @@
 #import "VillageUI.h"
 #import "DialogUI.h"
 #import "DiveUI.h"
+#import "QuestMenuUI.h"
 
 @implementation GameUISubView
+-(void)show_start:(GameEngineScene *)g{}
 -(void)i_update:(GameEngineScene *)g{}
 @end
 
@@ -30,6 +32,7 @@
     VillageUI *_villageUI;
     DialogUI *_dialogUI;
 	DiveUI *_dive_ui;
+	QuestMenuUI *_quest_menu_ui;
 	NSArray *_gameui_subviews;
 }
 
@@ -47,8 +50,9 @@
     _villageUI = [VillageUI cons:g];
 	_in_air_ui = [InAirUI cons:g];
 	_dive_ui = [DiveUI cons:g];
+	_quest_menu_ui = [QuestMenuUI cons:g];
 	
-	_gameui_subviews = @[_villageUI,_in_air_ui,_dialogUI,_dive_ui];
+	_gameui_subviews = @[_villageUI,_in_air_ui,_dialogUI,_dive_ui,_quest_menu_ui];
     for (GameUISubView *itr in _gameui_subviews) [self addChild:itr];
 	
 	_red_flash_overlay = [CCNodeColor nodeWithColor:[CCColor redColor]];
@@ -95,6 +99,7 @@
 		case PlayerState_DiveReturn: return NULL;
 		case PlayerState_InAir: return _in_air_ui;
 		case PlayerState_InDialogue: return _dialogUI;
+		case PlayerState_InQuestMenu: return _quest_menu_ui;
 	}
 }
 
@@ -114,16 +119,26 @@
 	[_red_flash_overlay setOpacity:MAX(0,_red_flash_overlay.opacity-0.025*dt_scale_get())];
 	[_black_fadeout_overlay setOpacity:(_tar_black_fadeout_overlay_alpha>0.5)?MIN(1,_black_fadeout_overlay.opacity+0.01*dt_scale_get()):MAX(0,_black_fadeout_overlay.opacity-0.01*dt_scale_get())];
 	
+	GameUISubView *current_ui = [self ui_for_playerstate:game.get_player_state];
 	for (GameUISubView *itr in _gameui_subviews) {
-		[itr setVisible:NO];
+		if (itr == current_ui) {
+			if (itr.visible == NO) {
+				[itr show_start:game];
+			}
+			[itr setVisible:YES];
+			
+		} else if (itr != current_ui) {
+			[itr setVisible:NO];
+		}
 	}
+	[current_ui i_update:game];
+	
 	//[_dive_ui setVisible:YES];
 	//[_dialogUI setVisible:YES];
 	//[_dialogUI i_update:game];
 	//[_in_air_ui setVisible:YES];
-	
-	[[self ui_for_playerstate:game.get_player_state] setVisible:YES];
-	[[self ui_for_playerstate:game.get_player_state] i_update:game];
+	//[_quest_menu_ui setVisible:YES];
+	//[_quest_menu_ui i_update:game];
 }
 -(void)add_particle:(Particle*)tar {
 	[_particles add_particle:tar];

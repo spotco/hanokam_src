@@ -10,6 +10,7 @@
 #import "BGCharacterBase.h"
 #import "DialogUI.h"
 #import "DialogEvent.h"
+#import "QuestMenuPlayerStateStack.h"
 
 @implementation InDialoguePlayerStateStack {
     BGCharacterBase* _with_character;
@@ -53,6 +54,7 @@
 				
 			} else {
 				[g.player pop_state_stack:g];
+				[g.player push_state_stack:[QuestMenuPlayerStateStack cons_g:g questinfo:NULL]];
 			}
 			
 		} else {
@@ -70,6 +72,10 @@
 
 -(PlayerState)get_state {
 	return PlayerState_InDialogue;
+}
+
+-(BOOL)on_land:(GameEngineScene *)game {
+	return YES;
 }
 
 @end

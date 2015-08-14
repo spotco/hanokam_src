@@ -47,6 +47,7 @@
 @interface CallBack : NSObject
 	@property(readwrite,assign) SEL selector;
 	@property(readwrite,strong) NSObject *target;
+	@property(readwrite,strong) id context;
 @end
 
 typedef struct _fCGPoint {
@@ -164,7 +165,7 @@ void scale_to_fit_screen_x(CCSprite *spr);
 void scale_to_fit_screen_y(CCSprite *spr);
 
 void callback_run(CallBack *c);
-CallBack* callback_cons(NSObject *tar, SEL sel);
+CallBack* callback_cons(NSObject *tar, SEL sel, id context);
 
 HitRect hitrect_cons_x1y1_x2y2(float x1, float y1, float x2, float y2);
 HitRect hitrect_cons_xy_widhei(float x1, float y1, float wid, float hei);
@@ -208,5 +209,7 @@ CGRect scale_rect(CGRect tar, float scf);
 NSArray* string_dofor_format(int ct, NSString* (^callback)(int i));
 
 float y_for_point_of_2pt_line(CGPoint pt1, CGPoint pt2, float x);
+
+BOOL ccnode_is_visible(CCNode* tar);
 
 #endif

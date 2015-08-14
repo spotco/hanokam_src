@@ -2,6 +2,7 @@
 #import "GEventDispatcher.h"
 
 @interface GameUISubView : CCNode
+-(void)show_start:(GameEngineScene*)g;
 -(void)i_update:(GameEngineScene*)g;
 @end
 
