@@ -1,8 +1,5 @@
 #import <Foundation/Foundation.h>
-
-@interface NSDictionary (KeySet)
-	-(NSMutableSet*)keySet;
-@end
+#import "Common.h"
 void calc_table_scubic_point_for_t();
 
 float sbezier_val_for_t(float p0, float p1, float p2, float p3, float t);

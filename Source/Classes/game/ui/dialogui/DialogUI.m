@@ -18,8 +18,6 @@
 #import "BGCharacterBase.h"
 #import "DialogEvent.h"
 
-#define DIALOGTEXT_EMPH @"emph"
-
 @implementation DialogUI {
 	SPLabel *_title_text;
 	

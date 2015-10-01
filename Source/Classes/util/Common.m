@@ -37,6 +37,7 @@
 @implementation CallBack
 	@synthesize selector;
 	@synthesize target;
+	@synthesize context;
 @end
 
 @implementation GLRenderObject
@@ -292,14 +293,15 @@ CGPoint game_screen_anchor_offset(ScreenAnchor anchor, CGPoint offset) {
 
 void callback_run(CallBack *c) {
 	IMP imp = [c.target methodForSelector:c.selector];
-	void (*func)(id, SEL) = (void *)imp;
-	func(c.target,c.selector);
+	void (*func)(id, SEL, id) = (void *)imp;
+	func(c.target,c.selector, c.context);
 }
 
-CallBack* callback_cons(NSObject *tar, SEL sel) {
+CallBack* callback_cons(NSObject *tar, SEL sel, id context) {
     CallBack* cb = [[CallBack alloc] init];
     cb.target = tar;
 	cb.selector = sel;
+	cb.context = context;
     return cb;
 }
 
@@ -592,4 +594,15 @@ float y_for_point_of_2pt_line(CGPoint pt1, CGPoint pt2, float x) {
 	//y - mx = b
 	float b = pt1.y - m * pt1.x;
 	return m * x + b;
+}
+
+BOOL ccnode_is_visible(CCNode* tar) {
+	CCNode *itr = tar;
+	while (itr != NULL) {
+		if (!itr.visible) {
+			return NO;
+		}
+		itr = itr.parent;
+	}
+	return YES;
 }

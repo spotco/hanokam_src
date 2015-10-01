@@ -148,7 +148,7 @@
 }
 
 -(void)i_update:(GameEngineScene*)g {
-	if (self.get_player_state == PlayerState_OnGround && [g.player.get_top_state on_land:g]) {
+	if ([g.player.get_top_state on_land:g]) {
 		[self setZOrder:GameAnchorZ_Player];
 	} else {
 		[self setZOrder:GameAnchorZ_Player_Out];

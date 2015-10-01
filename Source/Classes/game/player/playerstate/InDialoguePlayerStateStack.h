@@ -11,19 +11,8 @@
 @class GameEngineScene;
 @class BGCharacterBase;
 
-/**
- *  @class  InDialoguePlayerStateStack
- *
- *  Helper class to handle game behavior when player is in a dialogue
- */
 @interface InDialoguePlayerStateStack : BasePlayerStateStack
 
-/*
- * Returns an instance of InDialoguePlayerStateStack
- *
- *  @param  g           an object containing information about the current game state
- *  @param  character   character with whom we are currently speaking to
- */
 +(InDialoguePlayerStateStack*)cons:(GameEngineScene*)g with_character:(BGCharacterBase*)character;
 
 @end

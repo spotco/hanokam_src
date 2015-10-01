@@ -1,6 +1,5 @@
 #import "GameMain.h"
 #import "GameEngineScene.h"
-#import "MainMenuScene.h"
 #import "DataStore.h"
 #import "TestScene.h"
 
@@ -12,7 +11,6 @@
 /*
 --TODO
 
-bug -- in dialogue z index above bg-fg posts
 quest + dialogue system stubs + simple quests
 	-quest1 attract certain number of enemies, ui
 	-quest2 reach certain depth (underwater temple)
@@ -38,6 +36,7 @@ enemies shoot bullet pause animation
 enemy ideas:
 	-spikes until shoot with arrow
 	-treasure bag enemy
+	-thick/thin laser enemy
 	
 no arrows popup dialogue
 
@@ -48,6 +47,8 @@ magic system - charge up energy bar, tap button to unleash
 
 quest challenge mechanics - let no enemies escape
 	underwater quests reach certain depth/
+
+dialog window popin animations
 
 first boss
 store and equipment mechanics

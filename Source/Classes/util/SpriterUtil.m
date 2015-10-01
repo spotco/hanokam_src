@@ -8,16 +8,6 @@
 
 #import "SpriterUtil.h"
 
-@implementation NSDictionary (KeySet)
--(NSMutableSet*)keySet {
-	NSMutableArray *rtv = [NSMutableArray array];
-	for (id obj in [self keyEnumerator]) {
-		[rtv addObject:obj];
-	}
-	return [NSMutableSet setWithArray:rtv];
-}
-@end
-
 float sbezier_val_for_t(float p0, float p1, float p2, float p3, float t) {
 	float cp0 = (1 - t)*(1 - t)*(1 - t);
 	float cp1 = 3 * t * (1-t)*(1-t);
