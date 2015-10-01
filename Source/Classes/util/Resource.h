@@ -21,7 +21,7 @@
 #define TEX_TEST_BG_TILE_WATER @"bg_test_tile_water"
 #define TEX_TEST_BG_UNDERWATER_SURFACE_GRADIENT @"bg_underwater_surface_gradient"
 
-#define TEX_SPRITER_CHAR_HANOKA_V2 @"hanokav2"
+//#define TEX_SPRITER_CHAR_HANOKA_V2 @"hanokav2"
 
 #define TEX_SPRITER_CHAR_OLDMAN @"Oldman"
 #define TEX_SPRITER_CHAR_VILLAGER_FISHWOMAN @"villager_fishwoman"

@@ -9,7 +9,7 @@
 	<key>CFBundleExecutable</key>
 	<string>hanokam</string>
 	<key>CFBundleIdentifier</key>
-	<string>org.cocos2d.hanokam</string>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -20,5 +20,7 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
+	<key>LSApplicationCategoryType</key>
+	<string>public.app-category.games</string>
 </dict>
 </plist>
